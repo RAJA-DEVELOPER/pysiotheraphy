@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PhysioElite offers specialized rehabilitation for sports injuries, back pain, neck pain, post-surgery recovery, joint pain, and senior mobility. Expert physiotherapists, proven results." />
+  <meta name="keywords" content="specialized physiotherapy, sports injury rehab, back pain treatment, post-surgery recovery, joint pain, senior mobility, PhysioElite" />
+  <meta property="og:title" content="Specialized Rehabilitation For Every Condition | PhysioElite" />
+  <meta property="og:description" content="Expert specialized rehabilitation for sports injuries, back pain, neck pain, post-surgery recovery, joint pain and senior mobility." />
+  <meta property="og:image" content="../assets/img/hero-physio.jpg" />
+  <meta property="og:type" content="website" />
+  <title>Specialized Rehabilitation | PhysioElite — Premium Physiotherapy</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "PhysioElite",
+    "description": "Premium specialized physiotherapy and rehabilitation clinic offering expert treatment for sports injuries, back pain, neck pain, post-surgery recovery, joint pain, and senior mobility.",
+    "url": "https://physioelite.com",
+    "logo": "https://physioelite.com/assets/logo.png",
+    "medicalSpecialty": ["PhysicalTherapy", "SportsMedicine", "Orthopedics"],
+    "hasMap": "https://maps.google.com",
+    "telephone": "+1-800-PHYSIO",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Wellness Avenue",
+      "addressLocality": "Health City",
+      "postalCode": "10001",
+      "addressCountry": "US"
+    },
+    "openingHours": ["Mo-Fr 07:00-20:00", "Sa 08:00-16:00"],
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "487"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts: DM Sans + Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Project Shared CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    /* =============================================
+       HOME2 — SPECIALIZED REHABILITATION
+       All colors via CSS variables only
+    ============================================= */
+    :root {
+      --sage: #8FAE9B;
+      --sage-dark: #7a9988;
+      --teal: #6B9C9A;
+      --teal-dark: #5a8886;
+      --ivory: #FAF9F5;
+      --beige: #E8DFD2;
+      --charcoal: #303A38;
+      --charcoal-light: #3f4f4c;
+      --white: #ffffff;
+      --text-dark: #1e2a28;
+      --text-muted: #6c7c7a;
+      --shadow-sm: 0 2px 12px rgba(48,58,56,0.08);
+      --shadow-md: 0 8px 32px rgba(48,58,56,0.12);
+      --shadow-lg: 0 16px 48px rgba(48,58,56,0.18);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    [data-theme="dark"] {
+      --ivory: #1e2a28;
+      --beige: #253330;
+      --white: #1a2422;
+      --text-dark: #e8f0ee;
+      --text-muted: #9ab8b5;
+      --charcoal-light: #4a5e5a;
+    }
+
+    /* Base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--ivory);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4, .display-font {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.25;
+    }
+
+    /* Scroll reveal */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ---- NAVBAR ---- */
+    #mainNavbar {
+      background-color: var(--charcoal);
+      transition: background-color var(--transition), box-shadow var(--transition);
+    }
+    #mainNavbar.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .navbar-brand .brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white) !important;
+      letter-spacing: -0.02em;
+    }
+    .navbar-brand .brand-logo span {
+      color: var(--sage);
+    }
+    .navbar-brand .brand-tagline {
+      font-size: 0.65rem;
+      color: var(--sage);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: -2px;
+    }
+    .navbar-nav .nav-link {
+      color: rgba(255,255,255,0.82) !important;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 0.9rem !important;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--sage) !important;
+    }
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; right: 50%;
+      height: 2px;
+      background-color: var(--sage);
+      transition: left var(--transition), right var(--transition);
+    }
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      left: 0.9rem; right: 0.9rem;
+    }
+    .btn-nav-login {
+      border: 1.5px solid var(--sage);
+      color: var(--sage) !important;
+      border-radius: 50px;
+      padding: 0.35rem 1.1rem !important;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    .btn-nav-login:hover {
+      background-color: var(--sage);
+      color: var(--charcoal) !important;
+    }
+    .btn-nav-book {
+      background-color: var(--sage);
+      color: var(--charcoal) !important;
+      border-radius: 50px;
+      padding: 0.35rem 1.3rem !important;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: none;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+    .btn-nav-book:hover {
+      background-color: var(--sage-dark);
+      transform: translateY(-1px);
+    }
+    #darkModeToggle {
+      background: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    #darkModeToggle:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
+    /* ---- SECTION 1: HERO ---- */
+    .hero-specialized {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('../assets/img/manual-neck.jpg') center/cover no-repeat;
+      overflow: hidden;
+    }
+    .hero-specialized::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(48,58,56,0.88) 0%,
+        rgba(107,156,154,0.55) 60%,
+        rgba(48,58,56,0.75) 100%
+      );
+    }
+    .hero-specialized .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 2rem 1.5rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: rgba(143,174,155,0.18);
+      border: 1px solid var(--sage);
+      color: var(--sage);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.1rem;
+      border-radius: 50px;
+      margin-bottom: 1.4rem;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-title em {
+      color: var(--sage);
+      font-style: italic;
+    }
+
+    /* Condition Tabs */
+    .condition-tabs-wrapper {
+      margin: 1.8rem 0;
+    }
+    .condition-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .condition-tab-btn {
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
+      border-radius: 50px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .condition-tab-btn:hover,
+    .condition-tab-btn.active {
+      background-color: var(--sage);
+      border-color: var(--sage);
+      color: var(--charcoal);
+      font-weight: 700;
+    }
+    .condition-description {
+      min-height: 3.5rem;
+      color: rgba(255,255,255,0.88);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      transition: opacity 0.3s ease;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .btn-hero-primary {
+      background-color: var(--sage);
+      color: var(--charcoal);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 50px;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(143,174,155,0.4);
+    }
+    .btn-hero-primary:hover {
+      background-color: var(--sage-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(143,174,155,0.5);
+      color: var(--charcoal);
+    }
+    .btn-hero-video {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .btn-hero-video:hover { color: var(--sage); }
+    .video-play-circle {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: background-color var(--transition), border-color var(--transition);
+    }
+    .btn-hero-video:hover .video-play-circle {
+      background-color: var(--sage);
+      border-color: var(--sage);
+      color: var(--charcoal);
+    }
+    /* Scroll indicator */
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color:rgba(255,255,255,0.88);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ---- SECTION 2: SPECIALTY AREAS ---- */
+    .specialty-section {
+      background-color: var(--ivory);
+      padding: 6rem 0;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.8rem;
+    }
+    [data-theme="dark"] .section-title { color: var(--text-dark); }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .specialty-card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .specialty-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(107,156,154,0.22);
+    }
+    .specialty-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .specialty-card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .specialty-icon-wrap {
+      width: 54px; height: 54px;
+      border-radius: 14px;
+      background-color: rgba(143,174,155,0.14);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: var(--sage);
+      margin-bottom: 1rem;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    .specialty-card:hover .specialty-icon-wrap {
+      background-color: var(--teal);
+      color: var(--white);
+    }
+    .specialty-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+    [data-theme="dark"] .specialty-card-title { color: var(--text-dark); }
+    .specialty-treatment-count {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--sage);
+      background-color: rgba(143,174,155,0.14);
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 0.7rem;
+    }
+    .specialty-card-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+    .specialty-link {
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color var(--transition), gap var(--transition);
+    }
+    .specialty-link:hover {
+      color: var(--sage-dark);
+      gap: 0.6rem;
+    }
+
+    /* ---- SECTION 3: FEATURED CONDITION ---- */
+    .featured-condition {
+      background-color: var(--beige);
+      padding: 6rem 0;
+    }
+    [data-theme="dark"] .featured-condition { background-color: var(--beige); }
+    .featured-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .featured-img-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+    .featured-img-badge {
+      position: absolute;
+      top: 1.5rem; left: 1.5rem;
+      background-color: var(--sage);
+      color: var(--charcoal);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+    }
+    .featured-content { padding: 1rem 0 1rem 2rem; }
+    @media (max-width: 991px) { .featured-content { padding: 2rem 0 0; } }
+    .conditions-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .conditions-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+    .conditions-checklist li::before {
+      content: '';
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background-color: var(--sage);
+      display: inline-flex;
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23303A38' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .mini-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.8rem 0;
+    }
+    .mini-stat-box {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .mini-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--sage-dark);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .mini-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .btn-sage {
+      background-color: var(--sage);
+      color: var(--charcoal);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color var(--transition), transform var(--transition);
+      box-shadow: 0 4px 16px rgba(143,174,155,0.35);
+    }
+    .btn-sage:hover {
+      background-color: var(--sage-dark);
+      transform: translateY(-2px);
+      color: var(--charcoal);
+    }
+
+    /* ---- SECTION 4: TREATMENT MODALITIES ---- */
+    .modalities-section {
+      background-color: var(--white);
+      padding: 6rem 0;
+    }
+    [data-theme="dark"] .modalities-section { background-color: var(--white); }
+    .modality-tabs-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin: 2rem 0;
+      border-bottom: 2px solid var(--beige);
+      padding-bottom: 0;
+    }
+    .modality-tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.6rem 1.1rem;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition);
+      white-space: nowrap;
+    }
+    .modality-tab-btn.active {
+      color: var(--sage-dark);
+      border-bottom-color: var(--sage);
+    }
+    .modality-tab-btn:hover:not(.active) {
+      color: var(--teal);
+    }
+    .modality-pane {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .modality-pane.active { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+    .modality-desc {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .modality-techniques {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .modality-techniques li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--beige);
+      font-size: 0.92rem;
+      color: var(--text-dark);
+    }
+    .modality-techniques li:last-child { border-bottom: none; }
+    .modality-techniques li i {
+      color: var(--sage);
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .modality-img {
+      border-radius: var(--radius-lg);
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ---- SECTION 5: OUTCOMES ---- */
+    .outcomes-section {
+      background-color: var(--charcoal);
+      padding: 6rem 0;
+    }
+    .outcomes-section .section-title { color: var(--white); }
+    .outcomes-section .section-label { color: var(--sage); }
+    .outcomes-section .section-subtitle { color: rgba(255,255,255,0.65); }
+
+    .counter-wrap {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .counter-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--sage);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .counter-label {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .counter-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.12);
+      align-self: stretch;
+    }
+
+    /* Outcome Cards */
+    .outcome-card {
+      background-color: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+    .outcome-card:hover {
+      background-color: rgba(143,174,155,0.12);
+      transform: translateY(-4px);
+    }
+    .outcome-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .outcome-badge-before {
+      background-color: rgba(255,80,80,0.15);
+      color: #ff9090;
+      border: 1px solid rgba(255,80,80,0.25);
+    }
+    .outcome-badge-after {
+      background-color: rgba(143,174,155,0.2);
+      color: var(--sage);
+      border: 1px solid rgba(143,174,155,0.3);
+    }
+    .outcome-card-title {
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .outcome-card-text {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .outcome-progress-bar {
+      height: 6px;
+      border-radius: 3px;
+      background-color: rgba(255,255,255,0.1);
+      margin: 1rem 0 0.3rem;
+      overflow: hidden;
+    }
+    .outcome-progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--sage) 0%, var(--teal) 100%);
+      transition: width 1.2s ease;
+    }
+
+    /* Lead Physio Quote */
+    .physio-quote-wrap {
+      background-color: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      position: relative;
+      margin-top: 3rem;
+    }
+    .physio-quote-wrap::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem; left: 1.5rem;
+      font-size: 5rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--sage);
+      opacity: 0.4;
+      line-height: 1;
+    }
+    .physio-quote-text {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.08rem;
+      font-style: italic;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .physio-quote-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .physio-quote-author img {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--sage);
+    }
+    .physio-author-name {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.95rem;
+    }
+    .physio-author-title {
+      color: var(--sage);
+      font-size: 0.8rem;
+    }
+
+    /* ---- SECTION 6: BOOKING CTA ---- */
+    .booking-section {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--sage) 100%);
+      padding: 6rem 0;
+    }
+    .booking-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .booking-section-sub {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.98rem;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Therapist Cards */
+    .therapist-card {
+      background-color: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+    .therapist-card:hover,
+    .therapist-card.selected {
+      background-color: rgba(255,255,255,0.22);
+      transform: translateX(4px);
+    }
+    .therapist-card img {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+    .therapist-card-name {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.95rem;
+      margin-bottom: 0.1rem;
+    }
+    .therapist-card-specialty {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.8rem;
+    }
+    .therapist-card-avail {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .avail-green {
+      background-color: rgba(143,174,155,0.3);
+      color: #c8e6d4;
+      border: 1px solid rgba(143,174,155,0.4);
+    }
+    .avail-orange {
+      background-color: rgba(255,180,80,0.2);
+      color: #ffd08a;
+      border: 1px solid rgba(255,180,80,0.3);
+    }
+
+    /* Booking Form */
+    .booking-form-card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-lg);
+    }
+    [data-theme="dark"] .booking-form-card {
+      background-color: var(--charcoal-light);
+    }
+    .booking-form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+    [data-theme="dark"] .booking-form-title { color: var(--text-dark); }
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+    }
+    .form-control, .form-select {
+      border: 1.5px solid var(--beige);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background-color: var(--ivory);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(143,174,155,0.18);
+      outline: none;
+    }
+    .time-slots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .time-slot {
+      background-color: var(--ivory);
+      border: 1.5px solid var(--beige);
+      border-radius: var(--radius);
+      padding: 0.45rem;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .time-slot:hover,
+    .time-slot.selected {
+      background-color: var(--sage);
+      border-color: var(--sage);
+      color: var(--charcoal);
+      font-weight: 700;
+    }
+    .time-slot.unavailable {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .btn-book-submit {
+      background: linear-gradient(135deg, var(--sage) 0%, var(--teal) 100%);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem;
+      border-radius: 50px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      transition: opacity var(--transition), transform var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+    }
+    .btn-book-submit:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ---- FOOTER ---- */
+    .site-footer {
+      background-color: var(--charcoal);
+      color: rgba(255,255,255,0.65);
+      padding: 5rem 0 2rem;
+    }
+    .footer-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .footer-brand .brand-name span { color: var(--sage); }
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-top: 0.8rem;
+    }
+    .footer-social-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+    .footer-social-link {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color:rgba(255,255,255,0.88);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .footer-social-link:hover {
+      background-color: var(--sage);
+      color: var(--charcoal);
+      border-color: var(--sage);
+    }
+    .footer-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li { margin-bottom: 0.6rem; }
+    .footer-links a {
+      color:rgba(255,255,255,0.88);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.88rem;
+    }
+    .footer-contact-item i {
+      color: var(--sage);
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .footer-divider {
+      border-color: rgba(255,255,255,0.1);
+      margin: 3rem 0 1.5rem;
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+    }
+    .footer-badges {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .footer-badge {
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      color:rgba(255,255,255,0.88);
+    }
+
+    /* Video Modal */
+    .video-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0,0,0,0.88);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .video-modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .video-modal-inner {
+      position: relative;
+      width: 90%;
+      max-width: 860px;
+    }
+    .video-modal-close {
+      position: absolute;
+      top: -2.5rem; right: 0;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .video-modal-inner iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius-lg);
+      border: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .mini-stats-row { grid-template-columns: 1fr; }
+      .conditions-checklist { grid-template-columns: 1fr; }
+      .time-slots-grid { grid-template-columns: repeat(2,1fr); }
+      .featured-content { padding: 1.5rem 0 0; }
+      .booking-section { padding: 4rem 0; }
+      .specialty-section, .featured-condition, .modalities-section,
+      .outcomes-section { padding: 4rem 0; }
+    }
+    @media (max-width: 575px) {
+      .hero-title { font-size: 2rem; }
+      .modality-tabs-nav { gap: 0.2rem; }
+      .modality-tab-btn { font-size: 0.78rem; padding: 0.5rem 0.7rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/contrast-fixes.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=2" />
+</head>
+<body>
+
+<!-- ============================================
+     STICKY NAVBAR
+============================================= -->
+<nav id="mainNav" class="navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="../index.html" aria-label="PhysioElite Home">
+        <div class="brand-leaf" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+        <span>Physio<span class="brand-name-pe">Elite</span></span>
+      </a>
+
+      <!-- Mobile Controls -->
+      <div class="d-flex d-lg-none align-items-center gap-2 ms-auto">
+        <button id="darkToggle" data-theme-toggle aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="darkIcon"></i>
+        </button>
+        <div class="dropdown">
+          <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+            <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+            <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+            <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars navbar-toggler-icon"></i>
+        </button>
+      </div>
+
+      <!-- Nav Menu -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto gap-1" role="list">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="home1.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="home2.html">Home 2</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button id="darkToggleDesktop" class="d-none d-lg-flex" data-theme-toggle aria-label="Toggle dark mode" style="background:none;border:1.5px solid var(--border-color);color:var(--text-secondary);border-radius:var(--radius-sm);width:36px;height:36px;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);">
+            <i class="fa-solid fa-moon" id="darkIconDesktop"></i>
+          </button>
+          <div class="dropdown">
+            <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+              <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+              <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+              <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+              <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+<main id="main-content">
+
+<!-- ============================================
+     SECTION 1 — SPECIALIZED HERO
+============================================= -->
+<section class="hero-specialized" aria-labelledby="heroHeading">
+  <div class="hero-content">
+    <!-- Eyebrow -->
+    <div class="hero-eyebrow reveal-on-scroll">
+      <i class="fa-solid fa-star-of-life"></i>
+      Specialized Physiotherapy Clinic
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="hero-title reveal-on-scroll reveal-delay-1" id="heroHeading">
+      Specialized Rehabilitation<br>
+      <em>For Every Condition</em>
+    </h1>
+
+    <!-- Animated Condition Tabs -->
+    <div class="condition-tabs-wrapper reveal-on-scroll reveal-delay-2">
+      <div class="condition-tabs" role="tablist" aria-label="Condition specialties">
+        <button class="condition-tab-btn active" role="tab" aria-selected="true"
+                data-condition="sports" aria-controls="condition-desc">
+          <i class="fa-solid fa-running me-1"></i> Sports Injuries
+        </button>
+        <button class="condition-tab-btn" role="tab" aria-selected="false"
+                data-condition="back">
+          <i class="fa-solid fa-person me-1"></i> Back Pain
+        </button>
+        <button class="condition-tab-btn" role="tab" aria-selected="false"
+                data-condition="neck">
+          <i class="fa-solid fa-user-injured me-1"></i> Neck Pain
+        </button>
+        <button class="condition-tab-btn" role="tab" aria-selected="false"
+                data-condition="surgery">
+          <i class="fa-solid fa-procedures me-1"></i> Post-Surgery
+        </button>
+        <button class="condition-tab-btn" role="tab" aria-selected="false"
+                data-condition="joint">
+          <i class="fa-solid fa-bone me-1"></i> Joint Pain
+        </button>
+        <button class="condition-tab-btn" role="tab" aria-selected="false"
+                data-condition="senior">
+          <i class="fa-solid fa-walking me-1"></i> Senior Mobility
+        </button>
+      </div>
+      <p class="condition-description" id="condition-desc" aria-live="polite">
+        From ACL tears to rotator cuff injuries, our sports physio team designs tailored recovery plans that get athletes back to peak performance faster and stronger.
+      </p>
+    </div>
+
+    <!-- CTAs -->
+    <div class="hero-cta-row reveal-on-scroll reveal-delay-3">
+      <a href="#booking" class="btn-hero-primary">
+        Find Your Treatment
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <button class="btn-hero-video" id="heroVideoBtn" aria-label="Watch our clinic video">
+        <span class="video-play-circle"><i class="fa-solid fa-play"></i></span>
+        <span>See How We Help</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div class="video-modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-label="Clinic video">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="Close video">&times;</button>
+    <iframe id="videoModalFrame" src="" title="PhysioElite Clinic Overview"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+
+<!-- ============================================
+     SECTION 2 — 6 SPECIALTY AREAS
+============================================= -->
+<section class="specialty-section" id="specialties" aria-labelledby="specialtiesHeading">
+  <div class="container">
+    <div class="text-center mb-5 reveal-on-scroll">
+      <span class="section-label">Our Expertise</span>
+      <h2 class="section-title" id="specialtiesHeading">
+        Conditions We Specialize In
+      </h2>
+      <p class="section-subtitle">
+        Deep expertise across six core rehabilitation areas, each supported by evidence-based protocols and specialist therapists.
+      </p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- 1. Sports Injuries -->
+      <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-1">
+        <article class="specialty-card" aria-label="Sports Injuries specialty">
+          <img src="../assets/img/hero-physio.jpg"
+               alt="Sports injury rehabilitation" class="specialty-card-img"
+               loading="lazy" />
+          <div class="specialty-card-body">
+            <div class="specialty-icon-wrap" aria-hidden="true">
+              <i class="fa-solid fa-running"></i>
+            </div>
+            <h3 class="specialty-card-title">Sports Injuries</h3>
+            <span class="specialty-treatment-count">12 Treatment Options</span>
+            <p class="specialty-card-desc">
+              Comprehensive sports rehabilitation for active individuals — from weekend warriors to elite athletes — restoring function and preventing re-injury.
+            </p>
+            <a href="service-details.html" class="specialty-link" aria-label="Explore Sports Injuries treatments">
+              Explore <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- 2. Back Pain -->
+      <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-2">
+        <article class="specialty-card" aria-label="Back Pain specialty">
+          <img src="../assets/img/back-treatment.jpg"
+               alt="Back pain treatment" class="specialty-card-img"
+               loading="lazy" />
+          <div class="specialty-card-body">
+            <div class="specialty-icon-wrap" aria-hidden="true">
+              <i class="fa-solid fa-person-walking-with-cane"></i>
+            </div>
+            <h3 class="specialty-card-title">Back Pain</h3>
+            <span class="specialty-treatment-count">9 Treatment Options</span>
+            <p class="specialty-card-desc">
+              Targeted therapy for lower back pain, disc herniations, sciatica, and spinal conditions — combining manual therapy with personalised exercise.
+            </p>
+            <a href="service-details.html" class="specialty-link" aria-label="Explore Back Pain treatments">
+              Explore <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- 3. Neck Pain -->
+      <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-3">
+        <article class="specialty-card" aria-label="Neck Pain specialty">
+          <img src="../assets/img/neck-treatment.jpg"
+               alt="Neck pain treatment" class="specialty-card-img"
+               loading="lazy" />
+          <div class="specialty-card-body">
+            <div class="specialty-icon-wrap" aria-hidden="true">
+              <i class="fa-solid fa-user-injured"></i>
+            </div>
+            <h3 class="specialty-card-title">Neck Pain</h3>
+            <span class="specialty-treatment-count">7 Treatment Options</span>
+            <p class="specialty-card-desc">
+              Specialist cervical therapy for whiplash, tension headaches, cervical spondylosis, and postural neck pain — restoring pain-free movement and strength.
+            </p>
+            <a href="service-details.html" class="specialty-link" aria-label="Explore Neck Pain treatments">
+              Explore <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- 4. Post-Surgery Recovery -->
+      <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-1">
+        <article class="specialty-card" aria-label="Post-Surgery Recovery specialty">
+          <img src="../assets/img/leg-treatment.jpg"
+               alt="Post-surgery rehabilitation" class="specialty-card-img"
+               loading="lazy" />
+          <div class="specialty-card-body">
+            <div class="specialty-icon-wrap" aria-hidden="true">
+              <i class="fa-solid fa-procedures"></i>
+            </div>
+            <h3 class="specialty-card-title">Post-Surgery Recovery</h3>
+            <span class="specialty-treatment-count">11 Treatment Options</span>
+            <p class="specialty-card-desc">
+              Structured surgical rehabilitation for joint replacements, spinal surgery, and orthopaedic procedures — optimising recovery timelines and outcomes.
+            </p>
+            <a href="service-details.html" class="specialty-link" aria-label="Explore Post-Surgery Recovery treatments">
+              Explore <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- 5. Joint Pain -->
+      <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-2">
+        <article class="specialty-card" aria-label="Joint Pain specialty">
+          <img src="../assets/img/joint-treatment.jpg"
+               alt="Joint pain treatment" class="specialty-card-img"
+               loading="lazy" />
+          <div class="specialty-card-body">
+            <div class="specialty-icon-wrap" aria-hidden="true">
+              <i class="fa-solid fa-bone"></i>
+            </div>
+            <h3 class="specialty-card-title">Joint Pain</h3>
+            <span class="specialty-treatment-count">10 Treatment Options</span>
+            <p class="specialty-card-desc">
+              Comprehensive arthritis management and joint pain relief for knees, hips, shoulders, and wrists — reducing pain and improving daily function.
+            </p>
+            <a href="service-details.html" class="specialty-link" aria-label="Explore Joint Pain treatments">
+              Explore <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- 6. Senior Mobility -->
+      <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-3">
+        <article class="specialty-card" aria-label="Senior Mobility specialty">
+          <img src="../assets/img/senior-mobility.jpg"
+               alt="Senior mobility rehabilitation" class="specialty-card-img"
+               loading="lazy" />
+          <div class="specialty-card-body">
+            <div class="specialty-icon-wrap" aria-hidden="true">
+              <i class="fa-solid fa-walking"></i>
+            </div>
+            <h3 class="specialty-card-title">Senior Mobility</h3>
+            <span class="specialty-treatment-count">8 Treatment Options</span>
+            <p class="specialty-card-desc">
+              Dedicated geriatric physiotherapy to improve balance, prevent falls, manage age-related conditions, and maintain independence and quality of life.
+            </p>
+            <a href="service-details.html" class="specialty-link" aria-label="Explore Senior Mobility treatments">
+              Explore <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+    </div><!-- .row -->
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 3 — FEATURED CONDITION DEEP-DIVE
+============================================= -->
+<section class="featured-condition" id="sports-rehab" aria-labelledby="sportsRehabHeading">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <!-- Image -->
+      <div class="col-lg-6 reveal-on-scroll">
+        <div class="featured-img-wrap">
+          <img src="../assets/img/sports-taping.jpg"
+               alt="Sports injury rehabilitation session at PhysioElite"
+               class="img-fluid"
+               loading="lazy" />
+          <span class="featured-img-badge">
+            <i class="fa-solid fa-trophy me-1"></i> #1 Sports Rehab Clinic
+          </span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-6 reveal-on-scroll reveal-delay-2">
+        <div class="featured-content">
+          <span class="section-label">Spotlight Condition</span>
+          <h2 class="section-title" id="sportsRehabHeading">
+            Sports Injury<br>Rehabilitation
+          </h2>
+          <p class="section-subtitle text-start mb-0" style="max-width:100%">
+            Our sports rehabilitation programme combines the latest evidence-based techniques with sport-specific training to get you back performing at your best — faster.
+          </p>
+
+          <!-- Conditions List -->
+          <ul class="conditions-checklist" aria-label="Conditions treated">
+            <li>ACL Tears</li>
+            <li>Rotator Cuff</li>
+            <li>Shin Splints</li>
+            <li>Tennis Elbow</li>
+            <li>Ankle Sprains</li>
+            <li>Muscle Strains</li>
+          </ul>
+
+          <!-- Mini Stat Boxes -->
+          <div class="mini-stats-row">
+            <div class="mini-stat-box">
+              <span class="mini-stat-value">95%</span>
+              <span class="mini-stat-label">Return to Sport</span>
+            </div>
+            <div class="mini-stat-box">
+              <span class="mini-stat-value">4–8 Wks</span>
+              <span class="mini-stat-label">Recovery Time</span>
+            </div>
+            <div class="mini-stat-box">
+              <span class="mini-stat-value">100%</span>
+              <span class="mini-stat-label">Sport-Specific Plans</span>
+            </div>
+          </div>
+
+          <a href="service-details.html" class="btn-sage" aria-label="Explore Sports Physio services">
+            Explore Sports Physio
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 4 — TREATMENT MODALITIES (Tabs)
+============================================= -->
+<section class="modalities-section" id="treatments" aria-labelledby="modalitiesHeading">
+  <div class="container">
+    <div class="text-center reveal-on-scroll">
+      <span class="section-label">Our Approach</span>
+      <h2 class="section-title" id="modalitiesHeading">Treatment Modalities</h2>
+      <p class="section-subtitle">
+        A comprehensive toolkit of evidence-based therapies, tailored to your specific condition and recovery goals.
+      </p>
+    </div>
+
+    <!-- Tab Nav -->
+    <div class="modality-tabs-nav" role="tablist" aria-label="Treatment modalities">
+      <button class="modality-tab-btn active" role="tab" aria-selected="true"
+              aria-controls="pane-manual" id="tab-manual"
+              data-modality="manual">Manual Therapy</button>
+      <button class="modality-tab-btn" role="tab" aria-selected="false"
+              aria-controls="pane-exercise" id="tab-exercise"
+              data-modality="exercise">Exercise Therapy</button>
+      <button class="modality-tab-btn" role="tab" aria-selected="false"
+              aria-controls="pane-electro" id="tab-electro"
+              data-modality="electro">Electrotherapy</button>
+      <button class="modality-tab-btn" role="tab" aria-selected="false"
+              aria-controls="pane-hydro" id="tab-hydro"
+              data-modality="hydro">Hydrotherapy</button>
+      <button class="modality-tab-btn" role="tab" aria-selected="false"
+              aria-controls="pane-needling" id="tab-needling"
+              data-modality="needling">Dry Needling</button>
+      <button class="modality-tab-btn" role="tab" aria-selected="false"
+              aria-controls="pane-taping" id="tab-taping"
+              data-modality="taping">Sports Taping</button>
+    </div>
+
+    <!-- Tab Panes -->
+    <div class="mt-4">
+
+      <!-- Manual Therapy -->
+      <div class="modality-pane active row g-4 align-items-center"
+           id="pane-manual" role="tabpanel" aria-labelledby="tab-manual">
+        <div class="col-md-7">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:0.8rem; font-size:1.4rem;">
+            Manual Therapy
+          </h3>
+          <p class="modality-desc">
+            Hands-on physiotherapy techniques applied directly to joints, muscles, and soft tissues. Our skilled therapists use precise manual techniques to restore mobility, reduce pain, and improve function — often delivering immediate relief.
+          </p>
+          <ul class="modality-techniques">
+            <li><i class="fa-solid fa-check-circle"></i> Joint Mobilisation & Manipulation — restoring joint range of motion</li>
+            <li><i class="fa-solid fa-check-circle"></i> Soft Tissue Massage — releasing muscle tension and adhesions</li>
+            <li><i class="fa-solid fa-check-circle"></i> Myofascial Release — targeting fascial restrictions and trigger points</li>
+            <li><i class="fa-solid fa-check-circle"></i> Neural Mobilisation — improving nerve mobility and reducing neuropathic pain</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img src="../assets/img/clinic-treatment.jpg"
+               alt="Manual therapy treatment" class="modality-img" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Exercise Therapy -->
+      <div class="modality-pane row g-4 align-items-center"
+           id="pane-exercise" role="tabpanel" aria-labelledby="tab-exercise">
+        <div class="col-md-7">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:0.8rem; font-size:1.4rem;">
+            Exercise Therapy
+          </h3>
+          <p class="modality-desc">
+            Individualised therapeutic exercise programmes designed to rebuild strength, improve flexibility, and restore normal movement patterns. Each programme is progressively adjusted based on your recovery milestones.
+          </p>
+          <ul class="modality-techniques">
+            <li><i class="fa-solid fa-check-circle"></i> Strength & Resistance Training — rebuilding muscle after injury or surgery</li>
+            <li><i class="fa-solid fa-check-circle"></i> Neuromuscular Re-education — retraining movement patterns and coordination</li>
+            <li><i class="fa-solid fa-check-circle"></i> Proprioception & Balance Training — reducing fall risk and re-injury</li>
+            <li><i class="fa-solid fa-check-circle"></i> Functional Movement Screening — identifying and correcting dysfunctional patterns</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img src="../assets/img/rehab-gym.jpg"
+               alt="Exercise therapy session" class="modality-img" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Electrotherapy -->
+      <div class="modality-pane row g-4 align-items-center"
+           id="pane-electro" role="tabpanel" aria-labelledby="tab-electro">
+        <div class="col-md-7">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:0.8rem; font-size:1.4rem;">
+            Electrotherapy
+          </h3>
+          <p class="modality-desc">
+            Advanced electrical stimulation modalities to accelerate tissue healing, manage pain, and reduce inflammation. These non-invasive treatments complement hands-on therapy to maximise your recovery.
+          </p>
+          <ul class="modality-techniques">
+            <li><i class="fa-solid fa-check-circle"></i> TENS (Transcutaneous Electrical Nerve Stimulation) — effective pain relief</li>
+            <li><i class="fa-solid fa-check-circle"></i> Ultrasound Therapy — promoting deep tissue healing and reducing scar tissue</li>
+            <li><i class="fa-solid fa-check-circle"></i> Interferential Current (IFC) — targeting deep muscle and joint pain</li>
+            <li><i class="fa-solid fa-check-circle"></i> LASER Therapy — reducing inflammation and accelerating cellular repair</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img src="../assets/img/electrotherapy.jpg"
+               alt="Electrotherapy treatment" class="modality-img" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Hydrotherapy -->
+      <div class="modality-pane row g-4 align-items-center"
+           id="pane-hydro" role="tabpanel" aria-labelledby="tab-hydro">
+        <div class="col-md-7">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:0.8rem; font-size:1.4rem;">
+            Hydrotherapy
+          </h3>
+          <p class="modality-desc">
+            Water-based rehabilitation that harnesses buoyancy and resistance to facilitate movement and exercise in a low-impact environment. Ideal for post-surgical recovery and conditions where land-based exercise is too painful.
+          </p>
+          <ul class="modality-techniques">
+            <li><i class="fa-solid fa-check-circle"></i> Aquatic Exercise Programme — joint-friendly strengthening and conditioning</li>
+            <li><i class="fa-solid fa-check-circle"></i> Warm Water Immersion — relaxing muscles and improving circulation</li>
+            <li><i class="fa-solid fa-check-circle"></i> Resistance Hydrotherapy — building strength using water resistance</li>
+            <li><i class="fa-solid fa-check-circle"></i> Balance & Gait Retraining — safe environment for restoring normal walking</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img src="../assets/img/hydrotherapy.jpg"
+               alt="Hydrotherapy pool" class="modality-img" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Dry Needling -->
+      <div class="modality-pane row g-4 align-items-center"
+           id="pane-needling" role="tabpanel" aria-labelledby="tab-needling">
+        <div class="col-md-7">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:0.8rem; font-size:1.4rem;">
+            Dry Needling
+          </h3>
+          <p class="modality-desc">
+            A precise technique using fine monofilament needles to target myofascial trigger points, releasing muscle tension, reducing pain, and restoring normal muscle function — without the use of any medication.
+          </p>
+          <ul class="modality-techniques">
+            <li><i class="fa-solid fa-check-circle"></i> Trigger Point Dry Needling — deactivating painful muscle knots</li>
+            <li><i class="fa-solid fa-check-circle"></i> Deep Tissue Needling — targeting deeper layers of muscle and fascia</li>
+            <li><i class="fa-solid fa-check-circle"></i> Peri-neural Dry Needling — addressing nerve-related referred pain</li>
+            <li><i class="fa-solid fa-check-circle"></i> Electrical Dry Needling (E-stim) — combining needles with gentle electrical impulse</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img src="../assets/img/needling.jpg"
+               alt="Dry needling treatment" class="modality-img" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Sports Taping -->
+      <div class="modality-pane row g-4 align-items-center"
+           id="pane-taping" role="tabpanel" aria-labelledby="tab-taping">
+        <div class="col-md-7">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:0.8rem; font-size:1.4rem;">
+            Sports Taping
+          </h3>
+          <p class="modality-desc">
+            Professional taping techniques to support injured structures, facilitate healing, and allow athletes to continue training safely. We use both rigid and elastic tape systems based on your individual needs.
+          </p>
+          <ul class="modality-techniques">
+            <li><i class="fa-solid fa-check-circle"></i> Kinesiology Taping (KT Tape) — supporting muscles and reducing pain without restricting movement</li>
+            <li><i class="fa-solid fa-check-circle"></i> Rigid Strapping — providing maximum joint stability for acute injuries</li>
+            <li><i class="fa-solid fa-check-circle"></i> McConnell Taping — correcting patellofemoral alignment and knee tracking</li>
+            <li><i class="fa-solid fa-check-circle"></i> Lymphatic Taping — reducing swelling and improving circulation post-injury</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          <img src="../assets/img/taping-closeup.jpg"
+               alt="Sports taping technique" class="modality-img" loading="lazy" />
+        </div>
+      </div>
+
+    </div><!-- tab panes end -->
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 5 — OUTCOMES & STATISTICS
+============================================= -->
+<section class="outcomes-section" id="outcomes" aria-labelledby="outcomesHeading">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="text-center mb-5 reveal-on-scroll">
+      <span class="section-label">Our Results</span>
+      <h2 class="section-title" id="outcomesHeading">
+        Outcomes That Speak<br>For Themselves
+      </h2>
+      <p class="section-subtitle">
+        Real patients, real results. Our data-driven approach consistently delivers exceptional rehabilitation outcomes.
+      </p>
+    </div>
+
+    <!-- Animated Counters -->
+    <div class="row g-0 justify-content-center mb-5 reveal-on-scroll">
+      <div class="col-6 col-md-3">
+        <div class="counter-wrap">
+          <span class="counter-num" data-target="500" data-suffix="+">0</span>
+          <span class="counter-label">Patients Recovered</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="counter-wrap">
+          <span class="counter-num" data-target="95" data-suffix="%">0</span>
+          <span class="counter-label">Success Rate</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="counter-wrap">
+          <span class="counter-num" data-target="15" data-suffix="+">0</span>
+          <span class="counter-label">Expert Therapists</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="counter-wrap">
+          <span class="counter-num" data-target="10000" data-suffix="+">0</span>
+          <span class="counter-label">Sessions Completed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outcome Cards -->
+    <div class="row g-4 mb-5">
+
+      <div class="col-md-4 reveal-on-scroll reveal-delay-1">
+        <div class="outcome-card">
+          <div>
+            <span class="outcome-badge outcome-badge-before">Before</span>
+            <span class="outcome-badge outcome-badge-after ms-1">After</span>
+          </div>
+          <h3 class="outcome-card-title">ACL Tear Recovery</h3>
+          <p class="outcome-card-text">
+            Elite footballer returned to competitive play 7 months after complete ACL rupture through our sport-specific rehabilitation programme.
+          </p>
+          <div class="outcome-progress-bar">
+            <div class="outcome-progress-fill" style="width: 95%;" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <span style="font-size:0.75rem; color:rgba(255,255,255,0.88);">95% function restored</span>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal-on-scroll reveal-delay-2">
+        <div class="outcome-card">
+          <div>
+            <span class="outcome-badge outcome-badge-before">Before</span>
+            <span class="outcome-badge outcome-badge-after ms-1">After</span>
+          </div>
+          <h3 class="outcome-card-title">Chronic Back Pain Relief</h3>
+          <p class="outcome-card-text">
+            Office worker with 5 years of chronic lower back pain achieved pain-free status within 12 weeks through combined manual therapy and exercise.
+          </p>
+          <div class="outcome-progress-bar">
+            <div class="outcome-progress-fill" style="width: 92%;" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <span style="font-size:0.75rem; color:rgba(255,255,255,0.88);">92% pain reduction</span>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal-on-scroll reveal-delay-3">
+        <div class="outcome-card">
+          <div>
+            <span class="outcome-badge outcome-badge-before">Before</span>
+            <span class="outcome-badge outcome-badge-after ms-1">After</span>
+          </div>
+          <h3 class="outcome-card-title">Hip Replacement Rehab</h3>
+          <p class="outcome-card-text">
+            68-year-old patient regained full independent mobility and returned to daily activities 10 weeks after total hip replacement surgery.
+          </p>
+          <div class="outcome-progress-bar">
+            <div class="outcome-progress-fill" style="width: 98%;" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <span style="font-size:0.75rem; color:rgba(255,255,255,0.88);">Full independence restored</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Lead Physio Quote -->
+    <div class="row justify-content-center reveal-on-scroll">
+      <div class="col-lg-9">
+        <blockquote class="physio-quote-wrap">
+          <p class="physio-quote-text">
+            "At PhysioElite, we don't just treat injuries — we address the root cause of dysfunction and build resilience for the long term. Every patient deserves a treatment plan as unique as they are, backed by the best evidence and delivered with genuine care."
+          </p>
+          <footer class="physio-quote-author">
+            <img src="../assets/img/staff-sarah-mitchell.jpg"
+                 alt="Dr. Sarah Mitchell, Lead Physiotherapist" loading="lazy" />
+            <div>
+              <span class="physio-author-name">Dr. Sarah Mitchell, MCSP</span>
+              <span class="physio-author-title d-block">Lead Physiotherapist & Clinical Director</span>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 6 — SPECIALIST BOOKING CTA
+============================================= -->
+<section class="booking-section" id="booking" aria-labelledby="bookingHeading">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+
+      <!-- Left: Choose Your Specialist -->
+      <div class="col-lg-6 reveal-on-scroll">
+        <span class="section-label" style="color:rgba(255,255,255,0.75);">Book Today</span>
+        <h2 class="booking-section-title" id="bookingHeading">
+          Choose Your<br>Specialist
+        </h2>
+        <p class="booking-section-sub">
+          Select a specialist matched to your condition. All therapists are HCPC-registered with post-graduate training in their area of expertise.
+        </p>
+
+        <!-- Therapist 1 -->
+        <div class="therapist-card" role="button" tabindex="0"
+             aria-label="Select Dr. Sarah Mitchell" data-therapist="sarah">
+          <img src="../assets/img/staff-sarah-mitchell.jpg"
+               alt="Dr. Sarah Mitchell" loading="lazy" />
+          <div>
+            <div class="therapist-card-name">Dr. Sarah Mitchell</div>
+            <div class="therapist-card-specialty">Sports Rehabilitation & Manual Therapy</div>
+          </div>
+          <span class="therapist-card-avail avail-green">Available</span>
+        </div>
+
+        <!-- Therapist 2 -->
+        <div class="therapist-card" role="button" tabindex="0"
+             aria-label="Select James Okafor" data-therapist="james">
+          <img src="../assets/img/staff-james-okafor.jpg"
+               alt="James Okafor, MSc" loading="lazy" />
+          <div>
+            <div class="therapist-card-name">James Okafor, MSc</div>
+            <div class="therapist-card-specialty">Spinal & Post-Surgical Rehabilitation</div>
+          </div>
+          <span class="therapist-card-avail avail-green">Available</span>
+        </div>
+
+        <!-- Therapist 3 -->
+        <div class="therapist-card" role="button" tabindex="0"
+             aria-label="Select Dr. Priya Sharma" data-therapist="priya">
+          <img src="../assets/img/staff-priya-sharma.jpg"
+               alt="Dr. Priya Sharma" loading="lazy" />
+          <div>
+            <div class="therapist-card-name">Dr. Priya Sharma</div>
+            <div class="therapist-card-specialty">Geriatric & Joint Pain Specialist</div>
+          </div>
+          <span class="therapist-card-avail avail-orange">Next Week</span>
+        </div>
+      </div>
+
+      <!-- Right: Booking Form -->
+      <div class="col-lg-6 reveal-on-scroll reveal-delay-2">
+        <div class="booking-form-card">
+          <h3 class="booking-form-title">
+            <i class="fa-regular fa-calendar-check me-2" style="color:var(--sage)"></i>
+            Book Your Appointment
+          </h3>
+
+          <form id="bookingForm" novalidate aria-label="Book appointment form">
+
+            <div class="mb-3">
+              <label for="conditionSelect" class="form-label">Your Condition</label>
+              <select class="form-select" id="conditionSelect" required aria-required="true">
+                <option value="" disabled selected>Select your condition…</option>
+                <option value="sports">Sports Injury</option>
+                <option value="back">Back Pain</option>
+                <option value="neck">Neck Pain</option>
+                <option value="surgery">Post-Surgery Recovery</option>
+                <option value="joint">Joint Pain</option>
+                <option value="senior">Senior Mobility</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="therapistPref" class="form-label">Therapist Preference</label>
+              <select class="form-select" id="therapistPref" aria-label="Select therapist preference">
+                <option value="">Any Available Therapist</option>
+                <option value="sarah">Dr. Sarah Mitchell</option>
+                <option value="james">James Okafor, MSc</option>
+                <option value="priya">Dr. Priya Sharma</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="appointmentDate" class="form-label">Preferred Date</label>
+              <input type="date" class="form-control" id="appointmentDate"
+                     required aria-required="true"
+                     aria-label="Choose appointment date" />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Available Time Slots</label>
+              <div class="time-slots-grid" role="radiogroup" aria-label="Time slot selection">
+                <div class="time-slot" role="radio" tabindex="0" aria-checked="false" data-time="08:00">08:00 AM</div>
+                <div class="time-slot" role="radio" tabindex="0" aria-checked="false" data-time="09:30">09:30 AM</div>
+                <div class="time-slot unavailable" role="radio" tabindex="-1" aria-checked="false" aria-disabled="true" data-time="11:00">11:00 AM</div>
+                <div class="time-slot" role="radio" tabindex="0" aria-checked="false" data-time="13:00">01:00 PM</div>
+                <div class="time-slot" role="radio" tabindex="0" aria-checked="false" data-time="14:30">02:30 PM</div>
+                <div class="time-slot unavailable" role="radio" tabindex="-1" aria-checked="false" aria-disabled="true" data-time="16:00">04:00 PM</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="patientName" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="patientName"
+                     placeholder="Full name" required aria-required="true" />
+            </div>
+
+            <div class="mb-3">
+              <label for="patientPhone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="patientPhone"
+                     placeholder="+1 (000) 000 0000" required aria-required="true" />
+            </div>
+
+            <button type="submit" class="btn-book-submit" aria-label="Confirm booking">
+              <i class="fa-solid fa-calendar-check"></i>
+              Confirm Booking
+            </button>
+
+            <p style="text-align:center; font-size:0.78rem; color:var(--text-muted); margin-top:0.8rem;">
+              <i class="fa-solid fa-lock me-1"></i>
+              Your information is secure and confidential
+            </p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main><!-- /main -->
+
+
+<!-- ============================================
+     FOOTER
+============================================= -->
+<footer id="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="row g-4 g-xl-5">
+
+      <!-- Col 1: Brand -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="brand-leaf" style="width:32px;height:32px;font-size:.8rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <span class="brand-name">Physio<span>Elite</span></span>
+          </div>
+          <p class="footer-tagline">Premium Physiotherapy & Rehabilitation. Helping people move better, feel stronger, and live fully since 2014.</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="PhysioElite on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links" aria-label="Quick navigation links">
+          <li><a href="home1.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home</a></li>
+          <li><a href="home2.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home 2</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+          <li><a href="services.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Services</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Contact</a></li>
+          <li><a href="login.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Patient Login</a></li>
+          <li><a href="404.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> 404 Page</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links" aria-label="Service links">
+          <li><a href="services.html#acute-pain"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Acute Pain Relief</a></li>
+          <li><a href="services.html#chronic"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Chronic Conditions</a></li>
+          <li><a href="services.html#post-surgery"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Post-Surgery Recovery</a></li>
+          <li><a href="services.html#sports"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Sports Performance</a></li>
+          <li><a href="services.html#senior"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Senior Wellness</a></li>
+          <li><a href="services.html#preventive"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Preventive Care</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact + Newsletter -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="footer-heading">Get In Touch</h3>
+        <address style="font-style:normal;">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>123 Wellness Avenue, Health City, CA 90210, USA</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:+18007497466" style="color:inherit;">+1 (800) PHYSIO</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:hello@physioelite.com" style="color:inherit;">hello@physioelite.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>Mon–Fri: 8am–7pm &nbsp;|&nbsp; Sat: 9am–4pm</span>
+          </div>
+        </address>
+
+        <div class="newsletter-wrap mt-3">
+          <p>Subscribe for health tips and clinic news:</p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
+            <label for="footerNewsletterEmail" class="visually-hidden">Email address</label>
+            <input
+              type="email"
+              id="footerNewsletterEmail"
+              placeholder="your@email.com"
+              required
+              aria-required="true"
+            />
+            <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <span>&copy; 2024 PhysioElite. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap 5.3 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Project Shared JS -->
+<script src="../assets/js/main.js"></script>
+
+<script>
+/* =============================================
+   HOME2 — PAGE-SPECIFIC JAVASCRIPT
+============================================= */
+
+/* --- Sticky Navbar --- */
+(function() {
+  const navbar = document.getElementById('mainNav');
+  if (!navbar) return;
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+})();
+
+/* --- Scroll Reveal (IntersectionObserver) --- */
+(function() {
+  const els = document.querySelectorAll('.reveal-on-scroll');
+  if (!els.length) return;
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { obs.observe(el); });
+})();
+
+/* --- Condition Tabs (Hero) --- */
+(function() {
+  const descriptions = {
+    sports: 'From ACL tears to rotator cuff injuries, our sports physio team designs tailored recovery plans that get athletes back to peak performance faster and stronger.',
+    back: 'Chronic or acute back pain holds you back from living fully. Our spinal specialists combine manual therapy, dry needling, and corrective exercise for lasting relief.',
+    neck: 'Stiff necks, headaches, whiplash — our cervical specialists address the root cause of your neck pain with precision manual techniques and postural retraining.',
+    surgery: 'Your surgery was just the beginning. Our structured post-surgical rehab programmes optimise your healing, restore function, and get you back to life faster.',
+    joint: 'Arthritis and joint pain don\'t have to define your life. Our joint specialists reduce pain, improve mobility, and help you do more of what you love.',
+    senior: 'Age is just a number. Our geriatric physiotherapy programmes improve balance, build strength, and restore independence — keeping you active and confident.'
+  };
+
+  const tabBtns = document.querySelectorAll('.condition-tab-btn');
+  const descEl = document.getElementById('condition-desc');
+
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const condition = btn.getAttribute('data-condition');
+      if (descEl && descriptions[condition]) {
+        descEl.style.opacity = '0';
+        setTimeout(function() {
+          descEl.textContent = descriptions[condition];
+          descEl.style.opacity = '1';
+        }, 180);
+      }
+    });
+  });
+})();
+
+/* --- Treatment Modality Tabs --- */
+(function() {
+  const tabBtns = document.querySelectorAll('.modality-tab-btn');
+  const panes = document.querySelectorAll('.modality-pane');
+
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const target = btn.getAttribute('data-modality');
+
+      tabBtns.forEach(function(b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      panes.forEach(function(pane) {
+        pane.classList.remove('active');
+      });
+      const targetPane = document.getElementById('pane-' + target);
+      if (targetPane) targetPane.classList.add('active');
+    });
+  });
+})();
+
+/* --- Animated Counters --- */
+(function() {
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const current = Math.round(eased * target);
+      el.textContent = current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const counterEls = document.querySelectorAll('.counter-num[data-target]');
+  if (!counterEls.length) return;
+
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counterEls.forEach(function(el) { obs.observe(el); });
+})();
+
+/* --- Therapist Card Selection --- */
+(function() {
+  const cards = document.querySelectorAll('.therapist-card');
+  const therapistPref = document.getElementById('therapistPref');
+
+  cards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      cards.forEach(function(c) { c.classList.remove('selected'); });
+      card.classList.add('selected');
+      const therapist = card.getAttribute('data-therapist');
+      if (therapistPref && therapist) {
+        therapistPref.value = therapist;
+      }
+    });
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+})();
+
+/* --- Time Slot Selection --- */
+(function() {
+  const slots = document.querySelectorAll('.time-slot:not(.unavailable)');
+  slots.forEach(function(slot) {
+    slot.addEventListener('click', function() {
+      slots.forEach(function(s) {
+        s.classList.remove('selected');
+        s.setAttribute('aria-checked', 'false');
+      });
+      slot.classList.add('selected');
+      slot.setAttribute('aria-checked', 'true');
+    });
+    slot.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        slot.click();
+      }
+    });
+  });
+})();
+
+/* --- Booking Form Submit --- */
+(function() {
+  const form = document.getElementById('bookingForm');
+  if (!form) return;
+
+  /* Set min date to today */
+  const dateInput = document.getElementById('appointmentDate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const condition = document.getElementById('conditionSelect').value;
+    const name = document.getElementById('patientName').value.trim();
+    const phone = document.getElementById('patientPhone').value.trim();
+    const date = document.getElementById('appointmentDate').value;
+    const selectedSlot = document.querySelector('.time-slot.selected');
+
+    if (!condition || !name || !phone || !date || !selectedSlot) {
+      showToast('Please fill in all required fields and select a time slot.', 'warning');
+      return;
+    }
+
+    showToast('Booking confirmed! We\'ll send confirmation details to your phone.', 'success');
+    form.reset();
+    document.querySelectorAll('.time-slot').forEach(function(s) {
+      s.classList.remove('selected');
+      s.setAttribute('aria-checked', 'false');
+    });
+    document.querySelectorAll('.therapist-card').forEach(function(c) {
+      c.classList.remove('selected');
+    });
+  });
+})();
+
+/* --- Toast Notification --- */
+function showToast(message, type) {
+  type = type || 'info';
+  const existing = document.getElementById('physio-toast');
+  if (existing) existing.remove();
+
+  const colors = {
+    success: { bg: 'var(--sage)', text: 'var(--charcoal)', icon: 'fa-check-circle' },
+    warning: { bg: '#e8a020', text: '#fff', icon: 'fa-exclamation-triangle' },
+    info: { bg: 'var(--teal)', text: '#fff', icon: 'fa-info-circle' }
+  };
+  const c = colors[type] || colors.info;
+
+  const toast = document.createElement('div');
+  toast.id = 'physio-toast';
+  toast.setAttribute('role', 'alert');
+  toast.setAttribute('aria-live', 'polite');
+  toast.style.cssText = [
+    'position:fixed', 'bottom:1.5rem', 'right:1.5rem', 'z-index:9999',
+    'background:' + c.bg, 'color:' + c.text,
+    'padding:0.9rem 1.5rem', 'border-radius:12px',
+    'font-size:0.9rem', 'font-weight:600',
+    'box-shadow:0 8px 32px rgba(0,0,0,0.2)',
+    'display:flex', 'align-items:center', 'gap:0.6rem',
+    'max-width:360px', 'animation:slideUpToast 0.3s ease'
+  ].join(';');
+  toast.innerHTML = '<i class="fa-solid ' + c.icon + '"></i><span>' + message + '</span>';
+
+  if (!document.getElementById('toast-anim-style')) {
+    const st = document.createElement('style');
+    st.id = 'toast-anim-style';
+    st.textContent = '@keyframes slideUpToast{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}';
+    document.head.appendChild(st);
+  }
+
+  document.body.appendChild(toast);
+  setTimeout(function() {
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.4s ease';
+    setTimeout(function() { toast.remove(); }, 400);
+  }, 4000);
+}
+
+/* --- Video Modal --- */
+(function() {
+  const overlay = document.getElementById('videoModal');
+  const frame = document.getElementById('videoModalFrame');
+  const openBtn = document.getElementById('heroVideoBtn');
+  const closeBtn = document.getElementById('videoModalClose');
+
+  if (!overlay || !openBtn) return;
+
+  openBtn.addEventListener('click', function() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    /* Use a placeholder YouTube embed for demo */
+    if (frame) frame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+  });
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (frame) frame.src = '';
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+
+/* --- Smooth Scroll for anchor links --- */
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

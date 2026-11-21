@@ -1,0 +1,2214 @@
+/* ============================================================
+   PhysioElite — Universal Accessibility & Contrast Master Stylesheet
+   Compliant with WCAG 2.1 Level AA & AAA Standards
+   Applies to Both Light Mode and Dark Mode across all 13 pages
+   ============================================================ */
+
+/* ============================================================
+   1. DESIGN TOKENS FOR LIGHT & DARK MODES
+   ============================================================ */
+:root,
+html:not([data-theme="dark"]),
+[data-theme="light"] {
+  /* Surfaces */
+  --ivory:              #FAF9F5;
+  --beige:              #E8DFD2;
+  --white:              #FFFFFF;
+  --bg-primary:         #FAF9F5;
+  --bg-secondary:       #EFE8DE;
+  --bg-card:            #FFFFFF;
+  --bg-nav:             rgba(250, 249, 245, 0.98);
+  --bg-sidebar:         #0e1412;
+
+  /* Typography — High-Contrast Dark Charcoal (>= 11:1 on Ivory, >= 13:1 on White) */
+  --charcoal:           #1e2825;
+  --charcoal-light:     #33433f;
+  --charcoal-lighter:   #465853;
+  --text-dark:          #1e2825;
+  --text-primary:       #1e2825;
+  --text-secondary:     #33433f;
+  --text-body:          #24322e;
+  --text-muted:         #485b55;
+  --text-muted-custom:  #485b55;
+  --text-inverse:       #FFFFFF;
+
+  /* Brand Accents — Darkened for WCAG AA (>= 4.5:1) against Light Surfaces */
+  --sage:               #25523d;
+  --sage-green:         #25523d;
+  --sage-dark:          #193a2b;
+  --sage-light:         #d5e7dd;
+  --sage-tint:          #edf5f0;
+  --color-sage:         #25523d;
+  --color-sage-dark:    #193a2b;
+  --color-sage-light:   #d5e7dd;
+
+  --teal:               #165451;
+  --soft-teal:          #165451;
+  --teal-dark:          #0f3f3d;
+  --teal-light:         #ceebe9;
+  --color-teal:         #165451;
+  --color-teal-dark:    #0f3f3d;
+  --color-teal-light:   #ceebe9;
+
+  /* Borders — >= 3:1 Non-text Contrast against Light Backgrounds */
+  --border-color:       #6b7f78;
+  --border-light:       #96a7a0;
+
+  /* Status Colors */
+  --accent-success:     #135f33;
+  --accent-warning:     #7a4700;
+  --accent-error:       #9e1a1a;
+  --accent-info:        #124f79;
+  --star-gold:          #a36800;
+}
+
+html[data-theme="dark"] {
+  /* Surfaces */
+  --ivory:              #101614;
+  --beige:              #18221f;
+  --white:              #1d2925;
+  --bg-primary:         #101614;
+  --bg-secondary:       #16201d;
+  --bg-card:            #1d2925;
+  --bg-nav:             rgba(16, 24, 21, 0.98);
+  --bg-sidebar:         #0a0f0d;
+
+  /* --charcoal stays a dark surface token so footers and dark banners don't turn white */
+  --charcoal:           #0a0f0d;
+  --charcoal-light:     #e0ebe6;
+  --charcoal-lighter:   #bfd4cc;
+
+  /* Typography — Crisp Luminous Off-White (>= 11:1 on Dark) */
+  --text-primary:       #f2f7f4;
+  --text-dark:          #f2f7f4;
+  --text-secondary:     #cde0d7;
+  --text-body:          #d5e5dd;
+  --text-muted:         #a2b9af;
+  --text-muted-custom:  #a2b9af;
+  --text-inverse:       #101614;
+
+  /* Brand Accents — Light Pastel Sage & Radiant Soft Teal for Dark Backgrounds (>= 7:1) */
+  --sage:               #9cd6b4;
+  --sage-green:         #9cd6b4;
+  --sage-dark:          #b7e4cb;
+  --sage-light:         #243930;
+  --sage-tint:          #1a2923;
+  --color-sage:         #9cd6b4;
+  --color-sage-dark:    #b7e4cb;
+  --color-sage-light:   #243930;
+
+  --teal:               #83d8d2;
+  --soft-teal:          #83d8d2;
+  --teal-dark:          #a6e5e1;
+  --teal-light:         #1d3633;
+  --color-teal:         #83d8d2;
+  --color-teal-dark:    #a6e5e1;
+  --color-teal-light:   #1d3633;
+
+  /* Borders — Clear Accessible Definition against Dark Surfaces (>= 3:1) */
+  --border-color:       #455d54;
+  --border-light:       #32463f;
+
+  /* Status Colors */
+  --accent-success:     #8ae0b0;
+  --accent-warning:     #fed884;
+  --accent-error:       #ff9a9a;
+  --accent-info:        #99d4fb;
+  --star-gold:          #fed258;
+}
+
+/* ============================================================
+   2. ALWAYS-DARK SURFACES (IN BOTH LIGHT AND DARK MODES)
+   These areas intentionally have dark backgrounds regardless of theme.
+   Text inside them MUST ALWAYS BE WHITE or LUMINOUS ACCENT.
+   ============================================================ */
+:where(
+  /* Left panel of Login page */
+  .auth-brand,
+  /* Site Footers */
+  .site-footer, .footer, .footer-physio, .physio-footer, .hub-footer, .auth-footer,
+  /* Dark Hero Banners & Overlays */
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  /* Specialized Dark Sections */
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section,
+  /* App Sidebars & Headers */
+  #sidebar, .sidebar, .dashboard-sidebar, .admin-sidebar,
+  .welcome-banner, .cal-header, .team-card-back
+) {
+  background-color: #0c1210;
+  color: #f2f7f4;
+}
+
+/* Ensure ALL text inside always-dark surfaces is crisp and legible */
+:where(
+  .auth-brand,
+  .site-footer, .footer, .footer-physio, .physio-footer, .hub-footer, .auth-footer,
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section,
+  #sidebar, .sidebar, .dashboard-sidebar, .admin-sidebar,
+  .welcome-banner, .cal-header, .team-card-back
+) :where(h1, h2, h3, h4, h5, h6, .brand-logo-text h1, .brand-tagline,
+  .section-title, .outcomes-section h2, .footer-brand, .sidebar-card-title,
+  .counter-value, .cal-header span) {
+  color: #FFFFFF !important;
+}
+
+:where(
+  .auth-brand,
+  .site-footer, .footer, .footer-physio, .physio-footer, .hub-footer, .auth-footer,
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section,
+  #sidebar, .sidebar, .dashboard-sidebar, .admin-sidebar,
+  .welcome-banner, .cal-header, .team-card-back
+) :where(p, span:not(.badge):not(.nav-badge), li, cite, .trust-list li,
+  .brand-review p, .footer-copy, .section-subtitle, .lead, .hero-sub,
+  .sidebar-link, .stat-label, .cal-header small) {
+  color: #cde0d7 !important;
+}
+
+:where(
+  .auth-brand,
+  .site-footer, .footer, .footer-physio, .physio-footer, .hub-footer, .auth-footer,
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section,
+  #sidebar, .sidebar, .dashboard-sidebar, .admin-sidebar,
+  .welcome-banner, .cal-header, .team-card-back
+) a:not(.btn):not([class*="btn-"]) {
+  color: #83d8d2 !important;
+}
+
+:where(
+  .auth-brand,
+  .site-footer, .footer, .footer-physio, .physio-footer, .hub-footer, .auth-footer,
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section,
+  #sidebar, .sidebar, .dashboard-sidebar, .admin-sidebar,
+  .welcome-banner, .cal-header, .team-card-back
+) a:not(.btn):not([class*="btn-"]):hover {
+  color: #b7e8e4 !important;
+}
+
+:where(
+  .auth-brand,
+  .site-footer, .footer, .footer-physio, .physio-footer, .hub-footer, .auth-footer,
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section,
+  #sidebar, .sidebar, .dashboard-sidebar, .admin-sidebar,
+  .welcome-banner, .cal-header, .team-card-back
+) :where(small, .footer-bottom p, .brand-logo-text span, .brand-clinic-status,
+  .nav-section-label, .breadcrumb-item, .breadcrumb-item a) {
+  color: #a2b9af !important;
+}
+
+/* Form inputs placed inside always-dark sections */
+:where(
+  .quick-booking-section,
+  .site-footer, .footer,
+  #launch-hero, #search-section
+) :where(input, select, textarea, .form-control) {
+  background-color: #141c19 !important;
+  border: 1.5px solid #455d54 !important;
+  color: #FFFFFF !important;
+}
+
+:where(
+  .quick-booking-section,
+  .site-footer, .footer,
+  #launch-hero, #search-section
+) :where(input, select, textarea, .form-control)::placeholder {
+  color: #92aba0 !important;
+  opacity: 1 !important;
+}
+
+:where(.quick-booking-section) select option {
+  background-color: #141c19 !important;
+  color: #FFFFFF !important;
+}
+
+/* Time slot pills in quick booking widget */
+.time-slot {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid #455d54 !important;
+  color: #cde0d7 !important;
+}
+.time-slot:hover, .time-slot.selected {
+  background-color: #25523d !important;
+  border-color: #9cd6b4 !important;
+  color: #FFFFFF !important;
+}
+
+/* ============================================================
+   3. LIGHT MODE SPECIFIC STYLES (ON LIGHT SURFACES)
+   ============================================================ */
+html:not([data-theme="dark"]) body {
+  background-color: #FAF9F5;
+  color: #1e2825;
+}
+
+/* Headings on light surfaces */
+html:not([data-theme="dark"]) :where(
+  main, section:not(.hero-specialized):not(#launch-hero):not(.about-hero):not(.services-hero):not(.outcomes-section):not(#awards-community):not(.section-awards):not(.quick-booking-section):not(#search-section),
+  .auth-right, .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card, .form-card,
+  .contact-card, .booking-form-card, .stat-card, .team-card-front, .modal-content,
+  #topbar, #mainNav, .auth-navbar, #hero, .features-section
+) :where(h1, h2, h3, h4, h5, h6, .section-title, .hero-headline,
+  .card-title, .specialty-card-title, .panel-header h1, .auth-heading,
+  .register-section-heading, .card-admin .card-header-admin h2,
+  .kpi-value, .stat-value, .therapist-name, .timeline-title,
+  .value-title, .cert-badge h6, .team-name, .author-name, .comment-author,
+  .tip-card h4, .preview-card h4, .service-name, .package-price,
+  .navbar-brand, .table-title, .badge-title, .booking-form-title) {
+  color: #18221f !important;
+}
+
+/* Body text on light surfaces */
+html:not([data-theme="dark"]) :where(
+  main, section:not(.hero-specialized):not(#launch-hero):not(.about-hero):not(.services-hero):not(.outcomes-section):not(#awards-community):not(.section-awards):not(.quick-booking-section):not(#search-section),
+  .auth-right, .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card, .form-card,
+  .contact-card, .booking-form-card, .stat-card, .team-card-front, .modal-content,
+  #topbar, #mainNav, .auth-navbar, #hero, .features-section
+) :where(p, .hero-sub, .section-subtitle, .card p, .auth-subtext,
+  .tip-card p, .feature-card p, .modal-body p, .article-body p,
+  .article-content p, .comments-section p, .lead, .package-desc,
+  .condition-card-desc, .timing-text) {
+  color: #33433f !important;
+}
+
+/* Links on light surfaces */
+html:not([data-theme="dark"]) :where(
+  main, section:not(.hero-specialized):not(#launch-hero):not(.about-hero):not(.services-hero):not(.outcomes-section):not(#awards-community):not(.section-awards):not(.quick-booking-section):not(#search-section),
+  .auth-right, .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card, .form-card,
+  .contact-card, .booking-form-card, .stat-card, .team-card-front, .modal-content,
+  #topbar, #mainNav, .auth-navbar, #hero, .features-section
+) a:not(.btn):not(.btn-view):not(.nav-link-custom):not([class*="btn-"]):not(.badge) {
+  color: #165451;
+}
+
+html:not([data-theme="dark"]) :where(
+  main, section:not(.hero-specialized):not(#launch-hero):not(.about-hero):not(.services-hero):not(.outcomes-section):not(#awards-community):not(.section-awards):not(.quick-booking-section):not(#search-section),
+  .auth-right, .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card, .form-card,
+  .contact-card, .booking-form-card, .stat-card, .team-card-front, .modal-content,
+  #topbar, #mainNav, .auth-navbar, #hero, .features-section
+) a:not(.btn):not(.btn-view):not(.nav-link-custom):not([class*="btn-"]):not(.badge):hover {
+  color: #0f3f3d;
+}
+
+/* Muted Helper Text on light surfaces */
+html:not([data-theme="dark"]) :where(
+  main, section:not(.hero-specialized):not(#launch-hero):not(.about-hero):not(.services-hero):not(.outcomes-section):not(#awards-community):not(.section-awards):not(.quick-booking-section):not(#search-section),
+  .auth-right, .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card, .form-card,
+  .contact-card, .booking-form-card, .stat-card, .team-card-front, .modal-content,
+  #topbar, #mainNav, .auth-navbar, #hero, .features-section
+) :where(.text-muted, .date-label, .kpi-label, .activity-text small,
+  .topbar-profile-role, .patient-id, .therapist-title, .t-stat-label,
+  .finance-card-label, .finance-card-sub, .notif-text small, .setting-info small,
+  .cal-time, .pw-strength-label, .req-note, .form-hint, .security-privacy-note,
+  .hero-rating .rating-text, .auth-divider, .table-search i, .field-icon,
+  .toggle-pw, .trust-badge .badge-text span, .feature-pill, .meta-item,
+  .card-read-time, .post-meta) {
+  color: #485b55 !important;
+}
+
+/* Overriding low-contrast inline colors on light surfaces */
+html:not([data-theme="dark"]) :where(
+  main, section:not(.hero-specialized):not(#launch-hero):not(.about-hero):not(.services-hero):not(.outcomes-section):not(#awards-community):not(.section-awards):not(.quick-booking-section):not(#search-section),
+  .auth-right, .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card, .form-card,
+  .contact-card, .booking-form-card, .stat-card, .team-card-front, .modal-content,
+  #topbar, #mainNav, .auth-navbar, #hero, .features-section
+) :where([style*="color:#aaa"], [style*="color: #aaa"],
+  [style*="color:#888"], [style*="color: #888"],
+  [style*="color:#999"], [style*="color: #999"],
+  [style*="color:#777"], [style*="color: #777"],
+  [style*="color:#666"], [style*="color: #666"],
+  [style*="color:#ccc"], [style*="color: #ccc"]) {
+  color: #465853 !important;
+}
+
+/* Star Ratings on Light Surfaces (Golden Amber >= 4.5:1) */
+html:not([data-theme="dark"]) :where(
+  main, .auth-right, .card, .service-card, .article-card, #hero
+) :where(.review-stars, .hero-rating .stars, .stars,
+  [style*="color:#F5B945"], [style*="color: #F5B945"],
+  [style*="color:#FFD166"], [style*="color: #FFD166"]) {
+  color: var(--star-gold) !important;
+}
+
+/* Light Surface Form Inputs */
+html:not([data-theme="dark"]) :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, .table-search, .topbar-search,
+  #hero, #hero-404
+) :where(input, select, textarea, .form-control, .form-select) {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #6b7f78 !important;
+  color: #18221f !important;
+}
+
+html:not([data-theme="dark"]) :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, .table-search, .topbar-search,
+  #hero, #hero-404
+) :where(input, select, textarea, .form-control)::placeholder {
+  color: #485b55 !important;
+  opacity: 1 !important;
+}
+
+html:not([data-theme="dark"]) :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, .table-search, .topbar-search,
+  #hero, #hero-404
+) :where(input, select, textarea, .form-control):focus {
+  border-color: #165451 !important;
+  box-shadow: 0 0 0 3px rgba(22, 84, 81, 0.22) !important;
+}
+
+html:not([data-theme="dark"]) :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, #hero
+) :where(label, .field-label, .form-label) {
+  color: #18221f !important;
+  font-weight: 600;
+}
+
+/* Light Mode Navbars */
+html:not([data-theme="dark"]) :where(#mainNav, .auth-navbar, #topbar) {
+  background-color: rgba(250, 249, 245, 0.98) !important;
+  border-bottom: 1px solid #6b7f78 !important;
+}
+
+html:not([data-theme="dark"]) :where(.nav-link, .nav-link-custom) {
+  color: #24322e !important;
+}
+
+html:not([data-theme="dark"]) :where(.nav-link:hover, .nav-link-custom:hover,
+  .nav-link.active, .nav-link-custom.active-link) {
+  color: #193a2b !important;
+  font-weight: 600;
+}
+
+html:not([data-theme="dark"]) .brand-name-pe {
+  color: #165451 !important;
+}
+
+/* Cards on Light Surfaces */
+html:not([data-theme="dark"]) :where(
+  .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card,
+  .form-card, .contact-card, .booking-form-card, .stat-card,
+  .team-card-front, .modal-content, .tip-card, .help-card,
+  .security-badge-item
+) {
+  background-color: #FFFFFF !important;
+  border: 1px solid #96a7a0 !important;
+}
+
+/* Tables on Light Surfaces */
+html:not([data-theme="dark"]) :where(.admin-table, .table) thead th {
+  background-color: #EFE8DE !important;
+  color: #18221f !important;
+  border-bottom: 2px solid #6b7f78 !important;
+  font-weight: 700;
+}
+
+html:not([data-theme="dark"]) :where(.admin-table, .table) tbody td {
+  background-color: #FFFFFF !important;
+  color: #24322e !important;
+  border-bottom: 1px solid #c8d7d0 !important;
+}
+
+html:not([data-theme="dark"]) :where(.admin-table, .table) tbody tr:hover td {
+  background-color: #f2f7f5 !important;
+}
+
+/* Accordions on Light Surfaces */
+html:not([data-theme="dark"]) :where(.accordion-item, .faq-item) {
+  background-color: #FFFFFF !important;
+  border: 1px solid #6b7f78 !important;
+}
+
+html:not([data-theme="dark"]) .accordion-button:not(.collapsed) {
+  background-color: #eaf3ee !important;
+  color: #193a2b !important;
+  font-weight: 700;
+}
+
+html:not([data-theme="dark"]) .accordion-button.collapsed {
+  background-color: #FFFFFF !important;
+  color: #18221f !important;
+  font-weight: 600;
+}
+
+/* Badges on Light Surfaces */
+html:not([data-theme="dark"]) .badge-beige {
+  background-color: #E8DFD2 !important;
+  color: #18221f !important;
+  border: 1px solid #6b7f78 !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-sage, .badge-active) {
+  background-color: #d5e7dd !important;
+  color: #193a2b !important;
+  border: 1px solid #366950 !important;
+}
+
+html:not([data-theme="dark"]) .badge-teal {
+  background-color: #ceebe9 !important;
+  color: #0f3f3d !important;
+  border: 1px solid #286b67 !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-success, .feedback-valid) {
+  background-color: #d7f1e1 !important;
+  color: #0d4a27 !important;
+  border: 1px solid #1a6d3c !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-warning, .severity-moderate) {
+  background-color: #ffeed1 !important;
+  color: #693d00 !important;
+  border: 1px solid #a36100 !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-error, .badge-danger, .invalid-feedback,
+  .feedback-invalid, .required, .severity-severe) {
+  color: #9e1a1a !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-info, .severity-mild) {
+  background-color: #d6eefb !important;
+  color: #0d4367 !important;
+  border: 1px solid #20638e !important;
+}
+
+/* Buttons in Light Mode */
+html:not([data-theme="dark"]) :where(
+  .btn-primary, .btn-sage, .btn-nav-book, .btn-auth-primary,
+  .btn-step-next, .btn-book-submit, .btn-subscribe, .btn-subscribe-mini,
+  .btn-cta, .btn-pricing, .btn-book-now, .btn-hero-primary, .btn-read,
+  .quick-action-btn.primary, .quick-actions-btn, .welcome-cta,
+  .btn-admin.btn-sage, .btn-view
+) {
+  background-color: #25523d !important;
+  border-color: #25523d !important;
+  color: #FFFFFF !important;
+}
+
+html:not([data-theme="dark"]) :where(
+  .btn-primary, .btn-sage, .btn-nav-book, .btn-auth-primary,
+  .btn-step-next, .btn-book-submit, .btn-subscribe, .btn-subscribe-mini,
+  .btn-cta, .btn-pricing, .btn-book-now, .btn-hero-primary, .btn-read,
+  .quick-action-btn.primary, .quick-actions-btn, .welcome-cta,
+  .btn-admin.btn-sage, .btn-view
+):is(:hover, :focus-visible) {
+  background-color: #193a2b !important;
+  border-color: #193a2b !important;
+  color: #FFFFFF !important;
+}
+
+html:not([data-theme="dark"]) :where(.btn-secondary, .btn-teal, .btn-admin.btn-teal) {
+  background-color: #165451 !important;
+  border-color: #165451 !important;
+  color: #FFFFFF !important;
+}
+
+html:not([data-theme="dark"]) :where(.btn-secondary, .btn-teal, .btn-admin.btn-teal):is(:hover, :focus-visible) {
+  background-color: #0f3f3d !important;
+  border-color: #0f3f3d !important;
+  color: #FFFFFF !important;
+}
+
+html:not([data-theme="dark"]) :where(
+  .btn-outline-sage, .btn-outline-brand, .btn-view-details,
+  .btn-outline, .btn-ghost, .btn-nav-login
+) {
+  color: #193a2b !important;
+  border: 2px solid #25523d !important;
+  background-color: transparent !important;
+}
+
+html:not([data-theme="dark"]) :where(
+  .btn-outline-sage, .btn-outline-brand, .btn-view-details,
+  .btn-outline, .btn-ghost, .btn-nav-login
+):is(:hover, :focus-visible) {
+  background-color: #25523d !important;
+  border-color: #25523d !important;
+  color: #FFFFFF !important;
+}
+
+html:not([data-theme="dark"]) :where(.btn-outline-teal) {
+  color: #0f3f3d !important;
+  border: 2px solid #165451 !important;
+  background-color: transparent !important;
+}
+
+html:not([data-theme="dark"]) :where(.btn-outline-teal):is(:hover, :focus-visible) {
+  background-color: #165451 !important;
+  border-color: #165451 !important;
+  color: #FFFFFF !important;
+}
+
+html:not([data-theme="dark"]) .btn-oauth {
+  background-color: #FFFFFF !important;
+  color: #18221f !important;
+  border: 1.5px solid #6b7f78 !important;
+}
+html:not([data-theme="dark"]) .btn-oauth:hover {
+  background-color: #f7faf8 !important;
+  border-color: #165451 !important;
+}
+
+html:not([data-theme="dark"]) :where(.btn-auth-charcoal, .btn-dark) {
+  background-color: #18221f !important;
+  color: #FFFFFF !important;
+  border-color: #18221f !important;
+}
+html:not([data-theme="dark"]) :where(.btn-auth-charcoal, .btn-dark):hover {
+  background-color: #0d1412 !important;
+}
+
+/* Tabs & Filter Buttons on Light Surfaces */
+html:not([data-theme="dark"]) :where(.btn-filter, .filter-btn, .filter-tab, .page-btn) {
+  background-color: #FFFFFF !important;
+  color: #24322e !important;
+  border: 1.5px solid #6b7f78 !important;
+}
+
+html:not([data-theme="dark"]) :where(.btn-filter.active, .filter-btn.active,
+  .filter-tab.active, .page-btn.active) {
+  background-color: #25523d !important;
+  color: #FFFFFF !important;
+  border-color: #25523d !important;
+}
+
+html:not([data-theme="dark"]) .auth-tabs {
+  background-color: #E8DFD2 !important;
+  border: 1px solid #96a7a0 !important;
+}
+
+html:not([data-theme="dark"]) .auth-tab-btn {
+  color: #33433f !important;
+}
+
+html:not([data-theme="dark"]) .auth-tab-btn.active {
+  background-color: #FFFFFF !important;
+  color: #165451 !important;
+  font-weight: 700 !important;
+}
+
+html:not([data-theme="dark"]) .secure-badge {
+  background-color: rgba(22, 84, 81, 0.12) !important;
+  border: 1px solid rgba(22, 84, 81, 0.35) !important;
+  color: #165451 !important;
+}
+
+html:not([data-theme="dark"]) .security-section {
+  background-color: #E8DFD2 !important;
+  border-top: 1px solid #96a7a0 !important;
+}
+
+/* ============================================================
+   4. DARK MODE SPECIFIC STYLES (ON DARK SURFACES)
+   Applied when <html data-theme="dark"> is active
+   ============================================================ */
+html[data-theme="dark"] body {
+  background-color: #101614 !important;
+  color: #f2f7f4 !important;
+}
+
+/* Headings on dark surfaces */
+html[data-theme="dark"] :where(h1, h2, h3, h4, h5, h6,
+  .section-title, .hero-headline, .card-title, .specialty-card-title,
+  .panel-header h1, .auth-heading, .register-section-heading,
+  .card-admin .card-header-admin h2, .kpi-value, .stat-value,
+  .therapist-name, .timeline-title, .value-title, .cert-badge h6,
+  .team-name, .author-name, .comment-author, .tip-card h4,
+  .preview-card h4, .service-name, .package-price, .navbar-brand,
+  .table-title, .badge-title, .booking-form-title, .modal-title) {
+  color: #f2f7f4 !important;
+}
+
+/* Body & Paragraph Text in Dark Mode */
+html[data-theme="dark"] :where(p, .hero-sub, .section-subtitle,
+  .card p, .auth-subtext, .tip-card p, .feature-card p, .modal-body p,
+  .article-body p, .article-content p, .comments-section p, .lead,
+  .review-quote, .testimonial-text, .package-desc, .condition-card-desc,
+  .timing-text, .activity-text) {
+  color: #cde0d7 !important;
+}
+
+/* Links in Dark Mode */
+html[data-theme="dark"] a:not(.btn):not(.btn-view):not(.nav-link-custom):not([class*="btn-"]):not(.badge) {
+  color: #83d8d2 !important;
+}
+html[data-theme="dark"] a:not(.btn):not(.btn-view):not(.nav-link-custom):not([class*="btn-"]):not(.badge):hover {
+  color: #b7e8e4 !important;
+}
+
+/* Muted Meta & Helper Text in Dark Mode */
+html[data-theme="dark"] :where(.text-muted, .date-label, .kpi-label,
+  .activity-text small, .topbar-profile-role, .patient-id, .therapist-title,
+  .t-stat-label, .finance-card-label, .finance-card-sub, .notif-text small,
+  .setting-info small, .cal-time, .pw-strength-label, .req-note, .form-hint,
+  .footer-bottom p, .security-privacy-note, .hero-rating .rating-text,
+  .auth-divider, .table-search i, .field-icon, .toggle-pw,
+  .trust-badge .badge-text span, .feature-pill, .meta-item,
+  .card-read-time, .post-meta) {
+  color: #a2b9af !important;
+}
+
+/* Rating Stars in Dark Mode */
+html[data-theme="dark"] :where(.review-stars, .hero-rating .stars, .stars,
+  [style*="color:#F5B945"], [style*="color: #F5B945"],
+  [style*="color:#FFD166"], [style*="color: #FFD166"]) {
+  color: #fed258 !important;
+}
+
+/* Cards & Surfaces in Dark Mode */
+html[data-theme="dark"] :where(
+  .card, .card-admin, .kpi-card, .chart-card, .activity-card,
+  .service-card, .article-card, .pricing-card, .value-card,
+  .form-card, .contact-card, .booking-form-card, .stat-card,
+  .team-card-front, .modal-content, .tip-card, .help-card,
+  .security-badge-item, .therapist-card, .finance-card, .notif-item,
+  .info-card, .cert-badge
+) {
+  background-color: #1d2925 !important;
+  border: 1px solid #3d544b !important;
+  color: #f2f7f4 !important;
+}
+
+/* Alternating or Beige Sections in Dark Mode */
+html[data-theme="dark"] :where(
+  .section-alternate, .section-beige, .featured-condition,
+  .how-it-works-section, .modalities-section, .features-section,
+  .section-faq, .video-guides-section, .section-approach, .section-facilities
+) {
+  background-color: #16201d !important;
+}
+
+/* Navbars & Topbars in Dark Mode */
+html[data-theme="dark"] :where(#mainNav, .auth-navbar, #topbar, #mainNavbar) {
+  background-color: #131c19 !important;
+  border-bottom: 1px solid #364b43 !important;
+}
+
+html[data-theme="dark"] :where(.nav-link, .nav-link-custom) {
+  color: #cde0d7 !important;
+}
+
+html[data-theme="dark"] :where(.nav-link:hover, .nav-link-custom:hover,
+  .nav-link.active, .nav-link-custom.active-link) {
+  color: #9cd6b4 !important;
+}
+
+html[data-theme="dark"] .brand-name-pe {
+  color: #83d8d2 !important;
+}
+
+/* Forms & Inputs in Dark Mode */
+html[data-theme="dark"] :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, .table-search, .topbar-search,
+  #hero, #hero-404
+) :where(input, select, textarea, .form-control, .form-select) {
+  background-color: #141c19 !important;
+  border: 1.5px solid #4a6158 !important;
+  color: #f2f7f4 !important;
+}
+
+html[data-theme="dark"] :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, .table-search, .topbar-search,
+  #hero, #hero-404
+) :where(input, select, textarea, .form-control)::placeholder {
+  color: #92aba0 !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="dark"] :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, .table-search, .topbar-search,
+  #hero, #hero-404
+) :where(input, select, textarea, .form-control):focus {
+  border-color: #83d8d2 !important;
+  box-shadow: 0 0 0 3px rgba(131, 216, 210, 0.28) !important;
+}
+
+html[data-theme="dark"] :where(
+  .auth-right, .card, .card-admin, .booking-form-card,
+  .contact-card, #content, #hero
+) :where(label, .field-label, .form-label) {
+  color: #e4ece8 !important;
+  font-weight: 600;
+}
+
+/* Tables in Dark Mode */
+html[data-theme="dark"] :where(.admin-table, .table) thead th {
+  background-color: #16201d !important;
+  color: #f2f7f4 !important;
+  border-bottom: 2px solid #455d54 !important;
+  font-weight: 700;
+}
+
+html[data-theme="dark"] :where(.admin-table, .table) tbody td {
+  background-color: #1d2925 !important;
+  color: #d5e5dd !important;
+  border-bottom: 1px solid #2b3b35 !important;
+}
+
+html[data-theme="dark"] :where(.admin-table, .table) tbody tr:hover td {
+  background-color: #24342f !important;
+}
+
+/* Accordions in Dark Mode */
+html[data-theme="dark"] :where(.accordion-item, .faq-item) {
+  background-color: #1d2925 !important;
+  border: 1px solid #364b43 !important;
+}
+
+html[data-theme="dark"] .accordion-button:not(.collapsed) {
+  background-color: #243530 !important;
+  color: #9cd6b4 !important;
+  font-weight: 700;
+}
+
+html[data-theme="dark"] .accordion-button.collapsed {
+  background-color: #1d2925 !important;
+  color: #f2f7f4 !important;
+  font-weight: 600;
+}
+
+/* Buttons in Dark Mode */
+html[data-theme="dark"] :where(
+  .btn-primary, .btn-sage, .btn-nav-book, .btn-auth-primary,
+  .btn-step-next, .btn-book-submit, .btn-subscribe, .btn-subscribe-mini,
+  .btn-cta, .btn-pricing, .btn-book-now, .btn-hero-primary, .btn-read,
+  .quick-action-btn.primary, .quick-actions-btn, .welcome-cta,
+  .btn-admin.btn-sage, .btn-view
+) {
+  background-color: #386751 !important;
+  border-color: #386751 !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] :where(
+  .btn-primary, .btn-sage, .btn-nav-book, .btn-auth-primary,
+  .btn-step-next, .btn-book-submit, .btn-subscribe, .btn-subscribe-mini,
+  .btn-cta, .btn-pricing, .btn-book-now, .btn-hero-primary, .btn-read,
+  .quick-action-btn.primary, .quick-actions-btn, .welcome-cta,
+  .btn-admin.btn-sage, .btn-view
+):is(:hover, :focus-visible) {
+  background-color: #498367 !important;
+  border-color: #498367 !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] :where(.btn-secondary, .btn-teal, .btn-admin.btn-teal) {
+  background-color: #276966 !important;
+  border-color: #276966 !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] :where(.btn-secondary, .btn-teal, .btn-admin.btn-teal):is(:hover, :focus-visible) {
+  background-color: #358682 !important;
+  border-color: #358682 !important;
+  color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] :where(
+  .btn-outline-sage, .btn-outline-brand, .btn-view-details,
+  .btn-outline, .btn-ghost, .btn-nav-login
+) {
+  color: #9cd6b4 !important;
+  border: 2px solid #9cd6b4 !important;
+  background-color: transparent !important;
+}
+
+html[data-theme="dark"] :where(
+  .btn-outline-sage, .btn-outline-brand, .btn-view-details,
+  .btn-outline, .btn-ghost, .btn-nav-login
+):is(:hover, :focus-visible) {
+  background-color: #9cd6b4 !important;
+  border-color: #9cd6b4 !important;
+  color: #0c1210 !important;
+}
+
+html[data-theme="dark"] :where(.btn-outline-teal) {
+  color: #83d8d2 !important;
+  border: 2px solid #83d8d2 !important;
+  background-color: transparent !important;
+}
+
+html[data-theme="dark"] :where(.btn-outline-teal):is(:hover, :focus-visible) {
+  background-color: #83d8d2 !important;
+  border-color: #83d8d2 !important;
+  color: #0c1210 !important;
+}
+
+html[data-theme="dark"] .btn-oauth {
+  background-color: #192320 !important;
+  color: #f2f7f4 !important;
+  border: 1.5px solid #455d54 !important;
+}
+html[data-theme="dark"] .btn-oauth:hover {
+  background-color: #23312d !important;
+  border-color: #83d8d2 !important;
+}
+
+html[data-theme="dark"] :where(.btn-auth-charcoal, .btn-dark) {
+  background-color: #283733 !important;
+  color: #f2f7f4 !important;
+  border: 1.5px solid #455d54 !important;
+}
+html[data-theme="dark"] :where(.btn-auth-charcoal, .btn-dark):hover {
+  background-color: #354944 !important;
+}
+
+/* Badges in Dark Mode */
+html[data-theme="dark"] .badge-beige {
+  background-color: #26332f !important;
+  color: #e5dac9 !important;
+  border: 1px solid #4a6158 !important;
+}
+
+html[data-theme="dark"] :where(.badge-sage, .badge-active) {
+  background-color: rgba(156, 214, 180, 0.18) !important;
+  color: #9cd6b4 !important;
+  border: 1px solid rgba(156, 214, 180, 0.35) !important;
+}
+
+html[data-theme="dark"] .badge-teal {
+  background-color: rgba(131, 216, 210, 0.18) !important;
+  color: #83d8d2 !important;
+  border: 1px solid rgba(131, 216, 210, 0.35) !important;
+}
+
+html[data-theme="dark"] :where(.badge-success, .feedback-valid) {
+  background-color: rgba(138, 224, 176, 0.18) !important;
+  color: #8ae0b0 !important;
+  border: 1px solid rgba(138, 224, 176, 0.35) !important;
+}
+
+html[data-theme="dark"] :where(.badge-warning, .severity-moderate) {
+  background-color: rgba(254, 216, 132, 0.18) !important;
+  color: #fed884 !important;
+  border: 1px solid rgba(254, 216, 132, 0.35) !important;
+}
+
+html[data-theme="dark"] :where(.badge-error, .badge-danger, .invalid-feedback,
+  .feedback-invalid, .required, .severity-severe) {
+  color: #ff9a9a !important;
+}
+
+html[data-theme="dark"] :where(.badge-info, .severity-mild) {
+  background-color: rgba(153, 212, 251, 0.18) !important;
+  color: #99d4fb !important;
+  border: 1px solid rgba(153, 212, 251, 0.35) !important;
+}
+
+/* Auth right panel in Dark Mode */
+html[data-theme="dark"] .auth-right {
+  background-color: #101614 !important;
+}
+
+html[data-theme="dark"] .auth-tabs {
+  background-color: #1a2420 !important;
+  border: 1px solid #364b43 !important;
+}
+
+html[data-theme="dark"] .auth-tab-btn {
+  color: #cde0d7 !important;
+}
+
+html[data-theme="dark"] .auth-tab-btn.active {
+  background-color: #273732 !important;
+  color: #83d8d2 !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="dark"] .secure-badge {
+  background-color: rgba(131, 216, 210, 0.15) !important;
+  border: 1px solid rgba(131, 216, 210, 0.4) !important;
+  color: #83d8d2 !important;
+}
+
+html[data-theme="dark"] .security-section {
+  background-color: #16201d !important;
+  border-top: 1px solid #364b43 !important;
+}
+
+/* Admin Dashboard in Dark Mode */
+html[data-theme="dark"] #content {
+  background-color: #101614 !important;
+}
+
+html[data-theme="dark"] .cal-slot {
+  background-color: #1d2925 !important;
+  border-color: #2c3e37 !important;
+}
+
+/* ============================================================
+   5. FOCUS VISIBILITY & ACCESSIBILITY OUTLINES
+   ============================================================ */
+html:not([data-theme="dark"]) :focus-visible {
+  outline: 3px solid #165451 !important;
+  outline-offset: 2px !important;
+}
+
+html[data-theme="dark"] :focus-visible {
+  outline: 3px solid #83d8d2 !important;
+  outline-offset: 2px !important;
+}
+
+/* ============================================================
+   6. THEME TOGGLE BUTTON STYLES
+   ============================================================ */
+.theme-toggle-btn,
+#darkToggle,
+#darkModeToggle,
+#darkToggleDesktop {
+  background: none;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+html:not([data-theme="dark"]) :where(.theme-toggle-btn, #darkToggle, #darkModeToggle, #darkToggleDesktop) {
+  border: 1.5px solid #6b7f78 !important;
+  color: #24322e !important;
+}
+
+html[data-theme="dark"] :where(.theme-toggle-btn, #darkToggle, #darkModeToggle, #darkToggleDesktop) {
+  border: 1.5px solid #455d54 !important;
+  color: #cde0d7 !important;
+}
+
+html:not([data-theme="dark"]) :where(.theme-toggle-btn, #darkToggle, #darkModeToggle, #darkToggleDesktop):hover {
+  border-color: #25523d !important;
+  color: #193a2b !important;
+}
+
+html[data-theme="dark"] :where(.theme-toggle-btn, #darkToggle, #darkModeToggle, #darkToggleDesktop):hover {
+  border-color: #9cd6b4 !important;
+  color: #9cd6b4 !important;
+}
+
+/* ============================================================
+    7. FINAL UNIVERSAL CONTRAST NORMALISATION
+    Loaded last so it wins over every page-specific override.
+    ============================================================ */
+
+/* ---- LIGHT MODE: dark text everywhere by default ---- */
+html:not([data-theme="dark"]) body * {
+  color: #1e2825 !important;
+}
+
+/* Light mode: white text on intentionally dark surfaces */
+html:not([data-theme="dark"]) body :is(
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section, #features-preview, .mission-block, .hours-strip,
+  .social-post-card, .site-footer, .footer, #footer, .footer-physio, .physio-footer,
+  .hub-footer, .auth-footer, .auth-brand, .sidebar, .dashboard-sidebar,
+  .admin-sidebar, .welcome-banner, .cal-header, .team-card-back,
+  .process-image-caption, .popular-badge, .newsletter-banner
+),
+html:not([data-theme="dark"]) body :is(
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section, #features-preview, .mission-block, .hours-strip,
+  .social-post-card, .site-footer, .footer, #footer, .footer-physio, .physio-footer,
+  .hub-footer, .auth-footer, .auth-brand, .sidebar, .dashboard-sidebar,
+  .admin-sidebar, .welcome-banner, .cal-header, .team-card-back,
+  .process-image-caption, .popular-badge, .newsletter-banner,
+
+) * {
+  color: #f2f7f4 !important;
+}
+
+/* Light mode: accent links and muted text inside always-dark surfaces */
+html:not([data-theme="dark"]) body :is(
+  .hero-specialized, #launch-hero, .coming-soon-hero, .about-hero, .services-hero,
+  .outcomes-section, #awards-community, .section-awards, .quick-booking-section,
+  #search-section, #features-preview, .mission-block, .hours-strip,
+  .social-post-card, .site-footer, .footer, #footer, .footer-physio, .physio-footer,
+  .hub-footer, .auth-footer, .auth-brand, .sidebar, .dashboard-sidebar,
+  .admin-sidebar, .welcome-banner, .cal-header, .team-card-back,
+  .process-image-caption, .popular-badge, .newsletter-banner,
+
+) :is(.section-eyebrow, .award-year, .back-link, .btn-directions, a:not(.btn)) {
+  color: #9cd6b4 !important;
+}
+
+html:not([data-theme="dark"]) body :is(
+  .site-footer, .footer, #footer, .footer-physio, .physio-footer, .hub-footer, .auth-footer,
+  .sidebar, .dashboard-sidebar, .admin-sidebar, .hours-strip, .social-post-card
+) :is(.post-time, .post-action, .nav-label, .footer-bottom span, small, .brand-logo-text span) {
+  color: #cde0d7 !important;
+}
+
+/* Light mode: white text on solid coloured buttons and active pills */
+html:not([data-theme="dark"]) body :is(
+  .btn-primary, .btn-sage, .btn-nav-book, .btn-auth-primary, .btn-step-next,
+  .btn-book-submit, .btn-subscribe, .btn-subscribe-mini, .btn-cta, .btn-pricing,
+  .btn-book-now, .btn-hero-primary, .btn-read, .quick-action-btn.primary,
+  .quick-actions-btn, .welcome-cta, .btn-view, .btn-secondary, .btn-teal,
+  .btn-admin.btn-sage, .btn-admin.btn-teal, .btn-auth-charcoal, .btn-dark,
+  .btn-sage-solid, .btn-notify, .btn-facebook, .btn-youtube, .btn-instagram,
+  .nav-badge, .filter-tab.active, .cat-pill.active, .pill-btn.active,
+  .time-slot.active, .time-slot.selected, .time-pill.active, .step-dot.active,
+  .step-num.active, .category-badge, .newsletter-submit, #footer button,
+  .share-btn-twitter, .sidebar-share-btn-tw, .share-btn-linkedin,
+  .sidebar-share-btn-li, .social-follow-btn.btn-linkedin,
+  .btn[style*="background:var(--teal)"],
+  .btn[style*="background: var(--teal)"]
+) {
+  color: #ffffff !important;
+}
+
+/* Light mode: pale grey text that was unreadable on light backgrounds */
+html:not([data-theme="dark"]) body :is(
+  .article-list-meta, .popular-reads, .meta-sep, .cat-badge-beige,
+  .date-label, .author-meta, .comment-date, .comment-action-btn,
+  .tag-label, .post-meta, .popular-num, .link-read-more,
+  .featured-img-badge, .condition-tab-btn.active, .status-pill
+) {
+  color: #485b55 !important;
+}
+
+html:not([data-theme="dark"]) body :is(.pill-btn.active, .filter-tab.active,
+  .cat-pill.active, .btn-notify, .newsletter-submit) {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] body :is(.btn-notify, .newsletter-submit) {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+
+/* ---- DARK MODE: light text everywhere by default ---- */
+html[data-theme="dark"] body * {
+  color: #f2f7f4 !important;
+}
+
+/* Dark mode: dark text on light-filled pills, badges and active buttons */
+html[data-theme="dark"] body :is(
+  .cat-pill.active, .filter-tab.active, .pill-btn.active, .step-dot.active,
+  .featured-badge, .category-badge, .cat-badge-sage, .cat-badge-teal,
+  .cat-badge-beige, .tip-number, .team-back-btn,
+  .severity-badge.severity-severe, .btn-white, .btn-light,
+  #footer button, .btn[style*="background:var(--teal)"],
+  .btn[style*="background: var(--teal)"],
+  :is(.btn-outline-sage, .btn-outline-brand, .btn-outline, .btn-ghost,
+      .btn-outline-teal, .btn-view-details, .btn-nav-login):hover,
+  .btn-white:hover, .btn-light:hover
+) {
+  color: #0c1210 !important;
+}
+
+/* Dark mode: accessible greener/red accents */
+html[data-theme="dark"] body :is(.nav-badge) {
+  color: #ffffff !important;
+  background-color: #9e1a1a !important;
+}
+
+html[data-theme="dark"] body :is(.text-danger, .required, .invalid-feedback,
+  .feedback-invalid, .badge-error, .badge-danger, .severity-severe) {
+  color: #ff9a9a !important;
+}
+
+/* Dark mode: light backgrounds must become dark surfaces */
+html[data-theme="dark"] body :is(
+  .article-body, .article-content, .blog-post-content, .single-post-content,
+  .post-content, .article-main, .author-profile, .author-profile-section,
+  .author-profile-card, .author-profile-body, .comments-section,
+  .comment-item, .sidebar-card, .newsletter-card, .popular-posts,
+  .related-articles-section, .related-card, .related-card-body,
+  .takeaways-cta, .insurer-section, .insurance-section, .how-it-claim, .faq-section,
+  .rebate-info, .claim-steps, .health-funds, .insurer-grid,
+  .card-body, .card-body p, .article-body p, .article-body li,
+  .author-profile p, .comments-section p,
+  .author-profile-card *, .related-card-body *
+) {
+  background-color: #1d2925 !important;
+}
+
+/* Dark mode: muted text slightly dimmer but still >= 4.5:1 */
+html[data-theme="dark"] body :is(
+  .text-muted, .author-meta, .comment-date, .post-meta, .meta-sep,
+  .section-label, .tag-label, .card-excerpt, .featured-excerpt,
+  .admin-dashboard .kpi-label, .stat-label, .cal-time, .post-time,
+  .post-action, .date-label, .popular-reads, .article-list-meta
+) {
+  color: #cde0d7 !important;
+}
+
+/* Dark mode: form controls / options */
+html[data-theme="dark"] body :is(input, select, textarea, option, .form-control, .form-select) {
+  background-color: #141c19 !important;
+  color: #f2f7f4 !important;
+}
+
+/* Dark mode: solid coloured buttons keep white text */
+html[data-theme="dark"] body :is(
+  .btn-primary, .btn-sage, .btn-nav-book, .btn-auth-primary, .btn-step-next,
+  .btn-book-submit, .btn-subscribe, .btn-subscribe-mini, .btn-cta, .btn-pricing,
+  .btn-book-now, .btn-hero-primary, .btn-read, .quick-action-btn.primary,
+  .quick-actions-btn, .welcome-cta, .btn-view, .btn-secondary, .btn-teal,
+  .btn-admin.btn-sage, .btn-admin.btn-teal, .btn-sage-solid, .btn-notify,
+  .btn-facebook, .btn-youtube, .btn-instagram, .nav-badge
+) {
+  color: #ffffff !important;
+}
+
+/* Social buttons need darker brand backgrounds for white text */
+:is(.btn-facebook, .share-btn-facebook, .sidebar-share-btn-fb, .social-follow-btn.btn-facebook) {
+  background-color: #0b5bb5 !important;
+  color: #ffffff !important;
+}
+:is(.btn-youtube, .social-follow-btn.btn-youtube) {
+  background-color: #c5221f !important;
+  color: #ffffff !important;
+}
+
+/* Copyright line in both themes */
+body :is(.footer-bottom span, .auth-footer-copy, .footer-copy) {
+  color: #cde0d7 !important;
+}
+html:not([data-theme="dark"]) body :is(.footer-bottom span, .auth-footer-copy, .footer-copy) {
+  color: #cde0d7 !important;
+}
+
+/* Sidebar brand labels in both themes */
+html[data-theme="dark"] body :is(.logo-text, .patient-name, .logo-sub, .patient-id, .brand-name) {
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body :is(.logo-sub, .patient-id, .nav-label) {
+  color: #cde0d7 !important;
+}
+
+/* KPI / stat trend text needs darker accents in light mode */
+html:not([data-theme="dark"]) body :is(.kpi-trend, .kpi-trend.up, .stat-delta.up,
+  .kpi-trend.neutral, .stat-delta.neutral) {
+  color: #135f33 !important;
+}
+html:not([data-theme="dark"]) body :is(.kpi-trend:not(.up):not(.neutral),
+  .stat-delta:not(.up):not(.neutral), .kpi-trend[class*="warn"], .stat-delta.down) {
+  color: #7a4700 !important;
+}
+html[data-theme="dark"] body :is(.kpi-trend, .kpi-trend.up, .stat-delta.up) {
+  color: #8ae0b0 !important;
+}
+html[data-theme="dark"] body :is(.kpi-trend.neutral, .stat-delta.neutral) {
+  color: #99d4fb !important;
+}
+html[data-theme="dark"] body :is(.kpi-trend:not(.up):not(.neutral),
+  .stat-delta:not(.up):not(.neutral), .stat-delta.down) {
+  color: #fed884 !important;
+}
+
+/* Required asterisks in both themes */
+html:not([data-theme="dark"]) body :is(.text-danger, .required, [style*="color:#dc3545"],
+  [style*="color: #dc3545"]) {
+  color: #9e1a1a !important;
+}
+
+/* Disabled / unavailable slots remain legible */
+body :is(.avail-slot.unavail, .time-slot.unavailable, .day-cell.unavailable) {
+  color: #485b55 !important;
+  opacity: 1 !important;
+}
+html[data-theme="dark"] body :is(.avail-slot.unavail, .time-slot.unavailable,
+  .day-cell.unavailable) {
+  color: #cde0d7 !important;
+  background-color: #24342f !important;
+}
+
+/* ============================================================
+   8. PAGE-SPECIFIC FINAL CONTRAST FIXES
+   ============================================================ */
+
+html[data-theme] body .tip-number {
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body :is(.mission-block, .mission-block *) {
+  color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body .mission-label {
+  color: #135f33 !important;
+}
+html:not([data-theme="dark"]) body :is(.story-image-badge, .story-image-badge *) {
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body:has(#sidebar .nav-section-label) :is(#sidebar, #sidebar *) {
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body:has(#sidebar .nav-section-label) :is(
+  .nav-section-label, .admin-role, .admin-name
+) {
+  color: #cde0d7 !important;
+}
+html:not([data-theme="dark"]) body:has(#sidebar .nav-section-label) .nav-badge {
+  background-color: #9e1a1a !important;
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body :is(.featured-label, .featured-badge, .duration-badge) {
+  background-color: #1e2825 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body .featured-badge {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] body :is(
+  .featured-body, .blog-card, .blog-card-body, .video-card, .video-body,
+  .sidebar-widget, .cat-list-item, .popular-item, .expert-pill,
+  .cat-badge-charcoal, .cat-count, .newsletter-mini
+) {
+  background-color: #1d2925 !important;
+}
+html[data-theme="dark"] body :is(.cat-badge-charcoal, .cat-count) {
+  background-color: #24342f !important;
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body :is(.countdown-wrap, .cd-square, .feature-card-blur,
+  #features-section, #features-section *, #social-section, #social-section *, .back-link) {
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body :is(#countdown-section, #countdown-section *,
+  #clinic-open, #clinic-open *) {
+  color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body :is(#countdown-section .section-eyebrow,
+  #clinic-open .contact-label) {
+  color: #135f33 !important;
+}
+html:not([data-theme="dark"]) body #clinic-open .open-badge {
+  background-color: #3a2a29 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body :is(#countdown-section, #clinic-open,
+  #countdown-section *, #clinic-open *) {
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] body :is(#countdown-section, #clinic-open) {
+  background-color: #1d2925 !important;
+}
+html[data-theme="dark"] body :is(#countdown-section .section-eyebrow,
+  #clinic-open .contact-label, #clinic-open .contact-value) {
+  color: #cde0d7 !important;
+}
+html[data-theme="dark"] body :is(#clinic-open .contact-value a, #countdown-section .section-eyebrow) {
+  color: #9cd6b4 !important;
+}
+html[data-theme="dark"] body :is(.btn-sage-solid, #clinic-open .btn-sage-solid) {
+  color: #0c1210 !important;
+}
+
+html:not([data-theme="dark"]) body :is(.contact-info-section, .contact-info-section *,
+  .booking-widget-section, .booking-widget-section *, .portal-card, .portal-card *) {
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body :is(.closed-badge, .time-pill, .btn-portal-register) {
+  background-color: #1e2825 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:has(.locations-section) :is(
+  .locations-section, .locations-section :is(.container, .row, .col-lg-6,
+  .nav-tabs, .nav-link, .tab-content, .tab-pane, .clinic-card, .accordion,
+  .accordion-item, .accordion-header, .accordion-button, .accordion-collapse,
+  .accordion-body, .card, .map-embed)
+) {
+  background-color: #1d2925 !important;
+}
+html[data-theme="dark"] body:has(.locations-section) :is(.brand-text span,
+  .locations-section, .locations-section *) {
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] body :is(.btn-open-maps, .btn-directions, .btn-portal-login) {
+  background-color: #9cd6b4 !important;
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:has(.booking-widget-section) #footer button {
+  color: #f2f7f4 !important;
+}
+
+html body .video-modal-close {
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body .featured-img-badge {
+  background-color: #1e2825 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body :is(.featured-img-badge, .condition-tab-btn.active) {
+  background-color: #9cd6b4 !important;
+  color: #0c1210 !important;
+}
+
+html:not([data-theme="dark"]) body:has(#themeToggle) :is(.sidebar, .sidebar *) {
+  color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body:has(#themeToggle) :is(.patient-name, .patient-id, .nav-label) {
+  color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body:has(#themeToggle) .nav-badge {
+  background-color: #9e1a1a !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   9. FINAL SURFACE NORMALISATION
+   ============================================================ */
+
+html[data-theme] #footer {
+  background-color: #1e2825 !important;
+}
+html[data-theme] #footer * {
+  color: #f2f7f4 !important;
+}
+html[data-theme] #footer :is(a, .section-eyebrow, .footer-heading a) {
+  color: #9cd6b4 !important;
+}
+html[data-theme] #footer :is(.footer-bottom span, .copyright, .footer-copy) {
+  color: #cde0d7 !important;
+}
+html[data-theme] body #footer button {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body #footer .newsletter-form button {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) .mission-block,
+html:not([data-theme="dark"]) body:not(#contrast-no) .mission-block * {
+  color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) .mission-label {
+  color: #135f33 !important;
+}
+
+html[data-theme="dark"] :is(#help-options, #popular-pages) {
+  background-color: #1d2925 !important;
+}
+html[data-theme="dark"] :is(#help-options, #popular-pages) * {
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] .popular-link {
+  background-color: #24342f !important;
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] .popular-link i {
+  color: #9cd6b4 !important;
+}
+
+html[data-theme="dark"] :is(.featured-post-section, .recent-articles,
+  .blog-sidebar-layout, .video-section, .newsletter-section) {
+  background-color: #1d2925 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .featured-badge {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .cat-badge-sage,
+html[data-theme="dark"] body:not(#contrast-no) .cat-badge-teal {
+  background-color: #24342f !important;
+  color: #f2f7f4 !important;
+}
+
+/* ============================================================
+   10. HIGH-SPECIFICITY FINAL FIXES
+   ============================================================ */
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .countdown-wrap, .countdown-wrap *, .cd-square, .cd-square *, .cd-digit, .cd-label,
+  .feature-card-blur, .feature-card-blur *, #features-section, #features-section *,
+  #social-follow, #social-follow *, .post-preview, .post-preview *, .back-link,
+  .hours-strip, .hours-strip *
+) {
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .info-card, .info-card *, .booking-widget-section, .booking-widget-section *,
+  .portal-card, .portal-card *
+) {
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) .btn-portal-login {
+  background-color: #9cd6b4 !important;
+  color: #0c1210 !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) .brand-text span {
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .btn-open-maps, .btn-directions, .btn-portal-login, #contrast-no
+) {
+  background-color: #9cd6b4 !important;
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .accordion, .accordion-item, .accordion-collapse, .accordion-body,
+  .clinic-card, .tab-pane, .locations-section .card
+) {
+  background-color: #1d2925 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .accordion-body, .accordion-body *, .clinic-card, .clinic-card *
+) {
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) .featured-img-badge {
+  background-color: #1e2825 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme] body:not(#contrast-no) :is(.sidebar, .sidebar *) {
+  color: #f2f7f4 !important;
+}
+html[data-theme] body:not(#contrast-no) .sidebar .nav-badge {
+  background-color: #9e1a1a !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   11. LAST-MILE FIXES
+   ============================================================ */
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(.cd-label, #contrast-no) {
+  color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  #whats-coming, #whats-coming *, .feature-card-blur, .feature-card-blur *
+) {
+  background-color: #1e2825 !important;
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) #whats-coming .section-eyebrow {
+  color: #9cd6b4 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) #whats-coming .locked-overlay {
+  background-color: transparent !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) #mainNav .navbar-brand > span {
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .instagram-card {
+  background-color: #1d2925 !important;
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .instagram-card * {
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) .theme-toggle span {
+  color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body:has(.locations-section) :is(.dropdown-item, #contrast-no) {
+  color: #f2f7f4 !important;
+}
+
+/* ============================================================
+   12. PLACEHOLDERS, DROPDOWNS, ICONS AND HOVER STATES
+   ============================================================ */
+
+html[data-theme] body *::placeholder {
+  opacity: 1 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) *::placeholder {
+  color: #485b55 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  #footer, .hero-specialized, .quick-booking-section, .booking-widget-section,
+  .auth-footer, .sidebar, .hours-strip, #contrast-no
+) :is(input, textarea)::placeholder {
+  color: #cde0d7 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) *::placeholder {
+  color: #a9c3b8 !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) :is(.dropdown-menu, #contrast-no) {
+  background-color: #1d2925 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .dropdown-item, .dropdown-item i, #contrast-no
+) {
+  color: #f2f7f4 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .dropdown-item:hover {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .btn-primary, .btn-sage, .btn-nav-book, .btn-auth-primary, .btn-step-next,
+  .btn-book-submit, .btn-subscribe, .btn-subscribe-mini, .btn-cta, .btn-pricing,
+  .btn-book-now, .btn-hero-primary, .btn-read, .quick-action-btn.primary,
+  .quick-actions-btn, .welcome-cta, .btn-view, .btn-secondary, .btn-teal,
+  .btn-admin.btn-sage, .btn-admin.btn-teal, .btn-auth-charcoal, .btn-dark,
+  .btn-sage-solid, .btn-notify, .btn-facebook, .btn-youtube, .btn-instagram,
+  .nav-badge, .filter-tab.active, .cat-pill.active, .pill-btn.active,
+  .time-slot.active, .time-slot.selected, .time-pill.active, .step-dot.active,
+  .step-num.active, .category-badge, .newsletter-submit, #footer button,
+  .share-btn-twitter, .share-btn-linkedin, .btn-sage:hover, #contrast-no
+) :is(i, #contrast-no) {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .pill-btn.active, .filter-tab.active, .cat-pill.active, .step-dot.active,
+  .featured-badge, .category-badge, .cat-badge-sage, .cat-badge-teal,
+  .cat-badge-beige, .tip-number, .btn-white, .btn-light, .btn-sage-solid,
+  .social-follow-btn, .play-btn, #contrast-no
+) :is(i, #contrast-no) {
+  color: #0c1210 !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) :is(.btn-sage:hover, #contrast-no) {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(.btn-sage:hover, #contrast-no) i {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   13. INTERACTIVE STATE NORMALISATION
+   ============================================================ */
+
+html[data-theme] body:not(#contrast-no) #footer :is(input, textarea) {
+  background-color: #1e2825 !important;
+  color: #f2f7f4 !important;
+}
+html[data-theme] body:not(#contrast-no) #footer :is(input, textarea)::placeholder {
+  color: #cde0d7 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) #site-search::placeholder {
+  color: #cde0d7 !important;
+}
+
+html[data-theme] body:not(#contrast-no) :is(
+  .btn-sage:hover, .btn-nav-book:hover, .search-pill:hover, .tag-pill:hover,
+  .share-btn-copy:hover, .quick-actions-btn:hover, .quick-action-btn.primary:hover,
+  .pill-btn.active:hover, .filter-tab.active:hover, .cat-pill.active:hover,
+  .btn-white:hover, .btn-outline-sage:hover, .btn-light:hover, #contrast-no
+) {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+html[data-theme] body:not(#contrast-no) :is(
+  .btn-sage:hover, .btn-nav-book:hover, .search-pill:hover, .tag-pill:hover,
+  .share-btn-copy:hover, .quick-actions-btn:hover, .quick-action-btn.primary:hover,
+  .pill-btn.active:hover, .filter-tab.active:hover, .cat-pill.active:hover,
+  .btn-white:hover, .btn-outline-sage:hover, .btn-light:hover, #contrast-no
+) :is(i, span, #contrast-no) {
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) .quick-actions-btn :is(i, span) {
+  color: #ffffff !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(.modal-header, .modal-title) {
+  background-color: #1e2825 !important;
+  color: #f2f7f4 !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) .navbar-toggler {
+  background-color: #1e2825 !important;
+  color: #f2f7f4 !important;
+}
+
+html[data-theme] body:not(#contrast-no) :is(i, svg) {
+  color: inherit !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .team-linkedin i, .share-btn i, .tag-pill i, .tip-box i, .takeaways i,
+  .check-list i, .topbar-profile:hover i, #contrast-no
+) {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .story-image-badge i, .team-linkedin i, .social-follow-btn:hover i,
+  [style*="#f0f0f0"] i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+
+/* ============================================================
+   14. FINAL ICON CONTRAST
+   ============================================================ */
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .copy-toast i, .expert-callout-icon i, .takeaway-check i,
+  .nav-profile-btn:hover i, .author-social a:hover i, #contrast-no
+) {
+  color: #ffffff !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) #copyLinkBtn i {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .expert-callout-icon i, .takeaway-check i, .social-link:hover i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+
+/* ============================================================
+   15. GLOBAL HOVER / MENU ICON FIXES
+   ============================================================ */
+
+html[data-theme] body:not(#contrast-no) :is(
+  button, .btn, [role="button"], .btn-read, .btn-open-maps, #contrast-no
+):hover {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+html[data-theme] body:not(#contrast-no) :is(
+  button, .btn, [role="button"], .btn-read, .btn-open-maps, #contrast-no
+):hover :is(i, span) {
+  color: #ffffff !important;
+}
+
+html[data-theme] body:not(#contrast-no) :is(.dropdown-menu, #contrast-no) {
+  background-color: #1d2925 !important;
+}
+html[data-theme] body:not(#contrast-no) :is(.dropdown-item, .dropdown-item i, #contrast-no) {
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(#mainNav i, .fa-search, #contrast-no) {
+  color: #ffffff !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .btn-portal-login i, .nav-profile-btn:hover i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .fa-search, .fa-lock, .social-follow-btn i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(.social-follow-btn, #contrast-no) i {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:has(.locations-section) :is(.fa-heart, .social-link i, #contrast-no) {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:has(.author-social) :is(.social-link:hover i, #contrast-no) {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:has(.team-card-back) :is(.social-link:hover i, #contrast-no) {
+  color: #0c1210 !important;
+}
+
+/* ============================================================
+   16. HOME2 STATE FIXES
+   ============================================================ */
+
+html[data-theme] body:not(#contrast-no) :is(
+  button, .btn, [role="button"], .btn-read, .btn-open-maps, .btn-hero-primary, #contrast-no
+):hover {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+html[data-theme] body:not(#contrast-no) :is(
+  button, .btn, [role="button"], .btn-read, .btn-open-maps, .btn-hero-primary, #contrast-no
+):hover :is(i, span) {
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(.nav-link-custom, #contrast-no) {
+  color: #0c1210 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) .physio-quote-wrap::before {
+  color: #9cd6b4 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .therapist-card:hover .therapist-card-name,
+  .therapist-card:hover .therapist-card-specialty,
+  .time-slot.unavailable:hover,
+  #contrast-no
+) {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   17. NAVBAR / DROPDOWN / LOCK ICON FIXES
+   ============================================================ */
+
+html[data-theme] body:not(#contrast-no) #mainNav .dropdown-menu {
+  background-color: #1d2925 !important;
+}
+html[data-theme] body:not(#contrast-no) #mainNav .dropdown-menu .dropdown-item,
+html[data-theme] body:not(#contrast-no) #mainNav .dropdown-menu .dropdown-item i {
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  #mainNav i, #mainNav .nav-profile-btn i, #darkIcon, .navbar-toggler-icon, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+html:not([data-theme="dark"]) body:has(.locations-section) :is(
+  #mainNav i, #darkIcon, .navbar-toggler-icon, #contrast-no
+) {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no) :is(.fa-lock, #contrast-no) {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:has(#countdown-section) :is(.privacy-note i, #contrast-no) {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .video-play-circle i {
+  color: #0c1210 !important;
+}
+
+html:not([data-theme="dark"]) body:has(.auth-navbar) :is(.fa-leaf, #contrast-no) {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:has(.auth-navbar) :is(.fa-leaf, .trust-icon i, #contrast-no) {
+  color: #0c1210 !important;
+}
+
+/* ============================================================
+   18. DROPDOWN VARIABLES AND HOVER ICON OVERRIDES
+   ============================================================ */
+
+html[data-theme] body:not(#contrast-no) {
+  --bs-dropdown-bg: #1d2925 !important;
+  --bs-dropdown-color: #f2f7f4 !important;
+  --bs-dropdown-link-color: #f2f7f4 !important;
+  --bs-dropdown-link-hover-color: #ffffff !important;
+  --bs-dropdown-link-hover-bg: #25523d !important;
+}
+
+html:not([data-theme="dark"]) body:has(.locations-section) :is(.nav-link-custom, #contrast-no) {
+  color: #ffffff !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) #mainNav :is(a, button):hover i {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .btn-hero-video:hover .video-play-circle i {
+  color: #0c1210 !important;
+}
+
+/* ============================================================
+   19. DROPDOWN HOVER AND CONTACT NAV / SOCIAL FIXES
+   ============================================================ */
+
+html[data-theme] body:not(#contrast-no) :is(.dropdown-menu, #contrast-no) {
+  --bs-dropdown-bg: #1d2925 !important;
+  --bs-dropdown-color: #f2f7f4 !important;
+  --bs-dropdown-link-color: #f2f7f4 !important;
+  --bs-dropdown-link-hover-color: #ffffff !important;
+  --bs-dropdown-link-hover-bg: #25523d !important;
+}
+html[data-theme] body:not(#contrast-no) :is(.dropdown-item:hover, #contrast-no) {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no):has(.locations-section) :is(
+  .nav-link-custom, #darkIcon, .navbar-toggler-icon, #mainNav i,
+  .rtl-toggle, .rtl-toggle-text,
+  .social-btn-dark:hover i, .social-link:hover i, #contrast-no
+) {
+  color: #ffffff !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no):has(.locations-section) .rtl-toggle {
+  border-color: rgba(143,174,155,.7) !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no):has(.locations-section) :is(
+  .social-btn-dark:hover i, .social-link:hover i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no):has(.locations-section) :is(
+  #darkIcon, .navbar-toggler-icon, #mainNav i, .social-link i,
+  .rtl-toggle, .rtl-toggle-text, #contrast-no
+) {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no):has(.locations-section) .rtl-toggle,
+html[data-theme="dark"] body:not(#contrast-no):has(.locations-section) .nav-profile-btn {
+  border-color: rgba(156,214,180,.7) !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(.btn-directions i, #contrast-no) {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .ig-overlay {
+  background-color: #0c1210 !important;
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .ig-overlay i {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .video-play-circle i, .btn-hero-video:hover .video-play-circle i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .fa-play::before {
+  color: #0c1210 !important;
+}
+
+/* ============================================================
+   20. FINAL STATE FIXES
+   ============================================================ */
+
+html[data-theme] body:not(#contrast-no) :is(
+  button, .btn, [role="button"], .btn-read, .btn-open-maps, .btn-hero-primary,
+  .btn-pricing, #contrast-no
+):hover {
+  background-color: #25523d !important;
+  color: #ffffff !important;
+}
+html[data-theme] body:not(#contrast-no) :is(
+  button, .btn, [role="button"], .btn-read, .btn-open-maps, .btn-hero-primary,
+  .btn-pricing, #contrast-no
+):hover :is(i, span) {
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no):has(#themeToggle) :is(
+  .theme-toggle > span, #contrast-no
+) {
+  color: #f2f7f4 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no):has(#themeToggle) :is(
+  .theme-toggle:hover, .theme-toggle:hover > span, #contrast-no
+) {
+  background-color: #0e1412 !important;
+  color: #f2f7f4 !important;
+}
+
+/* ============================================================
+   21. FINAL HOVER ICON SWEEPS
+   ============================================================ */
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .popular-link:hover i, .topbar-profile:hover .topbar-profile-name,
+  .topbar-profile:hover .topbar-profile-role, #contrast-no
+) {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .popular-link:hover i, .help-icon.beige i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(
+  .comment-like-count, .fa-play.ms-1::before, .nav-profile-btn:hover i,
+  .social-follow-btn:hover i, .social-btn:hover i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(
+  .social-btn-dark:hover i, .social-link:hover i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+
+html[data-theme="dark"] body:not(#contrast-no):has(#countdown-section) :is(
+  .privacy-note i, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(.social-follow-btn i, #contrast-no) {
+  color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no):has(#themeToggle) :is(
+  .theme-toggle, .theme-toggle > span, #contrast-no
+) {
+  background-color: #0e1412 !important;
+  color: #f2f7f4 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) #hero {
+  background-image: linear-gradient(rgba(250,249,245,.94), rgba(250,249,245,.94)), url('../img/hero-physio.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) :is(.blog-hero, .article-header) {
+  background-image: linear-gradient(rgba(250,249,245,.94), rgba(250,249,245,.94)), url('../img/exercise-woman.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) #hero-404 {
+  background-image: linear-gradient(rgba(250,249,245,.94), rgba(250,249,245,.94)), url('../img/back-treatment.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Dark mode: heroes need a dark overlay so luminous text stays legible */
+html[data-theme="dark"] body:not(#contrast-no) #hero {
+  background-image: linear-gradient(rgba(16,22,20,.9), rgba(16,22,20,.9)), url('../img/hero-physio.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) :is(.blog-hero, .article-header) {
+  background-image: linear-gradient(rgba(16,22,20,.9), rgba(16,22,20,.9)), url('../img/exercise-woman.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) #hero-404 {
+  background-image: linear-gradient(rgba(16,22,20,.9), rgba(16,22,20,.9)), url('../img/back-treatment.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html[data-theme] body:not(#contrast-no) .services-hero {
+  background-image: linear-gradient(135deg, rgba(20,28,25,.88), rgba(37,82,61,.78)), url('../img/rehab-gym.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html[data-theme] body:not(#contrast-no) .service-hero {
+  background-image: linear-gradient(135deg, rgba(20,28,25,.9), rgba(30,42,40,.82)), url('../img/leg-treatment.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html[data-theme] body:not(#contrast-no) .contact-hero {
+  background-image: linear-gradient(135deg, rgba(20,28,25,.86), rgba(46,107,105,.78)), url('../img/hero-physio.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html[data-theme] body:not(#contrast-no) #launch-hero {
+  background-image: linear-gradient(135deg, rgba(20,28,25,.9), rgba(24,54,53,.82)), url('../img/charity-run.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+html[data-theme] body:not(#contrast-no) .welcome-banner {
+  background-image: linear-gradient(135deg, rgba(20,28,25,.82), rgba(37,82,61,.78)), url('../img/clinic-treatment.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no) .comment-action-btn:hover :is(.comment-like-count, #contrast-no) {
+  color: #0c1210 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) .fa-play.ms-1::before {
+  color: #0c1210 !important;
+}
+html[data-theme="dark"] body:not(#contrast-no) .social-follow-btn i::before {
+  color: #ffffff !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no) .social-follow-btn i::before {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] body:not(#contrast-no):has(.locked-badge) .locked-badge i::before {
+  color: #0c1210 !important;
+}
+
+html:not([data-theme="dark"]) body:not(#contrast-no):has(.locations-section) :is(
+  .nav-profile-btn, .nav-profile-btn:hover, #contrast-no
+) {
+  background-color: #1e2825 !important;
+}
+html:not([data-theme="dark"]) body:not(#contrast-no):has(.locations-section) :is(
+  .nav-profile-btn:hover i::before, #contrast-no
+) {
+  color: #ffffff !important;
+}
+html[data-theme] body:not(#contrast-no):has(.locations-section) :is(
+  .social-btn:hover i::before, .social-btn-dark:hover i::before,
+  .social-link:hover i::before, .social-follow-btn:hover i::before, #contrast-no
+) {
+  color: #0c1210 !important;
+}
+
+/* ============================================================
+   22. CONTACT HERO — INTENTIONALLY DARK IN BOTH THEMES
+   The hero uses a dark gradient, so its text must stay luminous
+   even in light mode where body text is forced dark.
+   ============================================================ */
+
+html body:not(#contrast-no) :is(.contact-hero, .contact-hero *) {
+  color: #f2f7f4 !important;
+}
+
+html body:not(#contrast-no) .contact-hero :is(.breadcrumb-item a, .breadcrumb-item.active) {
+  color: #e4ece8 !important;
+}
+html body:not(#contrast-no) .contact-hero .breadcrumb-item + .breadcrumb-item::before {
+  color: #cde0d7 !important;
+}
+html body:not(#contrast-no) .contact-hero :is(.quick-card, .quick-card *) {
+  color: #ffffff !important;
+}
+
+
+/* ============================================================
+   7. COMPONENT-SPECIFIC CONTRAST ENHANCEMENTS (WCAG AA & AAA)
+   ============================================================ */
+
+/* Status Badges on Light Surfaces */
+html:not([data-theme="dark"]) :where(.badge-active, .badge-paid, .badge-success, .status-active, .status-confirmed) {
+  background-color: #dcf4e6 !important;
+  color: #0e532b !important;
+  border: 1px solid #1f834a !important;
+  font-weight: 600 !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-onhold, .badge-pending, .badge-warning, .status-pending) {
+  background-color: #fff1d6 !important;
+  color: #7a4400 !important;
+  border: 1px solid #b86800 !important;
+  font-weight: 600 !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-overdue, .badge-danger, .badge-error, .status-cancelled) {
+  background-color: #ffe3e3 !important;
+  color: #900b0b !important;
+  border: 1px solid #c51f1f !important;
+  font-weight: 600 !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-new, .badge-info, .status-new) {
+  background-color: #e0f2fe !important;
+  color: #074e79 !important;
+  border: 1px solid #1a7cb5 !important;
+  font-weight: 600 !important;
+}
+
+html:not([data-theme="dark"]) :where(.badge-inactive, .status-inactive) {
+  background-color: #ecefe9 !important;
+  color: #283531 !important;
+  border: 1px solid #6b7f78 !important;
+  font-weight: 600 !important;
+}
+
+/* Status Badges in Dark Mode */
+html[data-theme="dark"] :where(.badge-active, .badge-paid, .badge-success, .status-active, .status-confirmed) {
+  background-color: rgba(138, 224, 176, 0.16) !important;
+  color: #8ae0b0 !important;
+  border: 1px solid rgba(138, 224, 176, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="dark"] :where(.badge-onhold, .badge-pending, .badge-warning, .status-pending) {
+  background-color: rgba(254, 216, 132, 0.16) !important;
+  color: #fed884 !important;
+  border: 1px solid rgba(254, 216, 132, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="dark"] :where(.badge-overdue, .badge-danger, .badge-error, .status-cancelled) {
+  background-color: rgba(255, 154, 154, 0.16) !important;
+  color: #ff9a9a !important;
+  border: 1px solid rgba(255, 154, 154, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="dark"] :where(.badge-new, .badge-info, .status-new) {
+  background-color: rgba(153, 212, 251, 0.16) !important;
+  color: #99d4fb !important;
+  border: 1px solid rgba(153, 212, 251, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="dark"] :where(.badge-inactive, .status-inactive) {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #cde0d7 !important;
+  border: 1px solid #455d54 !important;
+  font-weight: 600 !important;
+}
+
+/* Home 2 Availability Tags */
+html:not([data-theme="dark"]) .avail-green {
+  background-color: #dcf4e6 !important;
+  color: #0e532b !important;
+  border: 1px solid #1f834a !important;
+}
+
+html:not([data-theme="dark"]) .avail-orange {
+  background-color: #fff1d6 !important;
+  color: #7a4400 !important;
+  border: 1px solid #b86800 !important;
+}
+
+html[data-theme="dark"] .avail-green {
+  background-color: rgba(138, 224, 176, 0.16) !important;
+  color: #8ae0b0 !important;
+  border: 1px solid rgba(138, 224, 176, 0.4) !important;
+}
+
+html[data-theme="dark"] .avail-orange {
+  background-color: rgba(254, 216, 132, 0.16) !important;
+  color: #fed884 !important;
+  border: 1px solid rgba(254, 216, 132, 0.4) !important;
+}
+
+/* Slot selection in booking */
+.avail-slot {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1.5px solid var(--border-color) !important;
+}
+
+.avail-slot.unavail {
+  opacity: 0.6 !important;
+  color: var(--text-muted) !important;
+}
+
+.avail-slot.selected, .avail-slot:hover:not(.unavail) {
+  background-color: var(--sage) !important;
+  color: #FFFFFF !important;
+  border-color: var(--sage) !important;
+}
+
+/* Exercise plan and milestone cards */
+html[data-theme="dark"] :where(.exercise-card, .milestone-item, .appointment-card, .receipt-card, .room-card) {
+  background-color: #1d2925 !important;
+  border-color: #384f46 !important;
+}
+
+html:not([data-theme="dark"]) :where(.exercise-card, .milestone-item, .appointment-card, .receipt-card, .room-card) {
+  background-color: #FFFFFF !important;
+  border-color: #96a7a0 !important;
+}

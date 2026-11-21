@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Login & Register — PhysioElite</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <meta name="description" content="Securely log in or register for the PhysioElite patient portal." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Project Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --sage:    #8FAE9B;
+      --teal:    #6B9C9A;
+      --ivory:   #FAF9F5;
+      --beige:   #E8DFD2;
+      --charcoal:#303A38;
+      --white:   #ffffff;
+      --danger:  #dc3545;
+      --success: #198754;
+      --font-body: 'DM Sans', sans-serif;
+      --font-head: 'Playfair Display', serif;
+      --radius:  12px;
+      --shadow:  0 8px 32px rgba(48,58,56,.12);
+      --transition: .28s ease;
+    }
+
+    /* ============================================================
+       GLOBAL RESETS
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ivory);
+      color: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ============================================================
+       MINIMAL AUTH NAVBAR — LOGO ONLY
+    ============================================================ */
+    .auth-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: .5rem;
+      padding: .85rem 2rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--beige);
+    }
+    .auth-navbar .navbar-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      text-decoration: none;
+      color: var(--charcoal);
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    .auth-navbar .brand-leaf {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--sage);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+    }
+    .auth-navbar .brand-name-pe { color: var(--teal); }
+    .auth-navbar .rtl-toggle {
+      width: 36px;
+      padding: 0;
+    }
+
+    /* ============================================================
+       SECTION 1 — SPLIT SCREEN HERO LAYOUT
+    ============================================================ */
+    .auth-wrapper {
+      display: flex;
+      min-height: calc(100vh - 66px);
+    }
+
+    /* ----- LEFT BRANDING PANEL ----- */
+    .auth-brand {
+      position: sticky;
+      top: 0;
+      width: 50%;
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(30,38,36,.90) 0%, rgba(48,86,83,.85) 100%),
+        url('../assets/img/clinic-treatment.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem 2.5rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+    .brand-logo-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,.18);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+    }
+    .brand-logo-text h1 {
+      font-family: var(--font-head);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -.5px;
+      color: #fff !important;
+    }
+    .brand-logo-text span {
+      font-size: .78rem;
+      opacity: .95;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: #fff !important;
+    }
+
+    .brand-tagline {
+      font-family: var(--font-head);
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      color: #fff !important;
+    }
+
+    .trust-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      margin-bottom: 2.5rem;
+    }
+    .trust-list li {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .95rem;
+      font-weight: 500;
+    }
+    .trust-list li .trust-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .75rem;
+      flex-shrink: 0;
+    }
+
+    .brand-review {
+      background: rgba(255,255,255,.12);
+      border-left: 3px solid var(--sage);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(6px);
+    }
+    .brand-review p {
+      font-style: italic;
+      font-size: .9rem;
+      line-height: 1.6;
+      margin-bottom: .5rem;
+      color: #fff !important;
+    }
+    .brand-review cite {
+      font-size: .78rem;
+      opacity: .95;
+      font-style: normal;
+      color: #fff !important;
+    }
+    .review-stars { color: #FFD166; font-size: .8rem; margin-bottom: .4rem; }
+
+    .brand-clinic-status {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .85rem;
+      opacity: .9;
+    }
+    .clinic-dot {
+      width: 10px;
+      height: 10px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0%,100% { box-shadow: 0 0 0 0 rgba(74,222,128,.5); }
+      50%      { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+    }
+
+    /* ----- RIGHT AUTH PANEL ----- */
+    .auth-right {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      background: var(--ivory);
+      overflow-y: auto;
+    }
+
+    .auth-forms-container {
+      flex: 1;
+      padding: 2.5rem 3rem;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ============================================================
+       SECTION 2 — LOGIN FORM (Tabs)
+    ============================================================ */
+    .auth-tabs {
+      display: flex;
+      gap: 0;
+      border-radius: var(--radius);
+      background: var(--beige);
+      padding: .3rem;
+      margin-bottom: 2rem;
+    }
+    .auth-tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: .6rem 1rem;
+      border-radius: 9px;
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .auth-tab-btn.active {
+      background: var(--white);
+      color: var(--teal);
+      box-shadow: 0 2px 8px rgba(48,58,56,.1);
+    }
+
+    /* Form panels */
+    .auth-panel { display: none; animation: fadeIn .3s ease; }
+    .auth-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .auth-heading {
+      font-family: var(--font-head);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: .4rem;
+    }
+    .auth-subtext {
+      font-size: .88rem;
+      color:var(--text-secondary);
+      margin-bottom: 1.75rem;
+    }
+    .auth-subtext a { color: var(--teal); text-decoration: none; font-weight: 600; }
+    .auth-subtext a:hover { text-decoration: underline; }
+
+    /* Input groups */
+    .input-group-auth {
+      position: relative;
+      margin-bottom: 1.1rem;
+    }
+    .input-group-auth .field-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color:var(--text-muted);
+      font-size: .9rem;
+      z-index: 2;
+    }
+    .input-group-auth input,
+    .input-group-auth select,
+    .input-group-auth textarea {
+      width: 100%;
+      padding: .72rem 1rem .72rem 2.6rem;
+      border: 1.5px solid #e0ddd7;
+      border-radius: 9px;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      background: var(--white);
+      color: var(--charcoal);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .input-group-auth input:focus,
+    .input-group-auth select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(107,156,154,.18);
+    }
+    .input-group-auth input.is-invalid {
+      border-color: var(--danger);
+    }
+    .input-group-auth input.is-valid {
+      border-color: var(--success);
+    }
+    .toggle-pw {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color:var(--text-muted);
+      cursor: pointer;
+      font-size: .9rem;
+      z-index: 2;
+      padding: 0;
+    }
+    .toggle-pw:hover { color: var(--teal); }
+
+    /* Row inputs (2-col) */
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+    }
+
+    /* Label */
+    .field-label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: .3rem;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+
+    /* Forgot password row */
+    .form-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      font-size: .85rem;
+    }
+    .form-options a { color: var(--teal); text-decoration: none; }
+    .form-options a:hover { text-decoration: underline; }
+    .remember-me { display: flex; align-items: center; gap: .4rem; cursor: pointer; }
+    .remember-me input[type=checkbox] { accent-color: var(--teal); width: 15px; height: 15px; }
+
+    /* Buttons */
+    .btn-auth-primary {
+      width: 100%;
+      padding: .85rem;
+      border: none;
+      border-radius: 9px;
+      background: var(--sage);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+    .btn-auth-primary:hover {
+      background: #7a9f8a;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(143,174,155,.4);
+    }
+    .btn-auth-charcoal {
+      width: 100%;
+      padding: .85rem;
+      border: none;
+      border-radius: 9px;
+      background: var(--charcoal);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-auth-charcoal:hover { background: #232c2a; transform: translateY(-1px); }
+
+    .btn-oauth {
+      width: 100%;
+      padding: .72rem;
+      border: 1.5px solid #e0ddd7;
+      border-radius: 9px;
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      color: var(--charcoal);
+      margin-bottom: .6rem;
+    }
+    .btn-oauth:hover { border-color: var(--teal); box-shadow: 0 2px 8px rgba(107,156,154,.18); }
+    .btn-oauth img { width: 20px; height: 20px; }
+
+    /* Divider */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      margin: 1.25rem 0;
+      color:var(--text-muted);
+      font-size: .78rem;
+    }
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e0ddd7;
+    }
+
+    /* Admin secure badge */
+    .secure-badge {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(107,156,154,.1);
+      border: 1px solid rgba(107,156,154,.3);
+      border-radius: 20px;
+      padding: .4rem .9rem;
+      font-size: .78rem;
+      color: var(--teal);
+      font-weight: 600;
+      width: fit-content;
+      margin: 1rem auto 0;
+    }
+
+    /* ============================================================
+       SECTION 3 — REGISTRATION FORM (Multi-step)
+    ============================================================ */
+    .register-section {
+      border-top: 2px dashed var(--beige);
+      padding-top: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    .register-section-heading {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: .4rem;
+    }
+    .register-section-sub {
+      font-size: .88rem;
+      color:var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    /* Step indicator */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2rem;
+    }
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--beige);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .78rem;
+      font-weight: 700;
+      color:var(--text-muted);
+      transition: var(--transition);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .step-dot.active {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(143,174,155,.25);
+    }
+    .step-dot.completed {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--beige);
+      transition: background var(--transition);
+    }
+    .step-line.completed { background: var(--teal); }
+
+    .step-label-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: .4rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-label {
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      color:var(--text-muted);
+      text-align: center;
+      flex: 1;
+      transition: color var(--transition);
+    }
+    .step-label.active { color: var(--sage); }
+    .step-label.completed { color: var(--teal); }
+
+    /* Step forms */
+    .reg-step { display: none; animation: fadeIn .3s ease; }
+    .reg-step.active { display: block; }
+
+    /* Step nav buttons */
+    .step-nav {
+      display: flex;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+    .btn-step-next {
+      flex: 1;
+      padding: .78rem;
+      border: none;
+      border-radius: 9px;
+      background: var(--sage);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      transition: background var(--transition);
+    }
+    .btn-step-next:hover { background: #7a9f8a; }
+    .btn-step-back {
+      padding: .78rem 1.4rem;
+      border: 1.5px solid var(--beige);
+      border-radius: 9px;
+      background: transparent;
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .btn-step-back:hover { background: var(--beige); }
+    .btn-create-account {
+      flex: 1;
+      padding: .85rem;
+      border: none;
+      border-radius: 9px;
+      background: var(--charcoal);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      transition: background var(--transition);
+    }
+    .btn-create-account:hover { background: #1e2726; }
+
+    /* Password strength */
+    .pw-strength-bar {
+      height: 4px;
+      border-radius: 4px;
+      background: #e0ddd7;
+      margin: .4rem 0 .3rem;
+      overflow: hidden;
+    }
+    .pw-strength-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width .3s, background .3s;
+      width: 0;
+    }
+    .pw-strength-label { font-size: .75rem; color:var(--text-secondary); margin-bottom: .6rem; }
+
+    /* Appointment time chips */
+    .appt-chips {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: .4rem;
+    }
+    .appt-chip input[type=checkbox] { display: none; }
+    .appt-chip label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .45rem 1rem;
+      border: 1.5px solid #e0ddd7;
+      border-radius: 20px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--charcoal);
+    }
+    .appt-chip input:checked + label {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: #fff;
+    }
+
+    /* Agreement checkboxes */
+    .agree-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      margin-bottom: .6rem;
+      font-size: .84rem;
+      color: #555;
+    }
+    .agree-row input[type=checkbox] {
+      accent-color: var(--teal);
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .agree-row a { color: var(--teal); text-decoration: none; }
+    .agree-row a:hover { text-decoration: underline; }
+
+    /* Required note */
+    .req-note { font-size: .75rem; color:var(--text-muted); margin-bottom: 1rem; }
+    .req-note span { color: var(--danger); }
+
+    /* Radio toggle */
+    .radio-toggle {
+      display: flex;
+      gap: .6rem;
+      margin-top: .3rem;
+    }
+    .radio-toggle input[type=radio] { display: none; }
+    .radio-toggle label {
+      flex: 1;
+      text-align: center;
+      padding: .5rem;
+      border: 1.5px solid #e0ddd7;
+      border-radius: 8px;
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      color:var(--text-secondary);
+    }
+    .radio-toggle input:checked + label {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
+    /* ============================================================
+       SECTION 4 — FORGOT PASSWORD FLOW
+    ============================================================ */
+    .forgot-overlay {
+      display: none;
+      animation: fadeIn .3s ease;
+    }
+    .forgot-overlay.active { display: block; }
+
+    .forgot-card {
+      background: var(--beige);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .forgot-state { display: none; }
+    .forgot-state.active { display: block; animation: fadeIn .3s ease; }
+
+    .forgot-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .forgot-icon-lock { background: rgba(107,156,154,.15); color: var(--teal); }
+    .forgot-icon-mail { background: rgba(143,174,155,.2); color: var(--sage); }
+
+    .forgot-heading {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+    }
+    .forgot-subtext { font-size: .88rem; color:var(--text-secondary); margin-bottom: 1.5rem; }
+
+    .success-checkmark {
+      width: 60px;
+      height: 60px;
+      background: rgba(25,135,84,.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--success);
+      margin-bottom: 1rem;
+    }
+
+    .btn-back-login {
+      background: none;
+      border: none;
+      color: var(--teal);
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      padding: 0;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    .btn-back-login:hover { text-decoration: underline; }
+
+    /* ============================================================
+       SECTION 5 — SECURITY INFORMATION
+    ============================================================ */
+    .security-section {
+      background: var(--white);
+      border-top: 1px solid var(--beige);
+      padding: 1.75rem 3rem;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .security-badges {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .security-badge-item {
+      flex: 1;
+      min-width: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: .4rem;
+      padding: 1rem .75rem;
+      background: var(--ivory);
+      border: 1px solid var(--beige);
+      border-radius: var(--radius);
+    }
+    .security-badge-item .badge-emoji { font-size: 1.5rem; }
+    .security-badge-item .badge-title {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.3;
+    }
+    .security-privacy-note {
+      font-size: .8rem;
+      color:var(--text-secondary);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+    }
+
+    /* ============================================================
+       SECTION 6 — MINIMAL FOOTER
+    ============================================================ */
+    .auth-footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.65);
+      padding: 1.25rem 3rem;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .auth-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.1rem;
+      margin-bottom: .6rem;
+      align-items: center;
+    }
+    .auth-footer-links a {
+      color: rgba(255,255,255,.65);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .auth-footer-links a:hover { color: var(--sage); }
+    .auth-footer-links .link-sep { color: rgba(255,255,255,.25); font-size: .65rem; }
+
+    .auth-footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .auth-footer-copy { font-size: .75rem; }
+
+    .lang-selector {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+    .lang-btn {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px;
+      padding: .18rem .65rem;
+      font-size: .72rem;
+      color: rgba(255,255,255,.65);
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background var(--transition);
+    }
+
+    /* ============================================================
+       VALIDATION FEEDBACK
+    ============================================================ */
+    .invalid-feedback {
+      display: none;
+      font-size: .75rem;
+      color: var(--danger);
+      margin-top: .2rem;
+    }
+    .input-group-auth input.is-invalid ~ .invalid-feedback { display: block; }
+
+    /* ============================================================
+       RESPONSIVE — Mobile stack
+    ============================================================ */
+    @media (max-width: 991px) {
+      .auth-wrapper { flex-direction: column; }
+      .auth-brand {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 2rem 1.5rem;
+      }
+      .brand-tagline { font-size: 1.75rem; }
+      .auth-right { width: 100%; }
+      .auth-forms-container { padding: 2rem 1.5rem; }
+      .security-section { padding: 1.5rem; }
+      .auth-footer { padding: 1.25rem 1.5rem; }
+    }
+    @media (max-width: 575px) {
+      .input-row { grid-template-columns: 1fr; }
+      .security-badges { flex-direction: column; }
+      .auth-footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/contrast-fixes.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=2" />
+</head>
+
+<body>
+
+<!-- ================================================================
+     MINIMAL NAVBAR — LOGO ONLY
+================================================================ -->
+<nav class="auth-navbar" aria-label="Main navigation">
+  <a class="navbar-brand" href="home1.html" aria-label="PhysioElite Home">
+    <span class="brand-leaf" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
+    <span>Physio<span class="brand-name-pe">Elite</span></span>
+  </a>
+  <button class="theme-toggle-btn ms-auto" data-theme-toggle id="darkToggle" aria-label="Toggle dark mode" title="Toggle dark mode" style="width:36px;height:36px;border-radius:8px;border:1.5px solid var(--border-color);background:none;color:var(--text-primary);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;"><i class="fa-solid fa-moon"></i></button>
+    </nav>
+
+<!-- ================================================================
+     SECTION 1 — SPLIT SCREEN HERO LAYOUT
+================================================================ -->
+<main class="auth-wrapper" id="auth-main">
+
+  <!-- LEFT BRANDING PANEL -->
+  <aside class="auth-brand" aria-label="PhysioElite branding panel">
+
+    <!-- Logo -->
+    <div>
+      <div class="brand-logo">
+        <div class="brand-logo-icon" aria-hidden="true">
+          <i class="fa-solid fa-heart-pulse" style="color:var(--sage);"></i>
+        </div>
+        <div class="brand-logo-text">
+          <h1>PhysioElite</h1>
+          <span>Premium Physiotherapy & Rehabilitation</span>
+        </div>
+      </div>
+
+      <!-- Tagline -->
+      <p class="brand-tagline">Your Recovery,<br>Our Priority</p>
+
+      <!-- Trust points -->
+      <ul class="trust-list" aria-label="Clinic trust highlights">
+        <li>
+          <span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          Secure Patient Portal
+        </li>
+        <li>
+          <span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          Instant Appointment Booking
+        </li>
+        <li>
+          <span class="trust-icon" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          Your Health Data is Private &amp; Encrypted
+        </li>
+      </ul>
+    </div>
+
+    <!-- Patient review -->
+    <div>
+      <figure class="brand-review">
+        <div class="review-stars" aria-label="5 out of 5 stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <blockquote>
+          <p>"PhysioElite's patient portal made managing my recovery so simple."</p>
+        </blockquote>
+        <figcaption>
+          <cite>— Emma T., ACL Recovery Patient</cite>
+        </figcaption>
+      </figure>
+
+      <!-- Clinic status -->
+      <div class="brand-clinic-status" aria-live="polite">
+        <span class="clinic-dot" aria-hidden="true"></span>
+        <span id="current-date-display"></span>
+        &nbsp;·&nbsp;
+        <strong>Clinic Open Today</strong>
+      </div>
+    </div>
+  </aside>
+
+  <!-- RIGHT AUTH PANEL -->
+  <div class="auth-right" id="auth-right">
+    <div class="auth-forms-container">
+
+      <!-- ============================================================
+           SECTION 2 — LOGIN FORM
+      ============================================================ -->
+      <section id="login-section" aria-label="Login section">
+
+        <!-- Tab switcher -->
+        <div class="auth-tabs" role="tablist" aria-label="Login type">
+          <button
+            class="auth-tab-btn active"
+            id="tab-patient"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-patient"
+            onclick="switchAuthTab('patient')"
+          >
+            <i class="fa-regular fa-user" aria-hidden="true"></i> Patient Login
+          </button>
+          <button
+            class="auth-tab-btn"
+            id="tab-admin"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-admin"
+            onclick="switchAuthTab('admin')"
+          >
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Admin Login
+          </button>
+        </div>
+
+        <!-- PATIENT LOGIN FORM -->
+        <div class="auth-panel active" id="panel-patient" role="tabpanel" aria-labelledby="tab-patient">
+          <h2 class="auth-heading">Welcome Back</h2>
+          <p class="auth-subtext">
+            New patient?
+            <a href="#register-section" onclick="smoothScroll('register-section')">Register below <i class="fa-solid fa-arrow-down ms-1" aria-hidden="true"></i></a>
+          </p>
+
+          <form id="patient-login-form" novalidate onsubmit="handlePatientLogin(event)" aria-label="Patient login form">
+
+            <!-- Email -->
+            <div class="mb-1">
+              <label class="field-label" for="patient-email">Email Address</label>
+              <div class="input-group-auth">
+                <i class="fa-regular fa-envelope field-icon" aria-hidden="true"></i>
+                <input
+                  type="email"
+                  id="patient-email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="patient-email-error"
+                />
+              </div>
+              <div class="invalid-feedback" id="patient-email-error" role="alert">Please enter a valid email address.</div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-1">
+              <label class="field-label" for="patient-password">Password</label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-lock field-icon" aria-hidden="true"></i>
+                <input
+                  type="password"
+                  id="patient-password"
+                  name="password"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                  required
+                  aria-required="true"
+                  aria-describedby="patient-password-error"
+                />
+                <button type="button" class="toggle-pw" aria-label="Toggle password visibility" onclick="togglePassword('patient-password', this)">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+              <div class="invalid-feedback" id="patient-password-error" role="alert">Password is required.</div>
+            </div>
+
+            <!-- Options row -->
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" id="remember-me" name="remember" aria-label="Remember me" />
+                Remember me
+              </label>
+              <a href="#" onclick="showForgotPassword(event)" aria-label="Forgot password? Open reset form">
+                Forgot password?
+              </a>
+            </div>
+
+            <!-- Sign In Button -->
+            <button type="submit" class="btn-auth-primary" aria-label="Sign in to patient portal">
+              <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
+              Sign In to Patient Portal
+            </button>
+
+            <!-- Divider -->
+            <div class="auth-divider" aria-hidden="true">— or sign in with —</div>
+
+            <!-- Google OAuth -->
+            <button type="button" class="btn-oauth" onclick="redirectToHome()" aria-label="Sign in with Google">
+              <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.1l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.8 5.4 2.9 13.4l7.8 6.1C12.5 13 17.8 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17z"/>
+                <path fill="#FBBC05" d="M10.7 28.5A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.7-4.5L2.4 13.4A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.2-6.1z"/>
+                <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.3-7.7 2.3-6.2 0-11.5-4.2-13.3-9.9l-7.8 6.1C6.8 42.6 14.7 48 24 48z"/>
+              </svg>
+              Continue with Google
+            </button>
+
+            <!-- Apple sign-in -->
+            <button type="button" class="btn-oauth" onclick="redirectToHome()" aria-label="Sign in with Apple">
+              <i class="fa-brands fa-apple" style="font-size:1.1rem; color:currentColor;" aria-hidden="true"></i>
+              Continue with Apple
+            </button>
+
+          </form>
+        </div><!-- end panel-patient -->
+
+        <!-- ADMIN LOGIN FORM -->
+        <div class="auth-panel" id="panel-admin" role="tabpanel" aria-labelledby="tab-admin">
+          <h2 class="auth-heading" style="font-family:var(--font-head);">Admin Access</h2>
+          <p class="auth-subtext">Authorised clinic staff only. All access is logged.</p>
+
+          <form id="admin-login-form" novalidate onsubmit="handleAdminLogin(event)" aria-label="Admin login form">
+
+            <!-- Admin ID -->
+            <div class="mb-1">
+              <label class="field-label" for="admin-id">Admin ID</label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-id-badge field-icon" aria-hidden="true"></i>
+                <input
+                  type="text"
+                  id="admin-id"
+                  name="admin_id"
+                  placeholder="Your admin username"
+                  autocomplete="username"
+                  required
+                  aria-required="true"
+                />
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-1">
+              <label class="field-label" for="admin-password">Password</label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-lock field-icon" aria-hidden="true"></i>
+                <input
+                  type="password"
+                  id="admin-password"
+                  name="password"
+                  placeholder="Admin password"
+                  autocomplete="current-password"
+                  required
+                  aria-required="true"
+                />
+                <button type="button" class="toggle-pw" aria-label="Toggle password visibility" onclick="togglePassword('admin-password', this)">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2FA -->
+            <div class="mb-3">
+              <label class="field-label" for="admin-2fa">Two-Factor Authentication Code</label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-mobile-screen field-icon" aria-hidden="true"></i>
+                <input
+                  type="text"
+                  id="admin-2fa"
+                  name="two_fa"
+                  placeholder="6-digit code from authenticator app"
+                  inputmode="numeric"
+                  maxlength="6"
+                  pattern="\d{6}"
+                  required
+                  aria-required="true"
+                  aria-describedby="admin-2fa-hint"
+                />
+              </div>
+              <div id="admin-2fa-hint" class="req-note">Enter the code from your authenticator app.</div>
+            </div>
+
+            <button type="submit" class="btn-auth-charcoal" aria-label="Sign in with admin credentials">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>&nbsp;
+              Sign in with Admin Credentials
+            </button>
+
+            <div class="secure-badge" aria-label="Security indicator">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              Protected by 256-bit encryption
+            </div>
+
+          </form>
+        </div><!-- end panel-admin -->
+
+      </section><!-- end login-section -->
+
+      <!-- ============================================================
+           SECTION 4 — FORGOT PASSWORD (initially hidden)
+      ============================================================ -->
+      <section class="forgot-overlay" id="forgot-section" aria-label="Password reset" aria-hidden="true">
+
+        <div class="forgot-card">
+
+          <!-- State 1: Enter email -->
+          <div class="forgot-state active" id="forgot-state-1">
+            <div class="forgot-icon forgot-icon-lock" aria-hidden="true">
+              <i class="fa-solid fa-key"></i>
+            </div>
+            <h3 class="forgot-heading">Reset Your Password</h3>
+            <p class="forgot-subtext">
+              Enter the email address linked to your account and we'll send you a secure reset link.
+            </p>
+
+            <form id="forgot-form" onsubmit="handleForgotPassword(event)" novalidate aria-label="Password reset form">
+              <div class="mb-3">
+                <label class="field-label" for="reset-email">Email Address</label>
+                <div class="input-group-auth">
+                  <i class="fa-regular fa-envelope field-icon" aria-hidden="true"></i>
+                  <input
+                    type="email"
+                    id="reset-email"
+                    name="reset_email"
+                    placeholder="you@example.com"
+                    required
+                    aria-required="true"
+                    aria-describedby="reset-email-error"
+                  />
+                </div>
+                <div class="invalid-feedback" id="reset-email-error" role="alert">Please enter a valid email address.</div>
+              </div>
+
+              <button type="submit" class="btn-auth-primary">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                Send Reset Link
+              </button>
+            </form>
+
+            <button class="btn-back-login" onclick="hideForgotPassword()" aria-label="Back to login">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Login
+            </button>
+          </div>
+
+          <!-- State 2: Email sent confirmation -->
+          <div class="forgot-state" id="forgot-state-2">
+            <div class="success-checkmark" aria-hidden="true">
+              <i class="fa-solid fa-envelope-circle-check"></i>
+            </div>
+            <h3 class="forgot-heading">Check Your Email</h3>
+            <p class="forgot-subtext">
+              We've sent a password reset link to <strong id="reset-email-display"></strong>.
+              Check your inbox and follow the instructions.
+            </p>
+
+            <div style="font-size:.85rem; color:var(--text-secondary); margin-bottom:1rem;">
+              Didn't receive it?
+              <button type="button" onclick="resendResetEmail()" style="background:none;border:none;color:var(--teal);font-weight:600;cursor:pointer;font-size:.85rem;padding:0;" aria-label="Resend reset email">
+                Resend email
+              </button>
+              <span id="resend-countdown" style="color:var(--text-muted); font-size:.8rem;"></span>
+            </div>
+
+            <button class="btn-back-login" onclick="hideForgotPassword()" aria-label="Back to login">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Login
+            </button>
+          </div>
+
+        </div><!-- end forgot-card -->
+
+      </section><!-- end forgot-section -->
+
+      <!-- ============================================================
+           SECTION 3 — PATIENT REGISTRATION FORM
+      ============================================================ -->
+      <section class="register-section" id="register-section" aria-label="New patient registration">
+
+        <h2 class="register-section-heading">New Patient?<br>Create Your Account</h2>
+        <p class="register-section-sub">
+          Join thousands of patients managing their recovery with PhysioElite.
+          It takes less than 3 minutes.
+        </p>
+
+        <!-- Step indicator -->
+        <div class="step-indicator" role="tablist" aria-label="Registration steps">
+          <div class="step-dot active" id="dot-1" aria-label="Step 1: Personal details" role="tab" aria-selected="true">1</div>
+          <div class="step-line" id="line-1"></div>
+          <div class="step-dot" id="dot-2" aria-label="Step 2: Medical information" role="tab" aria-selected="false">2</div>
+          <div class="step-line" id="line-2"></div>
+          <div class="step-dot" id="dot-3" aria-label="Step 3: Account setup" role="tab" aria-selected="false">3</div>
+        </div>
+        <div class="step-label-row" aria-hidden="true">
+          <span class="step-label active" id="label-1">Personal</span>
+          <span class="step-label" id="label-2">Medical</span>
+          <span class="step-label" id="label-3">Account</span>
+        </div>
+
+        <form id="register-form" novalidate aria-label="Patient registration form">
+
+          <!-- STEP 1 — Personal Details -->
+          <div class="reg-step active" id="reg-step-1" role="tabpanel" aria-labelledby="dot-1">
+            <p class="req-note"><span>*</span> Required fields</p>
+
+            <div class="input-row mb-1">
+              <div>
+                <label class="field-label" for="reg-fname">First Name <span style="color:var(--danger)">*</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-regular fa-user field-icon" aria-hidden="true"></i>
+                  <input type="text" id="reg-fname" name="first_name" placeholder="Jane" required aria-required="true" />
+                </div>
+              </div>
+              <div>
+                <label class="field-label" for="reg-lname">Last Name <span style="color:var(--danger)">*</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-regular fa-user field-icon" aria-hidden="true"></i>
+                  <input type="text" id="reg-lname" name="last_name" placeholder="Smith" required aria-required="true" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-1">
+              <label class="field-label" for="reg-email">Email Address <span style="color:var(--danger)">*</span></label>
+              <div class="input-group-auth">
+                <i class="fa-regular fa-envelope field-icon" aria-hidden="true"></i>
+                <input type="email" id="reg-email" name="email" placeholder="you@example.com" required aria-required="true" />
+              </div>
+            </div>
+
+            <div class="mb-1">
+              <label class="field-label" for="reg-phone">Phone Number <span style="color:var(--danger)">*</span></label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-phone field-icon" aria-hidden="true"></i>
+                <input type="tel" id="reg-phone" name="phone" placeholder="+1 (555) 000-0000" required aria-required="true" />
+              </div>
+            </div>
+
+            <div class="input-row mb-3">
+              <div>
+                <label class="field-label" for="reg-dob">Date of Birth <span style="color:var(--danger)">*</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-regular fa-calendar field-icon" aria-hidden="true"></i>
+                  <input type="date" id="reg-dob" name="dob" required aria-required="true" style="padding-left:2.6rem;" />
+                </div>
+              </div>
+              <div>
+                <label class="field-label" for="reg-gender">Gender <span style="color:var(--danger)">*</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-solid fa-venus-mars field-icon" aria-hidden="true"></i>
+                  <select id="reg-gender" name="gender" required aria-required="true">
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="nonbinary">Non-binary</option>
+                    <option value="prefer-not">Prefer not to say</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-nav">
+              <button type="button" class="btn-step-next" onclick="goToStep(2)" aria-label="Next step: Medical information">
+                Next: Medical Info <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2 — Medical Information -->
+          <div class="reg-step" id="reg-step-2" role="tabpanel" aria-labelledby="dot-2">
+            <p class="req-note"><span>*</span> Required fields</p>
+
+            <div class="mb-1">
+              <label class="field-label" for="reg-condition">Primary Condition <span style="color:var(--danger)">*</span></label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-stethoscope field-icon" aria-hidden="true"></i>
+                <select id="reg-condition" name="condition" required aria-required="true">
+                  <option value="" disabled selected>Select your primary condition</option>
+                  <option value="back-pain">Back Pain</option>
+                  <option value="knee-injury">Knee Injury</option>
+                  <option value="sports-injury">Sports Injury</option>
+                  <option value="post-surgery">Post-Surgery Rehabilitation</option>
+                  <option value="neck-pain">Neck Pain</option>
+                  <option value="shoulder">Shoulder Injury</option>
+                  <option value="neurological">Neurological Condition</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-1">
+              <label class="field-label" for="reg-referral">Referral Source</label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-share-nodes field-icon" aria-hidden="true"></i>
+                <select id="reg-referral" name="referral">
+                  <option value="" disabled selected>How did you hear about us?</option>
+                  <option value="gp">GP / Doctor Referral</option>
+                  <option value="google">Google Search</option>
+                  <option value="social">Social Media</option>
+                  <option value="friend">Friend or Family</option>
+                  <option value="insurance">Health Insurance</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label class="field-label">Previous Physiotherapy? <span style="color:var(--danger)">*</span></label>
+              <div class="radio-toggle" role="radiogroup" aria-label="Previous physiotherapy experience">
+                <input type="radio" id="prev-physio-yes" name="prev_physio" value="yes" required />
+                <label for="prev-physio-yes">Yes</label>
+                <input type="radio" id="prev-physio-no" name="prev_physio" value="no" />
+                <label for="prev-physio-no">No</label>
+              </div>
+            </div>
+
+            <div class="mb-1">
+              <label class="field-label" for="reg-medications">Current Medications <span style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-pills field-icon" aria-hidden="true"></i>
+                <input type="text" id="reg-medications" name="medications" placeholder="List any medications" />
+              </div>
+            </div>
+
+            <div class="input-row mb-3">
+              <div>
+                <label class="field-label" for="reg-ec-name">Emergency Contact <span style="color:var(--danger)">*</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-solid fa-person field-icon" aria-hidden="true"></i>
+                  <input type="text" id="reg-ec-name" name="emergency_name" placeholder="Full name" required aria-required="true" />
+                </div>
+              </div>
+              <div>
+                <label class="field-label" for="reg-ec-phone">Emergency Phone <span style="color:var(--danger)">*</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-solid fa-phone field-icon" aria-hidden="true"></i>
+                  <input type="tel" id="reg-ec-phone" name="emergency_phone" placeholder="+1 (555) 000-0000" required aria-required="true" />
+                </div>
+              </div>
+            </div>
+
+            <div class="step-nav">
+              <button type="button" class="btn-step-back" onclick="goToStep(1)" aria-label="Go back to personal details">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back
+              </button>
+              <button type="button" class="btn-step-next" onclick="goToStep(3)" aria-label="Next step: Account setup">
+                Next: Account Setup <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3 — Account Setup -->
+          <div class="reg-step" id="reg-step-3" role="tabpanel" aria-labelledby="dot-3">
+            <p class="req-note"><span>*</span> Required fields</p>
+
+            <div class="mb-1">
+              <label class="field-label" for="reg-new-pw">Create Password <span style="color:var(--danger)">*</span></label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-lock field-icon" aria-hidden="true"></i>
+                <input
+                  type="password"
+                  id="reg-new-pw"
+                  name="password"
+                  placeholder="Min. 8 chars, number, uppercase"
+                  required
+                  aria-required="true"
+                  aria-describedby="pw-reqs"
+                  oninput="updatePasswordStrength(this.value)"
+                />
+                <button type="button" class="toggle-pw" aria-label="Toggle password visibility" onclick="togglePassword('reg-new-pw', this)">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+              <div class="pw-strength-bar" aria-hidden="true">
+                <div class="pw-strength-fill" id="pw-strength-fill"></div>
+              </div>
+              <div class="pw-strength-label" id="pw-strength-label" aria-live="polite"></div>
+              <ul id="pw-reqs" class="req-note" style="list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:.3rem .9rem;" aria-label="Password requirements">
+                <li id="req-len"><i class="fa-solid fa-ruler-horizontal" aria-hidden="true"></i> 8+ characters</li>
+                <li id="req-upper"><i class="fa-solid fa-font" aria-hidden="true"></i> Uppercase letter</li>
+                <li id="req-num"><i class="fa-solid fa-hashtag" aria-hidden="true"></i> Number</li>
+              </ul>
+            </div>
+
+            <div class="mb-2">
+              <label class="field-label" for="reg-confirm-pw">Confirm Password <span style="color:var(--danger)">*</span></label>
+              <div class="input-group-auth">
+                <i class="fa-solid fa-lock field-icon" aria-hidden="true"></i>
+                <input
+                  type="password"
+                  id="reg-confirm-pw"
+                  name="confirm_password"
+                  placeholder="Re-enter your password"
+                  required
+                  aria-required="true"
+                  aria-describedby="pw-match-msg"
+                />
+                <button type="button" class="toggle-pw" aria-label="Toggle password visibility" onclick="togglePassword('reg-confirm-pw', this)">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+              <div id="pw-match-msg" aria-live="polite" style="font-size:.75rem; margin-top:.2rem;"></div>
+            </div>
+
+            <div class="mb-2">
+              <label class="field-label">Preferred Appointment Times</label>
+              <div class="appt-chips" role="group" aria-label="Preferred appointment times">
+                <div class="appt-chip">
+                  <input type="checkbox" id="appt-morning" name="appt_times" value="morning" />
+                  <label for="appt-morning"><i class="fa-solid fa-sun" aria-hidden="true"></i> Morning</label>
+                </div>
+                <div class="appt-chip">
+                  <input type="checkbox" id="appt-afternoon" name="appt_times" value="afternoon" />
+                  <label for="appt-afternoon"><i class="fa-solid fa-cloud-sun" aria-hidden="true"></i> Afternoon</label>
+                </div>
+                <div class="appt-chip">
+                  <input type="checkbox" id="appt-evening" name="appt_times" value="evening" />
+                  <label for="appt-evening"><i class="fa-solid fa-moon" aria-hidden="true"></i> Evening</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-row mb-2">
+              <div>
+                <label class="field-label" for="reg-health-fund">Health Fund <span style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-solid fa-heart field-icon" aria-hidden="true"></i>
+                  <input type="text" id="reg-health-fund" name="health_fund" placeholder="e.g. Blue Cross" />
+                </div>
+              </div>
+              <div>
+                <label class="field-label" for="reg-membership">Membership # <span style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
+                <div class="input-group-auth">
+                  <i class="fa-solid fa-id-card field-icon" aria-hidden="true"></i>
+                  <input type="text" id="reg-membership" name="membership_num" placeholder="Membership number" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="agree-row">
+                <input type="checkbox" id="agree-terms" name="agree_terms" required aria-required="true" aria-describedby="agree-terms-error" />
+                <label for="agree-terms">
+                  I agree to the <a href="terms.html" target="_blank">Terms of Service</a>
+                  <span style="color:var(--danger)">*</span>
+                </label>
+              </div>
+              <div class="invalid-feedback" id="agree-terms-error" role="alert">You must accept the Terms of Service.</div>
+
+              <div class="agree-row">
+                <input type="checkbox" id="agree-privacy" name="agree_privacy" required aria-required="true" aria-describedby="agree-privacy-error" />
+                <label for="agree-privacy">
+                  I have read and accept the <a href="privacy.html" target="_blank">Privacy Policy</a>
+                  <span style="color:var(--danger)">*</span>
+                </label>
+              </div>
+              <div class="invalid-feedback" id="agree-privacy-error" role="alert">You must accept the Privacy Policy.</div>
+            </div>
+
+            <div class="step-nav">
+              <button type="button" class="btn-step-back" onclick="goToStep(2)" aria-label="Go back to medical information">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back
+              </button>
+              <button type="submit" class="btn-create-account" aria-label="Create my patient account">
+                <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                Create My Account
+              </button>
+            </div>
+
+            <div class="auth-divider" aria-hidden="true">— or sign up with —</div>
+            <div class="d-grid gap-2">
+              <button type="button" class="btn-oauth" onclick="redirectToHome()" aria-label="Sign up with Google">
+                <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.1l6.7-6.7C35.8 2.4 30.2 0 24 0 14.7 0 6.8 5.4 2.9 13.4l7.8 6.1C12.5 13 17.8 9.5 24 9.5z"/>
+                  <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17z"/>
+                  <path fill="#FBBC05" d="M10.7 28.5A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.7-4.5L2.4 13.4A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.2-6.1z"/>
+                  <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.3-7.7 2.3-6.2 0-11.5-4.2-13.3-9.9l-7.8 6.1C6.8 42.6 14.7 48 24 48z"/>
+                </svg>
+                Sign up with Google
+              </button>
+              <button type="button" class="btn-oauth" onclick="redirectToHome()" aria-label="Sign up with Apple">
+                <i class="fa-brands fa-apple" style="font-size:1.1rem; color:currentColor;" aria-hidden="true"></i>
+                Sign up with Apple
+              </button>
+            </div>
+
+          </div><!-- end reg-step-3 -->
+
+        </form>
+      </section><!-- end register-section -->
+
+    </div><!-- end auth-forms-container -->
+
+    <!-- ============================================================
+         SECTION 5 — SECURITY INFORMATION
+    ============================================================ -->
+    <section class="security-section" aria-label="Security information">
+      <div class="security-badges" role="list">
+        <div class="security-badge-item" role="listitem">
+          <span class="badge-emoji" aria-hidden="true"><i class="fa-solid fa-lock"></i></span>
+          <span class="badge-title">256-bit SSL<br>Encryption</span>
+        </div>
+        <div class="security-badge-item" role="listitem">
+          <span class="badge-emoji" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
+          <span class="badge-title">HIPAA-Compliant<br>Data Storage</span>
+        </div>
+        <div class="security-badge-item" role="listitem">
+          <span class="badge-emoji" aria-hidden="true"><i class="fa-solid fa-fingerprint"></i></span>
+          <span class="badge-title">Two-Factor Auth<br>Available</span>
+        </div>
+      </div>
+      <p class="security-privacy-note">
+        <i class="fa-solid fa-shield-halved" style="color:var(--teal);" aria-hidden="true"></i>
+        Your health information is 100% private. We never share your data with third parties.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 — MINIMAL AUTH FOOTER
+    ============================================================ -->
+    <footer class="auth-footer" aria-label="Site footer">
+      <nav class="auth-footer-links" aria-label="Footer links">
+        <a href="privacy.html">Privacy Policy</a>
+        <span class="link-sep" aria-hidden="true">|</span>
+        <a href="terms.html">Terms of Service</a>
+        <span class="link-sep" aria-hidden="true">|</span>
+        <a href="accessibility.html">Accessibility</a>
+        <span class="link-sep" aria-hidden="true">|</span>
+        <a href="help.html">Help Centre</a>
+        <span class="link-sep" aria-hidden="true">|</span>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="auth-footer-bottom">
+        <p class="auth-footer-copy">
+          &copy; 2024 PhysioElite. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+  </div><!-- end auth-right -->
+</main><!-- end auth-wrapper -->
+
+<!-- ================================================================
+     Scripts
+================================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js" defer></script>
+
+<script>
+/* ================================================================
+   AUTH PAGE JAVASCRIPT
+================================================================ */
+
+/* ---- Utilities ---- */
+function $(id) { return document.getElementById(id); }
+
+function redirectToHome() {
+  window.location.href = 'home1.html';
+}
+
+/* ---- Date display ---- */
+(function() {
+  const d = new Date();
+  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+  const el = $('current-date-display');
+  if (el) el.textContent = d.toLocaleDateString('en-US', opts);
+})();
+
+/* ================================================================
+   TAB SWITCHING (Patient / Admin Login)
+================================================================ */
+function switchAuthTab(type) {
+  const tabs   = { patient: $('tab-patient'),  admin: $('tab-admin')  };
+  const panels = { patient: $('panel-patient'), admin: $('panel-admin') };
+
+  Object.keys(tabs).forEach(k => {
+    const isActive = k === type;
+    tabs[k].classList.toggle('active', isActive);
+    tabs[k].setAttribute('aria-selected', isActive ? 'true' : 'false');
+    panels[k].classList.toggle('active', isActive);
+  });
+}
+
+/* ================================================================
+   SHOW/HIDE PASSWORD TOGGLE
+================================================================ */
+function togglePassword(inputId, btn) {
+  const input = $(inputId);
+  if (!input) return;
+  const isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+  const icon = btn.querySelector('i');
+  if (icon) {
+    icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+  }
+  btn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+}
+
+/* ================================================================
+   FORGOT PASSWORD FLOW
+================================================================ */
+function showForgotPassword(e) {
+  if (e) e.preventDefault();
+  const loginSection = $('login-section');
+  const forgotSection = $('forgot-section');
+  if (loginSection) loginSection.style.display = 'none';
+  if (forgotSection) {
+    forgotSection.classList.add('active');
+    forgotSection.setAttribute('aria-hidden', 'false');
+  }
+  // Ensure state 1 is active
+  $('forgot-state-1').classList.add('active');
+  $('forgot-state-2').classList.remove('active');
+}
+
+function hideForgotPassword() {
+  const loginSection = $('login-section');
+  const forgotSection = $('forgot-section');
+  if (loginSection) loginSection.style.display = '';
+  if (forgotSection) {
+    forgotSection.classList.remove('active');
+    forgotSection.setAttribute('aria-hidden', 'true');
+  }
+}
+
+function handleForgotPassword(e) {
+  e.preventDefault();
+  const emailInput = $('reset-email');
+  if (!emailInput || !validateEmail(emailInput.value)) {
+    emailInput.classList.add('is-invalid');
+    return;
+  }
+  emailInput.classList.remove('is-invalid');
+  // Show email display
+  const display = $('reset-email-display');
+  if (display) display.textContent = emailInput.value;
+  // Switch states
+  $('forgot-state-1').classList.remove('active');
+  $('forgot-state-2').classList.add('active');
+}
+
+let resendTimer = null;
+function resendResetEmail() {
+  const countdownEl = $('resend-countdown');
+  let seconds = 60;
+  if (resendTimer) clearInterval(resendTimer);
+  if (countdownEl) countdownEl.textContent = ` (wait ${seconds}s)`;
+  resendTimer = setInterval(() => {
+    seconds--;
+    if (countdownEl) countdownEl.textContent = seconds > 0 ? ` (wait ${seconds}s)` : '';
+    if (seconds <= 0) clearInterval(resendTimer);
+  }, 1000);
+}
+
+/* ================================================================
+   MULTI-STEP REGISTRATION WIZARD
+================================================================ */
+let currentStep = 1;
+
+function goToStep(step) {
+  // Validate before proceeding
+  if (step > currentStep && !validateStep(currentStep)) return;
+
+  const prev = currentStep;
+  currentStep = step;
+
+  // Hide old, show new
+  const oldStep = $(`reg-step-${prev}`);
+  const newStep = $(`reg-step-${step}`);
+  if (oldStep) oldStep.classList.remove('active');
+  if (newStep) newStep.classList.add('active');
+
+  // Update dots and labels
+  for (let i = 1; i <= 3; i++) {
+    const dot   = $(`dot-${i}`);
+    const label = $(`label-${i}`);
+    if (!dot || !label) continue;
+    dot.classList.remove('active', 'completed');
+    label.classList.remove('active', 'completed');
+    if (i < step) {
+      dot.classList.add('completed');
+      label.classList.add('completed');
+    } else if (i === step) {
+      dot.classList.add('active');
+      label.classList.add('active');
+    }
+  }
+  // Update connector lines
+  for (let i = 1; i <= 2; i++) {
+    const line = $(`line-${i}`);
+    if (line) line.classList.toggle('completed', i < step);
+  }
+
+  // Scroll into view on mobile
+  const regEl = $('reg-step-' + step);
+  if (regEl) regEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function validateStep(step) {
+  if (step === 1) {
+    const fields = ['reg-fname','reg-lname','reg-email','reg-phone','reg-dob','reg-gender'];
+    let valid = true;
+    fields.forEach(id => {
+      const el = $(id);
+      if (!el) return;
+      const ok = el.value.trim() !== '' && (id !== 'reg-email' || validateEmail(el.value));
+      el.classList.toggle('is-invalid', !ok);
+      el.classList.toggle('is-valid', ok);
+      if (!ok) valid = false;
+    });
+    return valid;
+  }
+  if (step === 2) {
+    const required = ['reg-condition', 'reg-ec-name', 'reg-ec-phone'];
+    let valid = true;
+    required.forEach(id => {
+      const el = $(id);
+      if (!el) return;
+      const ok = el.value.trim() !== '';
+      el.classList.toggle('is-invalid', !ok);
+      el.classList.toggle('is-valid', ok);
+      if (!ok) valid = false;
+    });
+    const prevPhysio = document.querySelector('input[name="prev_physio"]:checked');
+    if (!prevPhysio) {
+      valid = false;
+      showToast('Please indicate previous physiotherapy experience.', 'warning');
+    }
+    return valid;
+  }
+  return true;
+}
+
+/* ================================================================
+   PASSWORD STRENGTH CHECKER
+================================================================ */
+function updatePasswordStrength(value) {
+  const fill  = $('pw-strength-fill');
+  const label = $('pw-strength-label');
+  const reqLen   = $('req-len');
+  const reqUpper = $('req-upper');
+  const reqNum   = $('req-num');
+
+  const hasLen   = value.length >= 8;
+  const hasUpper = /[A-Z]/.test(value);
+  const hasNum   = /\d/.test(value);
+
+  if (reqLen)   reqLen.style.color   = hasLen   ? 'var(--success)' : '#aaa';
+  if (reqUpper) reqUpper.style.color = hasUpper ? 'var(--success)' : '#aaa';
+  if (reqNum)   reqNum.style.color   = hasNum   ? 'var(--success)' : '#aaa';
+
+  const score = [hasLen, hasUpper, hasNum].filter(Boolean).length;
+  const levels = [
+    { pct: '0',   color: '#e0ddd7', text: '' },
+    { pct: '33%', color: '#dc3545', text: 'Weak' },
+    { pct: '66%', color: '#ffc107', text: 'Fair' },
+    { pct: '100%',color: '#198754', text: 'Strong' },
+  ];
+  const lvl = levels[score];
+  if (fill)  { fill.style.width = value.length ? lvl.pct : '0'; fill.style.background = lvl.color; }
+  if (label) label.textContent = value.length ? lvl.text : '';
+
+  // Live check confirm match
+  checkPasswordMatch();
+}
+
+function checkPasswordMatch() {
+  const pw  = $('reg-new-pw');
+  const cpw = $('reg-confirm-pw');
+  const msg = $('pw-match-msg');
+  if (!pw || !cpw || !msg) return;
+  if (!cpw.value) { msg.textContent = ''; return; }
+  if (pw.value === cpw.value) {
+    msg.textContent = 'Passwords match';
+    msg.style.color = 'var(--success)';
+    cpw.classList.remove('is-invalid');
+    cpw.classList.add('is-valid');
+  } else {
+    msg.textContent = 'Passwords do not match';
+    msg.style.color = 'var(--danger)';
+    cpw.classList.add('is-invalid');
+    cpw.classList.remove('is-valid');
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const cpw = $('reg-confirm-pw');
+  if (cpw) cpw.addEventListener('input', checkPasswordMatch);
+});
+
+/* ================================================================
+   FORM SUBMISSION HANDLERS
+================================================================ */
+function handlePatientLogin(e) {
+  e.preventDefault();
+  const email = $('patient-email');
+  const pw    = $('patient-password');
+  let valid = true;
+  if (!email || !validateEmail(email.value)) {
+    email && email.classList.add('is-invalid');
+    valid = false;
+  } else {
+    email && email.classList.remove('is-invalid');
+  }
+  if (!pw || !pw.value) {
+    pw && pw.classList.add('is-invalid');
+    valid = false;
+  } else {
+    pw && pw.classList.remove('is-invalid');
+  }
+  if (!valid) return;
+  showToast('Signing in… (demo mode)', 'success');
+  setTimeout(redirectToHome, 400);
+}
+
+function handleAdminLogin(e) {
+  e.preventDefault();
+  const id  = $('admin-id');
+  const pw  = $('admin-password');
+  const tfa = $('admin-2fa');
+  let valid = true;
+  [id, pw, tfa].forEach(el => {
+    if (!el || !el.value.trim()) {
+      el && el.classList.add('is-invalid');
+      valid = false;
+    } else {
+      el && el.classList.remove('is-invalid');
+    }
+  });
+  if (tfa && tfa.value && !/^\d{6}$/.test(tfa.value)) {
+    tfa.classList.add('is-invalid');
+    valid = false;
+  }
+  if (!valid) return;
+  showToast('Admin sign in initiated… (demo mode)', 'success');
+  setTimeout(redirectToHome, 400);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const regForm = $('register-form');
+  if (regForm) {
+    regForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pw  = $('reg-new-pw');
+      const cpw = $('reg-confirm-pw');
+      const toc = $('agree-terms');
+      const prv = $('agree-privacy');
+      let valid = true;
+
+      if (pw && pw.value.length < 8) {
+        pw.classList.add('is-invalid');
+        valid = false;
+      }
+      if (cpw && pw && cpw.value !== pw.value) {
+        cpw.classList.add('is-invalid');
+        valid = false;
+      }
+      if (toc && !toc.checked) {
+        toc.classList.add('is-invalid');
+        valid = false;
+      }
+      if (prv && !prv.checked) {
+        prv.classList.add('is-invalid');
+        valid = false;
+      }
+      if (!valid) {
+        showToast('Please complete all required fields.', 'error');
+        return;
+      }
+      showToast('Account created! Welcome to PhysioElite. (demo mode)', 'success');
+      setTimeout(redirectToHome, 400);
+    });
+  }
+});
+
+/* ================================================================
+   EMAIL VALIDATION HELPER
+================================================================ */
+function validateEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+/* ================================================================
+   SMOOTH SCROLL HELPER
+================================================================ */
+function smoothScroll(id) {
+  const el = $(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+
+/* ================================================================
+   TOAST NOTIFICATION (simple built-in)
+================================================================ */
+function showToast(message, type = 'info') {
+  let container = document.querySelector('.toast-container-auth');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container-auth';
+    Object.assign(container.style, {
+      position: 'fixed', top: '1rem', right: '1rem',
+      display: 'flex', flexDirection: 'column', gap: '.5rem',
+      zIndex: '9999', maxWidth: '320px',
+    });
+    document.body.appendChild(container);
+  }
+
+  const colors = {
+    success: { bg: '#198754', icon: 'fa-circle-check' },
+    error:   { bg: '#dc3545', icon: 'fa-circle-xmark' },
+    warning: { bg: '#ffc107', icon: 'fa-triangle-exclamation' },
+    info:    { bg: '#0d6efd', icon: 'fa-circle-info' },
+  };
+  const cfg = colors[type] || colors.info;
+
+  const toast = document.createElement('div');
+  toast.setAttribute('role', 'alert');
+  toast.setAttribute('aria-live', 'assertive');
+  Object.assign(toast.style, {
+    background: cfg.bg,
+    color: '#fff',
+    padding: '.75rem 1rem',
+    borderRadius: '10px',
+    fontSize: '.85rem',
+    fontFamily: 'var(--font-body)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '.5rem',
+    boxShadow: '0 4px 16px rgba(0,0,0,.18)',
+    animation: 'fadeIn .3s ease',
+  });
+  toast.innerHTML = `<i class="fa-solid ${cfg.icon}"></i> ${message}`;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity .3s';
+    setTimeout(() => toast.remove(), 350);
+  }, 3500);
+}
+</script>
+
+</body>
+</html>

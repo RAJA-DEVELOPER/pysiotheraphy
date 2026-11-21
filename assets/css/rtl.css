@@ -1,0 +1,853 @@
+/* ============================================================
+   PhysioElite — Right-to-Left (RTL) Support
+   Activated when <html dir="rtl"> is set.
+   Loaded after style.css / contrast-fixes.css on every page.
+   ============================================================ */
+
+/* ============================================================
+   1. BASE
+   ============================================================ */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Keep intentional centre alignment */
+html[dir="rtl"] .text-center,
+html[dir="rtl"] [class*="text-center"] {
+  text-align: center;
+}
+
+/* Lists: mirror the marker gutter */
+html[dir="rtl"] ul,
+html[dir="rtl"] ol {
+  padding-left: 0;
+  padding-right: 1.5em;
+}
+
+html[dir="rtl"] .list-unstyled,
+html[dir="rtl"] .footer-links,
+html[dir="rtl"] .navbar-nav,
+html[dir="rtl"] .pricing-features,
+html[dir="rtl"] .toc-list,
+html[dir="rtl"] .dropdown-menu,
+html[dir="rtl"] .breadcrumb,
+html[dir="rtl"] .pagination,
+html[dir="rtl"] .nav,
+html[dir="rtl"] .list-group {
+  padding-right: 0;
+}
+
+/* ============================================================
+   2. BOOTSTRAP UTILITY MIRRORING
+   ============================================================ */
+html[dir="rtl"] .text-start,
+html[dir="rtl"] .text-sm-start,
+html[dir="rtl"] .text-md-start,
+html[dir="rtl"] .text-lg-start,
+html[dir="rtl"] .text-xl-start { text-align: right !important; }
+
+html[dir="rtl"] .text-end,
+html[dir="rtl"] .text-sm-end,
+html[dir="rtl"] .text-md-end,
+html[dir="rtl"] .text-lg-end,
+html[dir="rtl"] .text-xl-end { text-align: left !important; }
+
+html[dir="rtl"] .ms-auto { margin-left: 0 !important; margin-right: auto !important; }
+html[dir="rtl"] .me-auto { margin-right: 0 !important; margin-left: auto !important; }
+
+html[dir="rtl"] .me-1 { margin-right: 0 !important; margin-left: .25rem !important; }
+html[dir="rtl"] .me-2 { margin-right: 0 !important; margin-left: .5rem !important; }
+html[dir="rtl"] .me-3 { margin-right: 0 !important; margin-left: 1rem !important; }
+html[dir="rtl"] .ms-1 { margin-left: 0 !important; margin-right: .25rem !important; }
+
+html[dir="rtl"] .float-start { float: right !important; }
+html[dir="rtl"] .float-end   { float: left !important; }
+
+html[dir="rtl"] .dropdown-menu-end {
+  right: auto !important;
+  left: 0 !important;
+}
+
+/* Breadcrumb separators */
+html[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+  float: right !important;
+  padding-right: 0 !important;
+  padding-left: var(--bs-breadcrumb-item-padding-x, .5rem) !important;
+}
+
+html[dir="rtl"] .form-check {
+  padding-left: 0;
+  padding-right: 1.5em;
+}
+html[dir="rtl"] .form-check .form-check-input {
+  float: right;
+  margin-left: 0;
+  margin-right: -1.5em;
+}
+
+/* ============================================================
+   3. NAVBAR & NAVIGATION
+   ============================================================ */
+html[dir="rtl"] .navbar-brand {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+html[dir="rtl"] .navbar-nav {
+  padding-right: 0;
+}
+
+html[dir="rtl"] .navbar-toggler {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .nav-profile-btn {
+  margin-left: 0;
+}
+
+html[dir="rtl"] .dropdown-item {
+  text-align: right;
+}
+
+/* Legacy shared navigation */
+html[dir="rtl"] .nav-menu { flex-direction: row-reverse; }
+html[dir="rtl"] .nav-link { text-align: right; }
+
+/* ============================================================
+   4. BUTTONS & ICONS
+   ============================================================ */
+html[dir="rtl"] .btn i:first-child,
+html[dir="rtl"] .btn-sage i:first-child,
+html[dir="rtl"] .btn-outline-sage i:first-child,
+html[dir="rtl"] .btn-hero-primary i:first-child,
+html[dir="rtl"] .btn-hero-video i:first-child {
+  margin-left: .5rem;
+  margin-right: 0;
+}
+
+html[dir="rtl"] .btn .icon {
+  margin-right: 0;
+  margin-left: var(--space-2);
+}
+
+/* Directional arrows should point the other way */
+html[dir="rtl"] .fa-arrow-right,
+html[dir="rtl"] .fa-arrow-right-long,
+html[dir="rtl"] .fa-chevron-right,
+html[dir="rtl"] .fa-angle-right {
+  transform: scaleX(-1);
+}
+html[dir="rtl"] .fa-arrow-left,
+html[dir="rtl"] .fa-arrow-left-long,
+html[dir="rtl"] .fa-chevron-left,
+html[dir="rtl"] .fa-angle-left {
+  transform: scaleX(-1);
+}
+
+/* ============================================================
+   5. FORMS
+   ============================================================ */
+html[dir="rtl"] .form-icon {
+  left: auto;
+  right: var(--space-3);
+}
+
+html[dir="rtl"] .input-group .form-control {
+  padding-left: var(--space-3);
+  padding-right: 2.75rem;
+}
+
+html[dir="rtl"] .form-control {
+  text-align: right;
+}
+
+html[dir="rtl"] select.form-control,
+html[dir="rtl"] .form-select {
+  background-position: left .75rem center;
+  padding-left: 2.25rem;
+  padding-right: .9rem;
+}
+
+html[dir="rtl"] .form-label .required {
+  margin-left: 0;
+  margin-right: 2px;
+}
+
+html[dir="rtl"] .invalid-feedback,
+html[dir="rtl"] .valid-feedback {
+  text-align: right;
+}
+
+html[dir="rtl"] .input-group-auth .field-icon {
+  left: auto;
+  right: 14px;
+}
+
+html[dir="rtl"] .input-group-auth input,
+html[dir="rtl"] .input-group-auth select,
+html[dir="rtl"] .input-group-auth textarea {
+  padding: .72rem 2.6rem .72rem 1rem;
+}
+
+html[dir="rtl"] .toggle-pw {
+  right: auto;
+  left: 12px;
+}
+
+html[dir="rtl"] .input-group .form-icon + .form-control,
+html[dir="rtl"] .input-group .form-control[style*="padding-left"] {
+  padding-left: 1rem !important;
+  padding-right: 2.6rem !important;
+}
+
+/* ============================================================
+   6. HOME HERO
+   ============================================================ */
+html[dir="rtl"] .hero-card-top {
+  left: auto;
+  right: -2rem;
+}
+
+html[dir="rtl"] .hero-card-bottom {
+  right: auto;
+  left: -1.5rem;
+}
+
+html[dir="rtl"] .hero-blob {
+  left: auto;
+  right: -5%;
+}
+
+html[dir="rtl"] .hero-headline .accent {
+  font-style: italic;
+}
+
+html[dir="rtl"] .hero-eyebrow .dot {
+  order: 0;
+}
+
+/* ============================================================
+   7. BLOG HERO
+   ============================================================ */
+html[dir="rtl"] .blog-search-btn {
+  right: auto;
+  left: 6px;
+}
+
+html[dir="rtl"] .blog-search-wrap input {
+  padding: .85rem 1.4rem .85rem 3.5rem;
+  text-align: right;
+}
+
+html[dir="rtl"] .blog-search-wrap input::placeholder {
+  text-align: right;
+}
+
+/* ============================================================
+   8. SERVICES HERO & CARDS
+   ============================================================ */
+html[dir="rtl"] .hero-search-wrap .search-icon {
+  left: auto;
+  right: 1.1rem;
+}
+
+html[dir="rtl"] .hero-search-wrap input {
+  padding: .85rem 3rem .85rem 1.3rem;
+  text-align: right;
+}
+
+html[dir="rtl"] .category-badge {
+  left: auto;
+  right: .85rem;
+}
+
+html[dir="rtl"] .step-number {
+  right: auto;
+  left: -4px;
+}
+
+html[dir="rtl"] .pricing-features {
+  text-align: right;
+}
+
+/* ============================================================
+   9. CONTACT HERO & CARDS
+   ============================================================ */
+html[dir="rtl"] .btn-open-maps {
+  right: auto;
+  left: 1rem;
+}
+
+html[dir="rtl"] .quick-card {
+  text-align: center;
+}
+
+/* ============================================================
+   10. ABOUT / TIMELINE
+   ============================================================ */
+html[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+html[dir="rtl"] .timeline::before {
+  left: auto;
+  right: calc(1rem - 1px);
+}
+html[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-right: 1.6rem;
+}
+html[dir="rtl"] .timeline-item::before {
+  left: auto;
+  right: -1.5rem;
+}
+
+/* ============================================================
+   11. SECTIONS, CARDS & CONTENT
+   ============================================================ */
+html[dir="rtl"] .divider-sage {
+  background: linear-gradient(to left, var(--sage-green), var(--soft-teal));
+}
+
+html[dir="rtl"] .section-divider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .footer-link:hover {
+  padding-left: 0;
+  padding-right: var(--space-2);
+}
+
+html[dir="rtl"] #footer .footer-links a:hover {
+  padding-left: 0;
+  padding-right: .3rem;
+}
+
+/* ============================================================
+   12. TOASTS, BACK-TO-TOP & PROGRESS
+   ============================================================ */
+html[dir="rtl"] #toastContainer,
+html[dir="rtl"] .toast-container,
+html[dir="rtl"] .toast-container-physio {
+  right: auto;
+  left: 1.5rem;
+}
+
+html[dir="rtl"] .toast-item {
+  border-left: 0;
+  border-right: 4px solid var(--sage-green);
+  animation-name: rtlToastIn;
+}
+
+html[dir="rtl"] .toast-item.error {
+  border-left-color: transparent;
+  border-right-color: #dc3545;
+}
+
+html[dir="rtl"] .toast-physio {
+  border-left: 0;
+  border-right: 4px solid var(--sage);
+}
+
+html[dir="rtl"] .toast-physio.success { border-left: 0; border-right-color: #68d391; }
+html[dir="rtl"] .toast-physio.error   { border-left: 0; border-right-color: #fc8181; }
+
+@keyframes rtlToastIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: none; }
+}
+
+html[dir="rtl"] .back-to-top {
+  right: auto;
+  left: var(--space-6);
+}
+
+html[dir="rtl"] #reading-progress {
+  left: auto;
+  right: 0;
+}
+
+/* ============================================================
+   13. DASHBOARDS — SHARED SIDEBAR / TOPBAR
+   ============================================================ */
+html[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+html[dir="rtl"] .sidebar.open {
+  transform: none;
+}
+
+html[dir="rtl"] .sidebar-link {
+  text-align: right;
+}
+
+html[dir="rtl"] .sidebar-link.active::before {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .sidebar-badge {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Patient dashboard */
+html[dir="rtl"] .main-area {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+}
+
+html[dir="rtl"] .topbar-left {
+  text-align: right;
+}
+
+html[dir="rtl"] .topbar-right {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .milestone-timeline {
+  padding-left: 0;
+  padding-right: 34px;
+}
+
+html[dir="rtl"] .notif-time {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .toggle-track::before {
+  left: auto;
+  right: 3px;
+}
+html[dir="rtl"] input:checked + .toggle-track::before {
+  transform: translateX(-18px);
+}
+
+/* Admin dashboard */
+html[dir="rtl"] #sidebar {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] #main-wrapper {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+  transition: margin-right .3s ease;
+}
+
+html[dir="rtl"] .sidebar-nav a {
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  text-align: right;
+}
+html[dir="rtl"] .sidebar-nav a.active,
+html[dir="rtl"] .sidebar-nav a:hover {
+  border-left-color: transparent;
+  border-right-color: var(--sage);
+}
+
+html[dir="rtl"] #topbar .topbar-search input {
+  padding: 8px 40px 8px 16px;
+  text-align: right;
+}
+html[dir="rtl"] #topbar .topbar-search i {
+  left: auto;
+  right: 14px;
+}
+
+html[dir="rtl"] .topbar-actions {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .table-search input {
+  padding: 8px 36px 8px 12px;
+  text-align: right;
+}
+html[dir="rtl"] .table-search i {
+  left: auto;
+  right: 12px;
+}
+
+html[dir="rtl"] .admin-table th,
+html[dir="rtl"] .admin-table td {
+  text-align: right;
+}
+
+html[dir="rtl"] .notif-item.unread::before {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .notif-time {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .export-btns {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .appt-status-dot {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .quick-dropdown {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .view-toggle button:not(:last-child) {
+  border-right: 0;
+  border-left: 1px solid #e5e5e5;
+}
+
+html[dir="rtl"] .cal-time {
+  text-align: left;
+  border-right: 0;
+  border-left: 1px solid #f3f3f3;
+}
+
+html[dir="rtl"] .cal-cell {
+  border-right: 0;
+  border-left: 1px solid #f3f3f3;
+}
+
+html[dir="rtl"] .ev-mitchell,
+html[dir="rtl"] .ev-chen,
+html[dir="rtl"] .ev-sharma,
+html[dir="rtl"] .ev-torres,
+html[dir="rtl"] .ev-watson,
+html[dir="rtl"] .ev-kim {
+  border-left: 0;
+  border-right: 3px solid currentColor;
+}
+
+html[dir="rtl"] .toggle-slider:before {
+  left: auto;
+  right: 3px;
+}
+html[dir="rtl"] .toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(-20px);
+}
+
+/* ============================================================
+   14. RTL TOGGLE BUTTON
+   ============================================================ */
+.rtl-toggle {
+  background: none;
+  border: 1.5px solid var(--border-color, #6b7f78);
+  color: var(--text-secondary, #33433f);
+  border-radius: var(--radius-sm, 8px);
+  height: 36px;
+  min-width: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease, background-color .2s ease;
+  padding: 0 .55rem;
+  line-height: 1;
+}
+
+.rtl-toggle:hover,
+.rtl-toggle:focus-visible {
+  border-color: var(--color-sage, #25523d);
+  color: var(--color-sage, #25523d);
+  background: var(--bg-secondary, transparent);
+}
+
+.rtl-toggle-text {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  pointer-events: none;
+}
+
+.rtl-toggle--fixed {
+  position: fixed;
+  bottom: 1.5rem;
+  inset-inline-end: 1.5rem;
+  z-index: 9998;
+  background: var(--bg-card, #fff);
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(0,0,0,.15));
+}
+
+html[data-theme="dark"] .rtl-toggle {
+  border-color: var(--border-color, #455d54);
+  color: var(--text-secondary, #cde0d7);
+}
+
+html[data-theme="dark"] .rtl-toggle:hover,
+html[data-theme="dark"] .rtl-toggle:focus-visible {
+  border-color: var(--color-sage, #9cd6b4);
+  color: var(--color-sage, #9cd6b4);
+}
+
+/* ============================================================
+   15. RESPONSIVE
+   ============================================================ */
+@media (max-width: 991px) {
+  html[dir="rtl"] .sidebar {
+    transform: translateX(100%);
+  }
+  html[dir="rtl"] .sidebar.mobile-open,
+  html[dir="rtl"] .sidebar.open {
+    transform: translateX(0);
+  }
+  html[dir="rtl"] .main-area {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  html[dir="rtl"] #sidebar {
+    transform: translateX(100%);
+  }
+  html[dir="rtl"] #sidebar.open {
+    transform: translateX(0);
+  }
+  html[dir="rtl"] #main-wrapper {
+    margin-right: 0;
+  }
+}
+
+/* ============================================================
+   16. PAGE-SPECIFIC DETAILS
+   ============================================================ */
+
+/* Footer links — hover nudge */
+html[dir="rtl"] .footer-links a:hover,
+html[dir="rtl"] .footer-link:hover {
+  padding-left: 0;
+  padding-right: .3rem;
+}
+
+/* 404 — search field */
+html[dir="rtl"] .search-wrap button {
+  right: auto;
+  left: 8px;
+}
+html[dir="rtl"] .search-wrap input {
+  padding: 18px 24px 18px 60px;
+}
+
+/* Blog listing */
+html[dir="rtl"] .social-btn {
+  margin-right: 0;
+  margin-left: .4rem;
+}
+
+/* Blog details — article body */
+html[dir="rtl"] .article-content ul,
+html[dir="rtl"] .article-content ol {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+html[dir="rtl"] .pull-quote {
+  border-left: 0;
+  border-right: 4px solid var(--sage);
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+html[dir="rtl"] .toc-list a {
+  border-left: 0;
+  border-right: 2px solid var(--border-light);
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+html[dir="rtl"] .toc-list a:hover,
+html[dir="rtl"] .toc-list a.active {
+  border-right-color: var(--sage);
+  padding-left: .75rem;
+  padding-right: 1rem;
+}
+html[dir="rtl"] .nested-comment {
+  margin-left: 0;
+  margin-right: 3.5rem;
+  border-left: 0;
+  border-right: 2px solid var(--sage-light);
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+html[dir="rtl"] .copy-toast {
+  right: auto;
+  left: 2rem;
+}
+html[dir="rtl"] #reading-progress {
+  background: linear-gradient(270deg, var(--sage), var(--teal));
+}
+
+@media (max-width: 991.98px) {
+  html[dir="rtl"] .nested-comment {
+    margin-right: 1.5rem;
+  }
+}
+
+/* Services listing */
+html[dir="rtl"] .rebate-info ul {
+  padding-left: 0;
+  padding-right: 1.2rem;
+}
+html[dir="rtl"] .faq-question {
+  text-align: right;
+}
+
+/* Contact */
+html[dir="rtl"] .radio-contact-method .form-check {
+  margin-right: 0;
+  margin-left: 1.2rem;
+}
+html[dir="rtl"] .faq-num {
+  margin-right: 0;
+  margin-left: .6rem;
+}
+html[dir="rtl"] .faq-section .accordion-body ul {
+  padding-left: 0;
+  padding-right: 1.1rem;
+}
+html[dir="rtl"] .portal-features {
+  text-align: right;
+}
+
+/* About — timelines, mission block, stats */
+html[dir="rtl"] .timeline,
+html[dir="rtl"] .award-timeline {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+html[dir="rtl"] .timeline::before,
+html[dir="rtl"] .award-timeline::before {
+  left: auto;
+  right: calc(1rem - 1px);
+}
+html[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-right: 1.6rem;
+}
+html[dir="rtl"] .timeline-item::before {
+  left: auto;
+  right: -1.5rem;
+}
+html[dir="rtl"] .award-item {
+  padding-left: 0;
+  padding-right: 1.4rem;
+}
+html[dir="rtl"] .award-item::before {
+  left: auto;
+  right: -1.5rem;
+}
+html[dir="rtl"] .mission-block {
+  border-left: 0;
+  border-right: 4px solid var(--sage);
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+html[dir="rtl"] .stat-block[style*="border-right"] {
+  border-right: 0 !important;
+  border-left: 1px solid rgba(143, 174, 155, .2) !important;
+}
+
+/* Home 2 */
+html[dir="rtl"] .featured-img-badge {
+  left: auto;
+  right: 1.5rem;
+}
+html[dir="rtl"] .physio-quote-wrap::before {
+  left: auto;
+  right: 1.5rem;
+}
+html[dir="rtl"] .video-modal-close {
+  right: auto;
+  left: 0;
+}
+html[dir="rtl"] .therapist-card-avail {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Home 1 — mobile vertical timeline */
+@media (max-width: 767.98px) {
+  html[dir="rtl"] .timeline-wrap::before {
+    left: auto;
+    right: 27px;
+  }
+  html[dir="rtl"] .timeline-step {
+    text-align: right;
+  }
+}
+
+/* Coming soon */
+html[dir="rtl"] .post-preview {
+  text-align: right;
+}
+html[dir="rtl"] .post-tag {
+  margin-right: 0;
+  margin-left: 6px;
+}
+
+/* Service details */
+html[dir="rtl"] .hero-stat-badge {
+  margin-right: 0;
+  margin-left: .5rem;
+}
+html[dir="rtl"] .phase-card {
+  border-left: 0;
+  border-right: 5px solid var(--sage);
+}
+html[dir="rtl"] .progress-step-line {
+  margin-left: 0;
+  margin-right: 6px;
+}
+html[dir="rtl"] .mini-review {
+  border-left: 0;
+  border-right: 3px solid var(--sage);
+}
+html[dir="rtl"] .footer-social a {
+  margin-right: 0;
+  margin-left: .4rem;
+}
+
+/* Patient dashboard extras */
+html[dir="rtl"] .section-title small {
+  margin-left: 0;
+  margin-right: 8px;
+}
+html[dir="rtl"] .milestone-timeline::before {
+  left: auto;
+  right: 11px;
+}
+html[dir="rtl"] .milestone-item {
+  padding: 14px 18px 14px 16px;
+}
+html[dir="rtl"] .milestone-item:hover {
+  transform: translateX(-3px);
+}
+html[dir="rtl"] .milestone-dot {
+  left: auto;
+  right: -34px;
+}
+html[dir="rtl"] .exercise-table th,
+html[dir="rtl"] .payment-table thead th {
+  text-align: right;
+}
+
+/* Admin dashboard — calendar event accent colours */
+html[dir="rtl"] .ev-mitchell { border-right-color: var(--sage); }
+html[dir="rtl"] .ev-chen { border-right-color: var(--teal); }
+html[dir="rtl"] .ev-sharma { border-right-color: #8264b4; }
+html[dir="rtl"] .ev-torres { border-right-color: var(--warning); }
+html[dir="rtl"] .ev-watson { border-right-color: var(--info); }
+html[dir="rtl"] .ev-kim { border-right-color: var(--danger); }
+
+

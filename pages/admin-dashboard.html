@@ -1,0 +1,2689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — PhysioElite</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Project Styles -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --sage: #8FAE9B;
+      --teal: #6B9C9A;
+      --ivory: #FAF9F5;
+      --beige: #E8DFD2;
+      --charcoal: #303A38;
+      --charcoal-light: #3d4a47;
+      --charcoal-lighter: #4a5a56;
+      --white: #ffffff;
+      --danger: #e05c5c;
+      --warning: #e8a742;
+      --success: #5aab7e;
+      --info: #5b9bd5;
+      --sidebar-width: 280px;
+      --topbar-height: 65px;
+      --font-body: 'DM Sans', sans-serif;
+      --font-heading: 'Playfair Display', serif;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.25s ease;
+    }
+
+    /* ===== RESET / BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: var(--font-body); background: var(--ivory); color: var(--charcoal); }
+    body { display: flex; overflow: hidden; }
+
+    /* ===== SIDEBAR ===== */
+    #sidebar {
+      width: var(--sidebar-width);
+      min-width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 1050;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+    }
+    #sidebar::-webkit-scrollbar { width: 4px; }
+    #sidebar::-webkit-scrollbar-thumb { background: var(--charcoal-lighter); border-radius: 4px; }
+
+    .sidebar-brand {
+      padding: 22px 20px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sidebar-brand .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .sidebar-brand .brand-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 18px;
+      flex-shrink: 0;
+    }
+    .sidebar-brand .brand-text h1 {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .sidebar-brand .brand-text span {
+      font-size: 10px;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+    }
+
+    .sidebar-admin {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .admin-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 2px solid var(--sage);
+    }
+    .admin-info .admin-name {
+      font-size: 13px; font-weight: 600;
+      color: white; display: block; line-height: 1.2;
+    }
+    .admin-info .admin-role {
+      font-size: 10px;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      color: white;
+      padding: 1px 7px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-nav { flex: 1; padding: 12px 0; }
+    .nav-section-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.35);
+      padding: 14px 20px 5px;
+      font-weight: 600;
+    }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 20px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: var(--transition);
+      border-left: 3px solid transparent;
+      position: relative;
+    }
+    .sidebar-nav a i {
+      width: 18px; text-align: center; font-size: 14px;
+      flex-shrink: 0;
+    }
+    .sidebar-nav a:hover {
+      background: rgba(255,255,255,0.06);
+      color: white;
+      border-left-color: var(--sage);
+    }
+    .sidebar-nav a.active {
+      background: rgba(143,174,155,0.15);
+      color: var(--sage);
+      border-left-color: var(--sage);
+    }
+    .sidebar-nav a .nav-badge {
+      margin-left: auto;
+      background: var(--danger);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 20px;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .sidebar-logout {
+      padding: 15px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .sidebar-logout a {
+      display: flex; align-items: center; gap: 10px;
+      color:rgba(255,255,255,0.88);
+      text-decoration: none;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+    .sidebar-logout a:hover { color: var(--danger); }
+
+    /* ===== MAIN WRAPPER ===== */
+    #main-wrapper {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* ===== TOP BAR ===== */
+    #topbar {
+      height: var(--topbar-height);
+      background: white;
+      border-bottom: 1px solid #eee;
+      display: flex; align-items: center;
+      padding: 0 24px;
+      gap: 16px;
+      position: sticky; top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
+    #topbar .topbar-search {
+      flex: 1; max-width: 420px;
+      position: relative;
+    }
+    #topbar .topbar-search input {
+      width: 100%;
+      border: 1px solid #e5e5e5;
+      border-radius: 25px;
+      padding: 8px 16px 8px 40px;
+      font-size: 13.5px;
+      background: var(--ivory);
+      outline: none;
+      transition: var(--transition);
+      font-family: var(--font-body);
+    }
+    #topbar .topbar-search input:focus {
+      border-color: var(--sage);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(143,174,155,0.15);
+    }
+    #topbar .topbar-search i {
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%);
+      color:var(--text-muted); font-size: 13px;
+    }
+    .topbar-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .topbar-btn {
+      width: 38px; height: 38px;
+      border: none; background: var(--ivory);
+      border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; transition: var(--transition);
+      color: var(--charcoal);
+      font-size: 15px;
+    }
+    .topbar-btn:hover { background: var(--beige); }
+    .topbar-btn .badge-dot {
+      position: absolute; top: 5px; right: 5px;
+      width: 16px; height: 16px;
+      background: var(--danger);
+      color: white; font-size: 9px; font-weight: 700;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid white;
+    }
+    .topbar-divider { width: 1px; height: 28px; background: #eee; }
+    .quick-actions-btn {
+      display: flex; align-items: center; gap: 7px;
+      padding: 7px 15px;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      color: white; border: none; border-radius: 25px;
+      font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+      font-family: var(--font-body);
+    }
+    .quick-actions-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(107,156,154,0.4); }
+    .topbar-profile {
+      display: flex; align-items: center; gap: 9px;
+      cursor: pointer; padding: 5px 10px;
+      border-radius: 25px; transition: var(--transition);
+    }
+    .topbar-profile:hover { background: var(--ivory); }
+    .topbar-profile-avatar {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      border-radius: 50%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .topbar-profile-name { font-size: 13px; font-weight: 600; }
+    .topbar-profile-role { font-size: 11px; color:var(--text-muted); }
+
+    /* ===== CONTENT AREA ===== */
+    #content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      background: #f1f4f3;
+    }
+    #content::-webkit-scrollbar { width: 6px; }
+    #content::-webkit-scrollbar-thumb { background: #ccc; border-radius: 6px; }
+
+    /* ===== PANEL SYSTEM ===== */
+    .admin-panel {
+      display: none;
+      animation: fadeInPanel 0.3s ease;
+    }
+    .admin-panel.active { display: block; }
+    @keyframes fadeInPanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .placeholder-card { background: #fff; border: 1px solid var(--beige); border-radius: var(--radius); padding: 56px 24px; text-align: center; box-shadow: var(--shadow-sm); }
+    .placeholder-card > i { font-size: 34px; color: var(--sage); }
+    .placeholder-card h2 { font-size: 17px; font-weight: 700; color: var(--charcoal); margin: 14px 0 6px; }
+    .placeholder-card p { font-size: 13px; color: var(--text-muted); }
+
+    /* ===== CARDS ===== */
+    .card-admin {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .card-admin .card-header-admin {
+      padding: 18px 22px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .card-admin .card-header-admin h2 {
+      font-family: var(--font-heading);
+      font-size: 17px; font-weight: 700;
+      color: var(--charcoal);
+      margin: 0;
+    }
+    .card-admin .card-body-admin { padding: 22px; }
+
+    /* ===== PANEL HEADER ===== */
+    .panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+    }
+    .panel-header h1 {
+      font-family: var(--font-heading);
+      font-size: 22px; font-weight: 700; color: var(--charcoal); margin: 0;
+    }
+    .panel-header .date-label { font-size: 13px; color:var(--text-secondary); margin-top: 2px; }
+
+    /* ===== KPI CARDS ===== */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; margin-bottom: 22px; }
+    .kpi-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.04);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      transition: var(--transition);
+    }
+    .kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .kpi-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--teal));
+    }
+    .kpi-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-bottom: 12px;
+    }
+    .kpi-icon.sage { background: rgba(143,174,155,0.15); color: var(--sage); }
+    .kpi-icon.teal { background: rgba(107,156,154,0.15); color: var(--teal); }
+    .kpi-icon.warning { background: rgba(232,167,66,0.15); color: var(--warning); }
+    .kpi-icon.danger { background: rgba(224,92,92,0.15); color: var(--danger); }
+    .kpi-icon.info { background: rgba(91,155,213,0.15); color: var(--info); }
+    .kpi-icon.success { background: rgba(90,171,126,0.15); color: var(--success); }
+    .kpi-icon.purple { background: rgba(130,100,180,0.15); color: #8264b4; }
+    .kpi-icon.gold { background: rgba(200,160,50,0.15); color: #c8a032; }
+    .kpi-value { font-size: 26px; font-weight: 700; color: var(--charcoal); margin-bottom: 2px; line-height: 1; }
+    .kpi-label { font-size: 12px; color:var(--text-secondary); margin-bottom: 8px; }
+    .kpi-trend { font-size: 11.5px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
+    .kpi-trend.up { color: var(--success); }
+    .kpi-trend.neutral { color: var(--info); }
+
+    /* ===== CHARTS ===== */
+    .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 22px; }
+    .chart-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .chart-card h3 {
+      font-size: 14px; font-weight: 600; color: var(--charcoal);
+      margin-bottom: 15px; display: flex; align-items: center; gap: 8px;
+    }
+    .chart-card h3 i { color: var(--sage); }
+    .chart-container { position: relative; height: 220px; }
+
+    /* ===== ACTIVITY FEED ===== */
+    .activity-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+    .activity-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #f0f0f0;
+      font-weight: 600; font-size: 14px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .activity-list { max-height: 350px; overflow-y: auto; }
+    .activity-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 20px;
+      border-bottom: 1px solid #fafafa;
+      transition: var(--transition);
+    }
+    .activity-item:hover { background: var(--ivory); }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0; margin-top: 1px;
+    }
+    .activity-text { flex: 1; }
+    .activity-text strong { font-size: 13px; font-weight: 600; display: block; }
+    .activity-text small { font-size: 11.5px; color:var(--text-muted); }
+
+    /* ===== TABLE STYLES ===== */
+    .table-toolbar {
+      display: flex; align-items: center; gap: 10px;
+      flex-wrap: wrap; margin-bottom: 15px;
+    }
+    .table-search {
+      position: relative; flex: 1; min-width: 200px; max-width: 320px;
+    }
+    .table-search input {
+      width: 100%; border: 1px solid #e5e5e5; border-radius: 8px;
+      padding: 8px 12px 8px 36px; font-size: 13px; outline: none;
+      font-family: var(--font-body); transition: var(--transition);
+    }
+    .table-search input:focus { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(143,174,155,0.12); }
+    .table-search i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color:var(--text-muted); font-size: 12px; }
+    .btn-admin {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: 8px; font-size: 13px;
+      font-weight: 500; cursor: pointer; border: none;
+      transition: var(--transition); font-family: var(--font-body);
+      text-decoration: none;
+    }
+    .btn-sage { background: var(--sage); color: white; }
+    .btn-sage:hover { background: #7a9d88; color: white; }
+    .btn-teal { background: var(--teal); color: white; }
+    .btn-teal:hover { background: #5a8886; color: white; }
+    .btn-outline { background: transparent; border: 1px solid #ddd; color: var(--charcoal); }
+    .btn-outline:hover { background: var(--ivory); border-color: var(--sage); }
+    .btn-danger-soft { background: rgba(224,92,92,0.1); color: var(--danger); }
+    .btn-danger-soft:hover { background: var(--danger); color: white; }
+    .btn-sm-admin { padding: 5px 10px; font-size: 12px; border-radius: 6px; }
+    .btn-filter { padding: 6px 12px; font-size: 12px; border-radius: 6px; background: var(--ivory); border: 1px solid #e5e5e5; cursor: pointer; color: var(--charcoal); font-family: var(--font-body); transition: var(--transition); }
+    .btn-filter.active, .btn-filter:hover { background: var(--sage); color: white; border-color: var(--sage); }
+
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .admin-table thead th {
+      background: #f8f9fa; padding: 11px 14px;
+      text-align: left; font-weight: 600; font-size: 11.5px;
+      text-transform: uppercase; letter-spacing: 0.5px; color:var(--text-secondary);
+      border-bottom: 1px solid #eee; white-space: nowrap;
+    }
+    .admin-table tbody tr { border-bottom: 1px solid #f5f5f5; transition: var(--transition); }
+    .admin-table tbody tr:hover { background: #fafcfb; }
+    .admin-table tbody td { padding: 12px 14px; color: var(--charcoal); vertical-align: middle; }
+    .admin-table input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--sage); cursor: pointer; }
+
+    /* ===== STATUS BADGES ===== */
+    .badge-status {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 20px;
+      font-size: 11.5px; font-weight: 600;
+    }
+    .badge-active { background: rgba(90,171,126,0.12); color: #3d8f5f; }
+    .badge-inactive { background: #f0f0f0; color:var(--text-secondary); }
+    .badge-new { background: rgba(91,155,213,0.12); color: var(--info); }
+    .badge-onhold { background: rgba(232,167,66,0.12); color: var(--warning); }
+    .badge-paid { background: rgba(90,171,126,0.12); color: #3d8f5f; }
+    .badge-pending { background: rgba(232,167,66,0.12); color: var(--warning); }
+    .badge-overdue { background: rgba(224,92,92,0.12); color: var(--danger); }
+
+    .patient-name { font-weight: 600; color: var(--charcoal); }
+    .patient-id { font-size: 11px; color:var(--text-muted); font-family: monospace; }
+
+    /* ===== PAGINATION ===== */
+    .table-pagination {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; flex-wrap: wrap; gap: 10px;
+      font-size: 13px; color:var(--text-secondary);
+    }
+    .pagination-pages { display: flex; gap: 4px; }
+    .page-btn {
+      width: 32px; height: 32px; border-radius: 6px; border: 1px solid #e5e5e5;
+      background: white; cursor: pointer; font-size: 12.5px; font-family: var(--font-body);
+      transition: var(--transition); display: flex; align-items: center; justify-content: center;
+    }
+    .page-btn:hover, .page-btn.active { background: var(--sage); color: white; border-color: var(--sage); }
+    .rows-select { padding: 5px 8px; border: 1px solid #e5e5e5; border-radius: 6px; font-size: 12.5px; cursor: pointer; font-family: var(--font-body); }
+    .bulk-actions { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid #f0f0f0; margin-top: 10px; }
+
+    /* ===== SCHEDULER ===== */
+    .scheduler-layout { display: grid; grid-template-columns: 1fr 280px; gap: 20px; align-items: start; }
+    .view-toggle { display: flex; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; }
+    .view-toggle button {
+      padding: 7px 16px; font-size: 13px; border: none;
+      background: white; cursor: pointer; font-family: var(--font-body);
+      font-weight: 500; color:var(--text-secondary); transition: var(--transition);
+    }
+    .view-toggle button.active { background: var(--sage); color: white; }
+    .view-toggle button:not(:last-child) { border-right: 1px solid #e5e5e5; }
+
+    .week-calendar { background: white; border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid rgba(0,0,0,0.04); }
+    .cal-header { display: grid; grid-template-columns: 65px repeat(6, 1fr); background: var(--charcoal); }
+    .cal-header div { padding: 10px 8px; text-align: center; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); border-right: 1px solid rgba(255,255,255,0.08); }
+    .cal-header div:first-child { color: rgba(255,255,255,0.3); }
+    .cal-body { overflow-y: auto; max-height: 480px; }
+    .cal-row { display: grid; grid-template-columns: 65px repeat(6, 1fr); border-bottom: 1px solid #f3f3f3; min-height: 56px; }
+    .cal-time { padding: 8px; font-size: 11px; color:var(--text-muted); text-align: right; border-right: 1px solid #f0f0f0; display: flex; align-items: flex-start; justify-content: flex-end; padding-top: 10px; }
+    .cal-cell { border-right: 1px solid #f3f3f3; padding: 3px 4px; position: relative; }
+    .cal-event {
+      border-radius: 5px; padding: 4px 7px; font-size: 11px;
+      margin-bottom: 2px; cursor: pointer; position: relative;
+      line-height: 1.3; transition: var(--transition);
+    }
+    .cal-event:hover { opacity: 0.85; transform: scale(1.01); }
+    .cal-event .ev-patient { font-weight: 600; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cal-event .ev-service { opacity: 0.8; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ev-mitchell { background: rgba(143,174,155,0.25); color: #2d6b4a; border-left: 3px solid var(--sage); }
+    .ev-chen { background: rgba(107,156,154,0.25); color: #2a5e5c; border-left: 3px solid var(--teal); }
+    .ev-sharma { background: rgba(130,100,180,0.2); color: #5a3d8a; border-left: 3px solid #8264b4; }
+    .ev-torres { background: rgba(232,167,66,0.2); color: #7a5500; border-left: 3px solid var(--warning); }
+    .ev-watson { background: rgba(91,155,213,0.2); color: #1a4f8a; border-left: 3px solid var(--info); }
+    .ev-kim { background: rgba(224,92,92,0.15); color: #8a2020; border-left: 3px solid var(--danger); }
+
+    .scheduler-sidebar { display: flex; flex-direction: column; gap: 15px; }
+    .sched-card { background: white; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04); }
+    .sched-card h4 { font-size: 13.5px; font-weight: 700; color: var(--charcoal); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .sched-card h4 i { color: var(--sage); }
+    .appt-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f5f5f5; }
+    .appt-item:last-child { border-bottom: none; }
+    .appt-time { font-size: 11.5px; font-weight: 700; color: var(--teal); min-width: 48px; }
+    .appt-info .appt-name { font-size: 12.5px; font-weight: 600; }
+    .appt-info .appt-sub { font-size: 11px; color:var(--text-muted); }
+    .appt-status-dot { width: 8px; height: 8px; border-radius: 50%; margin-left: auto; flex-shrink: 0; }
+    .appt-status-dot.done { background: var(--success); }
+    .appt-status-dot.in-progress { background: var(--warning); }
+    .appt-status-dot.upcoming { background: var(--info); }
+
+    .room-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .room-item { padding: 8px 10px; border-radius: 8px; font-size: 12px; display: flex; align-items: center; justify-content: space-between; }
+    .room-item.occupied { background: rgba(224,92,92,0.08); }
+    .room-item.free { background: rgba(90,171,126,0.08); }
+    .room-name { font-weight: 600; }
+    .room-status { font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 10px; }
+    .room-item.occupied .room-status { background: rgba(224,92,92,0.12); color: var(--danger); }
+    .room-item.free .room-status { background: rgba(90,171,126,0.12); color: var(--success); }
+
+    /* ===== THERAPIST CARDS ===== */
+    .therapist-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-bottom: 24px; }
+    .therapist-card {
+      background: white; border-radius: var(--radius); padding: 22px;
+      box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      transition: var(--transition); position: relative;
+    }
+    .therapist-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .therapist-photo {
+      width: 72px; height: 72px; border-radius: 50%;
+      object-fit: cover; border: 3px solid var(--beige);
+      margin-bottom: 12px;
+    }
+    .therapist-status {
+      position: absolute; top: 20px; right: 20px;
+      padding: 3px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 600;
+    }
+    .status-available { background: rgba(90,171,126,0.12); color: var(--success); }
+    .status-break { background: rgba(232,167,66,0.12); color: var(--warning); }
+    .status-busy { background: rgba(224,92,92,0.12); color: var(--danger); }
+    .therapist-name { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 2px; }
+    .therapist-title { font-size: 12px; color:var(--text-secondary); margin-bottom: 12px; }
+    .therapist-stats { display: flex; gap: 16px; margin-bottom: 14px; width: 100%; justify-content: center; }
+    .t-stat { text-align: center; }
+    .t-stat-value { font-size: 18px; font-weight: 700; color: var(--charcoal); display: block; }
+    .t-stat-label { font-size: 10px; color:var(--text-muted); }
+    .therapist-rating { font-size: 13px; font-weight: 600; color: var(--charcoal); margin-bottom: 14px; }
+    .therapist-rating i { color: #f4b942; }
+    .therapist-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+
+    /* ===== FINANCE ===== */
+    .finance-summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; margin-bottom: 20px; }
+    .finance-card {
+      background: white; border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04);
+      text-align: center;
+    }
+    .finance-card-label { font-size: 11.5px; color:var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .finance-card-value { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+    .finance-card-sub { font-size: 11.5px; color:var(--text-muted); }
+    .finance-card-value.total { color: var(--charcoal); }
+    .finance-card-value.collected { color: var(--success); }
+    .finance-card-value.pending { color: var(--warning); }
+    .finance-card-value.refunded { color: var(--danger); }
+
+    .finance-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+    .finance-select { padding: 7px 10px; border: 1px solid #e5e5e5; border-radius: 8px; font-size: 13px; font-family: var(--font-body); outline: none; cursor: pointer; }
+    .finance-select:focus { border-color: var(--sage); }
+    .export-btns { margin-left: auto; display: flex; gap: 8px; }
+
+    /* ===== NOTIFICATIONS & SETTINGS ===== */
+    .notif-settings-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .notif-list { display: flex; flex-direction: column; gap: 0; }
+    .notif-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px; border-bottom: 1px solid #f5f5f5;
+      transition: var(--transition); position: relative;
+    }
+    .notif-item:hover { background: var(--ivory); }
+    .notif-item.unread::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--sage);
+    }
+    .notif-dot {
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .notif-dot.red { background: rgba(224,92,92,0.1); }
+    .notif-dot.yellow { background: rgba(232,167,66,0.1); }
+    .notif-dot.green { background: rgba(90,171,126,0.1); }
+    .notif-dot.blue { background: rgba(91,155,213,0.1); }
+    .notif-text strong { font-size: 13px; font-weight: 600; display: block; line-height: 1.3; }
+    .notif-text small { font-size: 11.5px; color:var(--text-muted); }
+
+    .settings-section { margin-bottom: 20px; }
+    .settings-section h4 { font-size: 13px; font-weight: 700; color: var(--charcoal); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .setting-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0; border-bottom: 1px solid #f5f5f5;
+    }
+    .setting-row:last-child { border-bottom: none; }
+    .setting-info strong { font-size: 13.5px; font-weight: 600; display: block; }
+    .setting-info small { font-size: 11.5px; color:var(--text-muted); }
+
+    /* Toggle Switch */
+    .toggle-switch { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute; cursor: pointer; inset: 0;
+      background: #ccc; border-radius: 24px; transition: 0.3s;
+    }
+    .toggle-slider:before {
+      content: ''; position: absolute;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: white; left: 3px; top: 3px; transition: 0.3s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .toggle-switch input:checked + .toggle-slider { background: var(--sage); }
+    .toggle-switch input:checked + .toggle-slider:before { transform: translateX(20px); }
+    .toggle-switch input:disabled + .toggle-slider { opacity: 0.7; cursor: not-allowed; }
+
+    /* ===== QUICK DROPDOWN ===== */
+    .quick-dropdown {
+      position: absolute; top: calc(100% + 8px); right: 0;
+      background: white; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+      padding: 8px 0; min-width: 200px; z-index: 999;
+      border: 1px solid #eee; display: none;
+    }
+    .quick-dropdown.show { display: block; animation: fadeInPanel 0.2s ease; }
+    .quick-dropdown a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 16px; text-decoration: none;
+      color: var(--charcoal); font-size: 13.5px; transition: var(--transition);
+    }
+    .quick-dropdown a:hover { background: var(--ivory); color: var(--sage); }
+    .quick-dropdown a i { width: 16px; text-align: center; color: var(--sage); }
+    .quick-dropdown-wrapper { position: relative; }
+
+    /* ===== MOBILE OVERLAY ===== */
+    #sidebar-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4); z-index: 1040;
+    }
+    .menu-toggle {
+      display: none; width: 36px; height: 36px;
+      border: none; background: var(--ivory);
+      border-radius: 8px; cursor: pointer; align-items: center;
+      justify-content: center; font-size: 16px; color: var(--charcoal);
+    }
+
+    /* ===== MODAL ===== */
+    .modal-content { border-radius: var(--radius); border: none; box-shadow: var(--shadow-lg); }
+    .modal-header { background: var(--charcoal); color: white; border-radius: var(--radius) var(--radius) 0 0; }
+    .modal-header .btn-close { filter: invert(1); }
+    .form-label-admin { font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--charcoal); }
+    .form-control-admin {
+      width: 100%; padding: 8px 12px; border: 1px solid #e5e5e5;
+      border-radius: 8px; font-size: 13.5px; outline: none;
+      font-family: var(--font-body); transition: var(--transition);
+    }
+    .form-control-admin:focus { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(143,174,155,0.12); }
+
+    /* ===== PERFORMANCE CHART ===== */
+    .perf-section { background: white; border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04); }
+    .perf-section h3 { font-size: 14px; font-weight: 600; color: var(--charcoal); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+    .perf-section h3 i { color: var(--sage); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .kpi-grid { grid-template-columns: repeat(2,1fr); }
+      .charts-row { grid-template-columns: 1fr; }
+      .therapist-grid { grid-template-columns: repeat(2,1fr); }
+      .finance-summary { grid-template-columns: repeat(2,1fr); }
+      .notif-settings-layout { grid-template-columns: 1fr; }
+      .scheduler-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      #sidebar { transform: translateX(-100%); }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar-overlay.show { display: block; }
+      #main-wrapper { margin-left: 0; }
+      .menu-toggle { display: flex; }
+      .kpi-grid { grid-template-columns: repeat(2,1fr); }
+      .therapist-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .therapist-grid { grid-template-columns: 1fr; }
+      .finance-summary { grid-template-columns: 1fr; }
+      #content { padding: 14px; }
+      .topbar-profile-name, .topbar-profile-role { display: none; }
+      .quick-actions-btn span { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/contrast-fixes.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=2" />
+</head>
+<body>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div id="sidebar-overlay" aria-hidden="true" onclick="closeSidebar()"></div>
+
+<!-- ===== SIDEBAR ===== -->
+<nav id="sidebar" aria-label="Admin Navigation">
+  <!-- Brand -->
+  <div class="sidebar-brand">
+    <a href="#" class="brand-logo" aria-label="PhysioElite Admin">
+      <div class="brand-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
+      <div class="brand-text">
+        <h1>PhysioElite</h1>
+        <span>Admin Panel</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Admin User -->
+  <div class="sidebar-admin">
+    <img src="../assets/img/admin-user.jpg" alt="" class="admin-avatar" />
+    <div class="admin-info">
+      <span class="admin-name">Dr. Admin User</span>
+      <span class="admin-role">Super Admin</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="sidebar-nav" role="navigation">
+    <div class="nav-section-label">Overview</div>
+    <a href="#" class="active" onclick="showPanel('overview', this)" aria-current="page">
+      <i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Dashboard
+    </a>
+
+    <div class="nav-section-label">Management</div>
+    <a href="#" onclick="showPanel('patients', this)">
+      <i class="fa-solid fa-users" aria-hidden="true"></i> Patients
+    </a>
+    <a href="#" onclick="showPanel('therapists', this)">
+      <i class="fa-solid fa-user-doctor" aria-hidden="true"></i> Therapists
+    </a>
+    <a href="#" onclick="showPanel('appointments', this)">
+      <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Appointments
+    </a>
+    <a href="#" onclick="showPlaceholder('Treatment Plans', 'fa-solid fa-clipboard-list', this)">
+      <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Treatment Plans
+    </a>
+
+    <div class="nav-section-label">Finance</div>
+    <a href="#" onclick="showPanel('finance', this)">
+      <i class="fa-solid fa-dollar-sign" aria-hidden="true"></i> Payments
+    </a>
+    <a href="#" onclick="showPlaceholder('Invoices', 'fa-solid fa-file-invoice-dollar', this)">
+      <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i> Invoices
+    </a>
+    <a href="#" onclick="showPlaceholder('Reports', 'fa-solid fa-chart-pie', this)">
+      <i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Reports
+    </a>
+
+    <div class="nav-section-label">Operations</div>
+    <a href="#" onclick="showPlaceholder('Schedule', 'fa-solid fa-calendar-days', this)">
+      <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Schedule
+    </a>
+    <a href="#" onclick="showPlaceholder('Rooms', 'fa-solid fa-door-open', this)">
+      <i class="fa-solid fa-door-open" aria-hidden="true"></i> Rooms
+    </a>
+    <a href="#" onclick="showPlaceholder('Equipment', 'fa-solid fa-stethoscope', this)">
+      <i class="fa-solid fa-stethoscope" aria-hidden="true"></i> Equipment
+    </a>
+
+    <div class="nav-section-label">System</div>
+    <a href="#" onclick="showPanel('settings', this)">
+      <i class="fa-solid fa-bell" aria-hidden="true"></i> Notifications
+      <span class="nav-badge">7</span>
+    </a>
+    <a href="#" onclick="showPanel('settings', this)">
+      <i class="fa-solid fa-gear" aria-hidden="true"></i> Settings
+    </a>
+    <a href="#" onclick="showPlaceholder('Audit Log', 'fa-solid fa-scroll', this)">
+      <i class="fa-solid fa-scroll" aria-hidden="true"></i> Audit Log
+    </a>
+  </div>
+
+  <!-- Logout -->
+  <div class="sidebar-logout">
+    <a href="../pages/login.html" aria-label="Log out">
+      <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+      <span>Log Out</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ===== MAIN WRAPPER ===== -->
+<div id="main-wrapper">
+
+  <!-- TOP BAR -->
+  <header id="topbar" role="banner">
+        <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar" aria-expanded="false" id="menuToggleBtn">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <div class="topbar-search" role="search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" placeholder="Search patients, appointments, therapists…" aria-label="Search everything" />
+    </div>
+
+    <div class="topbar-actions">
+
+      <!-- Notification Bell -->
+      <button class="topbar-btn" aria-label="Notifications — 7 unread" title="Notifications">
+        <i class="fa-solid fa-bell" aria-hidden="true"></i>
+        <span class="badge-dot" aria-hidden="true">7</span>
+      </button>
+
+      <div class="topbar-divider" role="separator"></div>
+
+      <!-- Quick Actions -->
+      <div class="quick-dropdown-wrapper">
+        <button class="quick-actions-btn" onclick="toggleQuickDropdown()" aria-label="Quick Actions" aria-haspopup="true">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          <span>Quick Actions</span>
+          <i class="fa-solid fa-chevron-down" style="font-size:10px" aria-hidden="true"></i>
+        </button>
+        <div class="quick-dropdown" id="quickDropdown" role="menu">
+          <a href="#" role="menuitem" onclick="showModal('addPatientModal')"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> Add Patient</a>
+          <a href="#" role="menuitem" onclick="showModal('addApptModal')"><i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> New Appointment</a>
+          <a href="#" role="menuitem"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i> Generate Invoice</a>
+          <a href="#" role="menuitem"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Send Bulk SMS</a>
+          <a href="#" role="menuitem"><i class="fa-solid fa-file-export" aria-hidden="true"></i> Export Report</a>
+        </div>
+      </div>
+
+      <div class="topbar-divider" role="separator"></div>
+
+      <!-- Profile -->
+      <div class="topbar-profile" tabindex="0" role="button" aria-label="Admin profile">
+        <img src="../assets/img/admin-user.jpg" alt="" class="topbar-profile-avatar" />
+        <div>
+          <div class="topbar-profile-name">Dr. Admin User</div>
+          <div class="topbar-profile-role">Super Admin</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CONTENT AREA ===== -->
+  <main id="content" role="main">
+
+    <!-- ======================================== -->
+    <!-- PANEL 1 — OVERVIEW DASHBOARD            -->
+    <!-- ======================================== -->
+    <div class="admin-panel active" id="panel-overview" aria-label="Dashboard Overview">
+      <div class="panel-header">
+        <div>
+          <h1>Dashboard</h1>
+          <div class="date-label"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Wednesday, November 18, 2024</div>
+        </div>
+        <button class="btn-admin btn-sage" onclick="showModal('addApptModal')">
+          <i class="fa-solid fa-plus" aria-hidden="true"></i> New Appointment
+        </button>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid" role="region" aria-label="Key Performance Indicators">
+        <div class="kpi-card">
+          <div class="kpi-icon sage"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></div>
+          <div class="kpi-value">24</div>
+          <div class="kpi-label">Today's Appointments</div>
+          <div class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 3 from yesterday</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon teal"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
+          <div class="kpi-value">187</div>
+          <div class="kpi-label">Active Patients</div>
+          <div class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 12 this month</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon success"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></div>
+          <div class="kpi-value">6</div>
+          <div class="kpi-label">Active Therapists</div>
+          <div class="kpi-trend neutral"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> All available today</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon gold"><i class="fa-solid fa-dollar-sign" aria-hidden="true"></i></div>
+          <div class="kpi-value">$18,450</div>
+          <div class="kpi-label">Monthly Revenue</div>
+          <div class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 8% vs last month</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon warning"><i class="fa-solid fa-clock" aria-hidden="true"></i></div>
+          <div class="kpi-value">$2,340</div>
+          <div class="kpi-label">Pending Payments</div>
+          <div class="kpi-trend" style="color:var(--warning)"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 12 invoices</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon success"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></div>
+          <div class="kpi-value">94%</div>
+          <div class="kpi-label">Recovery Success Rate</div>
+          <div class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> Excellent outcome</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon info"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></div>
+          <div class="kpi-value">23</div>
+          <div class="kpi-label">New Registrations (Month)</div>
+          <div class="kpi-trend up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 5 from last month</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon purple"><i class="fa-solid fa-star" aria-hidden="true"></i></div>
+          <div class="kpi-value">4.8/5</div>
+          <div class="kpi-label">Avg Session Rating</div>
+          <div class="kpi-trend" style="color:#f4b942"><i class="fa-solid fa-star" aria-hidden="true"></i> Outstanding</div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Revenue — Last 6 Months</h3>
+          <div class="chart-container">
+            <canvas id="revenueChart" aria-label="Revenue chart for last 6 months"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3><i class="fa-solid fa-chart-bar" aria-hidden="true"></i> Appointments — This Week</h3>
+          <div class="chart-container">
+            <canvas id="appointmentsChart" aria-label="Appointments by day this week"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Feed -->
+      <div class="activity-card" role="log" aria-label="Recent activity feed" aria-live="polite">
+        <div class="activity-header">
+          <span><i class="fa-solid fa-bolt" style="color:var(--sage);margin-right:7px" aria-hidden="true"></i>Recent Activity</span>
+          <a href="#" style="font-size:12px;color:var(--teal);text-decoration:none">View all</a>
+        </div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(90,171,126,0.1);color:var(--success)"><i class="fa-solid fa-user-check" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>Emma Thompson checked in — Room 2</strong><small>2 min ago · Dr. Mitchell · ACL Recovery session</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(91,155,213,0.1);color:var(--info)"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>Invoice INV-2024-089 paid — $80.00</strong><small>14 min ago · Emma Thompson · Online payment</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(143,174,155,0.15);color:var(--sage)"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>New patient registered — Lisa Brown</strong><small>28 min ago · Self-registration via website</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(232,167,66,0.1);color:var(--warning)"><i class="fa-solid fa-calendar-xmark" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>Appointment rescheduled — Robert Kim (PT-004)</strong><small>45 min ago · Dr. Mitchell · Moved to Nov 20</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(130,100,180,0.1);color:#8264b4"><i class="fa-solid fa-star" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>5-star review received from Emma Thompson</strong><small>1 hr ago · "Dr. Mitchell is exceptional!"</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(224,92,92,0.08);color:var(--danger)"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>Payment overdue alert — PT-045 (Michael Davis)</strong><small>1.5 hrs ago · $150 outstanding — 3 weeks overdue</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(107,156,154,0.15);color:var(--teal)"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>Treatment plan updated — Priya Patel</strong><small>2 hrs ago · Dr. Sharma · Phase 2 commenced</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(90,171,126,0.1);color:var(--success)"><i class="fa-solid fa-calendar-plus" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>3 new appointments booked online</strong><small>2.5 hrs ago · Self-booked via patient portal</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:#f0f0f0;color:var(--text-secondary)"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>System backup completed successfully</strong><small>3 hrs ago · Automated backup · All data secured</small></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:rgba(91,155,213,0.1);color:var(--info)"><i class="fa-solid fa-wrench" aria-hidden="true"></i></div>
+            <div class="activity-text"><strong>Equipment maintenance logged — Room 3 Ultrasound</strong><small>4 hrs ago · Scheduled service due in 7 days</small></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-overview -->
+
+
+    <!-- ======================================== -->
+    <!-- PANEL 2 — PATIENT MANAGEMENT            -->
+    <!-- ======================================== -->
+    <div class="admin-panel" id="panel-patients" aria-label="Patient Management">
+      <div class="panel-header">
+        <div>
+          <h1>Patient Management</h1>
+          <div class="date-label">187 total patients · 23 new this month</div>
+        </div>
+        <button class="btn-admin btn-sage" onclick="showModal('addPatientModal')">
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Add New Patient
+        </button>
+      </div>
+
+      <div class="card-admin">
+        <div class="card-body-admin">
+          <!-- Toolbar -->
+          <div class="table-toolbar">
+            <div class="table-search">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" placeholder="Search patients…" aria-label="Search patients" />
+            </div>
+            <button class="btn-filter active" onclick="filterPatients(this,'all')">All</button>
+            <button class="btn-filter" onclick="filterPatients(this,'active')">Active</button>
+            <button class="btn-filter" onclick="filterPatients(this,'inactive')">Inactive</button>
+            <button class="btn-filter" onclick="filterPatients(this,'new')">New</button>
+            <div style="margin-left:auto;display:flex;gap:8px;">
+              <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-file-csv" aria-hidden="true"></i> Export CSV</button>
+              <button class="btn-admin btn-sage btn-sm-admin" onclick="showModal('addPatientModal')"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add Patient</button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div style="overflow-x:auto;" role="region" aria-label="Patient table" tabindex="0">
+            <table class="admin-table" aria-label="Patients list">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="selectAll" onclick="toggleAll(this)" aria-label="Select all patients" /></th>
+                  <th>Patient ID</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Condition</th>
+                  <th>Therapist</th>
+                  <th>Last Visit</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="patientTableBody">
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Emma Thompson" /></td>
+                  <td><span class="patient-id">PT-001</span></td>
+                  <td><span class="patient-name">Emma Thompson</span></td>
+                  <td>32</td>
+                  <td>ACL Recovery</td>
+                  <td>Dr. Mitchell</td>
+                  <td>Nov 15</td>
+                  <td><span class="badge-status badge-active"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Active</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View patient"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit patient" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete patient"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select John Smith" /></td>
+                  <td><span class="patient-id">PT-002</span></td>
+                  <td><span class="patient-name">John Smith</span></td>
+                  <td>45</td>
+                  <td>Back Pain</td>
+                  <td>Dr. Chen</td>
+                  <td>Nov 14</td>
+                  <td><span class="badge-status badge-active"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Active</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Priya Patel" /></td>
+                  <td><span class="patient-id">PT-003</span></td>
+                  <td><span class="patient-name">Priya Patel</span></td>
+                  <td>28</td>
+                  <td>Shoulder Injury</td>
+                  <td>Dr. Sharma</td>
+                  <td>Nov 12</td>
+                  <td><span class="badge-status badge-active"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Active</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Robert Kim" /></td>
+                  <td><span class="patient-id">PT-004</span></td>
+                  <td><span class="patient-name">Robert Kim</span></td>
+                  <td>65</td>
+                  <td>Hip Replacement</td>
+                  <td>Dr. Mitchell</td>
+                  <td>Nov 10</td>
+                  <td><span class="badge-status badge-active"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Active</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Sarah Wilson" /></td>
+                  <td><span class="patient-id">PT-005</span></td>
+                  <td><span class="patient-name">Sarah Wilson</span></td>
+                  <td>38</td>
+                  <td>Neck Pain</td>
+                  <td>Dr. Torres</td>
+                  <td>Nov 8</td>
+                  <td><span class="badge-status badge-inactive"><i class="fa-solid fa-circle-minus" aria-hidden="true"></i> Inactive</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Marcus Lee" /></td>
+                  <td><span class="patient-id">PT-006</span></td>
+                  <td><span class="patient-name">Marcus Lee</span></td>
+                  <td>52</td>
+                  <td>Knee Arthritis</td>
+                  <td>Dr. Kim</td>
+                  <td>Nov 7</td>
+                  <td><span class="badge-status badge-active"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Active</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Lisa Brown" /></td>
+                  <td><span class="patient-id">PT-007</span></td>
+                  <td><span class="patient-name">Lisa Brown</span></td>
+                  <td>29</td>
+                  <td>Postural Issues</td>
+                  <td>Dr. Watson</td>
+                  <td>Nov 18</td>
+                  <td><span class="badge-status badge-new"><i class="fa-solid fa-star" aria-hidden="true"></i> New</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select David Nguyen" /></td>
+                  <td><span class="patient-id">PT-008</span></td>
+                  <td><span class="patient-name">David Nguyen</span></td>
+                  <td>41</td>
+                  <td>Sports Injury</td>
+                  <td>Dr. Torres</td>
+                  <td>Nov 6</td>
+                  <td><span class="badge-status badge-onhold"><i class="fa-solid fa-circle-pause" aria-hidden="true"></i> On Hold</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Aisha Johnson" /></td>
+                  <td><span class="patient-id">PT-009</span></td>
+                  <td><span class="patient-name">Aisha Johnson</span></td>
+                  <td>34</td>
+                  <td>Lower Back Pain</td>
+                  <td>Dr. Chen</td>
+                  <td>Nov 5</td>
+                  <td><span class="badge-status badge-active"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Active</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" aria-label="Select Thomas Clarke" /></td>
+                  <td><span class="patient-id">PT-010</span></td>
+                  <td><span class="patient-name">Thomas Clarke</span></td>
+                  <td>58</td>
+                  <td>Stroke Rehab</td>
+                  <td>Dr. Kim</td>
+                  <td>Nov 4</td>
+                  <td><span class="badge-status badge-active"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Active</span></td>
+                  <td>
+                    <button class="btn-admin btn-outline btn-sm-admin" title="View"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-teal btn-sm-admin" title="Edit" style="margin:0 3px;"><i class="fa-solid fa-pen" aria-hidden="true"></i></button>
+                    <button class="btn-admin btn-danger-soft btn-sm-admin" title="Delete"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Bulk Actions -->
+          <div class="bulk-actions">
+            <span style="font-size:12.5px;color:var(--text-secondary);align-self:center;">Bulk actions:</span>
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i> Assign Therapist</button>
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-bell" aria-hidden="true"></i> Send Reminder</button>
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-file-export" aria-hidden="true"></i> Export Selected</button>
+            <button class="btn-admin btn-danger-soft btn-sm-admin"><i class="fa-solid fa-trash" aria-hidden="true"></i> Delete Selected</button>
+          </div>
+
+          <!-- Pagination -->
+          <div class="table-pagination">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span>Showing 1–10 of 187</span>
+              <span>Rows per page:</span>
+              <select class="rows-select" aria-label="Rows per page">
+                <option>10</option><option>25</option><option>50</option>
+              </select>
+            </div>
+            <div class="pagination-pages" role="navigation" aria-label="Pagination">
+              <button class="page-btn" aria-label="Previous page"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+              <button class="page-btn active" aria-label="Page 1" aria-current="page">1</button>
+              <button class="page-btn" aria-label="Page 2">2</button>
+              <button class="page-btn" aria-label="Page 3">3</button>
+              <span style="padding:0 4px;color:var(--text-muted);line-height:32px;">…</span>
+              <button class="page-btn" aria-label="Page 19">19</button>
+              <button class="page-btn" aria-label="Next page"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-patients -->
+
+
+    <!-- ======================================== -->
+    <!-- PANEL 3 — APPOINTMENT SCHEDULER         -->
+    <!-- ======================================== -->
+    <div class="admin-panel" id="panel-appointments" aria-label="Appointment Scheduler">
+      <div class="panel-header">
+        <div>
+          <h1>Appointment Management</h1>
+          <div class="date-label">Week of Nov 18 – Nov 23, 2024</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <div class="view-toggle" role="group" aria-label="Calendar view">
+            <button class="active" aria-pressed="false">Day</button>
+            <button class="active" aria-pressed="true">Week</button>
+            <button aria-pressed="false">Month</button>
+          </div>
+          <button class="btn-admin btn-sage" onclick="showModal('addApptModal')">
+            <i class="fa-solid fa-plus" aria-hidden="true"></i> Add Appointment
+          </button>
+        </div>
+      </div>
+
+      <div class="scheduler-layout">
+        <!-- Week Calendar -->
+        <div>
+          <div class="week-calendar" role="grid" aria-label="Weekly appointment calendar">
+            <div class="cal-header" role="row">
+              <div role="columnheader">Time</div>
+              <div role="columnheader">Mon 18</div>
+              <div role="columnheader">Tue 19</div>
+              <div role="columnheader">Wed 20</div>
+              <div role="columnheader">Thu 21</div>
+              <div role="columnheader">Fri 22</div>
+              <div role="columnheader">Sat 23</div>
+            </div>
+            <div class="cal-body">
+              <!-- 7am -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">7:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Emma Thompson — ACL Recovery — Room 2"><span class="ev-patient">Emma T.</span><span class="ev-service">ACL Recovery · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="Aisha Johnson — Manual Therapy — Room 4"><span class="ev-patient">Aisha J.</span><span class="ev-service">Manual Therapy · R4</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Marcus Lee — Knee Therapy — Room 3"><span class="ev-patient">Marcus L.</span><span class="ev-service">Knee Therapy · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+              </div>
+              <!-- 8am -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">8:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="John Smith — Back Pain — Room 1"><span class="ev-patient">John S.</span><span class="ev-service">Back Pain · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Robert Kim — Hip Rehab — Room 2"><span class="ev-patient">Robert K.</span><span class="ev-service">Hip Rehab · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="David Nguyen — Sports Physio — Room 5"><span class="ev-patient">David N.</span><span class="ev-service">Sports Physio · R5</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-watson" title="Lisa Brown — Postural — Room 6"><span class="ev-patient">Lisa B.</span><span class="ev-service">Postural · R6</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Emma Thompson — ACL Review — Room 2"><span class="ev-patient">Emma T.</span><span class="ev-service">ACL Review · R2</span></div>
+                </div>
+              </div>
+              <!-- 9am -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">9:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Priya Patel — Shoulder — Room 3"><span class="ev-patient">Priya P.</span><span class="ev-service">Shoulder · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="Sarah Wilson — Neck Pain — Room 5"><span class="ev-patient">Sarah W.</span><span class="ev-service">Neck Pain · R5</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Emma Thompson — Physio — Room 2"><span class="ev-patient">Emma T.</span><span class="ev-service">Physio · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="Thomas Clarke — Neuro — Room 1"><span class="ev-patient">Thomas C.</span><span class="ev-service">Neuro · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-kim" title="Thomas Clarke — Stroke Rehab — Room 4"><span class="ev-patient">Thomas C.</span><span class="ev-service">Stroke Rehab · R4</span></div>
+                </div>
+              </div>
+              <!-- 10am -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">10:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-kim" title="Marcus Lee — Knee — Room 4"><span class="ev-patient">Marcus L.</span><span class="ev-service">Knee · R4</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Priya Patel — Manual — Room 3"><span class="ev-patient">Priya P.</span><span class="ev-service">Manual · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="David Nguyen — Exercise — Room 5"><span class="ev-patient">David N.</span><span class="ev-service">Exercise · R5</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-watson" title="Lisa Brown — Paediatric — Room 6"><span class="ev-patient">Lisa B.</span><span class="ev-service">Paediatric · R6</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="John Smith — Physio — Room 2"><span class="ev-patient">John S.</span><span class="ev-service">Physio · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+              </div>
+              <!-- 11am -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">11:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-watson" title="Lisa Brown — Assessment — Room 6"><span class="ev-patient">Lisa B.</span><span class="ev-service">Assessment · R6</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="Aisha Johnson — Manual — Room 1"><span class="ev-patient">Aisha J.</span><span class="ev-service">Manual · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-kim" title="Thomas Clarke — Neuro Rehab — Room 4"><span class="ev-patient">Thomas C.</span><span class="ev-service">Neuro · R4</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Robert Kim — Hip — Room 2"><span class="ev-patient">Robert K.</span><span class="ev-service">Hip · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Priya Patel — Shoulder — Room 3"><span class="ev-patient">Priya P.</span><span class="ev-service">Shoulder · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="Sarah Wilson — Neck — Room 5"><span class="ev-patient">Sarah W.</span><span class="ev-service">Neck · R5</span></div>
+                </div>
+              </div>
+              <!-- 12pm -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">12:00</div>
+                <div class="cal-cell" role="gridcell" colspan="6" style="background:#fafafa;"></div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell"></div>
+                <div class="cal-cell" role="gridcell"></div>
+              </div>
+              <!-- 1pm -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">13:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="John Smith — Back — Room 1"><span class="ev-patient">John S.</span><span class="ev-service">Back · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Emma Thompson — ACL — Room 2"><span class="ev-patient">Emma T.</span><span class="ev-service">ACL · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Marcus Lee — Manual — Room 3"><span class="ev-patient">Marcus L.</span><span class="ev-service">Manual · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="David Nguyen — Sports — Room 5"><span class="ev-patient">David N.</span><span class="ev-service">Sports · R5</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-kim" title="Thomas Clarke — Neuro — Room 4"><span class="ev-patient">Thomas C.</span><span class="ev-service">Neuro · R4</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="Aisha Johnson — Manual — Room 1"><span class="ev-patient">Aisha J.</span><span class="ev-service">Manual · R1</span></div>
+                </div>
+              </div>
+              <!-- 2pm -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">14:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="Sarah Wilson — Neck — Room 5"><span class="ev-patient">Sarah W.</span><span class="ev-service">Neck · R5</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-kim" title="Marcus Lee — Knee — Room 4"><span class="ev-patient">Marcus L.</span><span class="ev-service">Knee · R4</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-watson" title="Lisa Brown — Posture — Room 6"><span class="ev-patient">Lisa B.</span><span class="ev-service">Posture · R6</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="John Smith — Back — Room 1"><span class="ev-patient">John S.</span><span class="ev-service">Back · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Robert Kim — Hip — Room 2"><span class="ev-patient">Robert K.</span><span class="ev-service">Hip · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Priya Patel — Shoulder — Room 3"><span class="ev-patient">Priya P.</span><span class="ev-service">Shoulder · R3</span></div>
+                </div>
+              </div>
+              <!-- 3pm -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">15:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Robert Kim — Hip Review — Room 2"><span class="ev-patient">Robert K.</span><span class="ev-service">Hip Review · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-watson" title="Lisa Brown — Paediatric — Room 6"><span class="ev-patient">Lisa B.</span><span class="ev-service">Paediatric · R6</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="Aisha Johnson — Manual — Room 1"><span class="ev-patient">Aisha J.</span><span class="ev-service">Manual · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Marcus Lee — Knee — Room 3"><span class="ev-patient">Marcus L.</span><span class="ev-service">Knee · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="David Nguyen — Sports — Room 5"><span class="ev-patient">David N.</span><span class="ev-service">Sports · R5</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+              </div>
+              <!-- 4pm -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">16:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Priya Patel — Shoulder — Room 3"><span class="ev-patient">Priya P.</span><span class="ev-service">Shoulder · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="Thomas Clarke — Neuro — Room 1"><span class="ev-patient">Thomas C.</span><span class="ev-service">Neuro · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-kim" title="Marcus Lee — Knee Strength — Room 4"><span class="ev-patient">Marcus L.</span><span class="ev-service">Knee Strength · R4</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Emma Thompson — ACL Final — Room 2"><span class="ev-patient">Emma T.</span><span class="ev-service">ACL Final · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-chen" title="John Smith — Maintenance — Room 1"><span class="ev-patient">John S.</span><span class="ev-service">Maintenance · R1</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="Sarah Wilson — Neck — Room 5"><span class="ev-patient">Sarah W.</span><span class="ev-service">Neck · R5</span></div>
+                </div>
+              </div>
+              <!-- 5pm -->
+              <div class="cal-row" role="row">
+                <div class="cal-time" role="rowheader">17:00</div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-torres" title="David Nguyen — Sports — Room 5"><span class="ev-patient">David N.</span><span class="ev-service">Sports · R5</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-sharma" title="Priya Patel — Manual — Room 3"><span class="ev-patient">Priya P.</span><span class="ev-service">Manual · R3</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-mitchell" title="Emma Thompson — Follow-up — Room 2"><span class="ev-patient">Emma T.</span><span class="ev-service">Follow-up · R2</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-watson" title="Lisa Brown — Posture — Room 6"><span class="ev-patient">Lisa B.</span><span class="ev-service">Posture · R6</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell">
+                  <div class="cal-event ev-kim" title="Thomas Clarke — Neuro — Room 4"><span class="ev-patient">Thomas C.</span><span class="ev-service">Neuro · R4</span></div>
+                </div>
+                <div class="cal-cell" role="gridcell"></div>
+              </div>
+            </div><!-- /cal-body -->
+
+            <!-- Legend -->
+            <div style="display:flex;gap:12px;padding:12px 16px;border-top:1px solid #f0f0f0;flex-wrap:wrap;">
+              <span style="font-size:11px;font-weight:600;color:var(--text-secondary);">LEGEND:</span>
+              <span style="font-size:11.5px;padding:2px 8px;background:rgba(143,174,155,0.25);color:#2d6b4a;border-radius:4px;">Dr. Mitchell</span>
+              <span style="font-size:11.5px;padding:2px 8px;background:rgba(107,156,154,0.25);color:#2a5e5c;border-radius:4px;">Dr. Chen</span>
+              <span style="font-size:11.5px;padding:2px 8px;background:rgba(130,100,180,0.2);color:#5a3d8a;border-radius:4px;">Dr. Sharma</span>
+              <span style="font-size:11.5px;padding:2px 8px;background:rgba(232,167,66,0.2);color:#7a5500;border-radius:4px;">Dr. Torres</span>
+              <span style="font-size:11.5px;padding:2px 8px;background:rgba(91,155,213,0.2);color:#1a4f8a;border-radius:4px;">Dr. Watson</span>
+              <span style="font-size:11.5px;padding:2px 8px;background:rgba(224,92,92,0.15);color:#8a2020;border-radius:4px;">Dr. Kim</span>
+            </div>
+          </div><!-- /week-calendar -->
+        </div>
+
+        <!-- Scheduler Sidebar -->
+        <div class="scheduler-sidebar">
+          <!-- Today's Appointments -->
+          <div class="sched-card">
+            <h4><i class="fa-solid fa-list-check" aria-hidden="true"></i> Today's Appointments</h4>
+            <div class="appt-item">
+              <div class="appt-time">07:00</div>
+              <div class="appt-info">
+                <div class="appt-name">Emma Thompson</div>
+                <div class="appt-sub">Dr. Mitchell · Room 2</div>
+              </div>
+              <div class="appt-status-dot done" title="Completed"></div>
+            </div>
+            <div class="appt-item">
+              <div class="appt-time">08:00</div>
+              <div class="appt-info">
+                <div class="appt-name">John Smith</div>
+                <div class="appt-sub">Dr. Chen · Room 1</div>
+              </div>
+              <div class="appt-status-dot done" title="Completed"></div>
+            </div>
+            <div class="appt-item">
+              <div class="appt-time">09:00</div>
+              <div class="appt-info">
+                <div class="appt-name">Priya Patel</div>
+                <div class="appt-sub">Dr. Sharma · Room 3</div>
+              </div>
+              <div class="appt-status-dot in-progress" title="In Progress"></div>
+            </div>
+            <div class="appt-item">
+              <div class="appt-time">10:00</div>
+              <div class="appt-info">
+                <div class="appt-name">Marcus Lee</div>
+                <div class="appt-sub">Dr. Kim · Room 4</div>
+              </div>
+              <div class="appt-status-dot upcoming" title="Upcoming"></div>
+            </div>
+            <div class="appt-item">
+              <div class="appt-time">11:00</div>
+              <div class="appt-info">
+                <div class="appt-name">Lisa Brown</div>
+                <div class="appt-sub">Dr. Watson · Room 6</div>
+              </div>
+              <div class="appt-status-dot upcoming" title="Upcoming"></div>
+            </div>
+            <div style="margin-top:12px;">
+              <button class="btn-admin btn-sage" style="width:100%;justify-content:center;" onclick="showModal('addApptModal')">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i> Quick Add Appointment
+              </button>
+            </div>
+          </div>
+
+          <!-- Room Availability -->
+          <div class="sched-card">
+            <h4><i class="fa-solid fa-door-open" aria-hidden="true"></i> Room Availability</h4>
+            <div class="room-grid">
+              <div class="room-item occupied">
+                <div class="room-name">Room 1</div>
+                <span class="room-status">Occupied</span>
+              </div>
+              <div class="room-item occupied">
+                <div class="room-name">Room 2</div>
+                <span class="room-status">Occupied</span>
+              </div>
+              <div class="room-item occupied">
+                <div class="room-name">Room 3</div>
+                <span class="room-status">Occupied</span>
+              </div>
+              <div class="room-item free">
+                <div class="room-name">Room 4</div>
+                <span class="room-status">Free</span>
+              </div>
+              <div class="room-item occupied">
+                <div class="room-name">Room 5</div>
+                <span class="room-status">Occupied</span>
+              </div>
+              <div class="room-item free">
+                <div class="room-name">Room 6</div>
+                <span class="room-status">Free</span>
+              </div>
+            </div>
+          </div>
+        </div><!-- /scheduler-sidebar -->
+      </div><!-- /scheduler-layout -->
+    </div><!-- /panel-appointments -->
+
+
+    <!-- ======================================== -->
+    <!-- PANEL 4 — THERAPIST MANAGEMENT          -->
+    <!-- ======================================== -->
+    <div class="admin-panel" id="panel-therapists" aria-label="Therapist Management">
+      <div class="panel-header">
+        <div>
+          <h1>Therapist Management</h1>
+          <div class="date-label">6 therapists · All on duty today</div>
+        </div>
+        <button class="btn-admin btn-sage">
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Add Therapist
+        </button>
+      </div>
+
+      <div class="therapist-grid">
+        <!-- Dr. Mitchell -->
+        <div class="therapist-card">
+          <span class="therapist-status status-available"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Available</span>
+          <img src="../assets/img/staff-sarah-mitchell.jpg" alt="Dr. Sarah Mitchell" class="therapist-photo" />
+          <div class="therapist-name">Dr. Sarah Mitchell</div>
+          <div class="therapist-title">Lead Physiotherapist</div>
+          <div class="therapist-stats">
+            <div class="t-stat">
+              <span class="t-stat-value">6</span>
+              <span class="t-stat-label">Today</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">42</span>
+              <span class="t-stat-label">This Month</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">98%</span>
+              <span class="t-stat-label">Attendance</span>
+            </div>
+          </div>
+          <div class="therapist-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.9 / 5.0</div>
+          <div class="therapist-actions">
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Schedule</button>
+            <button class="btn-admin btn-teal btn-sm-admin"><i class="fa-solid fa-pen" aria-hidden="true"></i> Edit</button>
+            <button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-message" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <!-- Dr. Chen -->
+        <div class="therapist-card">
+          <span class="therapist-status status-break"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> On Break</span>
+          <img src="../assets/img/staff-james-chen.jpg" alt="Dr. James Chen" class="therapist-photo" />
+          <div class="therapist-name">Dr. James Chen</div>
+          <div class="therapist-title">Senior Physiotherapist</div>
+          <div class="therapist-stats">
+            <div class="t-stat">
+              <span class="t-stat-value">5</span>
+              <span class="t-stat-label">Today</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">38</span>
+              <span class="t-stat-label">This Month</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">96%</span>
+              <span class="t-stat-label">Attendance</span>
+            </div>
+          </div>
+          <div class="therapist-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8 / 5.0</div>
+          <div class="therapist-actions">
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Schedule</button>
+            <button class="btn-admin btn-teal btn-sm-admin"><i class="fa-solid fa-pen" aria-hidden="true"></i> Edit</button>
+            <button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-message" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <!-- Dr. Sharma -->
+        <div class="therapist-card">
+          <span class="therapist-status status-available"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Available</span>
+          <img src="../assets/img/staff-priya-sharma.jpg" alt="Dr. Priya Sharma" class="therapist-photo" />
+          <div class="therapist-name">Dr. Priya Sharma</div>
+          <div class="therapist-title">Manual Therapy Specialist</div>
+          <div class="therapist-stats">
+            <div class="t-stat">
+              <span class="t-stat-value">4</span>
+              <span class="t-stat-label">Today</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">35</span>
+              <span class="t-stat-label">This Month</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">99%</span>
+              <span class="t-stat-label">Attendance</span>
+            </div>
+          </div>
+          <div class="therapist-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.9 / 5.0</div>
+          <div class="therapist-actions">
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Schedule</button>
+            <button class="btn-admin btn-teal btn-sm-admin"><i class="fa-solid fa-pen" aria-hidden="true"></i> Edit</button>
+            <button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-message" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <!-- Dr. Torres -->
+        <div class="therapist-card">
+          <span class="therapist-status status-available"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Available</span>
+          <img src="../assets/img/staff-michael-torres.jpg" alt="Dr. Michael Torres" class="therapist-photo" />
+          <div class="therapist-name">Dr. Michael Torres</div>
+          <div class="therapist-title">Exercise Physiologist</div>
+          <div class="therapist-stats">
+            <div class="t-stat">
+              <span class="t-stat-value">5</span>
+              <span class="t-stat-label">Today</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">36</span>
+              <span class="t-stat-label">This Month</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">97%</span>
+              <span class="t-stat-label">Attendance</span>
+            </div>
+          </div>
+          <div class="therapist-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7 / 5.0</div>
+          <div class="therapist-actions">
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Schedule</button>
+            <button class="btn-admin btn-teal btn-sm-admin"><i class="fa-solid fa-pen" aria-hidden="true"></i> Edit</button>
+            <button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-message" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <!-- Dr. Watson -->
+        <div class="therapist-card">
+          <span class="therapist-status status-busy"><i class="fa-solid fa-clock" aria-hidden="true"></i> Busy</span>
+          <img src="../assets/img/staff-emily-watson.jpg" alt="Dr. Emily Watson" class="therapist-photo" />
+          <div class="therapist-name">Dr. Emily Watson</div>
+          <div class="therapist-title">Paediatric Physiotherapy</div>
+          <div class="therapist-stats">
+            <div class="t-stat">
+              <span class="t-stat-value">3</span>
+              <span class="t-stat-label">Today</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">28</span>
+              <span class="t-stat-label">This Month</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">95%</span>
+              <span class="t-stat-label">Attendance</span>
+            </div>
+          </div>
+          <div class="therapist-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8 / 5.0</div>
+          <div class="therapist-actions">
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Schedule</button>
+            <button class="btn-admin btn-teal btn-sm-admin"><i class="fa-solid fa-pen" aria-hidden="true"></i> Edit</button>
+            <button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-message" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <!-- Dr. Kim -->
+        <div class="therapist-card">
+          <span class="therapist-status status-available"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Available</span>
+          <img src="../assets/img/staff-robert-kim.jpg" alt="Dr. Robert Kim" class="therapist-photo" />
+          <div class="therapist-name">Dr. Robert Kim</div>
+          <div class="therapist-title">Neuro Rehabilitation</div>
+          <div class="therapist-stats">
+            <div class="t-stat">
+              <span class="t-stat-value">6</span>
+              <span class="t-stat-label">Today</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">40</span>
+              <span class="t-stat-label">This Month</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-stat-value">100%</span>
+              <span class="t-stat-label">Attendance</span>
+            </div>
+          </div>
+          <div class="therapist-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.9 / 5.0</div>
+          <div class="therapist-actions">
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Schedule</button>
+            <button class="btn-admin btn-teal btn-sm-admin"><i class="fa-solid fa-pen" aria-hidden="true"></i> Edit</button>
+            <button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-message" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div><!-- /therapist-grid -->
+
+      <!-- Performance Chart -->
+      <div class="perf-section">
+        <h3><i class="fa-solid fa-chart-bar" aria-hidden="true"></i> Therapist Performance — Sessions This Month</h3>
+        <div style="height:220px;position:relative;">
+          <canvas id="therapistPerfChart" aria-label="Therapist performance comparison chart"></canvas>
+        </div>
+      </div>
+    </div><!-- /panel-therapists -->
+
+
+    <!-- ======================================== -->
+    <!-- PANEL 5 — FINANCE & PAYMENTS            -->
+    <!-- ======================================== -->
+    <div class="admin-panel" id="panel-finance" aria-label="Financial Overview">
+      <div class="panel-header">
+        <div>
+          <h1>Financial Overview</h1>
+          <div class="date-label">Month to Date — November 2024</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn-admin btn-outline"><i class="fa-solid fa-filter" aria-hidden="true"></i> Filter</button>
+          <button class="btn-admin btn-sage"><i class="fa-solid fa-file-invoice" aria-hidden="true"></i> New Invoice</button>
+        </div>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="finance-summary">
+        <div class="finance-card">
+          <div class="finance-card-label">Total Revenue MTD</div>
+          <div class="finance-card-value total">$18,450</div>
+          <div class="finance-card-sub"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 8% vs last month</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-label">Collected</div>
+          <div class="finance-card-value collected">$16,110</div>
+          <div class="finance-card-sub">87.3% collection rate</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-label">Pending</div>
+          <div class="finance-card-value pending">$2,340</div>
+          <div class="finance-card-sub">12 outstanding invoices</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-card-label">Refunded</div>
+          <div class="finance-card-value refunded">$450</div>
+          <div class="finance-card-sub">3 refund transactions</div>
+        </div>
+      </div>
+
+      <!-- Transactions Table -->
+      <div class="card-admin">
+        <div class="card-header-admin">
+          <h2>Transactions</h2>
+          <div class="export-btns">
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-file-csv" aria-hidden="true"></i> CSV</button>
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF</button>
+            <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-file-excel" aria-hidden="true"></i> Excel</button>
+          </div>
+        </div>
+        <div class="card-body-admin">
+          <!-- Filters -->
+          <div class="finance-toolbar">
+            <input type="date" class="finance-select" value="2024-11-01" aria-label="Start date" />
+            <span style="font-size:13px;color:var(--text-muted);">to</span>
+            <input type="date" class="finance-select" value="2024-11-18" aria-label="End date" />
+            <select class="finance-select" aria-label="Filter by therapist">
+              <option>All Therapists</option>
+              <option>Dr. Mitchell</option>
+              <option>Dr. Chen</option>
+              <option>Dr. Sharma</option>
+              <option>Dr. Torres</option>
+              <option>Dr. Watson</option>
+              <option>Dr. Kim</option>
+            </select>
+            <select class="finance-select" aria-label="Filter by status">
+              <option>All Status</option>
+              <option>Paid</option>
+              <option>Pending</option>
+              <option>Overdue</option>
+            </select>
+            <select class="finance-select" aria-label="Filter by service">
+              <option>All Services</option>
+              <option>Sports Therapy</option>
+              <option>Manual Therapy</option>
+              <option>Exercise Physio</option>
+              <option>Neuro Rehab</option>
+            </select>
+            <button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Search</button>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table class="admin-table" aria-label="Transactions list">
+              <thead>
+                <tr>
+                  <th>Invoice #</th>
+                  <th>Date</th>
+                  <th>Patient</th>
+                  <th>Service</th>
+                  <th>Therapist</th>
+                  <th>Total</th>
+                  <th>Insurance</th>
+                  <th>Patient Paid</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-089</code></td>
+                  <td>Nov 18</td>
+                  <td><span class="patient-name">Emma Thompson</span></td>
+                  <td>Sports Therapy</td>
+                  <td>Dr. Mitchell</td>
+                  <td><strong>$80.00</strong></td>
+                  <td>$45.00</td>
+                  <td>$35.00</td>
+                  <td><span class="badge-status badge-paid"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Paid</span></td>
+                  <td><button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-088</code></td>
+                  <td>Nov 18</td>
+                  <td><span class="patient-name">John Smith</span></td>
+                  <td>Manual Therapy</td>
+                  <td>Dr. Chen</td>
+                  <td><strong>$70.00</strong></td>
+                  <td>$40.00</td>
+                  <td>$30.00</td>
+                  <td><span class="badge-status badge-paid"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Paid</span></td>
+                  <td><button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-087</code></td>
+                  <td>Nov 17</td>
+                  <td><span class="patient-name">Priya Patel</span></td>
+                  <td>Shoulder Physio</td>
+                  <td>Dr. Sharma</td>
+                  <td><strong>$85.00</strong></td>
+                  <td>$50.00</td>
+                  <td>$35.00</td>
+                  <td><span class="badge-status badge-paid"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Paid</span></td>
+                  <td><button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-086</code></td>
+                  <td>Nov 17</td>
+                  <td><span class="patient-name">Robert Kim</span></td>
+                  <td>Hip Rehabilitation</td>
+                  <td>Dr. Mitchell</td>
+                  <td><strong>$95.00</strong></td>
+                  <td>$60.00</td>
+                  <td>$35.00</td>
+                  <td><span class="badge-status badge-pending"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Pending</span></td>
+                  <td><button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-bell" aria-hidden="true"></i> Remind</button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-085</code></td>
+                  <td>Nov 16</td>
+                  <td><span class="patient-name">Marcus Lee</span></td>
+                  <td>Knee Therapy</td>
+                  <td>Dr. Kim</td>
+                  <td><strong>$75.00</strong></td>
+                  <td>$45.00</td>
+                  <td>$30.00</td>
+                  <td><span class="badge-status badge-paid"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Paid</span></td>
+                  <td><button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-084</code></td>
+                  <td>Nov 15</td>
+                  <td><span class="patient-name">Sarah Wilson</span></td>
+                  <td>Neck Pain Therapy</td>
+                  <td>Dr. Torres</td>
+                  <td><strong>$65.00</strong></td>
+                  <td>$35.00</td>
+                  <td>$30.00</td>
+                  <td><span class="badge-status badge-paid"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Paid</span></td>
+                  <td><button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-083</code></td>
+                  <td>Nov 14</td>
+                  <td><span class="patient-name">David Nguyen</span></td>
+                  <td>Sports Physio</td>
+                  <td>Dr. Torres</td>
+                  <td><strong>$90.00</strong></td>
+                  <td>$55.00</td>
+                  <td>$35.00</td>
+                  <td><span class="badge-status badge-overdue"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> Overdue</span></td>
+                  <td><button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-bell" aria-hidden="true"></i> Remind</button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-082</code></td>
+                  <td>Nov 13</td>
+                  <td><span class="patient-name">Aisha Johnson</span></td>
+                  <td>Lower Back Physio</td>
+                  <td>Dr. Chen</td>
+                  <td><strong>$70.00</strong></td>
+                  <td>$40.00</td>
+                  <td>$30.00</td>
+                  <td><span class="badge-status badge-paid"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Paid</span></td>
+                  <td><button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-081</code></td>
+                  <td>Nov 12</td>
+                  <td><span class="patient-name">Thomas Clarke</span></td>
+                  <td>Stroke Rehabilitation</td>
+                  <td>Dr. Kim</td>
+                  <td><strong>$120.00</strong></td>
+                  <td>$80.00</td>
+                  <td>$40.00</td>
+                  <td><span class="badge-status badge-pending"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Pending</span></td>
+                  <td><button class="btn-admin btn-sage btn-sm-admin"><i class="fa-solid fa-bell" aria-hidden="true"></i> Remind</button></td>
+                </tr>
+                <tr>
+                  <td><code style="font-size:12px;color:var(--teal);">INV-2024-080</code></td>
+                  <td>Nov 11</td>
+                  <td><span class="patient-name">Lisa Brown</span></td>
+                  <td>Initial Assessment</td>
+                  <td>Dr. Watson</td>
+                  <td><strong>$50.00</strong></td>
+                  <td>$0.00</td>
+                  <td>$50.00</td>
+                  <td><span class="badge-status badge-paid"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Paid</span></td>
+                  <td><button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Footer -->
+          <div class="table-pagination" style="margin-top:16px;">
+            <span>Showing 1–10 of 89 transactions</span>
+            <div class="pagination-pages">
+              <button class="page-btn active" aria-current="page">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <button class="page-btn">…</button>
+              <button class="page-btn">9</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-finance -->
+
+
+    <!-- ======================================== -->
+    <!-- PANEL 6 — SETTINGS & NOTIFICATIONS      -->
+    <!-- ======================================== -->
+    <div class="admin-panel" id="panel-settings" aria-label="Notifications and Settings">
+      <div class="panel-header">
+        <h1>Notifications &amp; Settings</h1>
+        <span style="font-size:13px;color:var(--text-secondary);">7 unread notifications</span>
+      </div>
+
+      <div class="notif-settings-layout">
+
+        <!-- NOTIFICATION CENTER -->
+        <div class="card-admin">
+          <div class="card-header-admin">
+            <h2><i class="fa-solid fa-bell" style="color:var(--sage);margin-right:7px" aria-hidden="true"></i>Notification Center</h2>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-admin btn-outline btn-sm-admin">Mark All Read</button>
+              <button class="btn-admin btn-outline btn-sm-admin">Archive</button>
+            </div>
+          </div>
+          <div class="notif-list" role="list" aria-label="Notifications">
+            <div class="notif-item unread" role="listitem">
+              <div class="notif-dot red" aria-hidden="true"><i class="fa-solid fa-circle-exclamation" style="color:#e05c5c;"></i></div>
+              <div class="notif-text">
+                <strong>URGENT: Appointment conflict tomorrow</strong>
+                <small>PT-023 has a double-booking on Nov 19 at 10:00 AM — Action required</small>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;white-space:nowrap;">2m ago</span>
+            </div>
+            <div class="notif-item unread" role="listitem">
+              <div class="notif-dot yellow" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation" style="color:#e8a742;"></i></div>
+              <div class="notif-text">
+                <strong>Payment overdue — PT-045 (Michael Davis)</strong>
+                <small>$150 outstanding for 3 weeks — Send reminder or escalate</small>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;white-space:nowrap;">1h ago</span>
+            </div>
+            <div class="notif-item unread" role="listitem">
+              <div class="notif-dot green" aria-hidden="true"><i class="fa-solid fa-circle-check" style="color:#3d8f5f;"></i></div>
+              <div class="notif-text">
+                <strong>New patient registration — Lisa Brown</strong>
+                <small>Registered via website · Assigned to Dr. Watson · First appointment Nov 18</small>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;white-space:nowrap;">28m ago</span>
+            </div>
+            <div class="notif-item unread" role="listitem">
+              <div class="notif-dot blue" aria-hidden="true"><i class="fa-solid fa-circle-info" style="color:#5b9bd5;"></i></div>
+              <div class="notif-text">
+                <strong>Therapist schedule update</strong>
+                <small>Dr. Mitchell marked unavailable Dec 24 — 6 appointments need rescheduling</small>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;white-space:nowrap;">3h ago</span>
+            </div>
+            <div class="notif-item unread" role="listitem">
+              <div class="notif-dot yellow" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation" style="color:#e8a742;"></i></div>
+              <div class="notif-text">
+                <strong>Equipment maintenance due — Room 3</strong>
+                <small>Ultrasound Unit requires scheduled service within 7 days</small>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;white-space:nowrap;">4h ago</span>
+            </div>
+            <div class="notif-item unread" role="listitem">
+              <div class="notif-dot green" aria-hidden="true"><i class="fa-solid fa-circle-check" style="color:#3d8f5f;"></i></div>
+              <div class="notif-text">
+                <strong>5-star review received</strong>
+                <small>Emma Thompson: "Dr. Mitchell is exceptional — 100% recommend PhysioElite!"</small>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;white-space:nowrap;">1h ago</span>
+            </div>
+            <div class="notif-item unread" role="listitem">
+              <div class="notif-dot blue" aria-hidden="true"><i class="fa-solid fa-circle-info" style="color:#5b9bd5;"></i></div>
+              <div class="notif-text">
+                <strong>System backup completed successfully</strong>
+                <small>Automated nightly backup · All records secured · 2.3 GB archived</small>
+              </div>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;white-space:nowrap;">6h ago</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK SETTINGS -->
+        <div class="card-admin">
+          <div class="card-header-admin">
+            <h2><i class="fa-solid fa-sliders" style="color:var(--sage);margin-right:7px" aria-hidden="true"></i>Quick Settings</h2>
+          </div>
+          <div class="card-body-admin">
+            <div class="settings-section">
+              <h4>Clinic Operations</h4>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Clinic Open Today</strong>
+                  <small>Mark clinic as open or closed for walk-ins</small>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle clinic open status">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Online Booking</strong>
+                  <small>Allow patients to self-book via website</small>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle online booking">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>New Patient Registrations</strong>
+                  <small>Accept new patient sign-ups</small>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle new patient registrations">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h4>Communication</h4>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>SMS Reminders</strong>
+                  <small>Send appointment reminders by SMS (24hr before)</small>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle SMS reminders">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Email Notifications</strong>
+                  <small>Send email confirmations and updates to patients</small>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle email notifications">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h4>Security</h4>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>2FA for Admin Accounts</strong>
+                  <small>Two-factor authentication (required — cannot disable)</small>
+                </div>
+                <label class="toggle-switch" aria-label="Two-factor authentication — always on">
+                  <input type="checkbox" checked disabled />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h4>Subscription &amp; Data</h4>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Current Plan</strong>
+                  <small>Enterprise — Unlimited patients &amp; therapists</small>
+                </div>
+                <a href="#" class="btn-admin btn-outline btn-sm-admin" style="text-decoration:none;">Manage</a>
+              </div>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Data Export</strong>
+                  <small>Export all clinic data (HIPAA compliant)</small>
+                </div>
+                <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-download" aria-hidden="true"></i> Export</button>
+              </div>
+              <div class="setting-row">
+                <div class="setting-info">
+                  <strong>Audit Log</strong>
+                  <small>View all system actions &amp; admin changes</small>
+                </div>
+                <button class="btn-admin btn-outline btn-sm-admin"><i class="fa-solid fa-scroll" aria-hidden="true"></i> View Log</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /panel-settings -->
+
+    <!-- PANEL — MODULE PLACEHOLDER -->
+    <div class="admin-panel" id="panel-placeholder" aria-label="Module">
+      <div class="panel-header">
+        <div>
+          <h1 id="placeholderTitle">Module</h1>
+          <div class="date-label"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Module preview</div>
+        </div>
+      </div>
+      <div class="placeholder-card">
+        <i class="fa-solid fa-circle-info" id="placeholderIcon" aria-hidden="true"></i>
+        <h2 id="placeholderHeading">Coming Soon</h2>
+        <p id="placeholderText">This module is not available yet.</p>
+      </div>
+    </div>
+
+  </main><!-- /content -->
+</div><!-- /main-wrapper -->
+
+
+<!-- ======================================== -->
+<!-- MODALS                                   -->
+<!-- ======================================== -->
+
+<!-- Add Patient Modal -->
+<div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addPatientModalLabel"><i class="fa-solid fa-user-plus me-2" aria-hidden="true"></i>Add New Patient</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addPatientForm" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label-admin" for="patFirstName">First Name *</label>
+              <input class="form-control-admin" id="patFirstName" type="text" placeholder="First name" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-admin" for="patLastName">Last Name *</label>
+              <input class="form-control-admin" id="patLastName" type="text" placeholder="Last name" required />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label-admin" for="patDob">Date of Birth</label>
+              <input class="form-control-admin" id="patDob" type="date" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label-admin" for="patPhone">Phone *</label>
+              <input class="form-control-admin" id="patPhone" type="tel" placeholder="(555) 000-0000" required />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label-admin" for="patEmail">Email</label>
+              <input class="form-control-admin" id="patEmail" type="email" placeholder="patient@email.com" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-admin" for="patCondition">Condition / Referral</label>
+              <input class="form-control-admin" id="patCondition" type="text" placeholder="e.g. ACL Recovery" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-admin" for="patTherapist">Assign Therapist</label>
+              <select class="form-control-admin" id="patTherapist">
+                <option value="">Select therapist…</option>
+                <option>Dr. Mitchell</option>
+                <option>Dr. Chen</option>
+                <option>Dr. Sharma</option>
+                <option>Dr. Torres</option>
+                <option>Dr. Watson</option>
+                <option>Dr. Kim</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label-admin" for="patNotes">Notes</label>
+              <textarea class="form-control-admin" id="patNotes" rows="3" placeholder="Medical notes or referral details…" style="resize:vertical;"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid #eee;padding:16px 24px;">
+        <button class="btn-admin btn-outline" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-admin btn-sage" onclick="submitPatient()"><i class="fa-solid fa-check" aria-hidden="true"></i> Save Patient</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Appointment Modal -->
+<div class="modal fade" id="addApptModal" tabindex="-1" aria-labelledby="addApptModalLabel" aria-modal="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addApptModalLabel"><i class="fa-solid fa-calendar-plus me-2" aria-hidden="true"></i>New Appointment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addApptForm" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label-admin" for="apptPatient">Patient *</label>
+              <select class="form-control-admin" id="apptPatient" required>
+                <option value="">Select patient…</option>
+                <option>PT-001 — Emma Thompson</option>
+                <option>PT-002 — John Smith</option>
+                <option>PT-003 — Priya Patel</option>
+                <option>PT-004 — Robert Kim</option>
+                <option>PT-005 — Sarah Wilson</option>
+                <option>PT-007 — Lisa Brown</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-admin" for="apptDate">Date *</label>
+              <input class="form-control-admin" id="apptDate" type="date" value="2024-11-18" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-admin" for="apptTime">Time *</label>
+              <input class="form-control-admin" id="apptTime" type="time" value="09:00" required />
+            </div>
+            <div class="col-12">
+              <label class="form-label-admin" for="apptTherapist">Therapist *</label>
+              <select class="form-control-admin" id="apptTherapist" required>
+                <option value="">Select therapist…</option>
+                <option>Dr. Mitchell</option>
+                <option>Dr. Chen</option>
+                <option>Dr. Sharma</option>
+                <option>Dr. Torres</option>
+                <option>Dr. Watson</option>
+                <option>Dr. Kim</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-admin" for="apptService">Service</label>
+              <select class="form-control-admin" id="apptService">
+                <option>Sports Therapy</option>
+                <option>Manual Therapy</option>
+                <option>Exercise Physio</option>
+                <option>Neuro Rehab</option>
+                <option>Paediatric Physio</option>
+                <option>Initial Assessment</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label-admin" for="apptRoom">Room</label>
+              <select class="form-control-admin" id="apptRoom">
+                <option>Room 1</option>
+                <option>Room 2</option>
+                <option>Room 3</option>
+                <option>Room 4</option>
+                <option>Room 5</option>
+                <option>Room 6</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label-admin" for="apptNotes">Notes</label>
+              <textarea class="form-control-admin" id="apptNotes" rows="2" placeholder="Special instructions…" style="resize:vertical;"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid #eee;padding:16px 24px;">
+        <button class="btn-admin btn-outline" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-admin btn-sage" onclick="submitAppointment()"><i class="fa-solid fa-check" aria-hidden="true"></i> Book Appointment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toastContainer" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;" aria-live="polite" aria-atomic="true"></div>
+
+
+<!-- ======================================== -->
+<!-- SCRIPTS                                  -->
+<!-- ======================================== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../assets/js/main.js"></script>
+
+<script>
+  /* ===== PANEL NAVIGATION ===== */
+  function showPanel(panelId, navLink) {
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    const panel = document.getElementById('panel-' + panelId);
+    if (panel) { panel.classList.add('active'); }
+    if (navLink) { navLink.classList.add('active'); }
+    // Close sidebar on mobile
+    if (window.innerWidth <= 900) closeSidebar();
+    // Init charts when panel becomes visible
+    if (panelId === 'overview') initOverviewCharts();
+    if (panelId === 'therapists') initTherapistChart();
+  }
+
+  function showPlaceholder(title, icon, navLink) {
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    document.getElementById('panel-placeholder').classList.add('active');
+    document.getElementById('placeholderTitle').textContent = title;
+    document.getElementById('placeholderHeading').textContent = title + ' — Coming Soon';
+    document.getElementById('placeholderIcon').className = icon;
+    document.getElementById('placeholderText').textContent = 'The ' + title + ' module is not available yet.';
+    if (navLink) navLink.classList.add('active');
+    if (window.innerWidth <= 900) closeSidebar();
+  }
+
+  /* ===== SIDEBAR ===== */
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const btn = document.getElementById('menuToggleBtn');
+    const isOpen = sidebar.classList.toggle('open');
+    overlay.classList.toggle('show', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('show');
+    document.getElementById('menuToggleBtn').setAttribute('aria-expanded', 'false');
+  }
+
+  /* ===== QUICK DROPDOWN ===== */
+  function toggleQuickDropdown() {
+    document.getElementById('quickDropdown').classList.toggle('show');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.quick-dropdown-wrapper')) {
+      document.getElementById('quickDropdown').classList.remove('show');
+    }
+  });
+
+  /* ===== MODALS ===== */
+  function showModal(id) {
+    const modal = new bootstrap.Modal(document.getElementById(id));
+    modal.show();
+    document.getElementById('quickDropdown').classList.remove('show');
+  }
+
+  /* ===== PATIENT TABLE ===== */
+  function toggleAll(masterCb) {
+    document.querySelectorAll('#patientTableBody input[type="checkbox"]').forEach(cb => {
+      cb.checked = masterCb.checked;
+    });
+  }
+  function filterPatients(btn, filter) {
+    document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Visual feedback only for static demo
+  }
+
+  /* ===== FORM SUBMIT ===== */
+  function submitPatient() {
+    const first = document.getElementById('patFirstName').value.trim();
+    const last = document.getElementById('patLastName').value.trim();
+    if (!first || !last) {
+      showToast('Please fill in required fields.', 'warning');
+      return;
+    }
+    const modal = bootstrap.Modal.getInstance(document.getElementById('addPatientModal'));
+    modal.hide();
+    document.getElementById('addPatientForm').reset();
+    showToast('Patient ' + first + ' ' + last + ' added successfully!', 'success');
+  }
+  function submitAppointment() {
+    const patient = document.getElementById('apptPatient').value;
+    const therapist = document.getElementById('apptTherapist').value;
+    if (!patient || !therapist) {
+      showToast('Please select a patient and therapist.', 'warning');
+      return;
+    }
+    const modal = bootstrap.Modal.getInstance(document.getElementById('addApptModal'));
+    modal.hide();
+    document.getElementById('addApptForm').reset();
+    showToast('Appointment booked successfully!', 'success');
+  }
+
+  /* ===== TOAST ===== */
+  function showToast(message, type) {
+    const container = document.getElementById('toastContainer');
+    const colors = { success: '#3d7a57', warning: '#8a5a00', danger: '#a33b3b', info: '#3a6d8e' };
+    const icons = { success: 'fa-circle-check', warning: 'fa-triangle-exclamation', danger: 'fa-circle-xmark', info: 'fa-circle-info' };
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      background:white;border-radius:10px;padding:14px 18px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.15);display:flex;align-items:center;gap:12px;
+      min-width:260px;border-left:4px solid ${colors[type] || colors.info};
+      animation:slideInToast 0.3s ease;font-size:13.5px;font-family:var(--font-body);
+    `;
+    toast.innerHTML = `<i class="fa-solid ${icons[type] || icons.info}" style="color:${colors[type]};font-size:16px;"></i><span>${message}</span>`;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.animation = 'fadeOutToast 0.3s ease forwards';
+      setTimeout(() => container.removeChild(toast), 300);
+    }, 3500);
+  }
+  const toastStyle = document.createElement('style');
+  toastStyle.textContent = `
+    @keyframes slideInToast { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes fadeOutToast { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(30px); } }
+  `;
+  document.head.appendChild(toastStyle);
+
+  /* ===== VIEW TOGGLE (APPOINTMENTS) ===== */
+  document.querySelectorAll('.view-toggle button').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.closest('.view-toggle').querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  /* ===== KEYBOARD NAV ===== */
+  document.querySelectorAll('.sidebar-nav a').forEach(a => {
+    a.setAttribute('tabindex', '0');
+  });
+
+  /* ===== CHARTS ===== */
+  let overviewChartsInit = false;
+  let therapistChartInit = false;
+
+  function initOverviewCharts() {
+    if (overviewChartsInit) return;
+    overviewChartsInit = true;
+
+    const palette = {
+      sage: '#4f705b',
+      teal: '#3f6e6c',
+      sageAlpha: 'rgba(79,112,91,0.15)',
+      tealAlpha: 'rgba(63,110,108,0.15)',
+    };
+    const chartDefaults = {
+      font: { family: "'DM Sans', sans-serif" },
+      plugins: {
+        legend: { labels: { font: { family: "'DM Sans', sans-serif", size: 12 } } }
+      }
+    };
+
+    // Revenue Line Chart
+    const revCtx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(revCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+        datasets: [{
+          label: 'Revenue ($)',
+          data: [14200, 15800, 13900, 16500, 17080, 18450],
+          borderColor: palette.sage,
+          backgroundColor: palette.sageAlpha,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: palette.sage,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          borderWidth: 2.5,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          ...chartDefaults.plugins,
+          tooltip: {
+            callbacks: {
+              label: ctx => ' $' + ctx.parsed.y.toLocaleString()
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'k', font: { family: "'DM Sans'" } },
+            grid: { color: '#f0f0f0' }
+          },
+          x: { ticks: { font: { family: "'DM Sans'" } }, grid: { display: false } }
+        }
+      }
+    });
+
+    // Appointments Bar Chart
+    const apptCtx = document.getElementById('appointmentsChart').getContext('2d');
+    new Chart(apptCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        datasets: [{
+          label: 'Appointments',
+          data: [22, 19, 24, 21, 23, 11],
+          backgroundColor: [
+            palette.sage, palette.teal, palette.sage, palette.teal, palette.sage, '#8a7659'
+          ],
+          borderRadius: 6,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          ...chartDefaults.plugins,
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 5, font: { family: "'DM Sans'" } },
+            grid: { color: '#f0f0f0' }
+          },
+          x: { ticks: { font: { family: "'DM Sans'" } }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  function initTherapistChart() {
+    if (therapistChartInit) return;
+    therapistChartInit = true;
+    const ctx = document.getElementById('therapistPerfChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Dr. Mitchell', 'Dr. Chen', 'Dr. Sharma', 'Dr. Torres', 'Dr. Watson', 'Dr. Kim'],
+        datasets: [{
+          label: 'Sessions This Month',
+          data: [42, 38, 35, 36, 28, 40],
+          backgroundColor: ['#4f705b','#3f6e6c','#5a3d8a','#8a5a00','#3a6d8e','#a33b3b'],
+          borderRadius: 8,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.x + ' sessions' } }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            ticks: { stepSize: 10, font: { family: "'DM Sans'" } },
+            grid: { color: '#f0f0f0' }
+          },
+          y: { ticks: { font: { family: "'DM Sans'", size: 12 } }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  // Initialize default panel charts
+  window.addEventListener('DOMContentLoaded', () => {
+    initOverviewCharts();
+  });
+</script>
+</body>
+</html>

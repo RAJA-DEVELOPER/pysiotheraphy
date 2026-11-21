@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO Meta Tags -->
+  <title>PhysioElite | Premium Physiotherapy &amp; Rehabilitation</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <meta name="description" content="PhysioElite offers expert physiotherapy and rehabilitation services. Reclaim your life from pain with our tailored recovery programs, state-of-the-art facilities, and 15+ expert therapists." />
+  <meta name="keywords" content="physiotherapy, rehabilitation, pain relief, sports physio, post-surgery recovery, PhysioElite" />
+  <meta name="author" content="PhysioElite" />
+  <link rel="canonical" href="https://www.physioelite.com/pages/home1.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PhysioElite | Reclaim Your Life From Pain" />
+  <meta property="og:description" content="Expert physiotherapy for lasting recovery and optimal movement. Book your free consultation today." />
+  <meta property="og:image" content="../assets/img/hero-physio.jpg" />
+  <meta property="og:url" content="https://www.physioelite.com/pages/home1.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PhysioElite | Premium Physiotherapy" />
+  <meta name="twitter:description" content="Reclaim your life from pain. Expert physiotherapy and tailored recovery programs." />
+  <meta name="twitter:image" content="../assets/img/hero-physio.jpg" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "PhysioElite",
+    "description": "Premium Physiotherapy & Rehabilitation clinic offering expert care for lasting recovery and optimal movement.",
+    "url": "https://www.physioelite.com",
+    "logo": "https://www.physioelite.com/assets/images/logo.png",
+    "image": "../assets/img/hero-physio.jpg",
+    "telephone": "+1-800-PHYSIO",
+    "email": "hello@physioelite.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Wellness Avenue",
+      "addressLocality": "Health City",
+      "addressRegion": "CA",
+      "postalCode": "90210",
+      "addressCountry": "US"
+    },
+    "openingHours": ["Mo-Fr 08:00-19:00", "Sa 09:00-16:00"],
+    "priceRange": "$$",
+    "medicalSpecialty": ["PhysicalTherapy", "SportsMedicine", "Rehabilitation"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "500"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+  <!-- Font Awesome 6 CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+  <!-- External Shared Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    /* =====================================================
+       CSS CUSTOM PROPERTIES
+    ===================================================== */
+    :root {
+      --sage-green:    #8FAE9B;
+      --sage-dark:     #6d9080;
+      --sage-light:    #b8d0c3;
+      --soft-teal:     #6B9C9A;
+      --teal-dark:     #4f7d7b;
+      --ivory:         #FAF9F5;
+      --warm-beige:    #E8DFD2;
+      --charcoal:      #303A38;
+      --charcoal-light:#3f4f4c;
+      --white:         #ffffff;
+      --text-primary:  #1a2320;
+      --text-secondary:#4a5a56;
+      --text-muted:    #7a8d89;
+      --border-color:  #d4cfc8;
+      --shadow-sm:     0 2px 8px rgba(48,58,56,.08);
+      --shadow-md:     0 6px 24px rgba(48,58,56,.13);
+      --shadow-lg:     0 16px 48px rgba(48,58,56,.18);
+      --radius-sm:     6px;
+      --radius-md:     12px;
+      --radius-lg:     20px;
+      --radius-xl:     32px;
+      --transition:    all .3s ease;
+      --font-body:     'DM Sans', system-ui, sans-serif;
+      --font-heading:  'Playfair Display', Georgia, serif;
+    }
+
+    [data-theme="dark"] {
+      --ivory:         #1a2320;
+      --warm-beige:    #223028;
+      --white:         #1e2b28;
+      --text-primary:  #e8ede9;
+      --text-secondary:#a8c0b4;
+      --text-muted:    #6b8b7e;
+      --border-color:  #2e4040;
+      --charcoal:      #0d1614;
+      --shadow-sm:     0 2px 8px rgba(0,0,0,.3);
+      --shadow-md:     0 6px 24px rgba(0,0,0,.4);
+      --shadow-lg:     0 16px 48px rgba(0,0,0,.5);
+    }
+
+    /* =====================================================
+       GLOBAL RESET & BASE
+    ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--ivory);
+      color: var(--text-primary);
+      line-height: 1.65;
+      overflow-x: hidden;
+      transition: background-color .4s ease, color .3s ease;
+    }
+
+    h1, h2, h3, h4, h5 { font-family: var(--font-heading); line-height: 1.25; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+    p  { font-size: 1.0625rem; }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* =====================================================
+       SCROLL-REVEAL ANIMATIONS
+    ===================================================== */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+    .btn-sage {
+      background-color: var(--sage-green);
+      color: var(--white);
+      border: 2px solid var(--sage-green);
+      padding: .75rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-family: var(--font-body);
+      font-size: .9375rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .btn-sage:hover, .btn-sage:focus {
+      background-color: var(--sage-dark);
+      border-color: var(--sage-dark);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline-sage {
+      background-color: transparent;
+      color: var(--sage-green);
+      border: 2px solid var(--sage-green);
+      padding: .75rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-family: var(--font-body);
+      font-size: .9375rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .btn-outline-sage:hover, .btn-outline-sage:focus {
+      background-color: var(--sage-green);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-white {
+      background-color: var(--white);
+      color: var(--sage-dark);
+      border: 2px solid var(--white);
+      padding: .75rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-family: var(--font-body);
+      font-size: .9375rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .btn-white:hover { background-color: transparent; color: var(--white); transform: translateY(-2px); }
+
+    /* Section Label Pill */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background-color: rgba(143,174,155,.18);
+      color: var(--sage-dark);
+      border: 1px solid rgba(143,174,155,.4);
+      padding: .3rem .9rem;
+      border-radius: 999px;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+    #mainNav {
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+      background-color: var(--ivory);
+      border-bottom: 1px solid var(--border-color);
+      padding: .9rem 0;
+      transition: background-color .3s ease, box-shadow .3s ease;
+    }
+    #mainNav.scrolled {
+      box-shadow: var(--shadow-md);
+      background-color: rgba(250,249,245,.97);
+    }
+    [data-theme="dark"] #mainNav.scrolled {
+      background-color: rgba(26,35,32,.97);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--charcoal) !important;
+    }
+    [data-theme="dark"] .navbar-brand { color: var(--text-primary) !important; }
+    .navbar-brand .brand-leaf {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--sage-green), var(--soft-teal));
+      border-radius: 50% 50% 50% 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: .9rem;
+    }
+    .brand-name-pe { color: var(--sage-dark); }
+
+    .nav-link-custom {
+      font-weight: 500;
+      font-size: .9375rem;
+      color: var(--text-secondary) !important;
+      padding: .4rem .75rem !important;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-link-custom::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: .75rem; right: .75rem;
+      height: 2px;
+      background-color: var(--sage-green);
+      transform: scaleX(0);
+      transition: transform .3s ease;
+    }
+    .nav-link-custom:hover, .nav-link-custom.active-link {
+      color: var(--sage-dark) !important;
+    }
+    .nav-link-custom:hover::after, .nav-link-custom.active-link::after { transform: scaleX(1); }
+
+    .btn-nav-login {
+      border: 1.5px solid var(--sage-green);
+      color: var(--sage-dark);
+      border-radius: var(--radius-sm);
+      padding: .4rem 1rem;
+      font-weight: 500;
+      font-size: .9rem;
+      background: transparent;
+      transition: var(--transition);
+    }
+    .btn-nav-login:hover { background: var(--sage-green); color: var(--white); }
+
+    .btn-nav-book {
+      background-color: var(--sage-green);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: .45rem 1.1rem;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: var(--transition);
+    }
+    .btn-nav-book:hover { background-color: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+
+    #darkToggle {
+      background: none;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    #darkToggle:hover { border-color: var(--sage-green); color: var(--sage-dark); }
+
+    .navbar-toggler {
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: .3rem .6rem;
+      color: var(--text-secondary);
+    }
+    .navbar-toggler:focus { box-shadow: none; }
+    .navbar-toggler-icon { background-image: none !important; font-size: 1.1rem; }
+
+    /* =====================================================
+       SECTION 1 — HERO
+    ===================================================== */
+    #hero {
+      min-height: 100vh;
+      background-color: var(--ivory);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(143,174,155,.15);
+      border: 1px solid rgba(143,174,155,.35);
+      color: var(--sage-dark);
+      padding: .35rem 1rem;
+      border-radius: 999px;
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow .dot {
+      width: 7px; height: 7px;
+      background-color: var(--sage-green);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: .6; }
+    }
+
+    .hero-headline {
+      color: var(--charcoal);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      line-height: 1.18;
+    }
+    [data-theme="dark"] .hero-headline { color: var(--text-primary); }
+
+    .hero-headline .accent { color: var(--sage-dark); font-style: italic; }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .trust-badge .badge-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--sage-green), var(--soft-teal));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: .75rem;
+      flex-shrink: 0;
+    }
+    .trust-badge .badge-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.1;
+    }
+    [data-theme="dark"] .trust-badge .badge-text strong { color: var(--text-primary); }
+    .trust-badge .badge-text span {
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero Image Side */
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-img-main {
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-height: 580px;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 2;
+    }
+    .hero-blob {
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      top: -5%;
+      left: -5%;
+      background: radial-gradient(ellipse at 60% 40%, rgba(143,174,155,.25) 0%, transparent 70%);
+      z-index: 1;
+    }
+    .hero-floating-card {
+      position: absolute;
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      padding: .85rem 1.1rem;
+      box-shadow: var(--shadow-md);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      animation: float-card 4s ease-in-out infinite;
+    }
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .hero-card-top {
+      top: 1.5rem;
+      left: -2rem;
+    }
+    .hero-card-bottom {
+      bottom: 2rem;
+      right: -1.5rem;
+      animation-delay: 2s;
+    }
+    .hero-floating-card .fc-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--sage-green), var(--soft-teal));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: .78rem;
+      flex-shrink: 0;
+    }
+    .hero-floating-card .fc-text strong { font-size: .85rem; font-weight: 700; display: block; color: var(--text-primary); }
+    .hero-floating-card .fc-text span { font-size: .75rem; color: var(--text-muted); }
+
+    /* Gradient overlay top */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 50%, rgba(143,174,155,.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+      color: var(--text-muted);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      animation: scroll-bounce 2s ease-in-out infinite;
+      z-index: 10;
+    }
+    .scroll-indicator i { font-size: 1.1rem; }
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Hero enter animations */
+    .hero-animate { animation: heroFadeUp .8s ease both; }
+    .hero-animate-delay1 { animation-delay: .15s; }
+    .hero-animate-delay2 { animation-delay: .3s; }
+    .hero-animate-delay3 { animation-delay: .45s; }
+    .hero-animate-delay4 { animation-delay: .6s; }
+    .hero-img-animate { animation: heroFadeRight .9s .3s ease both; }
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes heroFadeRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* =====================================================
+       SECTION 2 — RECOVERY PROGRAMS
+    ===================================================== */
+    #programs {
+      padding: 5rem 0;
+      background-color: var(--warm-beige);
+    }
+
+    .program-card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      border-top: 4px solid transparent;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .program-card:hover {
+      border-top-color: var(--sage-green);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+    }
+    .program-card .card-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, rgba(143,174,155,.2), rgba(107,156,154,.2));
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: var(--sage-dark);
+      margin-bottom: 1.25rem;
+      transition: var(--transition);
+    }
+    .program-card:hover .card-icon {
+      background: linear-gradient(135deg, var(--sage-green), var(--soft-teal));
+      color: var(--white);
+    }
+    .program-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: .6rem;
+    }
+    .program-card p {
+      font-size: .9375rem;
+      color: var(--text-secondary);
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+    .program-card .learn-more {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--sage-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: var(--transition);
+    }
+    .program-card .learn-more:hover { gap: .7rem; }
+    .program-card .learn-more i { font-size: .75rem; }
+
+    /* =====================================================
+       SECTION 3 — CLINIC FACILITIES
+    ===================================================== */
+    #facilities {
+      padding: 5rem 0;
+      background-color: var(--ivory);
+    }
+
+    .facility-block { padding: 4rem 0; }
+    .facility-block + .facility-block { border-top: 1px solid var(--border-color); }
+
+    .facility-img {
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+
+    .facility-content { padding: 1.5rem 0; }
+    .facility-content h3 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    .facility-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.75;
+    }
+    .facility-features { list-style: none; padding: 0; }
+    .facility-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      padding: .4rem 0;
+      font-size: .9375rem;
+      color: var(--text-secondary);
+    }
+    .facility-features li i {
+      color: var(--sage-green);
+      margin-top: .2rem;
+      flex-shrink: 0;
+    }
+
+    /* =====================================================
+       SECTION 4 — TREATMENT APPROACH (TIMELINE)
+    ===================================================== */
+    #approach {
+      padding: 5rem 0;
+      background-color: var(--white);
+    }
+
+    /* Desktop horizontal timeline */
+    .timeline-wrap {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-top: 3rem;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(28px / 2);
+      right: calc(28px / 2);
+      height: 2px;
+      background: linear-gradient(to right, var(--sage-green), var(--soft-teal));
+      z-index: 0;
+    }
+    .timeline-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 0 .5rem;
+    }
+    .step-circle {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sage-green), var(--soft-teal));
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 4px rgba(143,174,155,.2);
+      flex-shrink: 0;
+    }
+    .timeline-step h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: .4rem;
+    }
+    .timeline-step p {
+      font-size: .825rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Mobile vertical timeline */
+    @media (max-width: 767.98px) {
+      .timeline-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+      .timeline-wrap::before {
+        top: 28px;
+        left: 27px;
+        right: auto;
+        width: 2px;
+        height: calc(100% - 56px);
+      }
+      .timeline-step {
+        flex-direction: row;
+        text-align: left;
+        gap: 1.25rem;
+        align-items: flex-start;
+        padding: 0 0 2rem 0;
+        width: 100%;
+      }
+      .timeline-step .step-info { flex: 1; }
+      .timeline-step h4 { margin-bottom: .25rem; }
+    }
+
+    /* =====================================================
+       SECTION 5 — TESTIMONIALS
+    ===================================================== */
+    #testimonials {
+      padding: 5rem 0;
+      background-color: rgba(143,174,155,.1);
+    }
+
+    .testimonial-card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .testimonial-card .quote-icon {
+      position: absolute;
+      top: 1.25rem; right: 1.5rem;
+      font-size: 3rem;
+      color: rgba(143,174,155,.2);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .stars { color: #f4a827; font-size: .9rem; margin-bottom: .9rem; display: flex; gap: .1rem; }
+    .testimonial-card blockquote {
+      font-size: .9375rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+    }
+    .testimonial-author img {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--sage-green);
+    }
+    .testimonial-author .author-info strong {
+      display: block;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .testimonial-author .author-info span {
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+
+    /* Mobile carousel dots */
+    .testimonial-carousel-dots {
+      display: none;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 1.75rem;
+    }
+    .dot-btn {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background-color: var(--border-color);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .dot-btn.active { background-color: var(--sage-green); width: 20px; border-radius: 999px; }
+    @media (max-width: 767.98px) {
+      .testimonials-grid { display: flex; overflow-x: auto; gap: 1rem; scroll-snap-type: x mandatory; padding-bottom: .5rem; scrollbar-width: none; }
+      .testimonials-grid::-webkit-scrollbar { display: none; }
+      .testimonials-grid .col-md-4 { flex: 0 0 85%; scroll-snap-align: start; }
+      .testimonial-carousel-dots { display: flex; }
+    }
+
+    /* =====================================================
+       SECTION 6 — APPOINTMENT CTA
+    ===================================================== */
+    #appointment-cta {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--sage-green) 0%, var(--soft-teal) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #appointment-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .cta-sub {
+      color: rgba(255,255,255,.85);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+    }
+
+    .booking-form-card {
+      background-color: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+    }
+    .booking-form-card .form-label {
+      color: var(--white);
+      font-size: .875rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+    }
+    .booking-form-card .form-control,
+    .booking-form-card .form-select {
+      background-color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: .65rem 1rem;
+      font-size: .9rem;
+      color: var(--text-primary);
+    }
+    .booking-form-card .form-control:focus,
+    .booking-form-card .form-select:focus {
+      box-shadow: 0 0 0 3px rgba(255,255,255,.4);
+      outline: none;
+    }
+    .booking-form-card .btn-submit {
+      width: 100%;
+      background-color: var(--white);
+      color: var(--sage-dark);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: .8rem;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+    .booking-form-card .btn-submit:hover { background-color: var(--ivory); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .privacy-note { color: rgba(255,255,255,.7); font-size: .78rem; margin-top: .8rem; display: flex; align-items: center; gap: .4rem; }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    #footer {
+      background-color: var(--charcoal);
+      color: var(--ivory);
+      padding: 4rem 0 0;
+    }
+
+    .footer-brand .brand-name { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--ivory); }
+    .footer-brand .brand-name span { color: var(--sage-green); }
+    .footer-tagline { color: rgba(250,249,245,.65); font-size: .9rem; margin: .6rem 0 1.25rem; line-height: 1.6; }
+    .social-links { display: flex; gap: .6rem; }
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(250,249,245,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(250,249,245,.65);
+      font-size: .85rem;
+      transition: var(--transition);
+    }
+    .social-link:hover { background-color: var(--sage-green); border-color: var(--sage-green); color: var(--white); transform: translateY(-2px); }
+
+    .footer-heading {
+      font-size: .875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--sage-green);
+      margin-bottom: 1.25rem;
+    }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: .6rem; }
+    .footer-links a {
+      color: rgba(250,249,245,.65);
+      font-size: .9rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .footer-links a:hover { color: var(--sage-green); padding-left: .3rem; }
+    .footer-links a i { font-size: .7rem; }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      margin-bottom: .9rem;
+      color: rgba(250,249,245,.65);
+      font-size: .9rem;
+    }
+    .footer-contact-item i { color: var(--sage-green); margin-top: .15rem; flex-shrink: 0; }
+
+    .newsletter-wrap { margin-top: .5rem; }
+    .newsletter-wrap p { font-size: .875rem; color: rgba(250,249,245,.65); margin-bottom: .9rem; }
+    .newsletter-form { display: flex; gap: .5rem; }
+    .newsletter-form input {
+      flex: 1;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-sm);
+      padding: .55rem 1rem;
+      color: var(--ivory);
+      font-size: .875rem;
+    }
+    .newsletter-form input::placeholder { color: rgba(250,249,245,.4); }
+    .newsletter-form input:focus { outline: none; border-color: var(--sage-green); }
+    .newsletter-form button {
+      background-color: var(--sage-green);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: .55rem 1.1rem;
+      font-weight: 600;
+      font-size: .875rem;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background-color: var(--sage-dark); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(250,249,245,.1);
+      margin-top: 3rem;
+      padding: 1.25rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(250,249,245,.45);
+      font-size: .825rem;
+    }
+    .footer-bottom a { color: rgba(250,249,245,.55); transition: color .2s; }
+    .footer-bottom a:hover { color: var(--sage-green); }
+    .footer-bottom-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+
+    /* =====================================================
+       SECTION SHARED HEADER
+    ===================================================== */
+    .section-header { margin-bottom: 3rem; }
+    .section-header h2 { color: var(--text-primary); margin-bottom: .75rem; }
+    .section-header p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 580px; }
+
+    /* =====================================================
+       TOAST NOTIFICATION
+    ===================================================== */
+    #toastContainer {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .toast-item {
+      background: var(--white);
+      border-left: 4px solid var(--sage-green);
+      border-radius: var(--radius-md);
+      padding: .9rem 1.25rem;
+      box-shadow: var(--shadow-md);
+      font-size: .875rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      animation: toastIn .4s ease;
+      max-width: 320px;
+    }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .toast-item.error { border-left-color: #dc3545; }
+    .toast-item i { flex-shrink: 0; }
+
+    /* Utility */
+    .text-sage { color: var(--sage-dark); }
+    .bg-sage-light { background-color: rgba(143,174,155,.12); }
+    .divider-sage { width: 60px; height: 3px; background: linear-gradient(to right, var(--sage-green), var(--soft-teal)); border-radius: 999px; margin: .75rem 0 1.25rem; }
+  </style>
+  <link rel="stylesheet" href="../assets/css/contrast-fixes.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=2" />
+</head>
+<body>
+
+<!-- ============================================================
+  TOAST CONTAINER
+============================================================ -->
+<div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ============================================================
+  NAVBAR
+============================================================ -->
+<nav id="mainNav" class="navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="../index.html" aria-label="PhysioElite Home">
+        <div class="brand-leaf" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+        <span>Physio<span class="brand-name-pe">Elite</span></span>
+      </a>
+
+      <!-- Mobile Controls -->
+      <div class="d-flex d-lg-none align-items-center gap-2 ms-auto">
+        <button id="darkToggle" data-theme-toggle aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="darkIcon"></i>
+        </button>
+        <div class="dropdown">
+          <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+            <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+            <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+            <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars navbar-toggler-icon"></i>
+        </button>
+      </div>
+
+      <!-- Nav Menu -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto gap-1" role="list">
+          <li class="nav-item"><a class="nav-link nav-link-custom active-link" href="home1.html" aria-current="page">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="home2.html">Home 2</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button id="darkToggleDesktop" class="d-none d-lg-flex" data-theme-toggle aria-label="Toggle dark mode" style="background:none;border:1.5px solid var(--border-color);color:var(--text-secondary);border-radius:var(--radius-sm);width:36px;height:36px;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);">
+            <i class="fa-solid fa-moon" id="darkIconDesktop"></i>
+          </button>
+          <div class="dropdown">
+            <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+              <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+              <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+              <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+              <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+<!-- ============================================================
+  MAIN CONTENT
+============================================================ -->
+<main>
+
+  <!-- ===========================================================
+    SECTION 1 — HERO
+  =========================================================== -->
+  <section id="hero" aria-labelledby="heroHeadline">
+    <div class="container">
+      <div class="row align-items-center g-4 g-lg-5">
+
+        <!-- Left: Text -->
+        <div class="col-lg-6 hero-content">
+          <div class="hero-eyebrow hero-animate">
+            <span class="dot" aria-hidden="true"></span>
+            Trusted by 500+ patients
+          </div>
+
+          <h1 class="hero-headline hero-animate hero-animate-delay1" id="heroHeadline">
+            Reclaim Your Life<br/>
+            <span class="accent">From Pain</span>
+          </h1>
+
+          <p class="hero-sub hero-animate hero-animate-delay2">
+            Expert physiotherapy for lasting recovery and optimal movement. Our team of 15+ specialist therapists builds a programme uniquely around you.
+          </p>
+
+          <div class="hero-cta-group hero-animate hero-animate-delay3">
+            <a href="contact.html#book" class="btn-sage" aria-label="Book a free consultation">
+              <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+              Book Free Consultation
+            </a>
+            <button class="btn-outline-sage" id="watchStoryBtn" aria-label="Watch our story video">
+              <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+              Watch Our Story
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="hero-trust hero-animate hero-animate-delay4" role="list" aria-label="Trust indicators">
+            <div class="trust-badge" role="listitem">
+              <div class="badge-icon" aria-hidden="true"><i class="fa-solid fa-user-check"></i></div>
+              <div class="badge-text">
+                <strong>500+</strong>
+                <span>Recovered Patients</span>
+              </div>
+            </div>
+            <div class="trust-badge" role="listitem">
+              <div class="badge-icon" aria-hidden="true"><i class="fa-solid fa-user-doctor"></i></div>
+              <div class="badge-text">
+                <strong>15+</strong>
+                <span>Expert Therapists</span>
+              </div>
+            </div>
+            <div class="trust-badge" role="listitem">
+              <div class="badge-icon" aria-hidden="true"><i class="fa-solid fa-award"></i></div>
+              <div class="badge-text">
+                <strong>10 Years</strong>
+                <span>Experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Image -->
+        <div class="col-lg-6 hero-img-animate">
+          <div class="hero-image-wrap">
+            <div class="hero-blob" aria-hidden="true"></div>
+
+            <!-- Floating card top -->
+            <div class="hero-floating-card hero-card-top" aria-hidden="true">
+              <div class="fc-icon"><i class="fa-solid fa-star"></i></div>
+              <div class="fc-text">
+                <strong>4.9 / 5.0</strong>
+                <span>Patient Rating</span>
+              </div>
+            </div>
+
+            <img
+              src="../assets/img/hero-physio.jpg"
+              alt="Physiotherapist providing hands-on treatment to a patient"
+              class="hero-img-main"
+              width="1200"
+              height="800"
+              loading="eager"
+              fetchpriority="high"
+            />
+
+            <!-- Floating card bottom -->
+            <div class="hero-floating-card hero-card-bottom" aria-hidden="true">
+              <div class="fc-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+              <div class="fc-text">
+                <strong>60 min</strong>
+                <span>Avg. Session Time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>Scroll</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+    SECTION 2 — RECOVERY PROGRAMS
+  =========================================================== -->
+  <section id="programs" aria-labelledby="programsHeading">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-label"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Our Programs</span>
+        <h2 id="programsHeading">Tailored Recovery Programs</h2>
+        <div class="divider-sage" aria-hidden="true"></div>
+        <p>Every patient is unique. Our evidence-based programs are designed to meet you exactly where you are and guide you to where you want to be.</p>
+      </div>
+
+      <div class="row g-4" role="list" aria-label="Recovery programs">
+
+        <!-- Card 1 -->
+        <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-1" role="listitem">
+          <article class="program-card">
+            <div class="card-icon" aria-hidden="true"><i class="fa-solid fa-bolt-lightning"></i></div>
+            <h3>Acute Pain Relief</h3>
+            <p>Fast, targeted interventions to reduce acute pain and restore function so you can get back to daily life quickly and safely.</p>
+            <a href="services.html#acute-pain" class="learn-more" aria-label="Learn more about Acute Pain Relief">
+              Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-2" role="listitem">
+          <article class="program-card">
+            <div class="card-icon" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></div>
+            <h3>Chronic Condition Management</h3>
+            <p>Long-term strategies to manage chronic pain, improve mobility, and enhance quality of life through consistent, compassionate care.</p>
+            <a href="services.html#chronic" class="learn-more" aria-label="Learn more about Chronic Condition Management">
+              Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-3" role="listitem">
+          <article class="program-card">
+            <div class="card-icon" aria-hidden="true"><i class="fa-solid fa-syringe"></i></div>
+            <h3>Post-Surgery Recovery</h3>
+            <p>Specialised rehabilitation plans to support healing after orthopaedic, spinal, or joint surgery for a smoother, faster recovery.</p>
+            <a href="services.html#post-surgery" class="learn-more" aria-label="Learn more about Post-Surgery Recovery">
+              Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-1" role="listitem">
+          <article class="program-card">
+            <div class="card-icon" aria-hidden="true"><i class="fa-solid fa-person-running"></i></div>
+            <h3>Sports Performance</h3>
+            <p>Performance optimisation and injury prevention for athletes at all levels — from weekend warriors to competitive professionals.</p>
+            <a href="services.html#sports" class="learn-more" aria-label="Learn more about Sports Performance">
+              Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-2" role="listitem">
+          <article class="program-card">
+            <div class="card-icon" aria-hidden="true"><i class="fa-solid fa-person-cane"></i></div>
+            <h3>Senior Wellness</h3>
+            <p>Gentle, effective therapy to improve balance, strength, and independence for older adults — helping you live life fully on your terms.</p>
+            <a href="services.html#senior" class="learn-more" aria-label="Learn more about Senior Wellness">
+              Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-sm-6 col-lg-4 reveal-on-scroll reveal-delay-3" role="listitem">
+          <article class="program-card">
+            <div class="card-icon" aria-hidden="true"><i class="fa-solid fa-shield-heart"></i></div>
+            <h3>Preventive Care</h3>
+            <p>Proactive assessments and movement coaching to identify and address imbalances before they become injuries — stay ahead of pain.</p>
+            <a href="services.html#preventive" class="learn-more" aria-label="Learn more about Preventive Care">
+              Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+    SECTION 3 — CLINIC FACILITIES
+  =========================================================== -->
+  <section id="facilities" aria-labelledby="facilitiesHeading">
+    <div class="container">
+      <div class="section-header text-center mx-auto reveal-on-scroll" style="max-width:650px;">
+        <span class="section-label"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Our Facilities</span>
+        <h2 id="facilitiesHeading">World-Class Clinical Environments</h2>
+        <div class="divider-sage mx-auto" aria-hidden="true"></div>
+        <p>Designed with patient comfort and clinical effectiveness in mind, every corner of PhysioElite supports your recovery journey.</p>
+      </div>
+
+      <!-- Facility 1: image left, text right -->
+      <div class="facility-block reveal-on-scroll">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6">
+            <img
+              src="../assets/img/clinic-treatment.jpg"
+              alt="State-of-the-art physiotherapy treatment room with modern equipment"
+              class="facility-img"
+              width="800"
+              height="420"
+              loading="lazy"
+            />
+          </div>
+          <div class="col-lg-6">
+            <div class="facility-content">
+              <span class="section-label"><i class="fa-solid fa-door-open" aria-hidden="true"></i> Treatment Rooms</span>
+              <h3>State-of-the-Art Treatment Rooms</h3>
+              <p>Our 12 private treatment rooms are purpose-built to deliver a calm, clinical and comfortable experience. Each room is equipped with the latest physiotherapy technology and ergonomic furnishings.</p>
+              <ul class="facility-features" aria-label="Treatment room features">
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Fully soundproofed private consultation rooms</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Height-adjustable electric treatment tables</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Advanced electrotherapy and ultrasound units</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Climate-controlled for patient comfort</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Digital record systems for real-time progress tracking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facility 2: text left, image right (flip) -->
+      <div class="facility-block reveal-on-scroll">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6 order-lg-2">
+            <img
+              src="../assets/img/rehab-gym.jpg"
+              alt="Advanced rehabilitation gym with modern exercise equipment"
+              class="facility-img"
+              width="800"
+              height="420"
+              loading="lazy"
+            />
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="facility-content">
+              <span class="section-label"><i class="fa-solid fa-dumbbell" aria-hidden="true"></i> Rehab Equipment</span>
+              <h3>Advanced Rehabilitation Equipment</h3>
+              <p>Our 2,000 sq ft rehabilitation gym features cutting-edge equipment supporting the full spectrum of recovery — from gentle mobility work to high-performance strength training.</p>
+              <ul class="facility-features" aria-label="Rehabilitation equipment features">
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Hydrotherapy pool and warm-water therapy bays</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Anti-gravity treadmill for low-impact gait retraining</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Isokinetic dynamometry for objective strength assessment</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Motion-capture analysis system</li>
+                <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> Pilates reformers and functional movement rigs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===========================================================
+    SECTION 4 — TREATMENT APPROACH (TIMELINE)
+  =========================================================== -->
+  <section id="approach" aria-labelledby="approachHeading">
+    <div class="container">
+      <div class="section-header text-center mx-auto reveal-on-scroll" style="max-width:640px;">
+        <span class="section-label"><i class="fa-solid fa-route" aria-hidden="true"></i> How It Works</span>
+        <h2 id="approachHeading">Our Proven Treatment Approach</h2>
+        <div class="divider-sage mx-auto" aria-hidden="true"></div>
+        <p>A structured, evidence-based pathway that guides every patient from first consultation to long-term wellness.</p>
+      </div>
+
+      <div class="timeline-wrap reveal-on-scroll" role="list" aria-label="Treatment process steps">
+
+        <div class="timeline-step reveal-delay-1" role="listitem">
+          <div class="step-circle" aria-hidden="true">1</div>
+          <div class="step-info">
+            <h4>Assessment</h4>
+            <p>Comprehensive evaluation of your condition, lifestyle, and goals.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step reveal-delay-2" role="listitem">
+          <div class="step-circle" aria-hidden="true">2</div>
+          <div class="step-info">
+            <h4>Personalised Plan</h4>
+            <p>A tailored programme designed around your specific needs and timeline.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step reveal-delay-3" role="listitem">
+          <div class="step-circle" aria-hidden="true">3</div>
+          <div class="step-info">
+            <h4>Active Treatment</h4>
+            <p>Hands-on therapy, targeted exercises, and advanced modalities.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step reveal-delay-4" role="listitem">
+          <div class="step-circle" aria-hidden="true">4</div>
+          <div class="step-info">
+            <h4>Progress Monitoring</h4>
+            <p>Regular reassessments ensure your plan evolves as you improve.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step reveal-delay-5" role="listitem">
+          <div class="step-circle" aria-hidden="true">5</div>
+          <div class="step-info">
+            <h4>Recovery</h4>
+            <p>Achieving your functional goals and returning to full activity.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step" style="transition-delay:.6s" role="listitem">
+          <div class="step-circle" aria-hidden="true">6</div>
+          <div class="step-info">
+            <h4>Maintenance</h4>
+            <p>Ongoing support strategies to prevent recurrence and sustain results.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+    SECTION 5 — PATIENT TESTIMONIALS
+  =========================================================== -->
+  <section id="testimonials" aria-labelledby="testimonialsHeading">
+    <div class="container">
+      <div class="section-header text-center mx-auto reveal-on-scroll" style="max-width:580px;">
+        <span class="section-label"><i class="fa-solid fa-quote-left" aria-hidden="true"></i> Patient Stories</span>
+        <h2 id="testimonialsHeading">Stories of Transformation</h2>
+        <div class="divider-sage mx-auto" aria-hidden="true"></div>
+        <p>Real words from real patients who have walked the road to recovery with PhysioElite.</p>
+      </div>
+
+      <div class="row g-4 testimonials-grid" role="list" aria-label="Patient testimonials">
+
+        <!-- Testimonial 1 -->
+        <div class="col-md-4 reveal-on-scroll reveal-delay-1" role="listitem">
+          <article class="testimonial-card">
+            <div class="quote-icon" aria-hidden="true">"</div>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote>
+              After my ACL reconstruction I was told I'd never run again. The team at PhysioElite proved every sceptic wrong. Twelve weeks in, I completed my first 5K. The structured programme and constant encouragement from my therapist made all the difference.
+            </blockquote>
+            <footer class="testimonial-author">
+              <img
+                src="../assets/img/patient-marcus.jpg"
+                alt="Marcus T."
+                width="52"
+                height="52"
+                loading="lazy"
+              />
+              <div class="author-info">
+                <strong>Marcus T.</strong>
+                <span>ACL Reconstruction Recovery</span>
+              </div>
+            </footer>
+          </article>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="col-md-4 reveal-on-scroll reveal-delay-2" role="listitem">
+          <article class="testimonial-card">
+            <div class="quote-icon" aria-hidden="true">"</div>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote>
+              I had been living with debilitating lower back pain for three years — tried everything. Within six sessions at PhysioElite my pain had reduced by 70%. The personalised home exercise programme means I continue to improve even between appointments.
+            </blockquote>
+            <footer class="testimonial-author">
+              <img
+                src="../assets/img/patient-sarah.jpg"
+                alt="Sarah M."
+                width="52"
+                height="52"
+                loading="lazy"
+              />
+              <div class="author-info">
+                <strong>Sarah M.</strong>
+                <span>Chronic Lower Back Pain</span>
+              </div>
+            </footer>
+          </article>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="col-md-4 reveal-on-scroll reveal-delay-3" role="listitem">
+          <article class="testimonial-card">
+            <div class="quote-icon" aria-hidden="true">"</div>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote>
+              As a 68-year-old who had a hip replacement, I was nervous about rehab. The PhysioElite senior wellness team treated me with such dignity and expertise. I'm now walking 10,000 steps a day and enjoying my garden again — something I hadn't done in years.
+            </blockquote>
+            <footer class="testimonial-author">
+              <img
+                src="../assets/img/patient-robert.jpg"
+                alt="Robert K."
+                width="52"
+                height="52"
+                loading="lazy"
+              />
+              <div class="author-info">
+                <strong>Robert K.</strong>
+                <span>Hip Replacement Rehabilitation</span>
+              </div>
+            </footer>
+          </article>
+        </div>
+
+      </div>
+
+      <!-- Mobile carousel dots -->
+      <div class="testimonial-carousel-dots" role="tablist" aria-label="Testimonial navigation">
+        <button class="dot-btn active" aria-label="Testimonial 1" role="tab" data-index="0"></button>
+        <button class="dot-btn" aria-label="Testimonial 2" role="tab" data-index="1"></button>
+        <button class="dot-btn" aria-label="Testimonial 3" role="tab" data-index="2"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================================================
+    SECTION 6 — APPOINTMENT CTA
+  =========================================================== -->
+  <section id="appointment-cta" aria-labelledby="ctaHeading">
+    <div class="container position-relative" style="z-index:2">
+      <div class="row align-items-center g-4 g-xl-5">
+
+        <!-- Left: Copy -->
+        <div class="col-lg-5 reveal-on-scroll">
+          <span class="section-label" style="background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.3);color:#fff;">
+            <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> Book Today
+          </span>
+          <h2 class="cta-headline" id="ctaHeading">
+            Ready to Start Your<br/>Recovery Journey?
+          </h2>
+          <p class="cta-sub">
+            Take the first step towards a pain-free life. Our team is ready to listen, assess, and build a programme that gets you moving again — on your terms, at your pace.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-3" style="color:rgba(255,255,255,.85);font-size:.9rem;">
+            <span><i class="fa-solid fa-check me-2" aria-hidden="true"></i>Free initial consultation</span>
+            <span><i class="fa-solid fa-check me-2" aria-hidden="true"></i>No GP referral needed</span>
+            <span><i class="fa-solid fa-check me-2" aria-hidden="true"></i>Same-week appointments</span>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="col-lg-7 reveal-on-scroll reveal-delay-2">
+          <div class="booking-form-card">
+            <form id="appointmentForm" novalidate aria-label="Appointment booking form">
+              <div class="row g-3">
+
+                <div class="col-sm-6">
+                  <label class="form-label" for="bookName">Full Name <span aria-hidden="true">*</span></label>
+                  <input
+                    type="text"
+                    id="bookName"
+                    name="name"
+                    class="form-control"
+                    placeholder="Jane Smith"
+                    required
+                    autocomplete="name"
+                    aria-required="true"
+                  />
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="form-label" for="bookPhone">Phone Number <span aria-hidden="true">*</span></label>
+                  <input
+                    type="tel"
+                    id="bookPhone"
+                    name="phone"
+                    class="form-control"
+                    placeholder="+1 (555) 000-0000"
+                    required
+                    autocomplete="tel"
+                    aria-required="true"
+                  />
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="form-label" for="bookService">Service Required <span aria-hidden="true">*</span></label>
+                  <select id="bookService" name="service" class="form-select" required aria-required="true">
+                    <option value="" disabled selected>Select a service…</option>
+                    <option value="acute-pain">Acute Pain Relief</option>
+                    <option value="chronic">Chronic Condition Management</option>
+                    <option value="post-surgery">Post-Surgery Recovery</option>
+                    <option value="sports">Sports Performance</option>
+                    <option value="senior">Senior Wellness</option>
+                    <option value="preventive">Preventive Care</option>
+                  </select>
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="form-label" for="bookDate">Preferred Date <span aria-hidden="true">*</span></label>
+                  <input
+                    type="date"
+                    id="bookDate"
+                    name="date"
+                    class="form-control"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn-submit" aria-label="Request appointment">
+                    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                    Request My Appointment
+                  </button>
+                </div>
+
+              </div>
+            </form>
+
+            <p class="privacy-note">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              Your information is 100% private and will never be shared. We'll confirm within 2 hours.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+  FOOTER
+============================================================ -->
+<footer id="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="row g-4 g-xl-5">
+
+      <!-- Col 1: Brand -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="brand-leaf" style="width:32px;height:32px;font-size:.8rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <span class="brand-name">Physio<span>Elite</span></span>
+          </div>
+          <p class="footer-tagline">Premium Physiotherapy & Rehabilitation. Helping people move better, feel stronger, and live fully since 2014.</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="PhysioElite on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links" aria-label="Quick navigation links">
+          <li><a href="home1.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home</a></li>
+          <li><a href="home2.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home 2</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+          <li><a href="services.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Services</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Contact</a></li>
+          <li><a href="login.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Patient Login</a></li>
+          <li><a href="404.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> 404 Page</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links" aria-label="Service links">
+          <li><a href="services.html#acute-pain"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Acute Pain Relief</a></li>
+          <li><a href="services.html#chronic"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Chronic Conditions</a></li>
+          <li><a href="services.html#post-surgery"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Post-Surgery Recovery</a></li>
+          <li><a href="services.html#sports"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Sports Performance</a></li>
+          <li><a href="services.html#senior"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Senior Wellness</a></li>
+          <li><a href="services.html#preventive"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Preventive Care</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact + Newsletter -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="footer-heading">Get In Touch</h3>
+        <address style="font-style:normal;">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>123 Wellness Avenue, Health City, CA 90210, USA</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:+18007497466" style="color:inherit;">+1 (800) PHYSIO</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:hello@physioelite.com" style="color:inherit;">hello@physioelite.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>Mon–Fri: 8am–7pm &nbsp;|&nbsp; Sat: 9am–4pm</span>
+          </div>
+        </address>
+
+        <div class="newsletter-wrap mt-3">
+          <p>Subscribe for health tips and clinic news:</p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
+            <label for="newsletterEmail" class="visually-hidden">Email address</label>
+            <input
+              type="email"
+              id="newsletterEmail"
+              placeholder="your@email.com"
+              required
+              aria-required="true"
+            />
+            <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <span>&copy; 2024 PhysioElite. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+  SCRIPTS
+============================================================ -->
+<!-- Bootstrap 5.3 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<!-- External Shared JS -->
+<script src="../assets/js/main.js"></script>
+
+<script>
+  /* =====================================================
+     INLINE PAGE JS
+  ===================================================== */
+  (function() {
+    'use strict';
+
+    /* ---- Sticky Navbar ---- */
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    /* ---- Scroll-Reveal (IntersectionObserver) ---- */
+    const revealEls = document.querySelectorAll('.reveal-on-scroll');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => obs.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('revealed'));
+    }
+
+    /* ---- Toast Notification ---- */
+    function showToast(msg, type) {
+      const c = document.getElementById('toastContainer');
+      const t = document.createElement('div');
+      t.className = 'toast-item' + (type === 'error' ? ' error' : '');
+      t.setAttribute('role', 'alert');
+      t.innerHTML = '<i class="fa-solid ' + (type === 'error' ? 'fa-circle-xmark' : 'fa-circle-check') + '"></i> ' + msg;
+      c.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(30px)'; t.style.transition = '.4s ease'; setTimeout(() => t.remove(), 450); }, 4000);
+    }
+
+    /* ---- Appointment Form ---- */
+    const form = document.getElementById('appointmentForm');
+    if (form) {
+      // Set min date to today
+      const dateInput = document.getElementById('bookDate');
+      if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name  = document.getElementById('bookName').value.trim();
+        const phone = document.getElementById('bookPhone').value.trim();
+        const svc   = document.getElementById('bookService').value;
+        const date  = document.getElementById('bookDate').value;
+
+        if (!name || !phone || !svc || !date) {
+          showToast('Please fill in all required fields.', 'error');
+          return;
+        }
+        // Basic phone validation
+        if (!/[\d\s\+\-\(\)]{7,}/.test(phone)) {
+          showToast('Please enter a valid phone number.', 'error');
+          return;
+        }
+
+        // Simulate submission
+        const submitBtn = form.querySelector('.btn-submit');
+        const original  = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+          showToast('Appointment requested! We\'ll confirm within 2 hours.', 'success');
+          form.reset();
+          submitBtn.innerHTML = original;
+          submitBtn.disabled = false;
+        }, 1800);
+      });
+    }
+
+    /* ---- Newsletter Form ---- */
+    document.querySelectorAll('.newsletter-form').forEach(nf => {
+      nf.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value.trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showToast('Please enter a valid email address.', 'error');
+          return;
+        }
+        showToast('You\'ve subscribed! Welcome to the PhysioElite community.', 'success');
+        this.reset();
+      });
+    });
+
+    /* ---- Watch Story Button ---- */
+    const watchBtn = document.getElementById('watchStoryBtn');
+    if (watchBtn) {
+      watchBtn.addEventListener('click', () => {
+        showToast('Our story video is coming soon! Stay tuned.', 'success');
+      });
+    }
+
+    /* ---- Testimonials carousel dots (mobile) ---- */
+    const tGrid = document.querySelector('.testimonials-grid');
+    const dots   = document.querySelectorAll('.dot-btn');
+    if (tGrid && dots.length) {
+      const cards = tGrid.querySelectorAll('[role="listitem"]');
+      tGrid.addEventListener('scroll', () => {
+        const scrollLeft = tGrid.scrollLeft;
+        const cardWidth  = tGrid.firstElementChild?.offsetWidth || 1;
+        const idx = Math.round(scrollLeft / cardWidth);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }, { passive: true });
+
+      dots.forEach((d, i) => {
+        d.addEventListener('click', () => {
+          const cardWidth = tGrid.firstElementChild?.offsetWidth || 0;
+          tGrid.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+        });
+      });
+    }
+
+    /* ---- Active nav link styling ---- */
+    const currentPage = window.location.pathname.split('/').pop() || 'home1.html';
+    document.querySelectorAll('.nav-link-custom').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPage || (currentPage === '' && href === 'home1.html')) {
+        link.classList.add('active-link');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.classList.remove('active-link');
+        link.removeAttribute('aria-current');
+      }
+    });
+
+  })();
+</script>
+
+</body>
+</html>

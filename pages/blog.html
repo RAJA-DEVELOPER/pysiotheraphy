@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PhysioElite Health & Recovery Blog — Expert insights, recovery tips, and wellness guides from our physiotherapists." />
+  <meta name="keywords" content="physiotherapy blog, recovery tips, sports health, chronic pain, exercise fitness, rehabilitation" />
+  <meta name="author" content="PhysioElite" />
+  <meta property="og:title" content="PhysioElite Health & Recovery Blog" />
+  <meta property="og:description" content="Expert insights, recovery tips, and wellness guides from our physiotherapists." />
+  <meta property="og:image" content="../assets/img/hero-physio.jpg" />
+  <meta property="og:type" content="website" />
+  <title>Blog | PhysioElite — Premium Physiotherapy & Rehabilitation</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    /* =========================================================
+       CSS CUSTOM PROPERTIES
+    ========================================================= */
+    :root {
+      --sage:   #8FAE9B;
+      --teal:   #6B9C9A;
+      --ivory:  #FAF9F5;
+      --beige:  #E8DFD2;
+      --charcoal: #303A38;
+      --sage-dark: #7A9B88;
+      --teal-dark: #588180;
+      --text-muted-custom: #6c7a76;
+      --card-shadow: 0 4px 24px rgba(48,58,56,.08);
+      --card-hover-shadow: 0 12px 40px rgba(48,58,56,.16);
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    /* =========================================================
+       BASE
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1,h2,h3,h4,h5 { font-family: 'Playfair Display', serif; }
+
+    img { max-width: 100%; display: block; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+    .navbar-physio {
+      background: rgba(250,249,245,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(143,174,155,.18);
+      transition: box-shadow var(--transition);
+    }
+    .navbar-physio.scrolled { box-shadow: 0 2px 20px rgba(48,58,56,.1); }
+
+    .navbar-brand-wrap { display: flex; align-items: center; gap: 10px; }
+    .brand-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 18px;
+    }
+    .brand-text { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.25rem; color: var(--charcoal); }
+    .brand-text span { color: var(--sage); }
+
+    .nav-link-physio {
+      color: var(--charcoal) !important;
+      font-weight: 500; font-size: .9rem;
+      padding: .45rem .75rem !important;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+      position: relative;
+    }
+    .nav-link-physio::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+      height: 2px; background: var(--sage); border-radius: 2px;
+      transition: left var(--transition), right var(--transition);
+    }
+    .nav-link-physio:hover::after,
+    .nav-link-physio.active::after { left: .75rem; right: .75rem; }
+    .nav-link-physio:hover, .nav-link-physio.active { color: var(--sage) !important; }
+
+    .btn-book-nav {
+      background: var(--sage); color: #fff !important;
+      border-radius: 50px; padding: .45rem 1.25rem !important;
+      font-weight: 600; font-size: .88rem;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-book-nav:hover {
+      background: var(--sage-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(143,174,155,.4);
+    }
+
+    /* =========================================================
+       SECTION 1 — BLOG HERO
+    ========================================================= */
+    .blog-hero {
+      background: var(--ivory);
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(143,174,155,.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .blog-hero::after {
+      content: '';
+      position: absolute; bottom: -60px; left: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(107,156,154,.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .blog-hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(143,174,155,.15); color: var(--sage-dark);
+      border-radius: 50px; padding: .35rem 1rem;
+      font-size: .82rem; font-weight: 600; letter-spacing: .05em;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .blog-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700; line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+    .blog-hero h1 span { color: var(--sage); }
+    .blog-hero .subtitle {
+      font-size: 1.1rem; color: var(--text-muted-custom);
+      max-width: 600px; margin: 0 auto 2rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+    }
+
+    /* Search bar */
+    .blog-search-wrap {
+      max-width: 560px; margin: 0 auto 2rem;
+      position: relative;
+    }
+    .blog-search-wrap input {
+      width: 100%; border: 2px solid rgba(143,174,155,.35);
+      border-radius: 50px; padding: .85rem 3.5rem .85rem 1.4rem;
+      font-family: 'DM Sans', sans-serif; font-size: .95rem;
+      background: #fff; color: var(--charcoal); outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .blog-search-wrap input::placeholder { color:var(--text-muted); }
+    .blog-search-wrap input:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 4px rgba(143,174,155,.15);
+    }
+    .blog-search-btn {
+      position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+      background: var(--sage); color: #fff; border: none;
+      border-radius: 50px; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; cursor: pointer;
+      transition: background var(--transition);
+    }
+    .blog-search-btn:hover { background: var(--sage-dark); }
+
+    /* Category pills */
+    .category-pills { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+    .cat-pill {
+      border: 2px solid rgba(143,174,155,.4); border-radius: 50px;
+      padding: .4rem 1.1rem; font-size: .85rem; font-weight: 500;
+      cursor: pointer; transition: all var(--transition);
+      background: transparent; color: var(--charcoal);
+    }
+    .cat-pill:hover, .cat-pill.active {
+      background: var(--sage); border-color: var(--sage);
+      color: #fff; transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(143,174,155,.35);
+    }
+
+    /* =========================================================
+       SECTION 2 — FEATURED POST
+    ========================================================= */
+    .featured-post-section { padding: 60px 0; background: #fff; }
+
+    .featured-card {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .featured-card:hover {
+      box-shadow: var(--card-hover-shadow);
+      transform: translateY(-4px);
+    }
+    .featured-img-wrap {
+      position: relative; overflow: hidden;
+      max-height: 460px;
+    }
+    .featured-img-wrap img {
+      width: 100%; height: 460px; object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .featured-card:hover .featured-img-wrap img { transform: scale(1.04); }
+
+    .featured-label {
+      position: absolute; top: 20px; left: 20px;
+      background: var(--charcoal); color: #fff;
+      border-radius: 4px; padding: .2rem .7rem;
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .featured-badge {
+      position: absolute; top: 20px; left: 90px;
+      background: var(--sage); color: #fff;
+      border-radius: 50px; padding: .2rem .8rem;
+      font-size: .78rem; font-weight: 600;
+    }
+    .featured-body {
+      padding: 2.5rem;
+      background: #fff;
+    }
+    .featured-body h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700; line-height: 1.3;
+      color: var(--charcoal); margin-bottom: 1rem;
+    }
+    .featured-body h2:hover { color: var(--sage); }
+    .featured-excerpt { color: var(--text-muted-custom); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+
+    .author-row { display: flex; align-items: center; gap: .75rem; }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      object-fit: cover; border: 2px solid var(--sage);
+    }
+    .author-name { font-weight: 600; font-size: .9rem; color: var(--charcoal); }
+    .author-meta { font-size: .82rem; color: var(--text-muted-custom); }
+
+    .btn-read {
+      background: var(--sage); color: #fff;
+      border-radius: 50px; padding: .65rem 1.75rem;
+      font-weight: 600; font-size: .9rem;
+      border: 2px solid var(--sage);
+      transition: all var(--transition); display: inline-flex; align-items: center; gap: .5rem;
+    }
+    .btn-read:hover {
+      background: transparent; color: var(--sage);
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
+       SECTION 3 — RECENT ARTICLES GRID
+    ========================================================= */
+    .recent-articles { padding: 70px 0; background: var(--ivory); }
+
+    .section-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--charcoal); }
+    .section-sub { color: var(--text-muted-custom); font-size: 1rem; }
+    .section-divider {
+      width: 56px; height: 3px;
+      background: linear-gradient(to right, var(--sage), var(--teal));
+      border-radius: 3px; margin: .75rem auto 0;
+    }
+
+    .blog-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: #fff; box-shadow: var(--card-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      height: 100%; display: flex; flex-direction: column;
+    }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--card-hover-shadow);
+    }
+    .blog-card-img-wrap {
+      overflow: hidden; aspect-ratio: 16/9;
+      flex-shrink: 0;
+    }
+    .blog-card-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .blog-card:hover .blog-card-img-wrap img { transform: scale(1.07); }
+
+    .blog-card-body { padding: 1.4rem; display: flex; flex-direction: column; flex: 1; }
+    .cat-badge {
+      display: inline-block; border-radius: 50px;
+      padding: .2rem .8rem; font-size: .75rem; font-weight: 600;
+      margin-bottom: .75rem;
+    }
+    .cat-badge-sage { background: rgba(143,174,155,.18); color: var(--sage-dark); }
+    .cat-badge-teal { background: rgba(107,156,154,.15); color: var(--teal-dark); }
+    .cat-badge-beige { background: rgba(232,223,210,.5); color: #8a7a6a; }
+    .cat-badge-charcoal { background: rgba(48,58,56,.1); color: var(--charcoal); }
+
+    .blog-card h5 {
+      font-size: 1.05rem; font-weight: 700; line-height: 1.4;
+      color: var(--charcoal); margin-bottom: .6rem;
+      transition: color var(--transition);
+    }
+    .blog-card:hover h5 { color: var(--sage); }
+
+    .card-excerpt {
+      font-size: .88rem; color: var(--text-muted-custom);
+      line-height: 1.65; margin-bottom: 1rem;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    .card-meta {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .78rem; color: var(--text-muted-custom);
+      margin-top: auto; padding-top: .75rem;
+      border-top: 1px solid rgba(143,174,155,.15);
+    }
+    .card-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      object-fit: cover; border: 1.5px solid var(--sage);
+    }
+    .meta-sep { color: rgba(143,174,155,.5); }
+
+    .link-read-more {
+      font-size: .85rem; font-weight: 600; color: var(--sage);
+      transition: gap var(--transition), color var(--transition);
+      display: inline-flex; align-items: center; gap: .4rem;
+      margin-top: .6rem;
+    }
+    .link-read-more:hover { color: var(--sage-dark); gap: .7rem; }
+
+    /* =========================================================
+       SECTION 4 — SIDEBAR LAYOUT
+    ========================================================= */
+    .blog-sidebar-layout { padding: 56px 0; background: var(--ivory); color: var(--charcoal); }
+
+    /* Article list items */
+    .article-list-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.25rem 0; border-bottom: 1px solid rgba(143,174,155,.15);
+    }
+    .article-list-item:last-child { border-bottom: none; }
+    .article-thumb {
+      width: 130px; min-width: 130px; height: 88px;
+      border-radius: var(--radius-sm); overflow: hidden;
+    }
+    .article-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .article-list-title {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem; font-weight: 700; color: var(--charcoal);
+      margin-bottom: .35rem; line-height: 1.4;
+      transition: color var(--transition); cursor: pointer;
+    }
+    .article-list-title:hover { color: var(--sage); }
+    .article-list-excerpt { font-size: .82rem; color: var(--text-muted-custom); line-height: 1.6; margin-bottom: .4rem; }
+    .article-list-meta { font-size: .75rem; color:var(--text-muted); }
+
+    /* Sidebar widgets */
+    .sidebar-widget {
+      background: #fff; border-radius: var(--radius);
+      padding: 1.25rem; box-shadow: var(--card-shadow);
+      margin-bottom: 1.25rem;
+    }
+    .widget-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid rgba(143,174,155,.25);
+    }
+
+    .cat-list-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .4rem 0; border-bottom: 1px solid rgba(143,174,155,.1);
+      font-size: .88rem; font-weight: 500; color: var(--charcoal); cursor: pointer;
+      transition: color var(--transition);
+    }
+    .cat-list-item:last-child { border-bottom: none; }
+    .cat-list-item:hover { color: var(--teal-dark); }
+    .cat-count {
+      background: rgba(143,174,155,.22); color: var(--charcoal);
+      border-radius: 50px; padding: .1rem .6rem;
+      font-size: .75rem; font-weight: 700;
+    }
+
+    .popular-item {
+      display: flex; gap: .6rem; align-items: flex-start;
+      padding: .4rem 0; border-bottom: 1px solid rgba(143,174,155,.1);
+      font-size: .85rem;
+    }
+    .popular-item:last-child { border-bottom: none; }
+    .popular-num {
+      font-weight: 700; color: var(--sage);
+      min-width: 20px; font-size: .95rem;
+    }
+    .popular-reads { font-size: .75rem; color:var(--text-muted); }
+
+    /* Newsletter mini form */
+    .newsletter-mini-input {
+      border: 2px solid rgba(143,174,155,.3); border-radius: 50px;
+      padding: .55rem 1rem; width: 100%; font-size: .88rem;
+      outline: none; margin-bottom: .6rem;
+      transition: border-color var(--transition);
+    }
+    .newsletter-mini-input:focus { border-color: var(--sage); }
+    .btn-subscribe-mini {
+      width: 100%; background: var(--sage); color: #fff;
+      border: none; border-radius: 50px; padding: .6rem;
+      font-weight: 600; font-size: .88rem; cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-subscribe-mini:hover { background: var(--sage-dark); transform: translateY(-1px); }
+
+    /* Experts row */
+    .expert-pill {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .3rem 0; font-size: .83rem;
+    }
+    .expert-av {
+      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--sage); flex-shrink: 0;
+    }
+    .experts-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .35rem .75rem;
+    }
+
+    /* =========================================================
+       SECTION 5 — VIDEO CONTENT
+    ========================================================= */
+    .video-section { padding: 56px 0; background: var(--beige); }
+
+    .video-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: #fff; box-shadow: var(--card-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .video-card:hover { transform: translateY(-6px); box-shadow: var(--card-hover-shadow); }
+
+    .video-thumb-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 16/9; cursor: pointer;
+    }
+    .video-thumb-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .video-card:hover .video-thumb-wrap img { transform: scale(1.06); }
+
+    .video-overlay {
+      position: absolute; inset: 0;
+      background: rgba(48,58,56,.35);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .video-card:hover .video-overlay { background: rgba(48,58,56,.5); }
+
+    .play-btn {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--sage);
+      transition: transform var(--transition), background var(--transition);
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+    .video-card:hover .play-btn { transform: scale(1.12); background: #fff; }
+
+    .duration-badge {
+      position: absolute; bottom: 10px; right: 12px;
+      background: rgba(0,0,0,.7); color: #fff;
+      border-radius: 4px; padding: .15rem .5rem;
+      font-size: .75rem; font-weight: 600;
+    }
+
+    .video-body { padding: 1.2rem; }
+    .video-body h5 {
+      font-size: 1rem; font-weight: 700; color: var(--charcoal);
+      margin-bottom: .4rem; line-height: 1.4;
+    }
+    .view-count { font-size: .82rem; color: var(--text-muted-custom); }
+    .view-count i { color: var(--sage); }
+
+    /* Video lightbox player */
+    .video-lightbox {
+      position: fixed; inset: 0; z-index: 1080;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity .25s ease, visibility .25s ease;
+    }
+    .video-lightbox.open { opacity: 1; visibility: visible; }
+    .video-lightbox-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(20,28,26,.82);
+      backdrop-filter: blur(4px);
+    }
+    .video-lightbox-dialog {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 1000px;
+      background: var(--charcoal); border-radius: var(--radius);
+      overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.45);
+      transform: translateY(18px) scale(.98);
+      transition: transform .25s ease;
+    }
+    .video-lightbox.open .video-lightbox-dialog { transform: none; }
+    .video-lightbox-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .9rem 1.25rem; color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .video-lightbox-header h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700; margin: 0; color: #fff;
+    }
+    .video-lightbox-close {
+      background: none; border: none; color: rgba(255,255,255,.8);
+      font-size: 1.6rem; line-height: 1; cursor: pointer;
+      padding: 0 .25rem; transition: color var(--transition);
+    }
+    .video-lightbox-close:hover { color: #fff; }
+    .video-lightbox-body { background: #000; }
+    .video-lightbox-body video {
+      width: 100%; max-height: calc(100vh - 160px);
+      aspect-ratio: 16/9; display: block; background: #000;
+      object-fit: contain;
+    }
+    body.video-lightbox-open { overflow: hidden; }
+
+    /* =========================================================
+       SECTION 6 — NEWSLETTER
+    ========================================================= */
+    .newsletter-section {
+      padding: 56px 0;
+      background: var(--ivory);
+    }
+    .newsletter-banner {
+      background: linear-gradient(135deg, var(--sage) 0%, var(--teal) 100%);
+      border-radius: var(--radius); padding: 3rem 2rem;
+      text-align: center; color: #fff;
+      position: relative; overflow: hidden;
+    }
+    .newsletter-banner::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: rgba(255,255,255,.1); pointer-events: none;
+    }
+    .newsletter-banner::after {
+      content: '';
+      position: absolute; bottom: -60px; left: -60px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: rgba(255,255,255,.08); pointer-events: none;
+    }
+    .newsletter-banner h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; margin-bottom: .6rem; color: #fff;
+    }
+    .newsletter-banner p { font-size: 1rem; opacity: .9; margin-bottom: 1.75rem; }
+
+    .newsletter-form {
+      display: flex; gap: .6rem; max-width: 500px; margin: 0 auto 1rem;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .newsletter-form input {
+      flex: 1; min-width: 220px; border: none; border-radius: 50px;
+      padding: .75rem 1.4rem; font-size: .95rem; outline: none;
+      color: var(--charcoal);
+    }
+    .btn-nl-submit {
+      background: var(--charcoal); color: #fff; border: none;
+      border-radius: 50px; padding: .75rem 1.75rem;
+      font-weight: 600; font-size: .95rem; cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-nl-submit:hover { background: #1a2220; transform: translateY(-2px); }
+    .privacy-note { font-size: .78rem; opacity: .75; }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    .site-footer { background: var(--charcoal); color: rgba(255,255,255,.75); padding: 60px 0 0; }
+    .footer-brand .brand-text { color: #fff; }
+    .footer-brand .brand-text span { color: var(--sage); }
+    .footer-desc { font-size: .88rem; line-height: 1.7; margin-top: .75rem; color: rgba(255,255,255,.6); }
+    .footer-heading {
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: .9rem;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: #fff; margin-bottom: 1.2rem;
+    }
+    .footer-link {
+      display: block; color: rgba(255,255,255,.6); font-size: .88rem;
+      padding: .25rem 0; transition: color var(--transition), padding-left var(--transition);
+    }
+    .footer-link:hover { color: var(--sage); padding-left: 4px; }
+
+    .footer-contact-item {
+      display: flex; gap: .75rem; align-items: flex-start;
+      font-size: .88rem; color: rgba(255,255,255,.6); margin-bottom: .75rem;
+    }
+    .footer-contact-item i { color: var(--sage); margin-top: 2px; }
+
+    .social-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.7); font-size: .95rem;
+      transition: all var(--transition); margin-right: .4rem;
+    }
+    .social-btn:hover { background: var(--sage); border-color: var(--sage); color: #fff; transform: translateY(-2px); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 1.25rem 0; margin-top: 2.5rem;
+      font-size: .82rem; color: rgba(255,255,255,.45);
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* =========================================================
+       UTILITY
+    ========================================================= */
+    .text-sage { color: var(--sage); }
+    .bg-ivory { background: var(--ivory); }
+    .bg-beige { background: var(--beige); }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 768px) {
+      .blog-hero { padding: 90px 0 50px; }
+      .featured-img-wrap img { height: 240px; }
+      .article-thumb { width: 80px; min-width: 80px; height: 60px; }
+    }
+    @media (max-width: 576px) {
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { width: 100%; }
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/contrast-fixes.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=2" />
+</head>
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+<nav id="mainNav" class="navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="../index.html" aria-label="PhysioElite Home">
+        <div class="brand-leaf" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+        <span>Physio<span class="brand-name-pe">Elite</span></span>
+      </a>
+
+      <!-- Mobile Controls -->
+      <div class="d-flex d-lg-none align-items-center gap-2 ms-auto">
+        <button id="darkToggle" data-theme-toggle aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="darkIcon"></i>
+        </button>
+        <div class="dropdown">
+          <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+            <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+            <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+            <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars navbar-toggler-icon"></i>
+        </button>
+      </div>
+
+      <!-- Nav Menu -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto gap-1" role="list">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="home1.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="home2.html">Home 2</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button id="darkToggleDesktop" class="d-none d-lg-flex" data-theme-toggle aria-label="Toggle dark mode" style="background:none;border:1.5px solid var(--border-color);color:var(--text-secondary);border-radius:var(--radius-sm);width:36px;height:36px;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);">
+            <i class="fa-solid fa-moon" id="darkIconDesktop"></i>
+          </button>
+          <div class="dropdown">
+            <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+              <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+              <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+              <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+              <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+<!-- =========================================================
+     SECTION 1 — BLOG HERO
+========================================================= -->
+<section class="blog-hero text-center" aria-label="Blog hero">
+  <div class="container position-relative">
+    <div class="blog-hero-label">
+      <i class="fas fa-feather-alt"></i> PhysioElite Journal
+    </div>
+
+    <h1>PhysioElite Health &amp;<br /><span>Recovery Blog</span></h1>
+
+    <p class="subtitle">
+      Expert insights, recovery tips, and wellness guides<br class="d-none d-md-block" />
+      from our team of expert physiotherapists
+    </p>
+
+    <!-- Search Bar -->
+    <div class="blog-search-wrap reveal" role="search">
+      <label for="blogSearch" class="visually-hidden">Search articles</label>
+      <input type="search" id="blogSearch" placeholder="Search articles, conditions, treatments..." aria-label="Search articles" />
+      <button class="blog-search-btn" aria-label="Submit search"><i class="fas fa-search"></i></button>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="category-pills reveal" role="tablist" aria-label="Blog categories">
+      <button class="cat-pill active" role="tab" aria-selected="true" data-filter="all">All</button>
+      <button class="cat-pill" role="tab" aria-selected="false" data-filter="recovery">Recovery Tips</button>
+      <button class="cat-pill" role="tab" aria-selected="false" data-filter="sports">Sports Health</button>
+      <button class="cat-pill" role="tab" aria-selected="false" data-filter="pain">Chronic Pain</button>
+      <button class="cat-pill" role="tab" aria-selected="false" data-filter="exercise">Exercise &amp; Fitness</button>
+      <button class="cat-pill" role="tab" aria-selected="false" data-filter="lifestyle">Lifestyle</button>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 2 — FEATURED POST
+========================================================= -->
+<section class="featured-post-section" aria-label="Featured article">
+  <div class="container">
+
+    <div class="text-center mb-4 reveal">
+      <h2 class="section-heading">Featured Article</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <article class="featured-card reveal" aria-label="Featured: 10 Evidence-Based Strategies">
+      <div class="featured-img-wrap">
+        <img src="../assets/img/hero-physio.jpg"
+             alt="Physiotherapist working with patient on sports injury recovery" />
+        <span class="featured-label">FEATURED</span>
+        <span class="featured-badge">Recovery Tips</span>
+      </div>
+      <div class="featured-body">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <a href="blog-details.html?post=sports-injury-recovery">
+              <h2>10 Evidence-Based Strategies for Faster Recovery After Sports Injuries</h2>
+            </a>
+            <p class="featured-excerpt">
+              Sports injuries can sideline even the most dedicated athletes, but the right recovery protocol makes all the difference.
+              Our senior physiotherapists share the science-backed strategies they use with elite patients to accelerate healing and prevent re-injury.
+            </p>
+          </div>
+          <div class="col-lg-4 d-flex flex-column align-items-lg-end gap-3 mt-3 mt-lg-0">
+            <div class="author-row">
+              <img class="author-avatar"
+                   src="../assets/img/staff-sarah-mitchell.jpg"
+                   alt="Dr. Sarah Mitchell" />
+              <div>
+                <div class="author-name">Dr. Sarah Mitchell</div>
+                <div class="author-meta">
+                  <i class="fas fa-calendar-alt me-1"></i>November 10, 2024
+                  &nbsp;·&nbsp;<i class="fas fa-clock me-1"></i>8 min read
+                </div>
+              </div>
+            </div>
+            <a href="blog-details.html?post=sports-injury-recovery" class="btn-read">
+              Read Full Article <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 3 — RECENT ARTICLES GRID
+========================================================= -->
+<section class="recent-articles" aria-label="Recent articles">
+  <div class="container">
+
+    <div class="text-center mb-5 reveal">
+      <h2 class="section-heading">Recent Articles</h2>
+      <p class="section-sub mt-2">Stay informed with our latest physiotherapy insights</p>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row g-4" id="articlesGrid">
+
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-6 reveal blog-card-col" data-category="pain">
+        <article class="blog-card">
+          <a class="blog-card-img-wrap" href="blog-details.html?post=back-pain">
+            <img src="../assets/img/exercise-woman.jpg"
+                 alt="Person doing lower back exercises at home" loading="lazy" />
+          </a>
+          <div class="blog-card-body">
+            <span class="cat-badge cat-badge-sage">Chronic Pain</span>
+            <h5><a href="blog-details.html?post=back-pain" class="stretched-link-off">5 Exercises to Relieve Chronic Lower Back Pain at Home</a></h5>
+            <p class="card-excerpt">Targeted movements you can do daily to ease tension, strengthen support muscles, and reduce recurring lower back discomfort without specialist equipment.</p>
+            <div class="card-meta">
+              <img class="card-avatar" src="../assets/img/staff-james-chen.jpg" alt="Dr. James Chen" />
+              <span>Dr. James Chen</span>
+              <span class="meta-sep">·</span>
+              <span>Nov 5, 2024</span>
+              <span class="meta-sep">·</span>
+              <span><i class="fas fa-clock me-1"></i>6 min</span>
+            </div>
+            <a href="blog-details.html?post=back-pain" class="link-read-more">Read More <i class="fas fa-arrow-right fa-xs"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6 reveal blog-card-col" data-category="sports">
+        <article class="blog-card">
+          <a class="blog-card-img-wrap" href="blog-details.html?post=acl-tears">
+            <img src="../assets/img/leg-treatment.jpg"
+                 alt="Athlete with knee injury being examined" loading="lazy" />
+          </a>
+          <div class="blog-card-body">
+            <span class="cat-badge cat-badge-teal">Sports Health</span>
+            <h5><a href="blog-details.html?post=acl-tears">Understanding ACL Tears: Recovery Timeline and What to Expect</a></h5>
+            <p class="card-excerpt">From the moment of injury through each phase of rehabilitation, here's the complete roadmap for recovering from an ACL tear and returning to sport safely.</p>
+            <div class="card-meta">
+              <img class="card-avatar" src="../assets/img/staff-sarah-mitchell.jpg" alt="Dr. Sarah Mitchell" />
+              <span>Dr. Sarah Mitchell</span>
+              <span class="meta-sep">·</span>
+              <span>Oct 28, 2024</span>
+              <span class="meta-sep">·</span>
+              <span><i class="fas fa-clock me-1"></i>10 min</span>
+            </div>
+            <a href="blog-details.html?post=acl-tears" class="link-read-more">Read More <i class="fas fa-arrow-right fa-xs"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6 reveal blog-card-col" data-category="recovery">
+        <article class="blog-card">
+          <a class="blog-card-img-wrap" href="blog-details.html?post=manual-therapy">
+            <img src="../assets/img/clinic-treatment.jpg"
+                 alt="Manual therapy treatment session" loading="lazy" />
+          </a>
+          <div class="blog-card-body">
+            <span class="cat-badge cat-badge-sage">Rehabilitation</span>
+            <h5><a href="blog-details.html?post=manual-therapy">The Role of Manual Therapy in Post-Surgery Rehabilitation</a></h5>
+            <p class="card-excerpt">Hands-on manual therapy techniques speed healing after surgical procedures by improving tissue mobility, reducing scar formation, and restoring joint range of motion.</p>
+            <div class="card-meta">
+              <img class="card-avatar" src="../assets/img/staff-priya-sharma.jpg" alt="Dr. Priya Sharma" />
+              <span>Dr. Priya Sharma</span>
+              <span class="meta-sep">·</span>
+              <span>Oct 20, 2024</span>
+              <span class="meta-sep">·</span>
+              <span><i class="fas fa-clock me-1"></i>7 min</span>
+            </div>
+            <a href="blog-details.html?post=manual-therapy" class="link-read-more">Read More <i class="fas fa-arrow-right fa-xs"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-lg-4 col-md-6 reveal blog-card-col" data-category="lifestyle">
+        <article class="blog-card">
+          <a class="blog-card-img-wrap" href="blog-details.html?post=senior-wellness">
+            <img src="../assets/img/senior-mobility.jpg"
+                 alt="Senior person doing balance exercises" loading="lazy" />
+          </a>
+          <div class="blog-card-body">
+            <span class="cat-badge cat-badge-beige">Lifestyle</span>
+            <h5><a href="blog-details.html?post=senior-wellness">Senior Wellness: Improving Balance and Preventing Falls</a></h5>
+            <p class="card-excerpt">Falls are a leading cause of injury in older adults. These targeted balance and strengthening exercises can significantly reduce fall risk and boost confidence.</p>
+            <div class="card-meta">
+              <img class="card-avatar" src="../assets/img/staff-emily-watson.jpg" alt="Dr. Emily Watson" />
+              <span>Dr. Emily Watson</span>
+              <span class="meta-sep">·</span>
+              <span>Oct 15, 2024</span>
+              <span class="meta-sep">·</span>
+              <span><i class="fas fa-clock me-1"></i>5 min</span>
+            </div>
+            <a href="blog-details.html?post=senior-wellness" class="link-read-more">Read More <i class="fas fa-arrow-right fa-xs"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-lg-4 col-md-6 reveal blog-card-col" data-category="exercise">
+        <article class="blog-card">
+          <a class="blog-card-img-wrap" href="blog-details.html?post=exercise-therapy">
+            <img src="../assets/img/rehab-gym.jpg"
+                 alt="Exercise therapy session in physiotherapy clinic" loading="lazy" />
+          </a>
+          <div class="blog-card-body">
+            <span class="cat-badge cat-badge-teal">Exercise &amp; Fitness</span>
+            <h5><a href="blog-details.html?post=exercise-therapy">Exercise Therapy vs. Passive Treatment: Which is Right for You?</a></h5>
+            <p class="card-excerpt">Understanding the difference between active rehabilitation and passive modalities helps you make informed decisions about your recovery plan and long-term outcomes.</p>
+            <div class="card-meta">
+              <img class="card-avatar" src="../assets/img/staff-michael-torres.jpg" alt="Dr. Michael Torres" />
+              <span>Dr. Michael Torres</span>
+              <span class="meta-sep">·</span>
+              <span>Oct 10, 2024</span>
+              <span class="meta-sep">·</span>
+              <span><i class="fas fa-clock me-1"></i>9 min</span>
+            </div>
+            <a href="blog-details.html?post=exercise-therapy" class="link-read-more">Read More <i class="fas fa-arrow-right fa-xs"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-lg-4 col-md-6 reveal blog-card-col" data-category="pain">
+        <article class="blog-card">
+          <a class="blog-card-img-wrap" href="blog-details.html?post=neck-pain">
+            <img src="../assets/img/neck-treatment.jpg"
+                 alt="Person at desk with neck pain from poor ergonomics" loading="lazy" />
+          </a>
+          <div class="blog-card-body">
+            <span class="cat-badge cat-badge-charcoal">Chronic Pain</span>
+            <h5><a href="blog-details.html?post=neck-pain">Neck Pain in the Workplace: Ergonomics and Physio Solutions</a></h5>
+            <p class="card-excerpt">Prolonged desk work wreaks havoc on cervical spine health. Learn how proper ergonomics combined with physiotherapy exercises can eliminate workplace neck pain for good.</p>
+            <div class="card-meta">
+              <img class="card-avatar" src="../assets/img/staff-robert-kim.jpg" alt="Dr. Robert Kim" />
+              <span>Dr. Robert Kim</span>
+              <span class="meta-sep">·</span>
+              <span>Oct 5, 2024</span>
+              <span class="meta-sep">·</span>
+              <span><i class="fas fa-clock me-1"></i>6 min</span>
+            </div>
+            <a href="blog-details.html?post=neck-pain" class="link-read-more">Read More <i class="fas fa-arrow-right fa-xs"></i></a>
+          </div>
+        </article>
+      </div>
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 4 — SIDEBAR LAYOUT (Latest + Categories)
+========================================================= -->
+<section class="blog-sidebar-layout" aria-label="Latest articles and sidebar">
+  <div class="container">
+
+    <div class="row g-4">
+
+      <!-- Main Content: 3 text-heavy articles -->
+      <div class="col-lg-8">
+        <div class="text-start mb-4 reveal">
+          <h2 class="section-heading" style="font-size:1.6rem;">More From Our Physiotherapists</h2>
+          <div class="section-divider" style="margin:0.5rem 0 0;"></div>
+        </div>
+
+        <!-- Article 1 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/shoulder-therapy.jpg"
+                 alt="Rotator cuff rehabilitation session" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=rotator-cuff">Rotator Cuff Rehabilitation: A Complete 12-Week Programme</a>
+            </div>
+            <p class="article-list-excerpt">Week-by-week progression for safely rebuilding rotator cuff strength and restoring full shoulder function after a partial or complete tear, guided by our sports physiotherapists.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. Michael Torres &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Sep 30, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 11 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/needling.jpg"
+                 alt="Dry needling physiotherapy treatment" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=dry-needling">Dry Needling vs Acupuncture: What's the Difference?</a>
+            </div>
+            <p class="article-list-excerpt">Both treatments use fine needles, yet they differ greatly in philosophy, technique, and clinical application. We break down the evidence for each and explain when physiotherapists recommend dry needling.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. Priya Sharma &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Sep 22, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 8 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/taping-closeup.jpg"
+                 alt="Athlete taping ankle for support" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=kinesio-taping">Kinesio Taping: Myth vs. Science — What the Research Says</a>
+            </div>
+            <p class="article-list-excerpt">Colourful athletic tape has become ubiquitous at sporting events worldwide. We review the clinical evidence to help you understand when taping genuinely helps and when it's purely placebo.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. James Chen &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Sep 14, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 7 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/senior-mobility.jpg"
+                 alt="Senior balance and mobility training" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=senior-wellness">Balance Training for Seniors: Preventing Falls at Home</a>
+            </div>
+            <p class="article-list-excerpt">Falls are not an inevitable part of ageing. These progressive balance and strength exercises, designed for older adults, reduce fall risk and build confidence in daily movement.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. Emily Watson &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Sep 8, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 8 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/manual-neck.jpg"
+                 alt="Manual therapy for neck pain" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=manual-therapy">Manual Therapy for Neck Pain: What to Expect in Your First Session</a>
+            </div>
+            <p class="article-list-excerpt">Hands-on joint mobilisation and soft-tissue techniques can quickly ease neck stiffness. Here's how a physiotherapist assesses your neck and what a typical treatment session involves.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. Robert Kim &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Sep 1, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 7 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 6 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/leg-treatment.jpg"
+                 alt="Knee rehabilitation after ACL surgery" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=acl-tears">Knee Rehabilitation After ACL Surgery: A Week-by-Week Guide</a>
+            </div>
+            <p class="article-list-excerpt">From early range-of-motion work to return-to-sport testing, this structured 12-week programme maps out each phase of ACL rehabilitation and the milestones to hit along the way.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. Sarah Mitchell &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Aug 24, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 10 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 7 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/clinic-treatment.jpg"
+                 alt="Post-surgery physiotherapy rehabilitation session" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=manual-therapy">Post-Surgery Rehabilitation: Your First Six Weeks</a>
+            </div>
+            <p class="article-list-excerpt">The first six weeks after surgery set the foundation for your entire recovery. Learn how physiotherapy protects the repair, restores movement, and rebuilds strength safely.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. Sarah Mitchell &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Aug 17, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 9 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 8 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/sports-taping.jpg"
+                 alt="Athlete preparing to return to sport" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=sports-injury-recovery">Return to Sport After Injury: A Safe Progression</a>
+            </div>
+            <p class="article-list-excerpt">Rushing back to training is the fastest route to re-injury. Use these physiotherapist-approved criteria to progress from rehabilitation to full sports participation with confidence.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. James Chen &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Aug 10, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 8 min read
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 9 -->
+        <div class="article-list-item reveal">
+          <div class="article-thumb">
+            <img src="../assets/img/back-treatment.jpg"
+                 alt="Physiotherapist treating a patient with lower back pain" loading="lazy" />
+          </div>
+          <div>
+            <div class="article-list-title">
+              <a href="blog-details.html?post=back-pain">Chronic Lower Back Pain: When to Seek Physiotherapy</a>
+            </div>
+            <p class="article-list-excerpt">Most back pain settles with time, but some patterns need professional assessment. Learn the warning signs, how physiotherapy helps, and what a typical treatment plan looks like.</p>
+            <div class="article-list-meta">
+              <i class="fas fa-user-md me-1 text-sage"></i> Dr. Priya Sharma &nbsp;·&nbsp;
+              <i class="fas fa-calendar me-1"></i> Aug 3, 2024 &nbsp;·&nbsp;
+              <i class="fas fa-clock me-1"></i> 7 min read
+            </div>
+          </div>
+        </div>
+      </div><!-- /main col -->
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+
+        <!-- Browse by Category -->
+        <aside class="sidebar-widget reveal" aria-label="Browse categories">
+          <div class="widget-title"><i class="fas fa-tags me-2 text-sage"></i>Browse by Category</div>
+          <ul class="list-unstyled mb-0">
+            <li class="cat-list-item"><span><i class="fas fa-chevron-right me-2 text-sage" style="font-size:.7rem;"></i>Recovery Tips</span><span class="cat-count">12</span></li>
+            <li class="cat-list-item"><span><i class="fas fa-chevron-right me-2 text-sage" style="font-size:.7rem;"></i>Sports Health</span><span class="cat-count">8</span></li>
+            <li class="cat-list-item"><span><i class="fas fa-chevron-right me-2 text-sage" style="font-size:.7rem;"></i>Chronic Pain</span><span class="cat-count">15</span></li>
+            <li class="cat-list-item"><span><i class="fas fa-chevron-right me-2 text-sage" style="font-size:.7rem;"></i>Exercise &amp; Fitness</span><span class="cat-count">10</span></li>
+            <li class="cat-list-item"><span><i class="fas fa-chevron-right me-2 text-sage" style="font-size:.7rem;"></i>Lifestyle</span><span class="cat-count">7</span></li>
+          </ul>
+        </aside>
+
+        <!-- Popular This Week -->
+        <aside class="sidebar-widget reveal" aria-label="Popular articles this week">
+          <div class="widget-title"><i class="fas fa-fire me-2 text-sage"></i>Popular This Week</div>
+          <ol class="list-unstyled mb-0">
+            <li class="popular-item">
+              <span class="popular-num">1</span>
+              <div>
+                <div style="font-size:.85rem;font-weight:600;color:var(--charcoal);">10 Evidence-Based Recovery Strategies</div>
+                <div class="popular-reads"><i class="fas fa-eye me-1"></i>4,210 reads</div>
+              </div>
+            </li>
+            <li class="popular-item">
+              <span class="popular-num">2</span>
+              <div>
+                <div style="font-size:.85rem;font-weight:600;color:var(--charcoal);">5 Exercises for Chronic Lower Back Pain</div>
+                <div class="popular-reads"><i class="fas fa-eye me-1"></i>3,879 reads</div>
+              </div>
+            </li>
+            <li class="popular-item">
+              <span class="popular-num">3</span>
+              <div>
+                <div style="font-size:.85rem;font-weight:600;color:var(--charcoal);">Understanding ACL Tears & Recovery</div>
+                <div class="popular-reads"><i class="fas fa-eye me-1"></i>2,654 reads</div>
+              </div>
+            </li>
+            <li class="popular-item">
+              <span class="popular-num">4</span>
+              <div>
+                <div style="font-size:.85rem;font-weight:600;color:var(--charcoal);">Dry Needling vs Acupuncture</div>
+                <div class="popular-reads"><i class="fas fa-eye me-1"></i>2,187 reads</div>
+              </div>
+            </li>
+            <li class="popular-item">
+              <span class="popular-num">5</span>
+              <div>
+                <div style="font-size:.85rem;font-weight:600;color:var(--charcoal);">Neck Pain Ergonomics &amp; Physio Solutions</div>
+                <div class="popular-reads"><i class="fas fa-eye me-1"></i>1,943 reads</div>
+              </div>
+            </li>
+          </ol>
+        </aside>
+
+        <!-- Newsletter mini -->
+        <aside class="sidebar-widget reveal" aria-label="Newsletter subscription">
+          <div class="widget-title"><i class="fas fa-envelope me-2 text-sage"></i>Subscribe to Newsletter</div>
+          <p style="font-size:.85rem;color:var(--text-muted-custom);margin-bottom:.9rem;">Get the latest physiotherapy tips delivered to your inbox every week.</p>
+          <form novalidate aria-label="Newsletter form">
+            <label for="sidebarEmail" class="visually-hidden">Your email</label>
+            <input type="email" id="sidebarEmail" class="newsletter-mini-input" placeholder="Your email address" required />
+            <button type="submit" class="btn-subscribe-mini"><i class="fas fa-paper-plane me-2"></i>Subscribe</button>
+            <p style="font-size:.72rem;color:var(--text-muted);margin-top:.5rem;text-align:center;">No spam. Unsubscribe anytime.</p>
+          </form>
+        </aside>
+
+        <!-- Follow Our Experts -->
+        <aside class="sidebar-widget reveal" aria-label="Follow our expert physiotherapists">
+          <div class="widget-title"><i class="fas fa-users me-2 text-sage"></i>Follow Our Experts</div>
+          <div class="experts-grid">
+            <div class="expert-pill">
+              <img class="expert-av" src="../assets/img/staff-sarah-mitchell.jpg" alt="Dr. Sarah Mitchell" />
+              <div>
+                <div style="font-weight:600;font-size:.85rem;">Dr. Sarah Mitchell</div>
+                <div style="font-size:.75rem;color:var(--text-muted-custom);">Sports Physiotherapist</div>
+              </div>
+            </div>
+            <div class="expert-pill">
+              <img class="expert-av" src="../assets/img/staff-james-chen.jpg" alt="Dr. James Chen" />
+              <div>
+                <div style="font-weight:600;font-size:.85rem;">Dr. James Chen</div>
+                <div style="font-size:.75rem;color:var(--text-muted-custom);">Pain Management Specialist</div>
+              </div>
+            </div>
+            <div class="expert-pill">
+              <img class="expert-av" src="../assets/img/staff-priya-sharma.jpg" alt="Dr. Priya Sharma" />
+              <div>
+                <div style="font-weight:600;font-size:.85rem;">Dr. Priya Sharma</div>
+                <div style="font-size:.75rem;color:var(--text-muted-custom);">Rehabilitation Physiotherapist</div>
+              </div>
+            </div>
+            <div class="expert-pill">
+              <img class="expert-av" src="../assets/img/staff-emily-watson.jpg" alt="Dr. Emily Watson" />
+              <div>
+                <div style="font-weight:600;font-size:.85rem;">Dr. Emily Watson</div>
+                <div style="font-size:.75rem;color:var(--text-muted-custom);">Senior &amp; Geriatric Care</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div><!-- /sidebar col -->
+    </div><!-- /row -->
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 5 — VIDEO CONTENT
+========================================================= -->
+<section class="video-section" aria-label="Video physiotherapy guides">
+  <div class="container">
+
+    <div class="text-center mb-5 reveal">
+      <h2 class="section-heading">Watch &amp; Learn: Video Guides</h2>
+      <p class="section-sub mt-2">Expert-led video tutorials you can follow at home</p>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Video 1 -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="video-card">
+          <div class="video-thumb-wrap" role="button" aria-label="Play: Home Exercises for Lower Back Pain" aria-haspopup="dialog" tabindex="0"
+               data-video="../assets/video/lower-back-exercises.mp4"
+               data-title="Home Exercises for Lower Back Pain">
+            <img src="../assets/img/back-exercise.jpg"
+                 alt="Person demonstrating lower back exercises" loading="lazy" />
+            <div class="video-overlay">
+              <div class="play-btn"><i class="fas fa-play ms-1"></i></div>
+            </div>
+            <span class="duration-badge">00:10</span>
+          </div>
+          <div class="video-body">
+            <h5>Home Exercises for Lower Back Pain</h5>
+            <div class="view-count"><i class="fas fa-eye me-1"></i> 18,420 views &nbsp;·&nbsp; <i class="fas fa-calendar me-1"></i> Nov 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="video-card">
+          <div class="video-thumb-wrap" role="button" aria-label="Play: Shoulder Stretches After Rotator Cuff Injury" aria-haspopup="dialog" tabindex="0"
+               data-video="../assets/video/shoulder-stretches.mp4"
+               data-title="Shoulder Stretches After Rotator Cuff Injury">
+            <img src="../assets/img/arm-stretch.jpg"
+                 alt="Shoulder stretching exercise demonstration" loading="lazy" />
+            <div class="video-overlay">
+              <div class="play-btn"><i class="fas fa-play ms-1"></i></div>
+            </div>
+            <span class="duration-badge">00:10</span>
+          </div>
+          <div class="video-body">
+            <h5>Shoulder Stretches After Rotator Cuff Injury</h5>
+            <div class="view-count"><i class="fas fa-eye me-1"></i> 12,785 views &nbsp;·&nbsp; <i class="fas fa-calendar me-1"></i> Oct 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="col-lg-4 col-md-6 reveal">
+        <div class="video-card">
+          <div class="video-thumb-wrap" role="button" aria-label="Play: 5-Minute Morning Mobility Routine" aria-haspopup="dialog" tabindex="0"
+               data-video="../assets/video/morning-mobility.mp4"
+               data-title="5-Minute Morning Mobility Routine">
+            <img src="../assets/img/stretch-therapy.jpg"
+                 alt="Morning mobility routine exercise demonstration" loading="lazy" />
+            <div class="video-overlay">
+              <div class="play-btn"><i class="fas fa-play ms-1"></i></div>
+            </div>
+            <span class="duration-badge">00:08</span>
+          </div>
+          <div class="video-body">
+            <h5>5-Minute Morning Mobility Routine</h5>
+            <div class="view-count"><i class="fas fa-eye me-1"></i> 24,901 views &nbsp;·&nbsp; <i class="fas fa-calendar me-1"></i> Oct 2024</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+<!-- Video Lightbox Player -->
+<div class="video-lightbox" id="videoLightbox" role="dialog" aria-modal="true" aria-labelledby="videoLightboxTitle" aria-hidden="true">
+  <div class="video-lightbox-backdrop" data-close-video></div>
+  <div class="video-lightbox-dialog">
+    <div class="video-lightbox-header">
+      <h5 id="videoLightboxTitle">Video Guide</h5>
+      <button type="button" class="video-lightbox-close" data-close-video aria-label="Close video">&times;</button>
+    </div>
+    <div class="video-lightbox-body">
+      <video id="videoPlayer" controls playsinline preload="metadata">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     SECTION 6 — NEWSLETTER
+========================================================= -->
+<section class="newsletter-section" aria-label="Newsletter signup">
+  <div class="container">
+
+    <!-- Newsletter Banner -->
+    <div class="newsletter-banner reveal" role="complementary" aria-label="Newsletter signup">
+      <h2>Get Weekly Wellness Tips</h2>
+      <p>Join 12,000+ readers who receive our expert physiotherapy insights every Wednesday morning.</p>
+      <form class="newsletter-form" novalidate aria-label="Weekly newsletter signup">
+        <label for="nlEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="nlEmail" placeholder="Enter your email address" required />
+        <button type="submit" class="btn-nl-submit">
+          <i class="fas fa-paper-plane me-2"></i>Subscribe Free
+        </button>
+      </form>
+      <p class="privacy-note"><i class="fas fa-lock me-1"></i>Your privacy matters. We never share your data. Unsubscribe anytime.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer id="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="row g-4 g-xl-5">
+
+      <!-- Col 1: Brand -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="brand-leaf" style="width:32px;height:32px;font-size:.8rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <span class="brand-name">Physio<span>Elite</span></span>
+          </div>
+          <p class="footer-tagline">Premium Physiotherapy & Rehabilitation. Helping people move better, feel stronger, and live fully since 2014.</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="PhysioElite on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links" aria-label="Quick navigation links">
+          <li><a href="home1.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home</a></li>
+          <li><a href="home2.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home 2</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+          <li><a href="services.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Services</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Contact</a></li>
+          <li><a href="login.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Patient Login</a></li>
+          <li><a href="404.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> 404 Page</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links" aria-label="Service links">
+          <li><a href="services.html#acute-pain"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Acute Pain Relief</a></li>
+          <li><a href="services.html#chronic"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Chronic Conditions</a></li>
+          <li><a href="services.html#post-surgery"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Post-Surgery Recovery</a></li>
+          <li><a href="services.html#sports"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Sports Performance</a></li>
+          <li><a href="services.html#senior"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Senior Wellness</a></li>
+          <li><a href="services.html#preventive"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Preventive Care</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact + Newsletter -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="footer-heading">Get In Touch</h3>
+        <address style="font-style:normal;">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>123 Wellness Avenue, Health City, CA 90210, USA</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:+18007497466" style="color:inherit;">+1 (800) PHYSIO</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:hello@physioelite.com" style="color:inherit;">hello@physioelite.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>Mon–Fri: 8am–7pm &nbsp;|&nbsp; Sat: 9am–4pm</span>
+          </div>
+        </address>
+
+        <div class="newsletter-wrap mt-3">
+          <p>Subscribe for health tips and clinic news:</p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
+            <label for="footerNewsletterEmail" class="visually-hidden">Email address</label>
+            <input
+              type="email"
+              id="footerNewsletterEmail"
+              placeholder="your@email.com"
+              required
+              aria-required="true"
+            />
+            <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <span>&copy; 2024 PhysioElite. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js"></script>
+
+<script>
+/* ==================================================
+   NAVBAR SCROLL
+================================================== */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ==================================================
+   SCROLL REVEAL
+================================================== */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 60);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ==================================================
+   CATEGORY FILTER (tab switching)
+================================================== */
+const pills     = document.querySelectorAll('.cat-pill');
+const cards     = document.querySelectorAll('.blog-card-col');
+
+pills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    // Active state
+    pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-selected','false'); });
+    pill.classList.add('active');
+    pill.setAttribute('aria-selected', 'true');
+
+    const filter = pill.dataset.filter;
+
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = '';
+        setTimeout(() => card.style.opacity = '1', 10);
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => card.style.display = 'none', 300);
+      }
+    });
+  });
+});
+
+/* ==================================================
+   BLOG SEARCH (live filter)
+================================================== */
+document.getElementById('blogSearch').addEventListener('input', function () {
+  const query = this.value.toLowerCase().trim();
+  cards.forEach(card => {
+    const title = card.querySelector('h5')?.textContent.toLowerCase() || '';
+    const exc   = card.querySelector('.card-excerpt')?.textContent.toLowerCase() || '';
+    const show  = !query || title.includes(query) || exc.includes(query);
+    card.style.display = show ? '' : 'none';
+  });
+});
+
+/* ==================================================
+   VIDEO LIGHTBOX PLAYER
+================================================== */
+const videoLightbox = document.getElementById('videoLightbox');
+if (videoLightbox) {
+  const videoPlayer = document.getElementById('videoPlayer');
+  const videoTitle = document.getElementById('videoLightboxTitle');
+  const closeBtn = videoLightbox.querySelector('.video-lightbox-close');
+  let lastTrigger = null;
+
+  const openVideo = (wrap) => {
+    lastTrigger = wrap;
+    videoPlayer.src = wrap.dataset.video;
+    videoTitle.textContent = wrap.dataset.title || 'Video Guide';
+    videoLightbox.classList.add('open');
+    videoLightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('video-lightbox-open');
+    closeBtn.focus();
+    videoPlayer.play().catch(() => {});
+  };
+
+  const closeVideo = () => {
+    videoLightbox.classList.remove('open');
+    videoLightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('video-lightbox-open');
+    videoPlayer.pause();
+    setTimeout(() => {
+      if (!videoLightbox.classList.contains('open')) {
+        videoPlayer.removeAttribute('src');
+        videoPlayer.load();
+      }
+    }, 250);
+    if (lastTrigger) lastTrigger.focus();
+  };
+
+  document.querySelectorAll('.video-thumb-wrap').forEach(wrap => {
+    wrap.addEventListener('click', () => openVideo(wrap));
+    wrap.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openVideo(wrap);
+      }
+    });
+  });
+
+  videoLightbox.querySelectorAll('[data-close-video]').forEach(el => {
+    el.addEventListener('click', closeVideo);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && videoLightbox.classList.contains('open')) closeVideo();
+  });
+}
+
+/* ==================================================
+   NEWSLETTER FORM SUBMISSION
+================================================== */
+document.querySelectorAll('form[aria-label*="newsletter"], form[aria-label*="Newsletter"]').forEach(form => {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) {
+      btn.textContent = 'Subscribed!';
+      btn.style.background = '#4caf84';
+      btn.disabled = true;
+    }
+  });
+});
+
+/* ==================================================
+   THEME TOGGLE
+================================================== */
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const icon = themeToggle.querySelector('i');
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') { document.documentElement.setAttribute('data-theme','dark'); icon.className = 'fas fa-sun text-muted'; }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    icon.className = isDark ? 'fas fa-moon text-muted' : 'fas fa-sun text-muted';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+}
+</script>
+
+</body>
+</html>

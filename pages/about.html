@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about PhysioElite — 15 years of expert physiotherapy in the heart of the community. Meet our team, values, and accreditations." />
+  <meta name="keywords" content="physiotherapy, rehabilitation, about us, physio team, PhysioElite, certified physiotherapists" />
+  <meta name="author" content="PhysioElite" />
+  <meta property="og:title" content="About Us | PhysioElite — Premium Physiotherapy & Rehabilitation" />
+  <meta property="og:description" content="Meet the expert team behind PhysioElite and discover our 15-year journey of healing and community care." />
+  <meta property="og:image" content="../assets/img/hero-physio.jpg" />
+  <meta property="og:type" content="website" />
+  <title>About Us | PhysioElite — Premium Physiotherapy &amp; Rehabilitation</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": "PhysioElite",
+    "description": "Premium Physiotherapy & Rehabilitation clinic with 15 years of expert care.",
+    "url": "https://www.physioelite.com",
+    "logo": "https://www.physioelite.com/assets/images/logo.png",
+    "foundingDate": "2009",
+    "medicalSpecialty": ["Physiotherapy", "Rehabilitation", "Sports Medicine"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Wellness Avenue",
+      "addressLocality": "Sydney",
+      "addressRegion": "NSW",
+      "postalCode": "2000",
+      "addressCountry": "AU"
+    },
+    "telephone": "+61-2-9000-0000",
+    "email": "hello@physioelite.com",
+    "numberOfEmployees": {"@type": "QuantitativeValue", "value": 20},
+    "award": ["Best Physio Clinic 2022", "Excellence in Healthcare 2023", "Patient Choice Award 2024"],
+    "employee": [
+      {"@type": "Person", "name": "Dr. Sarah Mitchell", "jobTitle": "Lead Physiotherapist"},
+      {"@type": "Person", "name": "Dr. James Chen", "jobTitle": "Senior Physiotherapist"},
+      {"@type": "Person", "name": "Dr. Priya Sharma", "jobTitle": "Manual Therapy Expert"},
+      {"@type": "Person", "name": "Dr. Michael Torres", "jobTitle": "Exercise Physiologist"},
+      {"@type": "Person", "name": "Dr. Emily Watson", "jobTitle": "Paediatric Physiotherapist"},
+      {"@type": "Person", "name": "Dr. Robert Kim", "jobTitle": "Neurological Rehabilitation Specialist"}
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Project Stylesheet -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    /* =========================================================
+       CSS CUSTOM PROPERTIES
+    ========================================================= */
+    :root {
+      --sage:    #8FAE9B;
+      --teal:    #6B9C9A;
+      --ivory:   #FAF9F5;
+      --beige:   #E8DFD2;
+      --charcoal:#303A38;
+      --white:   #ffffff;
+      --text-dark: #1e2a28;
+      --text-muted: #6b7a77;
+      --shadow-sm: 0 2px 12px rgba(48,58,56,.08);
+      --shadow-md: 0 8px 32px rgba(48,58,56,.14);
+      --shadow-lg: 0 20px 60px rgba(48,58,56,.18);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+      --font-body: 'DM Sans', sans-serif;
+      --font-heading: 'Playfair Display', serif;
+    }
+
+    [data-theme="dark"] {
+      --ivory:   #1e2a28;
+      --beige:   #253330;
+      --charcoal:#0d1715;
+      --white:   #182320;
+      --text-dark: #e8ede9;
+      --text-muted: #9db0aa;
+    }
+
+    /* =========================================================
+       GLOBAL RESETS
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--ivory);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; line-height: 1.25; }
+    h5, h6, p, span, a, li { font-family: var(--font-body); }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-left  { opacity:0; transform:translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal-right { opacity:0; transform:translateX(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-left.visible,
+    .reveal-right.visible { opacity:1; transform:none; }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+    .navbar-physio {
+      background: rgba(250,249,245,.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(143,174,155,.2);
+      padding: .9rem 0;
+      transition: background var(--transition), box-shadow var(--transition);
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+    }
+    [data-theme="dark"] .navbar-physio {
+      background: rgba(30,42,40,.95);
+      border-bottom-color: rgba(107,156,154,.2);
+    }
+    .navbar-physio.scrolled { box-shadow: var(--shadow-md); }
+
+    .navbar-brand-wrap { display:flex; align-items:center; gap:.6rem; }
+    .brand-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      border-radius: 12px;
+      display: flex; align-items:center; justify-content:center;
+      color: #fff;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .brand-text-main {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+    [data-theme="dark"] .brand-text-main { color: var(--ivory); }
+    .brand-text-sub {
+      font-size: .65rem;
+      color: var(--teal);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-link-physio {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text-dark) !important;
+      padding: .4rem .8rem !important;
+      border-radius: 6px;
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav-link-physio:hover, .nav-link-physio.active {
+      color: var(--teal) !important;
+      background: rgba(107,156,154,.1);
+    }
+    .nav-link-physio.active { font-weight: 600; }
+
+    .btn-nav-login {
+      border: 1.5px solid var(--sage);
+      color: var(--sage);
+      background: transparent;
+      border-radius: 25px;
+      padding: .4rem 1.2rem;
+      font-size: .85rem;
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+    .btn-nav-login:hover { background: var(--sage); color:#fff; }
+
+    .btn-nav-book {
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: .45rem 1.3rem;
+      font-size: .85rem;
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+    .btn-nav-book:hover { opacity:.88; transform:translateY(-1px); box-shadow: 0 4px 16px rgba(107,156,154,.4); }
+
+    .theme-toggle-btn {
+      background: none;
+      border: 1.5px solid rgba(143,174,155,.4);
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      display:flex; align-items:center; justify-content:center;
+      cursor: pointer;
+      color: var(--text-dark);
+      transition: all var(--transition);
+    }
+    .theme-toggle-btn:hover { background: rgba(143,174,155,.15); border-color: var(--sage); }
+
+    /* =========================================================
+       SECTION 1 — ABOUT HERO
+    ========================================================= */
+    .about-hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      background-image: url('../assets/img/rehab-gym.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        rgba(48,58,56,.78) 0%,
+        rgba(143,174,155,.55) 60%,
+        rgba(107,156,154,.4) 100%);
+    }
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+    .breadcrumb-physio {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+      font-size: .85rem;
+      opacity: .85;
+    }
+    .breadcrumb-physio a { color: rgba(255,255,255,.8); transition: color var(--transition); }
+    .breadcrumb-physio a:hover { color: #fff; }
+    .breadcrumb-physio .sep { opacity: .6; }
+
+    .about-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,.3);
+    }
+    .about-hero h1 em { font-style: italic; color: rgba(232,223,210,.9); }
+
+    .about-hero .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,.88);
+      max-width: 560px;
+      font-weight: 400;
+    }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.7);
+      font-size: .8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100%{transform:translateX(-50%) translateY(0)}
+      50%{transform:translateX(-50%) translateY(8px)}
+    }
+
+    /* =========================================================
+       SECTION 2 — CLINIC STORY
+    ========================================================= */
+    .section-story { background: var(--ivory); padding: 6rem 0; }
+
+    .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--charcoal);
+    }
+    [data-theme="dark"] .section-title { color: var(--ivory); }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content:'';
+      position: absolute;
+      left: calc(1rem - 1px); top:0; bottom:0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--sage), var(--teal));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 1.6rem;
+    }
+    .timeline-item::before {
+      content:'';
+      position: absolute;
+      left: -1.5rem;
+      top: .4rem;
+      width: 16px; height: 16px;
+      background: var(--sage);
+      border: 3px solid var(--ivory);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--sage);
+      transition: transform var(--transition);
+    }
+    .timeline-item:hover::before { transform: scale(1.3); background: var(--teal); }
+    .timeline-year {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .2rem;
+    }
+    .timeline-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: .2rem;
+    }
+    [data-theme="dark"] .timeline-title { color: #cde0d8; }
+    .timeline-desc { font-size: .88rem; color: var(--text-muted); }
+
+    .mission-block {
+      border-left: 4px solid var(--sage);
+      background: rgba(143,174,155,.1);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.4rem 1.6rem;
+      margin-top: 2rem;
+    }
+    .mission-block .mission-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .mission-block p {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--charcoal);
+      margin: 0;
+      line-height: 1.6;
+    }
+    [data-theme="dark"] .mission-block p { color: #cde0d8; }
+
+    .story-image-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .story-image-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .story-image-wrap:hover img { transform: scale(1.04); }
+    .story-image-badge {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      background: rgba(48,58,56,.9);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      border-radius: 12px;
+      padding: .9rem 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .story-image-badge .badge-icon {
+      width: 44px; height: 44px;
+      background: var(--sage);
+      border-radius: 50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .story-image-badge .badge-num { font-size: 1.5rem; font-weight: 700; line-height:1; }
+    .story-image-badge .badge-txt { font-size: .78rem; opacity: .8; }
+
+    /* =========================================================
+       SECTION 3 — MEET THE TEAM
+    ========================================================= */
+    .section-team {
+      background: var(--white);
+      padding: 6rem 0;
+    }
+    [data-theme="dark"] .section-team { background: #182320; }
+
+    /* Card flip */
+    .team-card-wrap {
+      perspective: 1000px;
+      height: 420px;
+      cursor: pointer;
+    }
+    .team-card-inner {
+      position: relative;
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .6s ease;
+    }
+    .team-card-wrap:hover .team-card-inner,
+    .team-card-wrap:focus-within .team-card-inner { transform: rotateY(180deg); }
+
+    .team-card-front,
+    .team-card-back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .team-card-front {
+      background: var(--ivory);
+      border: 1px solid rgba(143,174,155,.2);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      transition: box-shadow var(--transition);
+    }
+    [data-theme="dark"] .team-card-front { background: #253330; border-color: rgba(107,156,154,.2); }
+    .team-card-wrap:hover .team-card-front { box-shadow: var(--shadow-md); }
+
+    .team-photo {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 4px solid var(--sage);
+      margin-bottom: 1.2rem;
+      transition: border-color var(--transition);
+    }
+    .team-card-wrap:hover .team-photo { border-color: var(--teal); }
+
+    .team-name {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: .2rem;
+    }
+    [data-theme="dark"] .team-name { color: #cde0d8; }
+
+    .team-role {
+      font-size: .82rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: .9rem;
+    }
+
+    .team-tags { display:flex; flex-wrap:wrap; gap:.4rem; justify-content:center; margin-bottom: 1rem; }
+    .team-tag {
+      font-size: .7rem;
+      font-weight: 600;
+      background: rgba(143,174,155,.18);
+      color: var(--teal);
+      border-radius: 20px;
+      padding: .25rem .75rem;
+    }
+
+    .team-linkedin {
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: #fff;
+      font-size: .9rem;
+      transition: all var(--transition);
+      margin: 0 auto;
+    }
+    .team-linkedin:hover { background: var(--teal); transform: scale(1.1); }
+
+    /* Card back */
+    .team-card-back {
+      background: linear-gradient(135deg, var(--charcoal) 0%, #1a2825 100%);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .team-back-name {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+      color: rgba(232,223,210,.95);
+    }
+    .team-back-role {
+      font-size: .78rem;
+      color: var(--sage);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+    }
+    .team-back-bio {
+      font-size: .85rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 1.2rem;
+    }
+    .team-back-btn {
+      background: var(--sage);
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: .4rem 1.2rem;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .team-back-btn:hover { background: var(--teal); }
+
+    /* =========================================================
+       SECTION 4 — CERTIFICATIONS
+    ========================================================= */
+    .section-certs { background: var(--beige); padding: 6rem 0; }
+
+    .cert-badge {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid transparent;
+      transition: all var(--transition);
+      height: 100%;
+    }
+    [data-theme="dark"] .cert-badge { background: #253330; }
+    .cert-badge:hover { border-color: var(--sage); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .cert-badge-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      display: flex; align-items:center; justify-content:center;
+      margin: 0 auto 1rem;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .cert-badge h6 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: .4rem;
+    }
+    [data-theme="dark"] .cert-badge h6 { color: #cde0d8; }
+    .cert-badge p { font-size: .78rem; color: var(--text-muted); margin:0; }
+
+    .stat-block { text-align: center; padding: 1.5rem; }
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .stat-label { font-size: .9rem; font-weight: 600; color: var(--charcoal); }
+    [data-theme="dark"] .stat-label { color: #9db0aa; }
+
+    .cred-list { list-style: none; padding: 0; margin: 0; }
+    .cred-list li {
+      display: flex; align-items: center; gap: .7rem;
+      padding: .7rem 0;
+      border-bottom: 1px solid rgba(143,174,155,.2);
+      font-size: .9rem;
+      color: var(--text-dark);
+    }
+    .cred-list li:last-child { border-bottom: none; }
+    .cred-list li i { color: var(--sage); font-size: .95rem; flex-shrink: 0; }
+
+    /* =========================================================
+       SECTION 5 — CLINIC VALUES
+    ========================================================= */
+    .section-values { background: var(--white); padding: 6rem 0; }
+    [data-theme="dark"] .section-values { background: #182320; }
+
+    .value-card {
+      background: var(--ivory);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      border: 1.5px solid rgba(143,174,155,.15);
+      transition: all var(--transition);
+      height: 100%;
+    }
+    [data-theme="dark"] .value-card { background: #253330; border-color: rgba(107,156,154,.2); }
+    .value-card:hover {
+      border-color: var(--sage);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .value-icon-wrap {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(143,174,155,.2), rgba(107,156,154,.2));
+      display: flex; align-items:center; justify-content:center;
+      margin-bottom: 1.2rem;
+      transition: all var(--transition);
+    }
+    .value-card:hover .value-icon-wrap {
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+    }
+    .value-icon-wrap i {
+      font-size: 1.5rem;
+      color: var(--sage);
+      transition: color var(--transition);
+    }
+    .value-card:hover .value-icon-wrap i { color: #fff; }
+
+    .value-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: .6rem;
+    }
+    [data-theme="dark"] .value-title { color: #cde0d8; }
+    .value-desc { font-size: .88rem; color: var(--text-muted); line-height: 1.65; margin:0; }
+
+    /* =========================================================
+       SECTION 6 — AWARDS & COMMUNITY
+    ========================================================= */
+    .section-awards { background: var(--charcoal); padding: 6rem 0; }
+
+    .awards-label { color: var(--sage); }
+    .awards-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--ivory);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Award timeline */
+    .award-timeline { position: relative; padding-left: 2rem; }
+    .award-timeline::before {
+      content:'';
+      position: absolute;
+      left: calc(1rem - 1px); top:0; bottom:0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--sage), var(--teal));
+    }
+    .award-item {
+      position: relative;
+      margin-bottom: 1.8rem;
+      padding-left: 1.4rem;
+    }
+    .award-item::before {
+      content:'';
+      position: absolute;
+      left: -1.5rem; top: .4rem;
+      width: 16px; height: 16px;
+      background: var(--sage);
+      border: 3px solid var(--charcoal);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--sage);
+    }
+    .award-year {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .2rem;
+    }
+    .award-name {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ivory);
+      margin-bottom: .2rem;
+    }
+    .award-org { font-size: .82rem; color: rgba(250,249,245,.55); }
+
+    /* Community */
+    .community-image-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      margin-bottom: 1.5rem;
+    }
+    .community-image-wrap img {
+      width: 100%; height: 240px;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .community-image-wrap:hover img { transform: scale(1.05); }
+
+    .community-items { list-style: none; padding:0; margin: 0 0 2rem; }
+    .community-items li {
+      display: flex; align-items: center; gap: .8rem;
+      color: rgba(250,249,245,.8);
+      padding: .6rem 0;
+      border-bottom: 1px solid rgba(250,249,245,.08);
+      font-size: .9rem;
+    }
+    .community-items li:last-child { border:none; }
+    .community-items li i { color: var(--sage); flex-shrink:0; }
+
+    .btn-awards {
+      background: linear-gradient(135deg, var(--sage), var(--teal));
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: .9rem 2.2rem;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      cursor: pointer;
+    }
+    .btn-awards:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(107,156,154,.45);
+      color: #fff;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    .footer-physio {
+      background: #1a2522;
+      color: rgba(250,249,245,.75);
+      padding: 4rem 0 2rem;
+      border-top: 2px solid rgba(143,174,155,.2);
+    }
+    .footer-brand { font-family: var(--font-heading); font-size: 1.3rem; color: var(--ivory); margin-bottom: .4rem; }
+    .footer-tagline { font-size: .82rem; color: var(--sage); }
+    .footer-heading { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform:uppercase; color: var(--ivory); margin-bottom: 1rem; }
+    .footer-links { list-style:none; padding:0; margin:0; }
+    .footer-links li { margin-bottom: .5rem; }
+    .footer-links a { color: rgba(250,249,245,.65); font-size: .88rem; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-contact-item { display:flex; gap:.7rem; align-items:flex-start; margin-bottom:.7rem; font-size:.88rem; }
+    .footer-contact-item i { color: var(--sage); margin-top: .15rem; flex-shrink:0; }
+    .footer-social { display:flex; gap:.7rem; margin-top: 1rem; }
+    .footer-social-link {
+      width:36px; height:36px;
+      border-radius:50%;
+      background: rgba(143,174,155,.15);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(250,249,245,.7);
+      font-size: .9rem;
+      transition: all var(--transition);
+    }
+    .footer-social-link:hover { background: var(--sage); color:#fff; transform:translateY(-2px); }
+    .footer-divider { border-color: rgba(250,249,245,.1); margin: 2rem 0 1.5rem; }
+    .footer-bottom { font-size: .8rem; color: rgba(250,249,245,.4); }
+    .footer-bottom a { color: var(--sage); }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 991.98px) {
+      .about-hero { background-attachment: scroll; min-height: 60vh; }
+      .story-image-wrap img { height: 320px; }
+      .team-card-wrap { height: 380px; }
+    }
+    @media (max-width: 767.98px) {
+      .about-hero { min-height: 55vh; }
+      .team-card-wrap { height: 400px; }
+      .stat-block { padding: 1rem; }
+    }
+    @media (max-width: 575.98px) {
+      .about-hero h1 { font-size: 2rem; }
+      .team-card-wrap { height: 420px; }
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/contrast-fixes.css" />
+  <link rel="stylesheet" href="../assets/css/rtl.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=2" />
+</head>
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+<nav id="mainNav" class="navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="../index.html" aria-label="PhysioElite Home">
+        <div class="brand-leaf" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+        <span>Physio<span class="brand-name-pe">Elite</span></span>
+      </a>
+
+      <!-- Mobile Controls -->
+      <div class="d-flex d-lg-none align-items-center gap-2 ms-auto">
+        <button id="darkToggle" data-theme-toggle aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="darkIcon"></i>
+        </button>
+        <div class="dropdown">
+          <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+            <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+            <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+            <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+          </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars navbar-toggler-icon"></i>
+        </button>
+      </div>
+
+      <!-- Nav Menu -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav mx-auto gap-1" role="list">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="home1.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="home2.html">Home 2</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <button id="darkToggleDesktop" class="d-none d-lg-flex" data-theme-toggle aria-label="Toggle dark mode" style="background:none;border:1.5px solid var(--border-color);color:var(--text-secondary);border-radius:var(--radius-sm);width:36px;height:36px;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);">
+            <i class="fa-solid fa-moon" id="darkIconDesktop"></i>
+          </button>
+          <div class="dropdown">
+            <a href="#" class="nav-profile-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu">
+              <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+              <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a></li>
+              <li><a class="dropdown-item" href="patient-dashboard.html"><i class="fa-solid fa-user-injured me-2"></i>Patient Dashboard</a></li>
+              <li><a class="dropdown-item" href="admin-dashboard.html"><i class="fa-solid fa-user-shield me-2"></i>Admin Dashboard</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+<!-- =========================================================
+     SECTION 1 — ABOUT HERO
+========================================================= -->
+<section class="about-hero" aria-label="About Us Hero">
+  <div class="container">
+    <div class="about-hero-content">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb">
+        <div class="breadcrumb-physio">
+          <a href="../index.html"><i class="fa-solid fa-house me-1"></i>Home</a>
+          <span class="sep"><i class="fa-solid fa-chevron-right fa-xs"></i></span>
+          <span>About Us</span>
+        </div>
+      </nav>
+
+      <h1>Healing Hands,<br><em>Transforming Lives</em></h1>
+      <p class="hero-subtitle">15 years of expert physiotherapy in the heart of the community</p>
+
+      <div class="d-flex flex-wrap gap-3 mt-4">
+        <a href="#our-story" class="btn-nav-book" style="padding:.7rem 1.8rem; font-size:.95rem; border-radius:30px;">
+          <i class="fa-solid fa-heart me-2"></i>Our Story
+        </a>
+        <a href="#meet-team" class="btn-nav-login" style="padding:.7rem 1.8rem; font-size:.95rem; border-radius:30px; border-color:rgba(255,255,255,.6); color:#fff;">
+          <i class="fa-solid fa-users me-2"></i>Meet the Team
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     SECTION 2 — CLINIC STORY
+========================================================= -->
+<section class="section-story" id="our-story" aria-labelledby="story-heading">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Left: Story + Timeline -->
+      <div class="col-lg-6">
+        <p class="section-label reveal"><i class="fa-solid fa-seedling me-2"></i>Our Journey</p>
+        <h2 class="section-title reveal" id="story-heading">The PhysioElite Story</h2>
+
+        <p class="reveal" style="color:var(--text-muted); font-size:.95rem; margin-bottom:1.5rem;">
+          Founded in 2009 by a small team of passionate physiotherapists, PhysioElite began with a simple but powerful vision: to deliver <strong style="color:var(--charcoal);">evidence-based, compassionate care</strong> that truly changes lives. What started as a single-room practice has grown into a thriving rehabilitation centre trusted by thousands of patients across the community.
+        </p>
+        <p class="reveal" style="color:var(--text-muted); font-size:.95rem; margin-bottom:2rem;">
+          Our values of integrity, empathy, and clinical excellence have guided every decision we've made — from expanding our services and facilities, to embracing digital innovation and earning national recognition for outstanding patient outcomes.
+        </p>
+
+        <!-- Mission block -->
+        <div class="mission-block reveal">
+          <div class="mission-label"><i class="fa-solid fa-quote-left me-2"></i>Our Mission</div>
+          <p>"To empower every patient to reclaim their movement, restore their confidence, and rediscover the joy of an active life — through world-class physiotherapy guided by science and driven by heart."</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline mt-4">
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2009</div>
+            <div class="timeline-title">Founded</div>
+            <div class="timeline-desc">PhysioElite opens its first practice with a team of three dedicated physiotherapists and a mission to transform community health.</div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2012</div>
+            <div class="timeline-title">Expanded Services</div>
+            <div class="timeline-desc">Introduction of sports rehabilitation, manual therapy, and hydrotherapy programs to meet growing patient demand.</div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2016</div>
+            <div class="timeline-title">New Purpose-Built Building</div>
+            <div class="timeline-desc">Relocated to a state-of-the-art facility with 12 treatment rooms, a rehabilitation gym, and a dedicated paediatric area.</div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-title">Digital Telehealth Services</div>
+            <div class="timeline-desc">Launched comprehensive telehealth and online consultation services, bringing expert physiotherapy to patients everywhere.</div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-title">Award-Winning Excellence</div>
+            <div class="timeline-desc">Named Australia's most trusted physiotherapy provider, winning three national healthcare excellence awards.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="col-lg-6 reveal-right">
+        <div class="story-image-wrap">
+          <img
+            src="../assets/img/clinic-treatment.jpg"
+            alt="PhysioElite physiotherapist working with a patient during a rehabilitation session"
+            loading="lazy"
+          />
+          <div class="story-image-badge">
+            <div class="badge-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div>
+              <div class="badge-num">15+</div>
+              <div class="badge-txt">Years of Trusted Care</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     SECTION 3 — MEET THE TEAM
+========================================================= -->
+<section class="section-team" id="meet-team" aria-labelledby="team-heading">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <p class="section-label reveal"><i class="fa-solid fa-stethoscope me-2"></i>Our Specialists</p>
+      <h2 class="section-title reveal" id="team-heading">Expert Therapists Who Care</h2>
+      <p class="reveal" style="color:var(--text-muted); max-width:580px; margin:1rem auto 0; font-size:.95rem;">
+        Every one of our therapists is a highly qualified specialist committed to your personal recovery journey. Hover over any card to learn more.
+      </p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Dr. Sarah Mitchell -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card-wrap" tabindex="0" role="article" aria-label="Dr. Sarah Mitchell profile card">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img class="team-photo" src="../assets/img/staff-sarah-mitchell.jpg" alt="Dr. Sarah Mitchell, Lead Physiotherapist" loading="lazy" />
+              <div class="team-name">Dr. Sarah Mitchell</div>
+              <div class="team-role">Lead Physiotherapist</div>
+              <div class="team-tags">
+                <span class="team-tag">Sports Specialist</span>
+                <span class="team-tag">Orthopaedic</span>
+              </div>
+              <a href="#" class="team-linkedin" aria-label="Dr. Sarah Mitchell LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="team-card-back">
+              <div class="team-back-name">Dr. Sarah Mitchell</div>
+              <div class="team-back-role">Sports & Orthopaedic Specialist</div>
+              <p class="team-back-bio">With over 12 years of clinical experience, Dr. Mitchell specialises in sports injury rehabilitation and orthopaedic post-operative recovery. She has worked with elite athletes and weekend warriors alike, tailoring evidence-based treatment plans for optimal outcomes.</p>
+              <a href="../pages/contact.html" class="team-back-btn">Book with Sarah</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dr. James Chen -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card-wrap" tabindex="0" role="article" aria-label="Dr. James Chen profile card">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img class="team-photo" src="../assets/img/staff-james-chen.jpg" alt="Dr. James Chen, Senior Physiotherapist" loading="lazy" />
+              <div class="team-name">Dr. James Chen</div>
+              <div class="team-role">Senior Physiotherapist</div>
+              <div class="team-tags">
+                <span class="team-tag">Post-Surgery Rehab</span>
+                <span class="team-tag">Musculoskeletal</span>
+              </div>
+              <a href="#" class="team-linkedin" aria-label="Dr. James Chen LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="team-card-back">
+              <div class="team-back-name">Dr. James Chen</div>
+              <div class="team-back-role">Post-Surgery Rehabilitation</div>
+              <p class="team-back-bio">Dr. Chen's expertise lies in post-surgical rehabilitation, helping patients recover from joint replacements, spinal surgeries, and reconstructive procedures. His methodical, compassionate approach has earned him consistent 5-star patient reviews.</p>
+              <a href="../pages/contact.html" class="team-back-btn">Book with James</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dr. Priya Sharma -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card-wrap" tabindex="0" role="article" aria-label="Dr. Priya Sharma profile card">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img class="team-photo" src="../assets/img/staff-priya-sharma.jpg" alt="Dr. Priya Sharma, Manual Therapy Expert" loading="lazy" />
+              <div class="team-name">Dr. Priya Sharma</div>
+              <div class="team-role">Manual Therapy Expert</div>
+              <div class="team-tags">
+                <span class="team-tag">Pain Management</span>
+                <span class="team-tag">Spinal Therapy</span>
+              </div>
+              <a href="#" class="team-linkedin" aria-label="Dr. Priya Sharma LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="team-card-back">
+              <div class="team-back-name">Dr. Priya Sharma</div>
+              <div class="team-back-role">Pain Management Specialist</div>
+              <p class="team-back-bio">Dr. Sharma is a certified manual therapy specialist with advanced training in myofascial release, joint mobilisation, and chronic pain management. She has helped hundreds of patients find lasting relief from persistent musculoskeletal pain.</p>
+              <a href="../pages/contact.html" class="team-back-btn">Book with Priya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dr. Michael Torres -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card-wrap" tabindex="0" role="article" aria-label="Dr. Michael Torres profile card">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img class="team-photo" src="../assets/img/staff-michael-torres.jpg" alt="Dr. Michael Torres, Exercise Physiologist" loading="lazy" />
+              <div class="team-name">Dr. Michael Torres</div>
+              <div class="team-role">Exercise Physiologist</div>
+              <div class="team-tags">
+                <span class="team-tag">Chronic Conditions</span>
+                <span class="team-tag">Strength Rehab</span>
+              </div>
+              <a href="#" class="team-linkedin" aria-label="Dr. Michael Torres LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="team-card-back">
+              <div class="team-back-name">Dr. Michael Torres</div>
+              <div class="team-back-role">Chronic Condition Specialist</div>
+              <p class="team-back-bio">Dr. Torres brings a unique combination of exercise science and physiotherapy to treat patients with chronic conditions such as diabetes, cardiovascular disease, and obesity. His strength-based rehabilitation programs deliver measurable, lasting results.</p>
+              <a href="../pages/contact.html" class="team-back-btn">Book with Michael</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dr. Emily Watson -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card-wrap" tabindex="0" role="article" aria-label="Dr. Emily Watson profile card">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img class="team-photo" src="../assets/img/staff-emily-watson.jpg" alt="Dr. Emily Watson, Paediatric Physiotherapist" loading="lazy" />
+              <div class="team-name">Dr. Emily Watson</div>
+              <div class="team-role">Paediatric Physiotherapist</div>
+              <div class="team-tags">
+                <span class="team-tag">Paediatric Care</span>
+                <span class="team-tag">Senior Wellness</span>
+              </div>
+              <a href="#" class="team-linkedin" aria-label="Dr. Emily Watson LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="team-card-back">
+              <div class="team-back-name">Dr. Emily Watson</div>
+              <div class="team-back-role">Paediatric & Senior Wellness Expert</div>
+              <p class="team-back-bio">Dr. Watson specialises in physiotherapy for children and older adults, covering developmental delays, falls prevention, and age-related mobility challenges. Her warm, nurturing style makes her a favourite with patients of all ages.</p>
+              <a href="../pages/contact.html" class="team-back-btn">Book with Emily</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dr. Robert Kim -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card-wrap" tabindex="0" role="article" aria-label="Dr. Robert Kim profile card">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img class="team-photo" src="../assets/img/staff-robert-kim.jpg" alt="Dr. Robert Kim, Neurological Rehabilitation Specialist" loading="lazy" />
+              <div class="team-name">Dr. Robert Kim</div>
+              <div class="team-role">Neuro Rehab Specialist</div>
+              <div class="team-tags">
+                <span class="team-tag">Neurological Rehab</span>
+                <span class="team-tag">Sports Performance</span>
+              </div>
+              <a href="#" class="team-linkedin" aria-label="Dr. Robert Kim LinkedIn profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="team-card-back">
+              <div class="team-back-name">Dr. Robert Kim</div>
+              <div class="team-back-role">Neurological Rehabilitation</div>
+              <p class="team-back-bio">Dr. Kim is a neurological rehabilitation specialist with expertise in stroke recovery, Parkinson's management, and traumatic brain injury. He also works with high-performance athletes on neuromuscular conditioning and injury prevention programs.</p>
+              <a href="../pages/contact.html" class="team-back-btn">Book with Robert</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+
+<!-- =========================================================
+     SECTION 4 — CERTIFICATIONS & ACCREDITATIONS
+========================================================= -->
+<section class="section-certs" id="certifications" aria-labelledby="certs-heading">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <p class="section-label reveal"><i class="fa-solid fa-shield-halved me-2"></i>Trust & Credentials</p>
+      <h2 class="section-title reveal" id="certs-heading">Certified, Accredited &amp; Trusted</h2>
+      <p class="reveal" style="color:var(--text-muted); max-width:540px; margin:1rem auto 0; font-size:.95rem;">
+        Our clinical standards are independently verified by leading national and international accreditation bodies.
+      </p>
+    </div>
+
+    <!-- Accreditation badges -->
+    <div class="row g-4 mb-5">
+
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="cert-badge">
+          <div class="cert-badge-icon"><i class="fa-solid fa-award"></i></div>
+          <h6>Australian Physiotherapy Association</h6>
+          <p>Full member practice meeting the highest clinical standards in Australia.</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="cert-badge">
+          <div class="cert-badge-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h6>Health Insurance Accredited</h6>
+          <p>Recognised by all major health insurers for maximum rebate eligibility.</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="cert-badge">
+          <div class="cert-badge-icon"><i class="fa-solid fa-certificate"></i></div>
+          <h6>ISO 9001 Certified</h6>
+          <p>International quality management certification for consistent, safe service delivery.</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="cert-badge">
+          <div class="cert-badge-icon"><i class="fa-solid fa-id-card-clip"></i></div>
+          <h6>Medicare Registered Provider</h6>
+          <p>Eligible for Medicare rebates under chronic disease management plans.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats -->
+    <div class="row g-0 mb-5" style="background:var(--white); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm);">
+      <div class="col-4 stat-block reveal" style="border-right:1px solid rgba(143,174,155,.2);">
+        <div class="stat-number" aria-label="15 plus years">15+</div>
+        <div class="stat-label">Years in Practice</div>
+      </div>
+      <div class="col-4 stat-block reveal" style="border-right:1px solid rgba(143,174,155,.2);">
+        <div class="stat-number" aria-label="500 plus patients">500+</div>
+        <div class="stat-label">Patients Annually</div>
+      </div>
+      <div class="col-4 stat-block reveal">
+        <div class="stat-number" aria-label="20 plus awards">20+</div>
+        <div class="stat-label">Awards Won</div>
+      </div>
+    </div>
+
+    <!-- Credentials list -->
+    <div class="row g-4">
+      <div class="col-md-6 reveal">
+        <h5 style="font-family:var(--font-heading); font-size:1.1rem; margin-bottom:1rem; color:var(--charcoal);">Professional Credentials</h5>
+        <ul class="cred-list">
+          <li><i class="fa-solid fa-circle-check"></i> AHPRA Registered Physiotherapists (all practitioners)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Sports Australia Accredited Performance Lab</li>
+          <li><i class="fa-solid fa-circle-check"></i> WorkCover & TAC Registered Provider</li>
+          <li><i class="fa-solid fa-circle-check"></i> NDIS Registered Service Provider</li>
+          <li><i class="fa-solid fa-circle-check"></i> Department of Veterans' Affairs (DVA) Provider</li>
+        </ul>
+      </div>
+      <div class="col-md-6 reveal">
+        <h5 style="font-family:var(--font-heading); font-size:1.1rem; margin-bottom:1rem; color:var(--charcoal);">Ongoing Training & Standards</h5>
+        <ul class="cred-list">
+          <li><i class="fa-solid fa-circle-check"></i> All staff complete 40+ CPD hours annually</li>
+          <li><i class="fa-solid fa-circle-check"></i> Regular peer-review and clinical audit processes</li>
+          <li><i class="fa-solid fa-circle-check"></i> Infection control & clinical safety certified</li>
+          <li><i class="fa-solid fa-circle-check"></i> Telehealth quality framework compliant</li>
+          <li><i class="fa-solid fa-circle-check"></i> My Health Record integration enabled</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     SECTION 5 — CLINIC VALUES
+========================================================= -->
+<section class="section-values" id="values" aria-labelledby="values-heading">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <p class="section-label reveal"><i class="fa-solid fa-star me-2"></i>What We Stand For</p>
+      <h2 class="section-title reveal" id="values-heading">Our Core Values</h2>
+      <p class="reveal" style="color:var(--text-muted); max-width:520px; margin:1rem auto 0; font-size:.95rem;">
+        These six principles are the foundation of everything we do — from your first consultation to your final discharge.
+      </p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Patient-Centred Care -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="value-card">
+          <div class="value-icon-wrap"><i class="fa-solid fa-heart"></i></div>
+          <h4 class="value-title">Patient-Centred Care</h4>
+          <p class="value-desc">Your goals, your timeline, your recovery — we build every treatment plan around you as an individual. Every decision we make keeps your wellbeing and preferences at the centre.</p>
+        </div>
+      </div>
+
+      <!-- Evidence-Based Practice -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="value-card">
+          <div class="value-icon-wrap"><i class="fa-solid fa-microscope"></i></div>
+          <h4 class="value-title">Evidence-Based Practice</h4>
+          <p class="value-desc">Our clinical decisions are grounded in the latest peer-reviewed research and international best practice guidelines. We never stop learning so our patients always receive the best available care.</p>
+        </div>
+      </div>
+
+      <!-- Continuous Education -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="value-card">
+          <div class="value-icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h4 class="value-title">Continuous Education</h4>
+          <p class="value-desc">Every PhysioElite therapist engages in rigorous ongoing professional development. We foster a culture of curiosity and growth that benefits every patient who walks through our doors.</p>
+        </div>
+      </div>
+
+      <!-- Holistic Approach -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="value-card">
+          <div class="value-icon-wrap"><i class="fa-solid fa-leaf"></i></div>
+          <h4 class="value-title">Holistic Approach</h4>
+          <p class="value-desc">We treat the whole person, not just the injury. Physical recovery, mental wellbeing, lifestyle, and nutrition are all considered in your personalised rehabilitation plan.</p>
+        </div>
+      </div>
+
+      <!-- Transparent Communication -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="value-card">
+          <div class="value-icon-wrap"><i class="fa-solid fa-comments"></i></div>
+          <h4 class="value-title">Transparent Communication</h4>
+          <p class="value-desc">We believe informed patients achieve better outcomes. We explain every diagnosis, every treatment rationale, and every milestone clearly so you are always empowered and in control.</p>
+        </div>
+      </div>
+
+      <!-- Innovation -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="value-card">
+          <div class="value-icon-wrap"><i class="fa-solid fa-lightbulb"></i></div>
+          <h4 class="value-title">Innovation</h4>
+          <p class="value-desc">From telehealth consultations to shockwave therapy and digital outcome tracking, we embrace technology and innovation to deliver smarter, more effective physiotherapy solutions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     SECTION 6 — AWARDS & COMMUNITY
+========================================================= -->
+<section class="section-awards" id="awards-community" aria-labelledby="awards-heading">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <!-- Left: Awards -->
+      <div class="col-lg-6 reveal-left">
+        <p class="section-label awards-label"><i class="fa-solid fa-trophy me-2"></i>Recognition</p>
+        <h2 class="awards-title" id="awards-heading">Award-Winning Care &amp; Community Connection</h2>
+
+        <!-- Award timeline -->
+        <div class="award-timeline mb-4">
+
+          <div class="award-item">
+            <div class="award-year">2022</div>
+            <div class="award-name">Best Physio Clinic — Sydney</div>
+            <div class="award-org">Healthcare Awards Australia · Gold Winner</div>
+          </div>
+
+          <div class="award-item">
+            <div class="award-year">2023</div>
+            <div class="award-name">Excellence in Healthcare Delivery</div>
+            <div class="award-org">Australian Medical Association · National Award</div>
+          </div>
+
+          <div class="award-item">
+            <div class="award-year">2024</div>
+            <div class="award-name">Patient Choice Award</div>
+            <div class="award-org">Healthgrades Australia · 98% Patient Satisfaction Rating</div>
+          </div>
+
+        </div>
+
+        <a href="../pages/contact.html" class="btn-awards" aria-label="Join our wellness community — book an appointment">
+          <i class="fa-solid fa-users"></i>
+          Join Our Wellness Community
+        </a>
+      </div>
+
+      <!-- Right: Community -->
+      <div class="col-lg-6 reveal-right">
+
+        <div class="community-image-wrap">
+          <img
+            src="../assets/img/charity-run.jpg"
+            alt="PhysioElite team participating in a community charity run event"
+            loading="lazy"
+          />
+        </div>
+
+        <h5 style="font-family:var(--font-heading); color:var(--ivory); font-size:1.15rem; margin-bottom:1rem;">Community Involvement</h5>
+        <ul class="community-items">
+          <li>
+            <i class="fa-solid fa-person-running"></i>
+            <div>
+              <strong style="color:var(--ivory); display:block;">Annual Charity Fun Run</strong>
+              Sponsoring and volunteering at the City2Surf to raise funds for children's hospitals.
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-school"></i>
+            <div>
+              <strong style="color:var(--ivory); display:block;">School Posture Programs</strong>
+              Free posture assessment and education delivered to 2,000+ students across 15 local schools.
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-calendar-check"></i>
+            <div>
+              <strong style="color:var(--ivory); display:block;">Free Assessment Days</strong>
+              Bi-annual free physiotherapy assessment days open to the entire community — no referral needed.
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <div>
+              <strong style="color:var(--ivory); display:block;">Senior Wellness Partnership</strong>
+              Monthly free mobility clinics at three local aged care facilities in partnership with community health.
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer id="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="row g-4 g-xl-5">
+
+      <!-- Col 1: Brand -->
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="brand-leaf" style="width:32px;height:32px;font-size:.8rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <span class="brand-name">Physio<span>Elite</span></span>
+          </div>
+          <p class="footer-tagline">Premium Physiotherapy & Rehabilitation. Helping people move better, feel stronger, and live fully since 2014.</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="PhysioElite on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" class="social-link" aria-label="PhysioElite on X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links" aria-label="Quick navigation links">
+          <li><a href="home1.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home</a></li>
+          <li><a href="home2.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Home 2</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+          <li><a href="services.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Services</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Contact</a></li>
+          <li><a href="login.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Patient Login</a></li>
+          <li><a href="404.html"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> 404 Page</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links" aria-label="Service links">
+          <li><a href="services.html#acute-pain"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Acute Pain Relief</a></li>
+          <li><a href="services.html#chronic"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Chronic Conditions</a></li>
+          <li><a href="services.html#post-surgery"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Post-Surgery Recovery</a></li>
+          <li><a href="services.html#sports"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Sports Performance</a></li>
+          <li><a href="services.html#senior"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Senior Wellness</a></li>
+          <li><a href="services.html#preventive"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i> Preventive Care</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact + Newsletter -->
+      <div class="col-lg-4 col-md-6">
+        <h3 class="footer-heading">Get In Touch</h3>
+        <address style="font-style:normal;">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>123 Wellness Avenue, Health City, CA 90210, USA</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:+18007497466" style="color:inherit;">+1 (800) PHYSIO</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:hello@physioelite.com" style="color:inherit;">hello@physioelite.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span>Mon–Fri: 8am–7pm &nbsp;|&nbsp; Sat: 9am–4pm</span>
+          </div>
+        </address>
+
+        <div class="newsletter-wrap mt-3">
+          <p>Subscribe for health tips and clinic news:</p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
+            <label for="footerNewsletterEmail" class="visually-hidden">Email address</label>
+            <input
+              type="email"
+              id="footerNewsletterEmail"
+              placeholder="your@email.com"
+              required
+              aria-required="true"
+            />
+            <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <span>&copy; 2024 PhysioElite. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Project JS -->
+<script src="../assets/js/main.js"></script>
+
+<script>
+/* =========================================================
+   PAGE-SPECIFIC JAVASCRIPT
+========================================================= */
+
+(function () {
+  'use strict';
+
+  /* ---- Sticky Navbar ---- */
+  const nav = document.getElementById('mainNav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+  }
+
+  /* ---- Mobile Menu ---- */
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu    = document.getElementById('mobileMenu');
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = isOpen ? 'none' : 'block';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+
+  /* ---- Scroll Reveal (IntersectionObserver) ---- */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Stagger children within same parent
+          const siblings = entry.target.parentElement
+            ? [...entry.target.parentElement.querySelectorAll('.reveal, .reveal-left, .reveal-right')]
+            : [entry.target];
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback: show all
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  /* ---- Team card keyboard flip ---- */
+  document.querySelectorAll('.team-card-wrap').forEach(card => {
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+        const inner = card.querySelector('.team-card-inner');
+        if (inner) {
+          inner.style.transform = card.classList.contains('flipped')
+            ? 'rotateY(180deg)' : '';
+        }
+      }
+    });
+  });
+
+  /* ---- Smooth scroll for anchor links ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
